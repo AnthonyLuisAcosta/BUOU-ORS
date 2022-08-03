@@ -15,7 +15,7 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-        $data = Application::latest()->paginate(5);
+        $data = Application::all();
 
         return view('admin.application.index', compact('data'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -142,7 +142,7 @@ class ApplicationController extends Controller
 
         $application->save();
 
-        return redirect()->route('application.index')->with('success', 'Application Data has been updated successfully');
+        return redirect()->route('admin.application.index')->with('success', 'Application has been updated successfully');
     }
 
     /**
@@ -155,6 +155,6 @@ class ApplicationController extends Controller
     {
         $application->delete();
 
-        return redirect()->route('application.index')->with('success', 'Application Data deleted successfully');
+        return redirect()->route('admin.application.index')->with('success', 'Application deleted successfully!');
     }
 }

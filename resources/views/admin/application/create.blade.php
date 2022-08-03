@@ -1,5 +1,9 @@
-@extends('admin.application.master')
-
+<x-app-layout>
+<x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Applications') }} | Create
+        </h2>
+</x-slot>
 @section('content')
 
 @if($errors->any())
@@ -19,29 +23,30 @@
 <!----------New Multistep Form-------------->
 
 
+
 <body class="antialiased sans-serif bg-gray-200">
 	<div x-data="app()" x-cloak>
-		<div class="max-w-5xl mx-auto px-4 py-10">
-            <form action="{{ route('admin.application.store') }}" method="post">
-                @csrf
-			<div x-show.transition="step === 'complete'">
-				<div class="bg-white rounded-lg p-10 flex items-center shadow justify-between">
-					<div>
-						<svg class="mb-4 h-20 w-20 text-green-500 mx-auto" viewBox="0 0 20 20" fill="currentColor">  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+		<div class="max-w-3xl mx-auto px-4 py-10">
+		<form action="{{ route('admin.application.store') }}" method="post">
+				@csrf
+				<div x-show.transition="step === 'complete'">
+					<div class="bg-white rounded-lg p-10 flex items-center shadow justify-between">
+						<div>
+							<svg class="mb-4 h-20 w-20 text-green-500 mx-auto" viewBox="0 0 20 20" fill="currentColor">  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
 
-						<h2 class="text-2xl mb-4 text-gray-800 text-center font-bold">Registration Success</h2>
+							<h2 class="text-2xl mb-4 text-gray-800 text-center font-bold">Registration Success</h2>
 
-						<div class="text-gray-600 mb-8">
-							Thank you. We have sent you an email to demo@demo.test. Please click the link in the message to activate your account.
+							<div class="text-gray-600 mb-8">
+								Thank you.
+							</div>
+
+							<button
+								@click="step = 1"
+								class="w-40 block mx-auto focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 font-medium border" 
+							>Back to home</button>
 						</div>
-
-						<button
-							@click="step = 1"
-							class="w-40 block mx-auto focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 font-medium border" 
-						>Back to home</button>
 					</div>
 				</div>
-			</div>
 
 			<div x-show.transition="step != 'complete'">	
 				<!-- Top Navigation -->
@@ -122,33 +127,32 @@
                             </div>
                             
                             <div class="">
-							<label for="email" class="font-bold mb-1 text-gray-700 block">Last Name</label>
-							<input type="text"
+								<label for="email" class="font-bold mb-1 text-gray-700 block">Last Name</label>
+								<input type="text"
 								class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
 								placeholder="Mama"
                                 name="lastName"
                                 id="lastName">
 						    </div>
-                         
 						</div>
 
 	
 
                         <div class="mb-5 grid grid-cols-2 gap-4">
                             <div>
-                            <label class="font-bold mb-1 text-gray-700 block">Birth Date</label>
-                            <input type="date"
-								class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                                name="birthDate"
-                                id="birthDate">
+									<label class="font-bold mb-1 text-gray-700 block">Birth Date</label>
+									<input type="date"
+									class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+									name="birthDate"
+									id="birthDate">
                             </div>
 
                             <div>
-                            <label for="email" class="font-bold mb-1 text-gray-700 block">Gender</label>
-                            <select name="gender" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                            </select>
+									<label for="email" class="font-bold mb-1 text-gray-700 block">Gender</label>
+									<select name="gender" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
+									<option value="Male">Male</option>
+									<option value="Female">Female</option>
+									</select>
                             </div>
 
                         </div>
@@ -200,8 +204,6 @@
                                 </div>
 						</div>
 
-
-
 					</div>
 					<div x-show.transition.in="step === 2">
 
@@ -249,8 +251,27 @@
 
 					</div>
 					<div x-show.transition.in="step === 3">
+						<div class="mb-5">
+							<label for="email" class="font-bold mb-1 text-gray-700 block">Gender</label>
 							
+							<div class="flex">
+								<label
+									class="flex justify-start items-center text-truncate rounded-lg bg-white pl-4 pr-6 py-3 shadow-sm mr-4">
+									<div class="text-teal-600 mr-3">
+										<input type="radio" x-model="gender" value="Male" class="form-radio focus:outline-none focus:shadow-outline" />
+									</div>
+									<div class="select-none text-gray-700">Male</div>
+								</label>
 
+								<label
+									class="flex justify-start items-center text-truncate rounded-lg bg-white pl-4 pr-6 py-3 shadow-sm">
+									<div class="text-teal-600 mr-3">
+										<input type="radio" x-model="gender" value="Female" class="form-radio focus:outline-none focus:shadow-outline" />
+									</div>
+									<div class="select-none text-gray-700">Female</div>
+								</label>
+							</div>
+						</div>
 
 						<div class="mb-5">
 							<label for="profession" class="font-bold mb-1 text-gray-700 block">Profession</label>
@@ -262,46 +283,42 @@
 				</div>
 				<!-- / Step Content -->
 			</div>
-            <div class="mb-5">
-            
-            </div>
-
-            <div class="bottom-0 left-0 right-0 py-5" x-show="step != 'complete'">
-                <div class="max-w-3xl mx-auto px-4">
-                    <div class="flex justify-between">
-                        <div class="w-1/2">
-                            <button
-                                x-show="step > 1"
-                                @click="step--"
-                                class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 font-medium border" 
-                            >Previous</button>
-                        </div>
-
-                        <div class="w-1/2 text-right">
-                            <button
-                                x-show="step < 3"
-                                @click="step++"
-                                class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium" 
-                            >Next</button>
-
-                            <button
-                                @click="step = 'complete'"
-                                x-show="step === 3"
-                                type="submit"
-                                value="submit"
-                                class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium" 
-                            >Complete</button>
-                        </div>
-                    </div> 
-                </div>
-            </div>
-		
 		</div>
-
+	</form>
 		<!-- Bottom Navigation -->	
+		<div class="fixed bottom-0 left-0 right-0 py-5 bg-white shadow-md" x-show="step != 'complete'">
+			<div class="max-w-3xl mx-auto px-4">
+				<div class="flex justify-between">
+					<div class="w-1/2">
+						<button
+							x-show="step > 1"
+							@click="step--"
+							class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 font-medium border" 
+						>Previous</button>
+					</div>
+
+					<div class="w-1/2 text-right">
+						<button
+							x-show="step < 3"
+							@click="step++"
+							class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium" 
+						>Next</button>
+						
+						<button
+							@click="step = 'complete'"
+							x-show="step === 3"
+							type="submit"
+                            value="submit"
+							class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium" 
+						>Complete</button>
+					</div>
+				</div>
+			</div>
+	
+		</div>
 		<!-- / Bottom Navigation https://placehold.co/300x300/e2e8f0/cccccc -->	
 	</div>
-</form>
+
 	<script>
 		function app() {
 			return {
@@ -332,6 +349,7 @@
 	</script>
 </body>
 
-@endsection('content')
+
+	</x-app-layout>
 
 
