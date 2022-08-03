@@ -1,4 +1,4 @@
-<p align="center"><a href="https://github.com/AnthonyLuisAcosta/BUOU-ORS/blob/master/public/img/buou.png" width="400"></a></p>
+<p align="center"><a href="[https://github.com/AnthonyLuisAcosta/BUOU-ORS/blob/master/public/img/buou.png](https://github.com/AnthonyLuisAcosta/BUOU-ORS/blob/master/public/img/buou.png?raw=true)" width="400"></a></p>
 <h1>BUOU ORS</h1>
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
