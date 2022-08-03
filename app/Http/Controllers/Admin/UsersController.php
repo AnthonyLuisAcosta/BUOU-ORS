@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
 use App\Models\Role;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -30,6 +32,8 @@ class UsersController extends Controller
     public function create()
     {
         //
+        $roles = Role::all();
+        return view('admin.users.create')->with('roles', $roles);
     }
 
     /**
@@ -38,9 +42,19 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        //
+        /**/
+        $input = $request->all();
+        User::create([
+            'role_id' => $input['role_id'],
+            'first_name' => $input['first_name'],
+            'middle_name' => $input['middle_name'],
+            'last_name' => $input['last_name'],
+            'email' => $input['email'],
+            'password' => Hash::make($input['password']),
+        ]);;
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -83,8 +97,10 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
         //
+        $user->delete();
+        return back();
     }
 }
