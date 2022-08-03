@@ -119,12 +119,12 @@
     <body class="font-sans antialiased">
         <x-jet-banner />
 
-        <div class=" bg-gray-100">
+        <div class="">
 
 
             <div class="sidebar">
                 <!-- Page Heading -->
-                <div class="Nav h-16 border-b bg-white border-black-100">
+                <div class="">
                     @livewire('navigation-menu')
                 </div>
             </div>
@@ -132,7 +132,7 @@
             <div class="content">
                  <!-- Page Heading -->
                 @if (isset($header))
-                    <header class="border-b border-gray-300">
+                    <header class="border-b border-gray-300 pt-16">
                         <div class="w-screen py-6 px-4 sm:px-6 lg:px-8">
                             {{ $header }}
                         </div>

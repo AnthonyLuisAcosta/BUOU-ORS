@@ -1,7 +1,7 @@
 <Head>
-    <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+    <nav x-data="{ open: false }" class="bg-white border-b border-gray-200 fixed">
         <!-- Primary Navigation Menu -->
-        <div class="max-w-scree mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-screen w-screen mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex">
                     <!-- Logo -->
@@ -216,8 +216,8 @@
 </Head>
 
 
-<div class="hidden h-screen sm:flex">
-    <aside class="w-64" aria-label="Sidebar">
+<div class="hidden top-16 h-screen sm:flex bg-white fixed">
+    <aside aria-label="Sidebar">
 
         <div class="overflow-y-auto py-4 px-3 rounded ">
             <ul class="space-y-2">
@@ -268,13 +268,10 @@
 
 <style>
     #Sidebar {
-        margin: 0;
-        padding: 0;
         background-color: #f1f1f1;
         position: absolute;
         float: left;
         height: auto;
         overflow: auto;
-
     }
 </style>
