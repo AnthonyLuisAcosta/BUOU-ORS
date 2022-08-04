@@ -117,7 +117,7 @@ class SplCaster
         foreach ($map as $key => $accessor) {
             try {
                 $a[$prefix.$key] = $c->$accessor();
-            } catch (\Exception) {
+            } catch (\Exception $e) {
             }
         }
 
@@ -155,7 +155,7 @@ class SplCaster
         foreach ($map as $key => $accessor) {
             try {
                 $a[$prefix.$key] = $c->$accessor();
-            } catch (\Exception) {
+            } catch (\Exception $e) {
             }
         }
 

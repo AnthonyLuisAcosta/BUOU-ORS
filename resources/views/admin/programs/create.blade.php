@@ -1,59 +1,93 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-      {{ __('Programs') }}
+      {{ __('Programs') }} | <span class=" text-md text-gray-500">{{__('Create Program')}}</span>
     </h2>
   </x-slot>
 
   <div>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+      <!-- Return Button -->
       <div class="block mb-8">
-        <a href="{{ route('admin.programs.index') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Back to list</a>
+        <a href="{{ route('admin.programs.index') }}" class="ml-1 inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-500 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Back to list</a>
       </div>
+
       <div class="mt-5 md:mt-0 md:col-span-2">
+
+        <!-- Form -->
         <form action="{{ route('admin.programs.store') }}" method="post">
           @csrf
           <div class="shadow overflow-hidden sm:rounded-md">
             <div class="px-4 py-5 bg-white sm:p-6">
-              <label for="description" class="block font-medium text-sm text-gray-700 pt-3">Code</label>
-              <input type="text" name="code" id="code" type="text" class="form-input rounded-md shadow-sm mt-1 block w-full" value="{{ old('code', '') }}" />
-              @error('code')
-              <p class="text-sm text-red-600">{{ $message }}</p>
-              @enderror
 
-              <label for="description" class="block font-medium text-sm text-gray-700 pt-3">Description</label>
-              <input type="text" name="description" id="description" type="text" class="form-input rounded-md shadow-sm mt-1 block w-full" value="{{ old('description', '') }}" />
-              @error('description')
-              <p class="text-sm text-red-600">{{ $message }}</p>
-              @enderror
+              <!-- Code field -->
+              <div class="mt-4">
+                <x-jet-label for="code" value="{{ __('Code') }}" />
+                <x-jet-input id="code" class="block mt-1 w-full" type="text" name="code" :value="old('code')" required autofocus autocomplete="code" />
+              </div>
 
-              <label for="adviser" class="block font-medium text-sm text-gray-700 pt-3">Program Adviser</label>
-              <select name="" id="" class="form-input rounded-md shadow-sm mt-1 block w-full"></select>
-              @error('adviser')
-              <p class="text-sm text-red-600">{{ $message }}</p>
-              @enderror
+              <!-- Description field -->
+              <div class="mt-4">
+                <x-jet-label for="description" value="{{ __('Description') }}" />
+                <x-jet-input id="description" class="block mt-1 w-full" type="text" name="description" :value="old('description')" required autofocus autocomplete="description" />
+              </div>
+              
+              <!-- Program Adviser field -->
+              <div class="mt-4">
+                <x-jet-label for="adviser" value="Program Adviser" />
+                <select id="adviser" name="adviser" required autofocus autocomplete="adviser" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                  <option selected></option>
+                  @foreach ($users as $user)
+                    @if ($user->role_id == '4')
+                      <option class="block mt-1 w-full" value="{{ $user->id }}">
+                          {{ $user->first_name.' '.$user->last_name }}
+                      </option>
+                    @endif
+                  @endforeach
+                </select>
+              </div>
 
-              <label for="dean" class="block font-medium text-sm text-gray-700 pt-3">Dean</label>
-              <select name="" id="" class="form-input rounded-md shadow-sm mt-1 block w-full"></select>
-              @error('dean')
-              <p class="text-sm text-red-600">{{ $message }}</p>
-              @enderror
+              <!-- Dean field -->
+              <div class="mt-4">
+                <x-jet-label for="dean" value="Dean" />
+                <select id="dean" name="dean" required autofocus autocomplete = "dean" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                  <option selected></option>
+                  @foreach ($users as $user)
+                    @if ($user->role_id == '3')
+                      <option class="block mt-1 w-full" value="{{ $user->id }}">
+                          {{ $user->first_name.' '.$user->last_name }}
+                      </option>
+                    @endif
+                  @endforeach
+                </select>
+              </div>
+      
 
-              <label for="registrar" class="block font-medium text-sm text-gray-700 pt-3">Registrar</label>
-              <select name="" id="" class="form-input rounded-md shadow-sm mt-1 block w-full"></select>
-              @error('registrar')
-              <p class="text-sm text-red-600">{{ $message }}</p>
-              @enderror
-
+              <!-- Registrar field -->
+              <div class="mt-4">
+                <x-jet-label for="registrar" value="Registrar" />
+                <select id="registrar" name="registrar" required autofocus autocimplete = "registrar" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                  <option selected></option>
+                  @foreach ($users as $user)
+                    @if ($user->role_id == '2')
+                      <option class="block mt-1 w-full" value="{{ $user->id }}">
+                          {{ $user->first_name.' '.$user->last_name }}
+                      </option>
+                    @endif
+                  @endforeach
+                </select>
+              </div>
             </div>
-
+            
+            <!-- Create Button -->
             <div class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6">
-              <button class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
-                Create
-              </button>
-            </div>
+              <x-jet-button>
+                  {{ __('Create') }}
+              </x-jet-button>
           </div>
         </form>
+        <!-- End of Form -->
       </div>
     </div>
   </div>

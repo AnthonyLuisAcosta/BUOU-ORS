@@ -1,44 +1,93 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Edit Program
+          {{ __('Programs') }} | <span class=" text-md text-gray-500">{{__('Edit Program')}}</span>
         </h2>
-    </x-slot>
+      </x-slot>
 
     <div>
-        <div class="max-w-4xl mx-auto py-10 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            
+            <!-- Return Button -->
             <div class="block mb-8">
-                <a href="{{ route('admin.programs.index') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Back to list</a>
+                <a href="{{ route('admin.programs.index') }}" class="ml-1 inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-500 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Back to list</a>
             </div>
+
             <div class="mt-5 md:mt-0 md:col-span-2">
-                <form action="{{ url('admin/programs/' .$programs->id) }}" method="post">
-                    {!! csrf_field() !!}
+
+                <!-- Form -->
+                <form action="{{ route('admin.programs.update', $programs->id) }}" method="post">
+                    @csrf
                     @method("PATCH")
                     <div class="shadow overflow-hidden sm:rounded-md">
                         <div class="px-4 py-5 bg-white sm:p-6">
-                            <input type="hidden" name="id" id="id" value="{{$programs->id}}" id="id""
-                                   value="{{ old('description', $programs->code) }}" />
-                            <label for="code" class="block font-medium text-sm text-gray-700 pt-3">Code</label>
-                            <input type="text" name="code" id="code" type="text" class="form-input rounded-md shadow-sm mt-1 block w-full"
-                                   value="{{ old('description', $programs->code) }}" />
-                            @error('code')
-                                <p class="text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                            <label for="description" class="block font-medium text-sm text-gray-700m pt-3">Description</label>
-                            <input type="text" name="description" id="description" type="text" class="form-input rounded-md shadow-sm mt-1 block w-full"
-                                   value="{{ old('description', $programs->description) }}" />
-                            @error('description')
-                                <p class="text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                        </div>
 
+                            <!-- Code Field -->
+                            <div class="mt-4">
+                              <x-jet-label for="code" value="{{ __('Code') }}" />
+                              <input type="text" name="code" id="code" type="text" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                   value="{{ old('code', $programs->code) }}" required = "code" />
+                            </div>
+              
+                            <!-- Description Field -->
+                            <div class="mt-4">
+                              <x-jet-label for="description" value="{{ __('Description') }}" />
+                              <input type="text" name="description" id="description" type="text" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                   value="{{ old('description', $programs->description) }}" required ="description" />
+                            </div>
+                            
+                            <!-- Program Adviser Field -->
+                            <div class="mt-4">
+                              <x-jet-label for="adviser" value="Program Adviser" />
+                              <select id="adviser" name="adviser" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                                @foreach ($users as $user)
+                                  @if ($user->role_id == '4')
+                                    <option selected class="block mt-1 w-full" value="{{ $user->id }}">
+                                        {{ $user->first_name.' '.$user->last_name }}
+                                    </option>
+                                  @endif
+                                @endforeach
+                              </select>
+                            </div>
+
+                            <!-- Dean Field -->
+                            <div class="mt-4">
+                              <x-jet-label for="dean" value="Dean" />
+                              <select id="dean" name="dean" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                                @foreach ($users as $user)
+                                  @if ($user->role_id == '3')
+                                    <option selected class="block mt-1 w-full" value="{{ $user->id }}">
+                                        {{ $user->first_name.' '.$user->last_name }}
+                                    </option>
+                                  @endif
+                                @endforeach
+                              </select>
+                            </div>
+                            
+                            <!-- Registrar Field -->
+                            <div class="mt-4">
+                              <x-jet-label for="registrar" value="Registrar" />
+                              <select id="registrar" name="registrar" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                                @foreach ($users as $user)
+                                  @if ($user->role_id == '2')
+                                    <option selected class="block mt-1 w-full" value="{{ $user->id }}">
+                                        {{ $user->first_name.' '.$user->last_name }}
+                                    </option>
+                                  @endif
+                                @endforeach
+                              </select>
+                            </div>
+                          </div>
+                        
+                        <!-- Update Button -->
                         <div class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6">
                             <button class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
-                                Update
+                                Save Changes
                             </button>
                         </div>
                     </div>
                 </form>
+                <!-- End of Form -->
             </div>
         </div>
     </div>

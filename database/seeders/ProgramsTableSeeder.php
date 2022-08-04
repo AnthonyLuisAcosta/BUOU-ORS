@@ -17,14 +17,16 @@ class ProgramsTableSeeder extends Seeder
     public function run()
     {
         DB::table('programs')->insert([
-            'id' => '1',
             'code' => 'MM',
             'description' => 'Master in Management',
+            'adviser' => '4',
+            'dean' => '3',
+            'registrar' => '2',
             'created_at'  => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
 
-        DB::table('programs')->insert([
+        /*DB::table('programs')->insert([
             'id' => '2',
             'code' => 'MLGM',
             'description' => 'Master in Local Government Management',
@@ -78,6 +80,6 @@ class ProgramsTableSeeder extends Seeder
             'description' => 'Bachelor of Science in Development Communication',
             'created_at'  => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
-        ]);
+        ]);*/
     }
 }
