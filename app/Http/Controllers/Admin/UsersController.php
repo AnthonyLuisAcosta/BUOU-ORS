@@ -66,6 +66,9 @@ class UsersController extends Controller
     public function show($id)
     {
         //
+        $user = User::find($id);
+        $roles = Role::all();
+        return view('admin.users.show')->with('user', $user)->with('roles', $roles);
     }
 
     /**
@@ -77,6 +80,9 @@ class UsersController extends Controller
     public function edit($id)
     {
         //
+        $user = User::find($id);
+        $roles = Role::all();
+        return view('admin.users.edit')->with('user', $user)->with('roles', $roles);
     }
 
     /**
@@ -89,6 +95,17 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $user = User::find($id);
+        $input = $request->all();
+        $user->update([
+            'role_id' => $input['role_id'],
+            'first_name' => $input['first_name'],
+            'middle_name' => $input['middle_name'],
+            'last_name' => $input['last_name'],
+            'email' => $input['email'],
+            'password' => Hash::make($input['password']),
+        ]);
+        return redirect()->route('admin.users.index');
     }
 
     /**
