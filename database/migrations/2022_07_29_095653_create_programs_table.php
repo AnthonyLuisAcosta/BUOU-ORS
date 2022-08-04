@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('code');
             $table->longText('description');
+            $table->string('adviser');
+            $table->string('dean');
+            $table->string('registrar');
             $table->timestamps();
         });
     }

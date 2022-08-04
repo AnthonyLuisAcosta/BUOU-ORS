@@ -410,20 +410,11 @@ class Email extends Message
 
     public function ensureValidity()
     {
-        $this->ensureBodyValid();
-
-        if ('1' === $this->getHeaders()->getHeaderBody('X-Unsent')) {
-            throw new LogicException('Cannot send messages marked as "draft".');
-        }
-
-        parent::ensureValidity();
-    }
-
-    private function ensureBodyValid(): void
-    {
         if (null === $this->text && null === $this->html && !$this->attachments) {
             throw new LogicException('A message must have a text or an HTML part or attachments.');
         }
+
+        parent::ensureValidity();
     }
 
     /**
@@ -452,7 +443,7 @@ class Email extends Message
             return $this->cachedBody;
         }
 
-        $this->ensureBodyValid();
+        $this->ensureValidity();
 
         [$htmlPart, $attachmentParts, $inlineParts] = $this->prepareParts();
 
@@ -488,17 +479,8 @@ class Email extends Message
         if (null !== $html) {
             $htmlPart = new TextPart($html, $this->htmlCharset, 'html');
             $html = $htmlPart->getBody();
-
-            $regexes = [
-                '<img\s+[^>]*src\s*=\s*(?:([\'"])cid:([^"]+)\\1|cid:([^>\s]+))',
-                '<\w+\s+[^>]*background\s*=\s*(?:([\'"])cid:([^"]+)\\1|cid:([^>\s]+))',
-            ];
-            $tmpMatches = [];
-            foreach ($regexes as $regex) {
-                preg_match_all('/'.$regex.'/i', $html, $tmpMatches);
-                $names = array_merge($names, $tmpMatches[2], $tmpMatches[3]);
-            }
-            $names = array_filter(array_unique($names));
+            preg_match_all('(<img\s+[^>]*src\s*=\s*(?:([\'"])cid:([^"]+)\\1|cid:([^>\s]+)))i', $html, $names);
+            $names = array_filter(array_unique(array_merge($names[2], $names[3])));
         }
 
         // usage of reflection is a temporary workaround for missing getters that will be added in 6.2

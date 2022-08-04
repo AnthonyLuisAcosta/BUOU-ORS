@@ -1,11 +1,6 @@
 CHANGELOG
 =========
 
-6.1
----
-
- * Add `DataPart::getFilename()` and `DataPart::getContentType()`
-
 6.0
 ---
 

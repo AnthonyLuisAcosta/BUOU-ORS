@@ -13,6 +13,15 @@ class Programs extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'code',
-        'description'
+        'description',
+        'adviser',
+        'dean',
+        'registrar',
     ];
+
+        //program and user relationship 
+        public function users()
+        {
+            $this->belongsTo('App\User');
+        }
 }
