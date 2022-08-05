@@ -19,9 +19,4 @@ class Programs extends Model
         'registrar',
     ];
 
-        //program and user relationship 
-        public function users()
-        {
-            $this->belongsTo('App\User');
-        }
 }

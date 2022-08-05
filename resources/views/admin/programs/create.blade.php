@@ -24,19 +24,25 @@
               <!-- Code field -->
               <div class="mt-4">
                 <x-jet-label for="code" value="{{ __('Code') }}" />
-                <x-jet-input id="code" class="block mt-1 w-full" type="text" name="code" :value="old('code')" required autofocus autocomplete="code" />
+                <x-jet-input id="code" class="block mt-1 w-full" type="text" name="code" :value="old('code')" required autocomplete="code" />
               </div>
+
+              <!-- Error Message -->
+              @error('code')
+                <p class="text-sm text-red-600">This code already exist</p>
+              @enderror
+              
 
               <!-- Description field -->
               <div class="mt-4">
                 <x-jet-label for="description" value="{{ __('Description') }}" />
-                <x-jet-input id="description" class="block mt-1 w-full" type="text" name="description" :value="old('description')" required autofocus autocomplete="description" />
+                <x-jet-input id="description" class="block mt-1 w-full" type="text" name="description" :value="old('description')" required autocomplete="description" />
               </div>
               
               <!-- Program Adviser field -->
               <div class="mt-4">
                 <x-jet-label for="adviser" value="Program Adviser" />
-                <select id="adviser" name="adviser" required autofocus autocomplete="adviser" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                <select id="adviser" name="adviser" required autocomplete="adviser" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                   <option selected></option>
                   @foreach ($users as $user)
                     @if ($user->role_id == '4')
@@ -51,7 +57,7 @@
               <!-- Dean field -->
               <div class="mt-4">
                 <x-jet-label for="dean" value="Dean" />
-                <select id="dean" name="dean" required autofocus autocomplete = "dean" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                <select id="dean" name="dean" required autocomplete = "dean" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                   <option selected></option>
                   @foreach ($users as $user)
                     @if ($user->role_id == '3')
@@ -67,7 +73,7 @@
               <!-- Registrar field -->
               <div class="mt-4">
                 <x-jet-label for="registrar" value="Registrar" />
-                <select id="registrar" name="registrar" required autofocus autocimplete = "registrar" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                <select id="registrar" name="registrar" required autocomplete = "registrar" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                   <option selected></option>
                   @foreach ($users as $user)
                     @if ($user->role_id == '2')
