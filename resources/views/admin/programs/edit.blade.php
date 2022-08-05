@@ -28,6 +28,11 @@
                               <input type="text" name="code" id="code" type="text" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                                    value="{{ old('code', $programs->code) }}" required = "code" />
                             </div>
+
+                            <!-- Error Message -->
+                            @error('code')
+                              <p class="text-sm text-red-600">This code already exist</p>
+                            @enderror
               
                             <!-- Description Field -->
                             <div class="mt-4">

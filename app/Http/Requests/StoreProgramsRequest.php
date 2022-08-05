@@ -21,7 +21,7 @@ class StoreProgramsRequest extends FormRequest
     {
         return [
             'code' => [
-                'required', 'string',
+                'required', 'string', 'unique:programs',
             ],
             'description' => [
                 'required', 'string',

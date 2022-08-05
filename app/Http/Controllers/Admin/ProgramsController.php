@@ -27,9 +27,9 @@ class ProgramsController extends Controller
     /* Store a newly created resource in storage*/
     public function store(StoreProgramsRequest $request)
     {
-        $input = $request->all();
+        $input = $request->validated();
         Programs::create($input);
-        return redirect()->route('admin.programs.index');
+        return redirect()->route('admin.programs.index')->with('success', 'Program created successfully');
     }
 
     /* Display the specified resource*/
@@ -49,19 +49,19 @@ class ProgramsController extends Controller
     }
 
     /* Update the specified resource in storage*/
-    public function update(Request $request, $id)
+    public function update(StoreProgramsRequest $request, $id)
     {
         $programs = Programs::find($id);
-        $input = $request->all();
+        $input = $request->validated();
         $programs->update($input);
-        return redirect()->route('admin.programs.index');
+        return redirect()->route('admin.programs.index')->with('success', 'Program updated successfully');
     }
 
     /*Remove the specified resource from storage.*/
     public function destroy(Programs $program)
     {
         $program->delete();
-        return back(); 
+        return back()->with('success', 'Program deleted successfully'); 
     }
 
 }

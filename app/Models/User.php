@@ -68,9 +68,4 @@ class User extends Authenticatable
         $this->belongsTo('App\Role');
     }
 
-    //user and program relationship 
-    public function programs()
-    {
-        return $this->hasMany('App\Programs');
-    }
 }
