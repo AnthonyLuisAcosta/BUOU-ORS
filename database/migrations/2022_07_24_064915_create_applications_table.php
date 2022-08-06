@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('company');
             $table->string('address');
-            //$table->string('applicantImage');
+            $table->string('applicantImage');
             $table->timestamps();
         });
     }

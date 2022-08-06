@@ -28,9 +28,9 @@
 							<th data-priority="1">Name</th>
 							<th data-priority="2">Email</th>
 							<th data-priority="2">Gender</th>
-							<th data-priority="3">CREATED AT</th>
-							<th data-priority="4">UPDATED AT</th>
-							<th data-priority="5">ACTION</th>
+							<th data-priority="3">Created at</th>
+							<th data-priority="4">Updated at</th>
+							<th data-priority="5">Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -52,7 +52,7 @@
 										</tr>
 									@endforeach
 					</tbody>
-
+				
 				</table>
 
 
