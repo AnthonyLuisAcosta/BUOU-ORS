@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Registrar;
 
 use App\Models\User;
 use App\Models\Programs;
@@ -14,14 +14,14 @@ class ProgramsController extends Controller
     public function index()
     {
         $programs = Programs::all();
-        return view('admin.programs.index')->with('programs', $programs);
+        return view('registrar.programs.index')->with('programs', $programs);
     }
 
     /*Show the form for creating a new resource */
     public function create()
     {
         $users = User::all();
-        return view('admin.programs.create')->with('users', $users);
+        return view('registrar.programs.create')->with('users', $users);
     }
 
     /* Store a newly created resource in storage*/
@@ -29,7 +29,7 @@ class ProgramsController extends Controller
     {
         $input = $request->validated();
         Programs::create($input);
-        return redirect()->route('admin.programs.index')->with('success', 'Program created successfully');
+        return redirect()->route('registrar.programs.index')->with('success', 'Program created successfully');
     }
 
     /* Display the specified resource*/
@@ -37,7 +37,7 @@ class ProgramsController extends Controller
     {
         $programs = Programs::find($id);
         $users = User::all();
-        return view('admin.programs.show')->with('programs', $programs)->with('users', $users);
+        return view('registrar.programs.show')->with('programs', $programs)->with('users', $users);
     }
 
     /*Show the form for editing the specified resource.*/
@@ -45,7 +45,7 @@ class ProgramsController extends Controller
     {
         $programs = Programs::find($id);
         $users = User::all();
-        return view('admin.programs.edit')->with('programs', $programs)->with('users', $users);
+        return view('registrar.programs.edit')->with('programs', $programs)->with('users', $users);
     }
 
     /* Update the specified resource in storage*/
@@ -54,7 +54,7 @@ class ProgramsController extends Controller
         $programs = Programs::find($id);
         $input = $request->validated();
         $programs->update($input);
-        return redirect()->route('admin.programs.index')->with('success', 'Program updated successfully');
+        return redirect()->route('registrar.programs.index')->with('success', 'Program updated successfully');
     }
 
     /*Remove the specified resource from storage.*/
