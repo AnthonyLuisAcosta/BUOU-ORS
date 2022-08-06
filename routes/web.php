@@ -38,6 +38,7 @@ Route::group(['as' => 'registrar.', 'prefix' => 'registrar', 'middleware' => ['a
 
 Route::group(['as' => 'dean.', 'prefix' => 'dean', 'middleware' => ['auth', 'dean']], function () {
     Route::get('/dashboard', [App\Http\Controllers\Dean\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/programs', [App\Http\Controllers\Dean\ProgramsController::class, 'index']);
 });
 
 Route::group(['as' => 'adviser.', 'prefix' => 'adviser', 'middleware' => ['auth', 'adviser']], function () {
