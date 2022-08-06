@@ -14,12 +14,12 @@
 				<svg class="flex-shrink-0 w-5 h-5 text-blue-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
 				<div class="ml-3 font-medium text-blue-700">
 				{{ session('success') }}
-				</div>
+			</div>
 			</div>
 			@endif
 
             <div class="flex items-center justify-end px-3 py-4">
-                <a href="{{ route('admin.programs.create') }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">New Program</a>
+                <a href="{{ route('registrar.programs.create') }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">New Program</a>
             </div>
 
 			<!--Container-->
@@ -43,14 +43,14 @@
 									<td>{{ $program->created_at }}</td>
 									<td>{{ $program->updated_at }}</td>
 									<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-										<a href="{{ route('admin.programs.show', $program->id) }}" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View</a>
-										<a href="{{ route('admin.programs.edit', $program->id) }}" class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">Edit</a>
+										<a href="{{ route('registrar.programs.show', $program->id) }}" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View</a>
+										<a href="{{ route('registrar.programs.edit', $program->id) }}" class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">Edit</a>
 										
 										<!--DELETE BUTTON-->
 										<div id="{{$program->id}}" class="modal">
 											<p>Are you sure you want to delete this program?</p>
 											<div class="text-right">
-												<form class="inline-block" action="{{ route('admin.programs.destroy', $program->id) }}" method="POST">
+												<form class="inline-block" action="{{ route('registrar.programs.destroy', $program->id) }}" method="POST">
 												<input type="hidden" name="_method" value="DELETE">
 												<input type="hidden" name="_token" value="{{ csrf_token() }}">
 												<input type="submit" class="inline-flex items-center px-4 py-2 bg-red-700 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-red-900 focus:outline-none focus:border-red-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150" rel="modal:close" value="Yes">
