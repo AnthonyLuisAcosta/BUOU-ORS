@@ -49,7 +49,7 @@ class ApplicationController extends Controller
             'company'          =>  'required',
             'address'          =>  'required',
 
-            'applicantImage'         =>  'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000'
+            'applicantImage'         =>  'required|file|mimes:jpg,png,jpeg,gif,svg,pdf,docx,doc'
         ]);
 
         $file_name = time() . '.' . request()->applicantImage->getClientOriginalExtension();
@@ -115,7 +115,7 @@ class ApplicationController extends Controller
             'phone'          =>  'required',
             'company'          =>  'required',
             'address'          =>  'required',
-            //'applicantImage'     =>  'image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000'
+            'applicantImage'     =>  'required|file|mimes:jpg,png,jpeg,gif,svg,pdf,docx,doc'
         ]);
 
         $applicantImage = $request->hidden_applicantImage;
@@ -138,7 +138,7 @@ class ApplicationController extends Controller
         $application->company = $request->company;
         $application->address = $request->address;
 
-        //$application->applicantImage = $applicantImage;
+        $application->applicantImage = $applicantImage;
 
         $application->save();
 
