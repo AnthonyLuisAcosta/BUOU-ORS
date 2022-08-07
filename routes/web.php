@@ -43,6 +43,7 @@ Route::group(['as' => 'dean.', 'prefix' => 'dean', 'middleware' => ['auth', 'dea
 
 Route::group(['as' => 'adviser.', 'prefix' => 'adviser', 'middleware' => ['auth', 'adviser']], function () {
     Route::get('/dashboard', [App\Http\Controllers\Adviser\DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('programs', App\Http\Controllers\Adviser\ProgramsController::class);
 });
 
 Route::group(['as' => '', 'prefix' => '', 'middleware' => ['auth', 'applicant']], function () {
