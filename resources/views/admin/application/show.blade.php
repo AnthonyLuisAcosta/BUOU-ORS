@@ -61,7 +61,7 @@
                                     <x-jet-label for="applicantImage" value="{{ asset($application->applicantImage) }}" />
                                 </div>
                                 <div class="ml-4 flex-shrink-0">
-                                    <a href="{{ asset('images/' .  $application->applicantImage) }}" class="font-medium text-indigo-600 hover:text-indigo-500"> Download </a>
+                                    <a href="{{ asset('requirements/' .  $application->applicantImage) }}" class="font-medium text-indigo-600 hover:text-indigo-500"> Download </a>
                                 </div>
                             </li>
                         </ul>
@@ -70,5 +70,6 @@
             </dl>
         </div>
     </div>
-
+   
+  
 </x-app-layout>

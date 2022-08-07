@@ -12,7 +12,7 @@
 				<a href="{{ route('admin.application.index') }}" class="ml-1 inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Back to list</a>
 			</div>
 			<div class="mt-5 md:mt-0 md:col-span-2">
-				<form method="post" action="{{ route('admin.application.update', $application->id) }}">
+				<form method="post" action="{{ route('admin.application.update', $application->id) }}" enctype="multipart/form-data">
 					@csrf
 					@method('PUT')
 					<div class="shadow overflow-hidden sm:rounded-md">
@@ -22,17 +22,17 @@
 								<label class="font-medium mb-1 text-gray-600 pt-4 block col-span-6">Basic Information</label>
 								<div class="mt-4 col-span-2">
 									<x-jet-label for="firstName" value="{{ __('First Name') }}" />
-									<x-jet-input id="firstName" class="form-control block mt-1 w-full" type="text" name="firstName" value="{{$application->firstName}}" required autofocus autocomplete="name" />
+									<x-jet-input  class="form-control block mt-1 w-full" type="text" name="firstName" value="{{$application->firstName}}" required autofocus />
 								</div>
 								<!--Middle Name-->
 								<div class="mt-4 col-span-2">
 									<x-jet-label for="middleName" value="{{ __('Middle Name') }}" />
-									<x-jet-input id="middleName" class="block mt-1 w-full" type="text" name="middleName" value="{{$application->middleName}}" required autofocus autocomplete="name" />
+									<x-jet-input  class="block mt-1 w-full" type="text" name="middleName" value="{{$application->middleName}}" required autofocus />
 								</div>
 								<!--Last Name-->
 								<div class="mt-4 col-span-2 ">
 									<x-jet-label for="name" value="{{ __('Last Name') }}" />
-									<x-jet-input id="name" class="form-control block mt-1 w-full" type="text" name="lastName" value="{{$application->lastName}}" required autofocus autocomplete="name" />
+									<x-jet-input  class="form-control block mt-1 w-full" type="text" name="lastName" value="{{$application->lastName}}" required autofocus/>
 								</div>
 							</div>
 							<div class="mt-10 col-span-6 border-t-2 border-gray-200"></div>
@@ -60,12 +60,12 @@
 								<!--Email-->
 								<div class="mt-4 col-span-4">
 									<x-jet-label for="email" value="{{ __('Email Address') }}" />
-									<x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" value="{{$application->email}}" required autofocus autocomplete="email" />
+									<x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" value="{{$application->email}}" required autofocus/>
 								</div>
 								<!--Phone-->
 								<div class="mt-4 col-span-3">
 									<x-jet-label for="phone" value="{{ __('Contact Number') }}" />
-									<x-jet-input id="phone" class="block mt-1 w-full" type="number" name="phone" value="{{$application->phone}}" required autofocus autocomplete="phone" />
+									<x-jet-input id="phone" class="block mt-1 w-full" type="number" name="phone" value="{{$application->phone}}" required autofocus/>
 								</div>
 
 								<div class="mt-10 col-span-6 border-t-2 border-gray-200"></div>
@@ -74,12 +74,12 @@
 								<!--Address-->
 								<div class="mt-4 col-span-6">
 									<x-jet-label for="address" value="{{ __('Address') }}" />
-									<x-jet-input id="address" class="block mt-1 w-full" type="text" name="address" value="{{$application->address}}" required autofocus autocomplete="address" />
+									<x-jet-input id="address" class="block mt-1 w-full" type="text" name="address" value="{{$application->address}}" required autofocus/>
 								</div>
 								<!--Company-->
 								<div class="mt-4 col-span-3">
 									<x-jet-label for="company" value="{{ __('Company') }}" />
-									<x-jet-input id="company" class="block mt-1 w-full" type="text" name="company" value="{{$application->company}}" required autofocus autocomplete="company" />
+									<x-jet-input id="company" class="block mt-1 w-full" type="text" name="company" value="{{$application->company}}" required autofocus />
 								</div>
 
 							</div>
@@ -87,40 +87,15 @@
 
 							<label class="py-4 pt-10 font-bold mb-1 text-gray-700 block border-b-2 border-gray-200">Upload Requirements</label>
 
-							<div class="mt-10">
+				
 
-								<div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-									<div class="space-y-1 text-center ">
-										<svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-											<path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-										</svg>
-										<div class=" ">
-											<label" class="font-medium text-indigo-600 hover:text-indigo-500"></label>
-										</div>
-										<div class="text-sm text-gray-600">
-											<label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-												<a href="{{ $application->applicantImage }}" class="font-medium text-indigo-600 hover:text-indigo-500"> {{ asset('images/' .  $application->applicantImage) }}</a>
-
-											</label>
-											<p class="pl-1">or</p>
-											<!-- actual upload which is hidden -->
-											<input type="file" id="applicantImage" name="applicantImage" value="{{$application->applicantImage}}" required autofocus autocomplete="applicantImage" hidden />
-
-											<!-- our custom upload button -->
-											<label for="applicantImage" class="cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">Choose File</label>
-										</div>
-										<!--Display File Name-->
-										<span id="file-chosen" class=" mx-auto justify-center font-sm text-gray-600"></span>
-
-										<p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
-									</div>
+							<label class="col-sm-2 col-label-form">Student Image</label>
+								<div class="col-sm-10">
+									<input type="file" name="applicantImage" />
+									<br />
+									<img src="{{ asset('requirements/' . $application->applicantImage) }}" width="100" class="img-thumbnail" />
+									<input type="hidden" id="applicantImage" name="applicantImage" value="{{ $application->applicationImage }}" class="form-control" />
 								</div>
-							</div>
-
-
-
-
-
 							<div class="grid grid-cols-6  gap-4 pt-10">
 
 								<!--Subject Selection-->
@@ -142,8 +117,8 @@
 							<!--Button-->
 							<div class="flex items-center justify-end px-4 bg-white text-right sm:px-6 py-6">
 								<button class="m-6 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
-									<input type="hidden" name="hidden_id" value="{{ $application->id }}" />
-									<input type="submit" class="btn btn-primary" value="Edit" />
+								<input type="hidden" name="hidden_id" value="{{ $application->id }}" />
+										<input type="submit" class="btn btn-primary" value="Edit" />
 								</button>
 								<button class="inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">
 									<a href="{{ route('admin.application.index') }}">Cancel</a>
@@ -156,14 +131,12 @@
 			</div>
 		</div>
 	</div>
-<!--Display Chosen File Name-->
-	<script>
-		const applicantImage = document.getElementById('applicantImage');
 
-		const fileChosen = document.getElementById('file-chosen');
 
-		applicantImage.addEventListener('change', function() {
-			fileChosen.textContent = this.files[0].name
-		})
-	</script>
+
+<!---------------------------------------------------------------->
+
+
+
+
 </x-app-layout>
