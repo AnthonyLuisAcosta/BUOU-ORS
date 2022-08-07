@@ -1,180 +1,169 @@
 <x-app-layout>
 
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Applications') }} | Edit
-        </h2>
-    </x-slot>
+	<x-slot name="header">
+		<h2 class="font-semibold text-xl text-gray-800 leading-tight">
+			{{ __('Applications') }} | Edit
+		</h2>
+	</x-slot>
 
-    <div class="card">
-        <div class="card-header">Edit Application</div>
-        <div class="card-body">
-            <form method="post" action="{{ route('admin.application.update', $application->id) }}" enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
-                <div class="row mb-3">
-                    <label class="col-sm-2 col-label-form">Last Name</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="lastName" class="form-control" value="{{ $application->lastName }}" />
-                    </div>
-                </div>
+	<div>
+		<div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-6">
+			<div class="block mb-8">
+				<a href="{{ route('admin.application.index') }}" class="ml-1 inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Back to list</a>
+			</div>
+			<div class="mt-5 md:mt-0 md:col-span-2">
+				<form method="post" action="{{ route('admin.application.update', $application->id) }}">
+					@csrf
+					@method('PUT')
+					<div class="shadow overflow-hidden sm:rounded-md">
+						<div class="px-4 py-5 bg-white sm:p-6 border-0">
+							<label class="font-bold mb-1 text-gray-700 block">Applicant Information</label>
+							<div class="grid grid-cols-6  gap-4 border-t-2 border-gray-200">
+								<label class="font-medium mb-1 text-gray-600 pt-4 block col-span-6">Basic Information</label>
+								<div class="mt-4 col-span-2">
+									<x-jet-label for="firstName" value="{{ __('First Name') }}" />
+									<x-jet-input id="firstName" class="form-control block mt-1 w-full" type="text" name="firstName" value="{{$application->firstName}}" required autofocus autocomplete="name" />
+								</div>
+								<!--Middle Name-->
+								<div class="mt-4 col-span-2">
+									<x-jet-label for="middleName" value="{{ __('Middle Name') }}" />
+									<x-jet-input id="middleName" class="block mt-1 w-full" type="text" name="middleName" value="{{$application->middleName}}" required autofocus autocomplete="name" />
+								</div>
+								<!--Last Name-->
+								<div class="mt-4 col-span-2 ">
+									<x-jet-label for="name" value="{{ __('Last Name') }}" />
+									<x-jet-input id="name" class="form-control block mt-1 w-full" type="text" name="lastName" value="{{$application->lastName}}" required autofocus autocomplete="name" />
+								</div>
+							</div>
+							<div class="mt-10 col-span-6 border-t-2 border-gray-200"></div>
 
-                <div class="row mb-3">
-                    <label class="col-sm-2 col-label-form">First Name</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="firstName" class="form-control" value="{{ $application->firstName }}" />
-                    </div>
-                </div>
+							<div class="grid grid-cols-6  gap-4 pb-10">
 
-                <div class="row mb-3">
-                    <label class="col-sm-2 col-label-form">Middle Name</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="middleName" class="form-control" value="{{ $application->middleName }}" />
-                    </div>
-                </div>
+								<!--Birthdate-->
+								<div class="mt-4 col-span-2">
+									<x-jet-label for="birthDate" value="{{ __('Birth date') }}" />
+									<x-jet-input id="birthDate" class="form-control block mt-1 w-full" type="date" name="birthDate" value="{{$application->birthDate}}" required autofocus />
+								</div>
+								<!--Gender-->
+								<div class="mt-4 col-span-2">
+									<x-jet-label for="gender" value="Gender" />
+									<select name="gender" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
+										<option selected>{{$application->gender}}</option>
+										<option class="block mt-1 w-full" value="Male">Male</option>
+										<option class="block mt-1 w-full" value="Female">Female</option>
 
-                <div class="row mb-3">
-                    <label class="col-sm-2 col-label-form">Birth Date</label>
-                    <div class="col-sm-10">
-                        <input type="date" name="birthDate" class="form-control" value="{{ $application->birthDate }}" />
-                    </div>
-                </div>
+									</select>
+								</div>
+								<div class="mt-10 col-span-6 border-t-2 border-gray-200"></div>
+								<label class="font-medium mb-1 text-gray-600 pt-4 block col-span-6">Contact</label>
 
-                <div class="row mb-4">
-                    <label class="col-sm-2 col-label-form">Application Gender</label>
-                    <div class="col-sm-10">
-                        <select name="gender" class="form-control">
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
-                    </div>
-                </div>
+								<!--Email-->
+								<div class="mt-4 col-span-4">
+									<x-jet-label for="email" value="{{ __('Email Address') }}" />
+									<x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" value="{{$application->email}}" required autofocus autocomplete="email" />
+								</div>
+								<!--Phone-->
+								<div class="mt-4 col-span-3">
+									<x-jet-label for="phone" value="{{ __('Contact Number') }}" />
+									<x-jet-input id="phone" class="block mt-1 w-full" type="number" name="phone" value="{{$application->phone}}" required autofocus autocomplete="phone" />
+								</div>
 
-                <div class="row mb-3">
-                    <label class="col-sm-2 col-label-form">Application Email</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="email" class="form-control" value="{{ $application->email }}" />
-                    </div>
-                </div>
+								<div class="mt-10 col-span-6 border-t-2 border-gray-200"></div>
+								<label class="font-medium mb-1 text-gray-600 pt-4 block col-span-6">Residence Address</label>
 
-                <div class="row mb-3">
-                    <label class="col-sm-2 col-label-form">Phone Number</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="phone" class="form-control" value="{{ $application->phone }}" />
-                    </div>
-                </div>
+								<!--Address-->
+								<div class="mt-4 col-span-6">
+									<x-jet-label for="address" value="{{ __('Address') }}" />
+									<x-jet-input id="address" class="block mt-1 w-full" type="text" name="address" value="{{$application->address}}" required autofocus autocomplete="address" />
+								</div>
+								<!--Company-->
+								<div class="mt-4 col-span-3">
+									<x-jet-label for="company" value="{{ __('Company') }}" />
+									<x-jet-input id="company" class="block mt-1 w-full" type="text" name="company" value="{{$application->company}}" required autofocus autocomplete="company" />
+								</div>
 
-                <div class="row mb-3">
-                    <label class="col-sm-2 col-label-form">Company</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="company" class="form-control" value="{{ $application->company }}" />
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <label class="col-sm-2 col-label-form">Address</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="address" class="form-control" value="{{ $application->address }}" />
-                    </div>
-                </div>
-
-                <div class="row mb-4">
-                    <label class="col-sm-2 col-label-form">Application Image</label>
-                    <div class="col-sm-10">
-                        <input type="file" name="applicantImage" />
-                        <br />
-                        <img src="{{ asset('images/' . $application->applicantImage) }}" width="100" class="img-thumbnail" />
-                        <input type="hidden" name="hidden_applicantImage" value="{{ $application->applicantImage }}" />
-                    </div>
-                </div>
-
-                <div class="text-center">
-                    <input type="hidden" name="hidden_id" value="{{ $application->id }}" />
-                    <input type="submit" class="btn btn-primary" value="Edit" />
-                </div>
-
-            </form>
-        </div>
-    </div>
+							</div>
 
 
-    <!--New Edit-->
-    <div class="Container max-w-6xl">
-        <div class="mb-5 grid grid-cols-3 gap-4">
+							<label class="py-4 pt-10 font-bold mb-1 text-gray-700 block border-b-2 border-gray-200">Upload Requirements</label>
 
-            <div>
-                <label for="first name" class="font-bold mb-1 text-gray-700 block">First Name</label>
-                <input type="text" value="{{ $application->firstName }}" name="lastName" class="form-control w-full px-3 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium" >
-            </div>
+							<div class="mt-10">
 
-            <div>
-                <label class="font-bold mb-1 text-gray-700 block">Middle Name</label>
-                <input type="text" value="{{ $application->middleName }}" name="lastName" class="form-control w-full px-3 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium" >
-            </div>
+								<div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+									<div class="space-y-1 text-center ">
+										<svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+											<path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+										</svg>
+										<div class=" ">
+											<label" class="font-medium text-indigo-600 hover:text-indigo-500"></label>
+										</div>
+										<div class="text-sm text-gray-600">
+											<label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+												<a href="{{ $application->applicantImage }}" class="font-medium text-indigo-600 hover:text-indigo-500"> {{ asset('images/' .  $application->applicantImage) }}</a>
 
-            <div class="">
-                <label for="email" class="font-bold mb-1 text-gray-700 block">Last Name</label>
-                <input type="text" value="{{ $application->lastName }}" name="lastName" class="form-control w-full px-3 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium" >
-            </div>
-        </div>
-        <div class="mb-5 grid grid-cols-2 gap-4">
-        <div>
-            <label class="font-bold mb-1 text-gray-700 block">Birth Date</label>
-            <input type="date" value="{{ $application->birthDate }}" name="lastName" class="form-control w-full px-3 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium" >
-        </div>
+											</label>
+											<p class="pl-1">or</p>
+											<!-- actual upload which is hidden -->
+											<input type="file" id="applicantImage" name="applicantImage" value="{{$application->applicantImage}}" required autofocus autocomplete="applicantImage" hidden />
 
-        <div>
-            <label class="font-bold mb-1 text-gray-700 block">Gender</label>
-            <select name="gender" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
-                <option value="" disabled selected>{{ $application->gender }}</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-            </select>
-        </div>
+											<!-- our custom upload button -->
+											<label for="applicantImage" class="cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">Choose File</label>
+										</div>
+										<!--Display File Name-->
+										<span id="file-chosen" class=" mx-auto justify-center font-sm text-gray-600"></span>
 
-    </div>
+										<p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+									</div>
+								</div>
+							</div>
 
 
 
 
-    <div class="mb-5 grid grid-cols-3 gap-4">
 
-        <div class="col-span-2">
-            <label class="font-bold mb-1 text-gray-700 block">Email</label>
-            <input type="text" value="{{ $application->email }}" name="lastName" class="form-control w-full px-3 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium" >
-        </div>
+							<div class="grid grid-cols-6  gap-4 pt-10">
 
-        <div>
-            <label class="font-bold mb-1 text-gray-700 block">Contact Number</label>
-            <input type="text" value="{{ $application->phone }}" name="lastName" class="form-control w-full px-3 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium" >
-        </div>
+								<!--Subject Selection-->
+								<div class="mt-4 col-span-6">
+									<label class="pb-4 font-bold mb-1 text-gray-700 block border-b-2 border-gray-200">Subject Selection</label>
 
-    </div>
+									<x-jet-label for="" value="" class="pt-6" />
+									<select name="" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
+										<option selected>Select Subject</option>
+										<option class="block mt-1 w-full" value="">Subject 1</option>
+										<option class="block mt-1 w-full" value="">Subject 2</option>
 
-
-    <div class="mb-5 grid grid-cols-3 gap-4">
-
-        <div>
-            <label class="font-bold mb-1 text-gray-700 block">Company</label>
-            <input type="text" value="{{ $application->company}}" name="lastName" class="form-control w-full px-3 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium" >
-        </div>
-
-        <div class="col-span-2">
-            <label class="font-bold mb-1 text-gray-700 block">Address</label>
-            <input type="text" value="{{ $application->middleName }}" name="lastName" class="form-control w-full px-3 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium" >
-        </div>
-    </div>
-
-
-    </div>
+									</select>
+								</div>
 
 
 
-    
+							</div>
+							<!--Button-->
+							<div class="flex items-center justify-end px-4 bg-white text-right sm:px-6 py-6">
+								<button class="m-6 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
+									<input type="hidden" name="hidden_id" value="{{ $application->id }}" />
+									<input type="submit" class="btn btn-primary" value="Edit" />
+								</button>
+								<button class="inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">
+									<a href="{{ route('admin.application.index') }}">Cancel</a>
+								</button>
+							</div>
+						</div>
+						<!--END OF GRID-->
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+<!--Display Chosen File Name-->
+	<script>
+		const applicantImage = document.getElementById('applicantImage');
 
+		const fileChosen = document.getElementById('file-chosen');
 
-    <script>
-        document.getElementsByName('application_gender')[0].value = "{{ $application->application_gender }}";
-    </script>
-
+		applicantImage.addEventListener('change', function() {
+			fileChosen.textContent = this.files[0].name
+		})
+	</script>
 </x-app-layout>

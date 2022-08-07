@@ -9,7 +9,6 @@ class Application extends Model
 {
     use HasFactory;
     protected $primaryKey = 'id';
-    protected $fillable = ['lastName', 'firstName', 'middleName', 'birthDate', 'gender','email', 'phone', 'phone', 'company', 'address'];
+    protected $fillable = ['lastName', 'firstName', 'middleName', 'birthDate', 'gender', 'email', 'phone', 'phone', 'company', 'address','applicantImage'];
     protected $table = 'applications';
-
 }
