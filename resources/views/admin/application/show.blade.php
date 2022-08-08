@@ -10,6 +10,20 @@
     <div class="block mb-8">
         <a href="{{ route('admin.application.index') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Back to list</a>
     </div>
+    <form method="post" action="{{ route('admin.application.update', $application->id) }}" >
+					@csrf
+					@method('PUT')
+				
+									<input  type="hidden" name="status" value="Recommended"/>
+							
+							<!--Button-->
+							<div class="block mb-8">
+								<button class="">
+									<input type="hidden" name="hidden_id" value="{{ $application->id }}" />
+									<a name="hidden_id" class="ml-1 inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Recommend</a>
+								</button>
+							</div>
+		</form>
     <div class="w-full grid grid-cols-3  gap-4 border-t-2 border-gray-200">
     <div class="bg-white shadow overflow-hidden sm:rounded-lg max-w-6xl col-span-2">
 

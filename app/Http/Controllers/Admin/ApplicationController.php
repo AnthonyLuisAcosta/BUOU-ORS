@@ -108,28 +108,38 @@ class ApplicationController extends Controller
     public function update(Request $request, $id)
     {
         
-        $application = Application::find($id);
+        $count = count($request->all());
 
-        $application->firstName = $request->input('firstName');
-        $application->middleName = $request->input('middleName');
-        $application->lastName = $request->input('lastName');
-        $application->birthDate = $request->input('birthDate');
-        $application->gender = $request->input('gender');
-        $application->status = $request->input('status');;
-        $application->email = $request->input('email');
-        $application->phone = $request->input('phone');
-        $application->company = $request->input('company');
-        $application->address = $request->input('address');
+        if($count == 4){
+
+            $application = Application::find($id);
+            $application->status = $request->input('status');
+
+            #return dd($count);
+
+        }else{
+
+            $application = Application::find($id);
+            $application->firstName = $request->input('firstName');
+            $application->lastName = $request->input('lastName');
+            $application->birthDate = $request->input('birthDate');
+            $application->gender = $request->input('gender');
+            $application->status = $request->input('status');
+            $application->email = $request->input('email');
+            $application->phone = $request->input('phone');
+            $application->company = $request->input('company');
+            $application->address = $request->input('address');
+        
         #$request->validate([
-        #   'lastName'          =>  'required',
-        # 'middleName'          =>  'required',
-        # 'birthDate'          =>  'required',
-        #'gender'          =>  'required',
-        #'status',
-        #'email'          =>  'required',
-        #'phone'          =>  'required',
-        #'company'          =>  'required',
-        #'address'          =>  'required',
+        #'lastName',          
+        #'middleName',          
+        #'birthDate',          
+        #'gender' ,
+        #'status' => 'required',
+        #'email' ,         
+        #'phone'   ,
+        #'company' ,
+        #'address',
         #'applicantImage'     =>'image|mimes:jpg,png,jpeg,gif,svg'
         #]);
 
@@ -144,7 +154,7 @@ class ApplicationController extends Controller
             $file->move('requirements', $filename);
             $application->applicantImage = $filename;
         }
-
+    }
         #$applicantImage = $request->hidden_applicantImage;
 
         #if($request->applicantImage != '')
@@ -156,16 +166,16 @@ class ApplicationController extends Controller
 
         #$application = Application::find($request->hidden_id);
 
-        ##$application->firstName = $request->firstName;
-        ##$application->middleName = $request->middleName;
-        ##$application->LastName = $request->middle;
-        ##$application->birthDate = $request->birthDate;
-        #$application->gender = $request->gender;
-        #$application->status;
-        #$application->email = $request->email;
-        #$application->phone = $request->phone;
-        #$application->company = $request->company;
-        #$application->address = $request->address;
+        #$application->firstName = $request->firstName;
+        #$application->middleName = $request->middleName;
+        #$application->LastName  = $request->lastName;
+        #$application->birthDate  = $request->birthDate;
+        #$application->gender  = $request->gender;
+        #$application->status = $request->status;
+        #$application->email  = $request->email;
+        #$application->phone  = $request->phone;
+         #$application->company  = $request->company;
+        #$application->address  = $request->address;
 
         #$application->applicantImage = $applicantImage;
 
