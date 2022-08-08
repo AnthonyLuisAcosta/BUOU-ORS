@@ -11,6 +11,7 @@
 			<div class="block mb-8">
 				<a href="{{ route('admin.application.index') }}" class="ml-1 inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Back to list</a>
 			</div>
+			
 			<div class="mt-5 md:mt-0 md:col-span-2">
 				<form method="post" action="{{ route('admin.application.update', $application->id) }}" enctype="multipart/form-data">
 					@csrf
@@ -22,10 +23,10 @@
 								<label class="font-bold mb-1 text-gray-700 block">Application Status</label>
 								<select name="status" class="form-control block mt-1  text-gray-500 bg-white border-solid border-gray-300 rounded-md">
 									<option hidden selected class=" text-gray">{{$application->status}}</option>
+									<option class="block mt-1 w-full bg-blue-200" value="Pending">Pending</option>
 									<option class="block mt-1 w-full bg-blue-200" value="Recommended">Recommend</option>
 									<option class="block mt-1 w-full bg-green-200" value="Admitted">Admit</option>
 									<option class="block mt-1 w-full bg-red-200" value="Rejected">Reject</option>
-
 								</select>
 							</div>
 
@@ -146,7 +147,7 @@
 							<div class="flex items-center justify-end px-4 bg-white text-right sm:px-6 py-6">
 								<button class="m-6 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
 									<input type="hidden" name="hidden_id" value="{{ $application->id }}" />
-									<input type="submit" class="btn btn-primary" value="Edit" />
+									<input type="submit" class="btn btn-primary" value="Update" />
 								</button>
 								<button class="inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">
 									<a href="{{ route('admin.application.index') }}">Cancel</a>
@@ -160,4 +161,7 @@
 		</div>
 	</div>
 
+	
+
+		
 </x-app-layout>
