@@ -131,11 +131,18 @@
 								<div class="mt-4 col-span-6">
 									<label class="pb-4 font-bold mb-1 text-gray-700 block border-b-2 border-gray-200">Subject Selection</label>
 
-									<x-jet-label for="" value="" class="pt-6" />
-									<select name="" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
-										<option selected>Select Subject</option>
-										<option class="block mt-1 w-full" value="">Subject 1</option>
-										<option class="block mt-1 w-full" value="">Subject 2</option>
+									<x-jet-label for="programs_id" value=" Programs" class="pt-6" />
+									<select name="programs_id" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
+										
+										@foreach($programs as $row)		
+											@foreach($application as $selected)	
+													@if( $row->id == $selected->programs_id)
+														<option selected class="block mt-1 w-full"value="{{ $selected->programs_id}}">{{ $row->description}}</option>
+													@endif
+											@endforeach
+											
+										<option class="block mt-1 w-full" name="programs_id" value="{{ $row->id}}">{{ $row->description}}</option>
+										@endforeach
 
 									</select>
 								</div>

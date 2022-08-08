@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::enableForeignKeyConstraints();
         Schema::create('applications', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('lastName');
             $table->string('firstName');
             $table->string('middleName');
@@ -26,7 +27,20 @@ return new class extends Migration
             $table->string('company');
             $table->string('address');
             $table->string('applicantImage');
+
             $table->timestamps();
+
+
+            $table->unsignedInteger('programs_id');
+            $table->foreign('programs_id')
+            ->references('id')->on('programs')
+            ->onDelete('cascade');
+            
+
+
+           
+
+          
         });
     }
 

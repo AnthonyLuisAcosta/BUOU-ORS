@@ -11,4 +11,9 @@ class Application extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['lastName', 'firstName', 'middleName', 'birthDate', 'gender', 'email', 'phone', 'phone', 'company', 'address','applicantImage'];
     protected $table = 'applications';
+
+    public function programs(){
+
+        return $this->hasMany(Application::class); 
+    }
 }

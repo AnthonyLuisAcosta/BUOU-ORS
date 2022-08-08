@@ -28,20 +28,25 @@
 							<th data-priority="1">Name</th>
 							<th data-priority="2">Email</th>
 							<th data-priority="2">Status</th>
-							<th data-priority="3">Created at</th>
+							<th data-priority="3">Program</th>
 							<th data-priority="4">Updated at</th>
 							<th data-priority="5">Action</th>
 						</tr>
 					</thead>
 					<tbody>
-						@foreach($data as $row)
+					@foreach($application as $row)
 										<tr>
 									<!--Filter Table-->
 									<!--@/if($row['status']=="Pending")-->
 											<td>{{ $row->firstName.' '.$row->lastName }}</td>
 											<td>{{ $row->email }}</td>
 											<td>{{ $row->status }}</td>
-											<td>{{ $row->created_at }}</td>
+											@foreach($programs as $program)
+													@if($row->programs_id == $program->id)
+														<td class="text-left">{{ $program->description }}</td>
+													@endif
+											@endforeach
+											
 											<td>{{ $row->updated_at }}</td>
 											<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
 												
