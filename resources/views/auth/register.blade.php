@@ -65,10 +65,11 @@
       @endif
 
       <div class="flex items-center justify-end mt-4">
-        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-          {{ __('Already have an account?') }}
-        </a>
-
+        <div class="text-center m-0 p-0">
+          <a class="underline text-xs lg:text-sm text-blue-500 hover:text-amber-500" href="{{ route('login') }}">
+            {{ __('Sign in to your Account') }}
+          </a>
+        </div>
         <x-jet-button class="ml-4 text-gray-800 shadow-md bg-amber-100 hover:bg-amber-200  hover:text-gray-600">
           {{ __('Register') }}
         </x-jet-button>
