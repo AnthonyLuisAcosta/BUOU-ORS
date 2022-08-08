@@ -2,6 +2,9 @@
   <x-jet-authentication-card>
     <x-slot name="logo">
       <x-jet-authentication-card-logo />
+      <div class="text-center m-0 p-0">
+        <a href="{{route('register')}}" class="text-xs lg:text-sm text-blue-500 hover:text-amber-500">Register as an Applicant</a>
+      </div>
     </x-slot>
 
     <x-jet-validation-errors class="mb-4" />
