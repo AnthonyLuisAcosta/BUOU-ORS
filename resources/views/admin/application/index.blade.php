@@ -36,7 +36,8 @@
 					<tbody>
 						@foreach($data as $row)
 										<tr>
-									@if($row['status']=="Pending")
+									<!--Filter Table-->
+									<!--@/if($row['status']=="Pending")-->
 											<td>{{ $row->firstName.' '.$row->lastName }}</td>
 											<td>{{ $row->email }}</td>
 											<td>{{ $row->status }}</td>
@@ -64,7 +65,7 @@
 												<!--END OF DELETE BUTTON-->
 											</td>
 									
-									@endif
+									<!--@/endif-->
 						
 										</tr>
 							@endforeach

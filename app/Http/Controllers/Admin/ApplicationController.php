@@ -107,6 +107,7 @@ class ApplicationController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $application = Application::find($id);
 
         $application->firstName = $request->input('firstName');
@@ -114,45 +115,43 @@ class ApplicationController extends Controller
         $application->lastName = $request->input('lastName');
         $application->birthDate = $request->input('birthDate');
         $application->gender = $request->input('gender');
-        $application->status;
+        $application->status = $request->input('status');;
         $application->email = $request->input('email');
         $application->phone = $request->input('phone');
         $application->company = $request->input('company');
         $application->address = $request->input('address');
         #$request->validate([
-         #   'lastName'          =>  'required',
-          # 'middleName'          =>  'required',
-           # 'birthDate'          =>  'required',
-            #'gender'          =>  'required',
-            #'status',
-            #'email'          =>  'required',
-            #'phone'          =>  'required',
-            #'company'          =>  'required',
-            #'address'          =>  'required',
-            #'applicantImage'     =>'image|mimes:jpg,png,jpeg,gif,svg'
+        #   'lastName'          =>  'required',
+        # 'middleName'          =>  'required',
+        # 'birthDate'          =>  'required',
+        #'gender'          =>  'required',
+        #'status',
+        #'email'          =>  'required',
+        #'phone'          =>  'required',
+        #'company'          =>  'required',
+        #'address'          =>  'required',
+        #'applicantImage'     =>'image|mimes:jpg,png,jpeg,gif,svg'
         #]);
 
-        if($request->hasfile('applicantImage'))
-        {
-            $destination = 'requirements' .$application->applicantImage;
-            if(File::exists($destination))
-            {
+        if ($request->hasfile('applicantImage')) {
+            $destination = 'requirements' . $application->applicantImage;
+            if (File::exists($destination)) {
                 File::delete($destination);
             }
             $file = $request->file('applicantImage');
             $extension = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extension;
+            $filename = time() . '.' . $extension;
             $file->move('requirements', $filename);
             $application->applicantImage = $filename;
         }
-        
+
         #$applicantImage = $request->hidden_applicantImage;
 
         #if($request->applicantImage != '')
         #{
         #    $applicantImage = time() . '.' . request()->applicantImage->getClientOriginalExtension();
 
-         #   request()->applicantImage->move(public_path('requirements'), $applicantImage);
+        #   request()->applicantImage->move(public_path('requirements'), $applicantImage);
         #}
 
         #$application = Application::find($request->hidden_id);
