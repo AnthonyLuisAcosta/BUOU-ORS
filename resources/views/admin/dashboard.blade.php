@@ -18,7 +18,7 @@
 
   <!--Sample Content-->
 
-  <div class="flex-wrap h-full bg-green-500 md:bg-red-500 lg:bg-amber-500">
+  <div class="flex-wrap h-full">
     <!--WELCOME and TERM-->
     <div class="flex">
       <!--WELCOME-->
