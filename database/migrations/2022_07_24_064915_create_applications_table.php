@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('middleName');
             $table->date('birthDate');
             $table->enum('gender', ['Male', 'Female']);
+            $table->string('status')->default("Pending");
             $table->string('email');
             $table->string('phone');
             $table->string('company');

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Application;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 class ApplicationController extends Controller
 {
@@ -44,6 +45,7 @@ class ApplicationController extends Controller
             'middleName'          =>  'required',
             'birthDate'          =>  'required',
             'gender'          =>  'required',
+            'status',
             'email'          =>  'required',
             'phone'          =>  'required',
             'company'          =>  'required',
@@ -54,7 +56,7 @@ class ApplicationController extends Controller
 
         $file_name = time() . '.' . request()->applicantImage->getClientOriginalExtension();
 
-        request()->applicantImage->move(public_path('images'), $file_name);
+        request()->applicantImage->move(public_path('requirements'), $file_name);
 
         $application = new Application;
 
@@ -63,6 +65,7 @@ class ApplicationController extends Controller
         $application->middleName = $request->middleName;
         $application->birthDate = $request->birthDate;
         $application->gender = $request->gender;
+        $application->status;
         $application->email = $request->email;
         $application->phone = $request->phone;
         $application->company = $request->company;
@@ -100,47 +103,73 @@ class ApplicationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Application  $application
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Application $application)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'lastName'          =>  'required',
-            'firstName'          =>  'required',
-            'middleName'          =>  'required',
-            'birthDate'          =>  'required',
-            'gender'          =>  'required',
-            'email'          =>  'required',
-            'phone'          =>  'required',
-            'company'          =>  'required',
-            'address'          =>  'required',
-            'applicantImage'     =>  'required|file|mimes:jpg,png,jpeg,gif,svg,pdf,docx,doc'
-        ]);
+        
+        $application = Application::find($id);
 
-        $applicantImage = $request->hidden_applicantImage;
+        $application->firstName = $request->input('firstName');
+        $application->middleName = $request->input('middleName');
+        $application->lastName = $request->input('lastName');
+        $application->birthDate = $request->input('birthDate');
+        $application->gender = $request->input('gender');
+        $application->status = $request->input('status');;
+        $application->email = $request->input('email');
+        $application->phone = $request->input('phone');
+        $application->company = $request->input('company');
+        $application->address = $request->input('address');
+        #$request->validate([
+        #   'lastName'          =>  'required',
+        # 'middleName'          =>  'required',
+        # 'birthDate'          =>  'required',
+        #'gender'          =>  'required',
+        #'status',
+        #'email'          =>  'required',
+        #'phone'          =>  'required',
+        #'company'          =>  'required',
+        #'address'          =>  'required',
+        #'applicantImage'     =>'image|mimes:jpg,png,jpeg,gif,svg'
+        #]);
 
-        if ($request->applicantImage != '') {
-            $applicantImage = time() . '.' . request()->applicantImage->getClientOriginalExtension();
-
-            request()->applicantImage->move(public_path('images'), $applicantImage);
+        if ($request->hasfile('applicantImage')) {
+            $destination = 'requirements' . $application->applicantImage;
+            if (File::exists($destination)) {
+                File::delete($destination);
+            }
+            $file = $request->file('applicantImage');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('requirements', $filename);
+            $application->applicantImage = $filename;
         }
 
-        $application = Application::find($request->hidden_id);
+        #$applicantImage = $request->hidden_applicantImage;
 
-        $application->lastName = $request->lastName;
-        $application->firstName = $request->firstName;
-        $application->middleName = $request->middleName;
-        $application->birthDate = $request->birthDate;
-        $application->gender = $request->gender;
-        $application->email = $request->email;
-        $application->phone = $request->phone;
-        $application->company = $request->company;
-        $application->address = $request->address;
+        #if($request->applicantImage != '')
+        #{
+        #    $applicantImage = time() . '.' . request()->applicantImage->getClientOriginalExtension();
 
-        $application->applicantImage = $applicantImage;
+        #   request()->applicantImage->move(public_path('requirements'), $applicantImage);
+        #}
 
-        $application->save();
+        #$application = Application::find($request->hidden_id);
+
+        ##$application->firstName = $request->firstName;
+        ##$application->middleName = $request->middleName;
+        ##$application->LastName = $request->middle;
+        ##$application->birthDate = $request->birthDate;
+        #$application->gender = $request->gender;
+        #$application->status;
+        #$application->email = $request->email;
+        #$application->phone = $request->phone;
+        #$application->company = $request->company;
+        #$application->address = $request->address;
+
+        #$application->applicantImage = $applicantImage;
+
+        $application->update();
 
         return redirect()->route('admin.application.index')->with('success', 'Application has been updated successfully');
     }
