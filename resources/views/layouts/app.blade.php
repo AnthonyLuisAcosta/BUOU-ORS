@@ -25,11 +25,6 @@
   <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
 
   <style>
-    body {
-      background-image: url("/img/ORS_BG2.png");
-      background-size: cover;
-    }
-
     /*Overrides for Tailwind CSS */
 
     /*Form fields*/

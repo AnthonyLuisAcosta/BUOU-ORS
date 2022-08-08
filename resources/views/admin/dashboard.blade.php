@@ -17,89 +17,131 @@
   <!-- Insert Content-->
 
   <!--Sample Content-->
-  <div>
-    <h2 class="font-semibold text-lg text-gray-800 leading-tight">Welcome {{Auth::user()->first_name}}!</h2>
+
+  <div class="flex-wrap h-full bg-green-500 md:bg-red-500 lg:bg-amber-500">
+    <!--WELCOME and TERM-->
+    <div class="flex">
+      <!--WELCOME-->
+      <div class="w-1/2 mx-4 p-2">
+        <div class="flex justify-center ">
+          <div class="w-full px-10 py-4 bg-white rounded-lg shadow-lg">
+            <h2 class="lg:text-xl md:text-lg sm:text-md text-xs font-bold tracking-tight">
+              Welcome, {{Auth::user()->first_name}}!
+            </h2>
+            <div class="space-y-1 text-gray-500 font-bold focus:outline-none focus:underline lg:text-md md:text-sm sm:text-xs text-xs">
+              <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button class="hover:text-blue-400" href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                  {{ __('Sign Out') }}
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--TERM-->
+      <div class="w-1/2 mx-4 p-2">
+        <div class="flex justify-center ">
+          <div class="h-max w-full px-10 py-4 text-center bg-white rounded-lg shadow-lg">
+            <h2 class="lg:text-xl md:text-lg sm:text-md text-xs font-bold tracking-tight">
+              2022-2023, 1st Sem
+            </h2>
+            <p class="space-y-1 text-gray-600 focus:outline-none focus:underline lg:text-md md:text-sm sm:text-xs text-xs">
+              Active Term
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--END-->
+    <!--STATUS AND ANNOUNCEMENT-->
+    <div class="flex justify-center">
+      <!--STATUS-->
+      <div class="w-1/2 mx-4 p-2">
+        <div class="flex justify-center">
+          <div class="w-1/3 p-2">
+            <div class="w-full px-8 py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
+              <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
+                Pending
+              </h2>
+              <p class="mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-orange-500">
+                {{$applicantCount}}
+              </p>
+            </div>
+          </div>
+          <div class="w-1/3  p-2">
+            <div class="w-full px-8 py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
+              <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
+                Recommended
+              </h2>
+              @php
+              $count=0;
+              foreach($test as $t)
+              if($t->role_id == 5)
+              $count++;
+              @endphp
+              <p class="mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-blue-400">
+                {{$count}}
+              </p>
+            </div>
+          </div>
+          <div class="w-1/3  p-2">
+            <div class="w-full px-8 py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
+              <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
+                Admitted
+              </h2>
+              <p class="mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-green-500">
+                20
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center justify-center">
+          <div class="w-1/3  p-2">
+            <div class="w-full px-8 py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
+              <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
+                Processed
+              </h2>
+              <p class="mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-yellow-400">
+                15
+              </p>
+            </div>
+          </div>
+          <div class="w-1/3  p-2 ">
+            <div class="w-full px-8 py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
+              <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
+                Rejected
+              </h2>
+              <p class="mt-2 text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-red-400">
+                15
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--ANNOUNCEMENT-->
+      <div class="w-1/2 mx-4 p-2 ">
+        <div class="flex justify-center">
+          <div class="h-max w-full px-10 pt-8 pb-12 bg-white rounded-lg shadow-lg ">
+            <h2 class="text-gray-900 text-xs sm:text-md md:text-lg lg:text-2xl font-bold leading-snug text-center">
+              Announcement
+            </h2>
+            <p class="mt-2 text-xs sm:text-sm md:text-md lg:text-lg">
+              Welcome to BUOU Online Admission System The 1st Semester 2022-2023 admission for BUOU programs is until May 15, 2022.
+            </p>
+            <p class="mt-2 text-xs sm:text-sm md:text-md lg:text-lg">
+              For a short tutorial on how to file an application and how the online admission system works please see :
+              <a target="blank" href="https://www.youtube.com/watch?v=uU0E3IR4aY4" class="inline-block text-blue-700 hover:text-amber-500">BUOU Online Admission - Applicant's Guide</a>
+            </p>
+            <p class="mt-2 text-xs sm:text-sm md:text-md lg:text-lg">
+              For the needed forms and attachments pls see:
+              <a target="blank" href="https://drive.google.com/drive/folders/1z1yrEhX23tQ3uqBrRmUU9dPGtpqnGjuC?usp=sharing" class="inline-block text-blue-700 hover:text-amber-500">Required Forms - Google Drive</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--END-->
   </div>
-  <div class="flex flex-rows">
-    <div class="w-2/3 m-4 p-4">
-      <h2 class="font-semibold text-lg text-gray-800 leading-tight mb-2 p-2">Status</h2>
-      <div class="flex items-center justify-center">
-        <div class="w-1/3 p-2 ">
-          <div class="max-w-md px-8 py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 ">
-            <h2 class="text-gray-900 text-2xl font-bold leading-snug">
-              Application Status
-            </h2>
-            <p class="mt-2 text-lg">
-              Status
-            </p>
-            <a href="#" class="mt-6 inline-block text-blue-700">Read more</a>
-          </div>
-        </div>
-        <div class="w-1/3 p-2 ">
-          <div class="max-w-md px-8 py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 ">
-            <h2 class="text-gray-900 text-2xl font-bold leading-snug">
-              Application Status
-            </h2>
-            <p class="mt-2 text-lg">
-              Status
-            </p>
-            <a href="#" class="mt-6 inline-block text-blue-700">Read more</a>
-          </div>
-        </div>
-        <div class="w-1/3 p-2 ">
-          <div class="max-w-md px-8 py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 ">
-            <h2 class="text-gray-900 text-2xl font-bold leading-snug">
-              Application Status
-            </h2>
-            <p class="mt-2 text-lg">
-              Status
-            </p>
-            <a href="#" class="mt-6 inline-block text-blue-700">Read more</a>
-          </div>
-        </div>
-      </div>
-      <div class="flex items-center justify-center">
-        <div class="w-1/3 p-2 ">
-          <div class="max-w-md px-8 py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 ">
-            <h2 class="text-gray-900 text-2xl font-bold leading-snug">
-              Application Status
-            </h2>
-            <p class="mt-2 text-lg">
-              Status
-            </p>
-            <a href="#" class="mt-6 inline-block text-blue-700">Read more</a>
-          </div>
-        </div>
-        <div class="w-1/3 p-2 ">
-          <div class="max-w-md px-8 py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 ">
-            <h2 class="text-gray-900 text-2xl font-bold leading-snug">
-              Application Status
-            </h2>
-            <p class="mt-2 text-lg">
-              Status
-            </p>
-            <a href="#" class="mt-6 inline-block text-blue-700">Read more</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="w-1/3 m-4 mb-4 p-4">
-      <h2 class="font-semibold text-lg text-gray-800 leading-tight mb-2 p-2">Announcement</h2>
-      <div class="flex">
-        <!-- Wrapper div with a height greater than the contents -->
-        <div class="min-h-screen flex items-center justify-center bg-gray-100">
-          <!-- Card or contents that should be centered vertically -->
-          <div class="max-w-md px-10 py-12 bg-white rounded-lg shadow-lg">
-            <h2 class="text-gray-900 text-2xl font-bold leading-snug">
-              Getting Started with Tailwind CSS Custom Forms
-            </h2>
-            <p class="mt-2 text-lg">
-              In this tutorial, I show you how to install the Tailwind CSS Custom Forms
-              plugin and get started using it.
-            </p>
-            <a href="#" class="mt-6 inline-block text-blue-700">Read more</a>
-          </div>
-        </div>
-      </div>
-    </div>
+
 </x-app-layout>
