@@ -222,7 +222,7 @@
     <div class="overflow-y-auto py-4 px-3 rounded ">
       <ul class="space-y-2">
         <li>
-          <a href="{{ route('dashboard') }}" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:group-hover:text-black hover:bg-gray-100 dark:hover:bg-blue-100">
+          <a href="dashboard" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:group-hover:text-black hover:bg-gray-100 dark:hover:bg-blue-100">
             <svg aria-hidden="true" class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:dark:group-hover:text-black" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
               <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
@@ -231,7 +231,7 @@
           </a>
         </li>
         <li>
-          <a href="{{ route('admin.application.index') }}" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:group-hover:text-black hover:bg-gray-100 dark:hover:bg-blue-100">
+          <a href="application" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:group-hover:text-black hover:bg-gray-100 dark:hover:bg-blue-100">
             <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:dark:group-hover:text-black" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
             </svg>
@@ -240,7 +240,7 @@
           </a>
         </li>
         <li>
-          <a href="{{ route('admin.programs.index') }}" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:group-hover:text-black hover:bg-gray-100 dark:hover:bg-blue-100">
+          <a href="programs" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:group-hover:text-black hover:bg-gray-100 dark:hover:bg-blue-100">
             <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:dark:group-hover:text-black" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
             </svg>
@@ -248,10 +248,9 @@
             <span class="inline-flex justify-center items-center px-2 ml-3 text-sm font-medium  rounded-full bg-yellow-200  text-black">Pending</span>
           </a>
         </li>
-        @if(Auth::user()->role_id == 5)
-        @else
+        @if(Auth::user()->role_id == 1)
         <li>
-          <a href="{{ route('admin.users.index') }}" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:group-hover:text-black hover:bg-gray-100 dark:hover:bg-blue-100">
+          <a href="users" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:group-hover:text-black hover:bg-gray-100 dark:hover:bg-blue-100">
             <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:dark:group-hover:text-black" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
             </svg>
