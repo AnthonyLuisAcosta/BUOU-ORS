@@ -135,11 +135,11 @@
 									<select name="programs_id" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
 										
 										@foreach($programs as $row)		
-											@foreach($application as $selected)	
-													@if( $row->id == $selected->programs_id)
-														<option selected class="block mt-1 w-full"value="{{ $selected->programs_id}}">{{ $row->description}}</option>
+											
+													@if( $row->id == $application->programs_id)
+														<option selected class="block mt-1 w-full" value="{{ $application->programs_id }}</option>
 													@endif
-											@endforeach
+										
 											
 										<option class="block mt-1 w-full" name="programs_id" value="{{ $row->id}}">{{ $row->description}}</option>
 										@endforeach
