@@ -65,7 +65,7 @@
                 Pending
               </h2>
               <p class="mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-orange-500">
-                {{$applicantCount}}
+                {{$pending}}
               </p>
             </div>
           </div>
@@ -74,14 +74,8 @@
               <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
                 Recommended
               </h2>
-              @php
-              $count=0;
-              foreach($test as $t)
-              if($t->role_id == 5)
-              $count++;
-              @endphp
               <p class="mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-blue-400">
-                {{$count}}
+                {{$recommended}}
               </p>
             </div>
           </div>
@@ -91,7 +85,7 @@
                 Admitted
               </h2>
               <p class="mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-green-500">
-                20
+                {{$admitted}}
               </p>
             </div>
           </div>
@@ -103,7 +97,7 @@
                 Processed
               </h2>
               <p class="mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-yellow-400">
-                15
+                {{$processed}}
               </p>
             </div>
           </div>
@@ -113,7 +107,7 @@
                 Rejected
               </h2>
               <p class="mt-2 text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-red-400">
-                15
+                {{$rejected}}
               </p>
             </div>
           </div>
