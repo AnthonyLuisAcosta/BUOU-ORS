@@ -92,8 +92,9 @@ class ApplicationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Application $application)
-    {
-        return view('admin.application.show', compact('application'));
+    {    
+        $programs = Programs::all();
+        return view('admin.application.show', compact('application'))->with('programs', $programs);
     }
 
     /**
@@ -122,7 +123,7 @@ class ApplicationController extends Controller
 
         if($count == 4){
 
-            $application = Application::find('$id');
+            $application = Application::find($id);
             $application->status = $request->input('status');
 
             #return dd($count);
@@ -132,6 +133,7 @@ class ApplicationController extends Controller
 
             $application = Application::find($id);
             $application->firstName = $request->input('firstName');
+            $application->middleName = $request->input('middleName');
             $application->lastName = $request->input('lastName');
             $application->birthDate = $request->input('birthDate');
             $application->gender = $request->input('gender');

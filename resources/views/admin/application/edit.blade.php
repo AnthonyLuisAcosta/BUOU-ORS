@@ -133,14 +133,13 @@
 
 									<x-jet-label for="programs_id" value=" Programs" class="pt-6" />
 									<select name="programs_id" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
+										@foreach($programs as $row)				
+												@if( $row->id == $application->programs_id)
+												<option  selected class="block mt-1 w-full" value="{{ $application->programs_id }}">{{ $row->description}}</option>
+												@endif
+										@endforeach
 										
-										@foreach($programs as $row)		
-											
-													@if( $row->id == $application->programs_id)
-														<option selected class="block mt-1 w-full" value="{{ $application->programs_id }}</option>
-													@endif
-										
-											
+										@foreach($programs as $row)
 										<option class="block mt-1 w-full" name="programs_id" value="{{ $row->id}}">{{ $row->description}}</option>
 										@endforeach
 
@@ -167,8 +166,6 @@
 			</div>
 		</div>
 	</div>
-
-	
 
 		
 </x-app-layout>
