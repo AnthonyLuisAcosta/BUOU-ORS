@@ -6,6 +6,7 @@
   <meta name="description" content="">
   <meta name="keywords" content="">
   @vite(['resources/css/app.css', 'resources/js/app.js'])
+
   <!--Replace with your tailwind.css once created-->
 
   <x-slot name="header">
@@ -120,9 +121,38 @@
             <h2 class="text-gray-900 text-xs sm:text-md md:text-lg lg:text-2xl font-bold leading-snug text-center">
               Announcement
             </h2>
+            @foreach($announcement as $value)
+            @if($value->title == 'default')
             <p class="mt-2 text-xs sm:text-sm md:text-md lg:text-lg">
-              Welcome to BUOU Online Admission System The 1st Semester 2022-2023 admission for BUOU programs is until May 15, 2022.
+              {{$value->field}}
             </p>
+            @endif
+            @endforeach
+            <!--MODAL EDIT FORM-->
+            <div id="{{$value->id}}" class="modal">
+              <div class="">
+                <form action="{{ route('admin.dashboard.update', $value->id) }}" method="POST">
+                  @csrf
+                  @method("PUT")
+                  <div class="">
+                    <input type="hidden" name="id" value="1">
+                    <input type="hidden" name="title" value="default">
+                    <label for="field" class="text-lg font-bold">Announcement Field</label>
+                    <textarea id="field" class="mt-4 w-full rounded-lg" type="field" name="field" placeholder="{{$value->field}}" required autofocus></textarea>
+                  </div>
+
+              </div>
+              <div class="text-right mt-2">
+                <input type="submit" class="hover:cursor-pointer text-green-500 hover:text-green-700 font-bold" rel="modal:close" value="Save Changes">
+                </form>
+                <a href="" rel="modal:close" class="ml-4 text-red-500 hover:text-red-700 font-bold">Cancel</a>
+              </div>
+            </div>
+            <!--END MODAL-->
+            <!--MODAL BUTTON-->
+            <div class="text-right">
+              <a href="#{{$value->id}}" rel="modal:open" class="bg-amber-200 hover:bg-amber-300 hover:text-black rounded-md px-4 py-1 text-xs lg:text-xs text-gray-700 cursor-pointer">EDIT</a>
+            </div>
             <p class="mt-2 text-xs sm:text-sm md:text-md lg:text-lg">
               For a short tutorial on how to file an application and how the online admission system works please see :
               <a target="blank" href="https://www.youtube.com/watch?v=uU0E3IR4aY4" class="inline-block text-blue-700 hover:text-amber-500">BUOU Online Admission - Applicant's Guide</a>
@@ -136,6 +166,11 @@
       </div>
     </div>
     <!--END-->
-  </div>
 
+  </div>
+  <!-- jQuery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <!-- jQuery Modal -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 </x-app-layout>
