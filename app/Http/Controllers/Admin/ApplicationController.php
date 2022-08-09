@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Application;
+use App\Models\Programs;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
@@ -16,9 +17,10 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-        $data = Application::all();
+        $programs = Programs::all();
+        $application = Application::all();
 
-        return view('admin.application.index', compact('data'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('admin.application.index')->with('programs', $programs)->with('application', $application);
     }
 
     /**
@@ -28,7 +30,8 @@ class ApplicationController extends Controller
      */
     public function create()
     {
-        return view('admin.application.create');
+        $programs = Programs::all();
+        return view('admin.application.create')->with('programs', $programs);
     }
 
     /**
@@ -39,6 +42,7 @@ class ApplicationController extends Controller
      */
     public function store(Request $request)
     {
+        
         $request->validate([
             'lastName'          =>  'required',
             'firstName'          =>  'required',
@@ -50,6 +54,8 @@ class ApplicationController extends Controller
             'phone'          =>  'required',
             'company'          =>  'required',
             'address'          =>  'required',
+            'programs_id'       => 'required',
+
 
             'applicantImage'         =>  'required|file|mimes:jpg,png,jpeg,gif,svg,pdf,docx,doc'
         ]);
@@ -70,7 +76,9 @@ class ApplicationController extends Controller
         $application->phone = $request->phone;
         $application->company = $request->company;
         $application->address = $request->address;
+        $application->programs_id = $request->programs_id;
         $application->applicantImage = $file_name;
+        #$application->programs_id = $programs_id;
 
         $application->save();
 
@@ -84,19 +92,22 @@ class ApplicationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Application $application)
-    {
-        return view('admin.application.show', compact('application'));
+    {    
+        $programs = Programs::all();
+        return view('admin.application.show', compact('application'))->with('programs', $programs);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Application  $application
+     * @param  \App\Models\Programs  $programs
      * @return \Illuminate\Http\Response
      */
-    public function edit(Application $application)
+    public function edit(Application $application, Programs $programs )
     {
-        return view('admin.application.edit', compact('application'));
+        $programs = Programs::all();
+        return view('admin.application.edit', compact('application'))->with('programs',$programs)->with('application', $application);
     }
 
     /**
@@ -118,9 +129,11 @@ class ApplicationController extends Controller
             #return dd($count);
 
         }else{
+            $programs = Programs::all();
 
             $application = Application::find($id);
             $application->firstName = $request->input('firstName');
+            $application->middleName = $request->input('middleName');
             $application->lastName = $request->input('lastName');
             $application->birthDate = $request->input('birthDate');
             $application->gender = $request->input('gender');
@@ -129,6 +142,8 @@ class ApplicationController extends Controller
             $application->phone = $request->input('phone');
             $application->company = $request->input('company');
             $application->address = $request->input('address');
+
+            $application->programs_id = $request->input('programs_id');
         
         #$request->validate([
         #'lastName',          
