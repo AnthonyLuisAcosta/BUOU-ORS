@@ -9,11 +9,11 @@
 	<div>
 		<div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-6">
 			<div class="block mb-8">
-				<a href="{{ route('admin.application.index') }}" class="ml-1 inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Back to list</a>
+				<a href="{{ route('applicant.application.index') }}" class="ml-1 inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Back to list</a>
 			</div>
 			
 			<div class="mt-5 md:mt-0 md:col-span-2">
-				<form method="post" action="{{ route('admin.application.update', $application->id) }}" enctype="multipart/form-data">
+				<form method="post" action="{{ route('applicant.application.update', $application->id) }}" enctype="multipart/form-data">
 					@csrf
 					@method('PUT')
 					<div class="shadow overflow-hidden sm:rounded-md">
@@ -23,9 +23,8 @@
 								<label class="font-bold mb-1 text-gray-700 block">Application Status</label>
 								<select name="status" class="form-control block mt-1  text-gray-500 bg-white border-solid border-gray-300 rounded-md">
 									<option hidden selected class=" text-gray">{{$application->status}}</option>
-									<option class="block mt-1 w-full bg-yellow-100" value="Pending">Pending</option>
+									<option class="block mt-1 w-full bg-blue-200" value="Pending">Pending</option>
 									<option class="block mt-1 w-full bg-blue-200" value="Recommended">Recommend</option>
-									<option class="block mt-1 w-full bg-indigo-200" value="Approved">Approve</option>
 									<option class="block mt-1 w-full bg-green-200" value="Admitted">Admit</option>
 									<option class="block mt-1 w-full bg-red-200" value="Rejected">Reject</option>
 								</select>
@@ -157,7 +156,7 @@
 									<input type="submit" class="btn btn-primary" value="Update" />
 								</button>
 								<button class="inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">
-									<a href="{{ route('admin.application.index') }}">Cancel</a>
+									<a href="{{ route('applicant.application.index') }}">Cancel</a>
 								</button>
 							</div>
 						</div>
@@ -168,8 +167,5 @@
 		</div>
 	</div>
 
-	<style>
-		[x-cloak] { display: none }
-	</style>
 		
 </x-app-layout>

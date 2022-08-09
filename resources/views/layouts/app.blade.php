@@ -118,7 +118,7 @@
   </style>
   <!-- MY TABLE LAYOUT ENDS HERE-->
 </head>
-<body class="font-sans antialiased">
+<body class="font-sans antialiased" style="overflow-x: hidden;">
   <x-jet-banner />
   <div class="">
     <div class="sidebar">

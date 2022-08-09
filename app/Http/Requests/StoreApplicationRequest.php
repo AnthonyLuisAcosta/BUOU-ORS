@@ -34,6 +34,9 @@ class StoreApplicationRequest extends FormRequest
             'company' => ['required', 'string'],
             'address' => ['required', 'string'],
             'applicantImage' => ['required', 'string'],
+
+            'programs_id' => ['required', 'unsignedInteger'],
+
         ];
     }
 }

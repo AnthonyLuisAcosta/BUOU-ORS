@@ -25,10 +25,10 @@
 	<div>
 		<div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-6">
 			<div class="block mb-8">
-				<a href="{{ route('admin.application.index') }}" class="ml-1 inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Back to list</a>
+				<a href="{{ route('applicant.application.index') }}" class="ml-1 inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Back to list</a>
 			</div>
 			<div class="mt-5 md:mt-0 md:col-span-2">
-				<form action="{{ route('admin.application.store') }}" method="post" enctype="multipart/form-data">
+				<form action="{{ route('applicant.application.store') }}" method="post" enctype="multipart/form-data">
 					@csrf
 					<div class="shadow overflow-hidden sm:rounded-md">
 						<div class="px-4 py-5 bg-white sm:p-6 border-0">
@@ -156,7 +156,7 @@
 
 
 								<button class="inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">
-									<a href="{{ route('admin.application.index') }}">Cancel</a>
+									<a href="{{ route('applicant.application.index') }}">Cancel</a>
 								</button>
 							</div>
 						</div>
@@ -176,9 +176,5 @@
 			fileChosen.textContent = this.files[0].name
 		})
 	</script>
-
-<style>
-	[x-cloak] { display: none }
-</style>
 
 </x-app-layout>
