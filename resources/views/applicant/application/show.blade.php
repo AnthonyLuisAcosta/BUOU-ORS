@@ -8,38 +8,13 @@
     <!-- This example requires Tailwind CSS v2.0+ -->
 
     <div class="block mb-8">
-        <a href="{{ route('applicant.application.index') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Back to list</a>
+        <a href="{{ route('application.index') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Back to list</a>
     </div>
 
     <!--Status Button-->
     
     <div class="inline-flex justify-end">
-        <form method="post" action="{{ route('applicant.application.update', $application->id) }}">
-            @csrf
-            @method('PUT')
-            <input type="hidden" name="status" value="Recommended" />
-            <!--Button-->
-            <div class="block mb-8">
-                <button class="">
-                    <input type="hidden" name="submit" value="Update" />
-                    <a name="submit" class="ml-1 inline-flex items-center px-4 py-2 bg-green-400 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Recommend</a>
-                </button>
-            </div>
-        </form>
-
-        <!--Reject Status Button-->
-        <form method="post" action="{{ route('applicant.application.update', $application->id) }}">
-            @csrf
-            @method('PUT')
-            <input type="hidden" name="status" value="Rejected" />
-            <!--Button-->
-            <div class="block mb-8">
-                <button class="">
-                    <input type="hidden" name="submit" value="Update" />
-                    <a name="submit" class="ml-1 inline-flex items-center px-4 py-2 bg-rose-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Reject</a>
-                </button>
-            </div>
-        </form>
+       
     </div>
 
 
