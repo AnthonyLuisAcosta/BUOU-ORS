@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Applicant;
 
-use App\Models\Application;
+use App\Models\User;
 use App\Models\Programs;
+use App\Models\Subjects;
+use App\Models\Application;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
@@ -19,8 +21,10 @@ class ApplicationController extends Controller
     {
         $programs = Programs::all();
         $application = Application::all();
+        $subjects = Subjects::all();
+        $user = User::all();
 
-        return view('applicant.application.index')->with('programs', $programs)->with('application', $application);
+        return view('applicant.application.index')->with('programs', $programs)->with('application', $application)->with('subjects', $subjects)->with('user', $user);
     }
 
     /**
@@ -31,7 +35,10 @@ class ApplicationController extends Controller
     public function create()
     {
         $programs = Programs::all();
-        return view('applicant.application.create')->with('programs', $programs);
+        $subjects = Subjects::all();
+        $user = User::all();
+        $application = Application::all();
+        return view('applicant.application.create')->with('programs', $programs)->with('subjects', $subjects)->with('user', $user)->with('application', $application);
     }
 
     /**
@@ -55,7 +62,8 @@ class ApplicationController extends Controller
             'company'          =>  'required',
             'address'          =>  'required',
             'programs_id'       => 'required',
-
+            'subjects_id'       => 'required',
+            'applicant_id'      => 'required',
 
             'applicantImage'         =>  'required|file|mimes:jpg,png,jpeg,gif,svg,pdf,docx,doc'
         ]);
@@ -76,9 +84,12 @@ class ApplicationController extends Controller
         $application->phone = $request->phone;
         $application->company = $request->company;
         $application->address = $request->address;
+        $application->subjects_id = $request->subjects_id;
         $application->programs_id = $request->programs_id;
         $application->applicantImage = $file_name;
         #$application->programs_id = $programs_id;
+
+        $application->applicant_id = $request->applicant_id;
 
         $application->save();
         //ROUTE MODIFIED BASED ON DEFINED ROUTES ON ROUTE:LIST
@@ -104,10 +115,11 @@ class ApplicationController extends Controller
      * @param  \App\Models\Programs  $programs
      * @return \Illuminate\Http\Response
      */
-    public function edit(Application $application, Programs $programs)
+    public function edit(Application $application, Programs $programs, User $user)
     {
         $programs = Programs::all();
-        return view('applicant.application.edit', compact('application'))->with('programs', $programs)->with('application', $application);
+        $user = User::all();
+        return view('applicant.application.edit', compact('application'))->with('programs', $programs)->with('application', $application)->with('user', $user);
     }
 
     /**
@@ -125,7 +137,7 @@ class ApplicationController extends Controller
 
             $application = Application::find($id);
             $application->status = $request->input('status');
-
+            $application->applicant_id = $request->input('applicant_id');
             #return dd($count);
 
         } else {
@@ -143,8 +155,9 @@ class ApplicationController extends Controller
             $application->company = $request->input('company');
             $application->address = $request->input('address');
 
-            $application->programs_id = $request->input('programs_id');
 
+            $application->programs_id = $request->input('programs_id');
+            $application->applicant_id = $request->input('applicant_id');
             #$request->validate([
             #'lastName',          
             #'middleName',          

@@ -35,6 +35,9 @@
 							<label class="font-bold mb-1 text-gray-700 block">Applicant Information</label>
 							<div class="grid grid-cols-6  gap-4 border-t-2 border-gray-200">
 								<label class="font-medium mb-1 text-gray-600 pt-4 block col-span-6">Basic Information</label>
+								
+								<x-jet-input id="applicant_id"  type="hidden" name="applicant_id" value="{{Auth::user()->id}}" required autofocus />
+								
 								<div class="mt-4 col-span-2">
 									<x-jet-label class="" for="firstName" value="{{ __('First Name') }}" />
 									<x-jet-input id="firstName" class="block mt-1 w-full" type="text" name="firstName" :value="old('firstName')" required autofocus autocomplete="firstName" />

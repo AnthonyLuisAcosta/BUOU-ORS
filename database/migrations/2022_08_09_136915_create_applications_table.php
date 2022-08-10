@@ -28,6 +28,8 @@ return new class extends Migration
             $table->string('address');
             $table->string('applicantImage');
 
+            $table->unsignedInteger('applicant_id');
+
             $table->timestamps();
 
 

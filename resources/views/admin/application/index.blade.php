@@ -40,7 +40,19 @@
 									<!--@/if($row['status']=="Pending")-->
 											<td>{{ $row->firstName.' '.$row->lastName }}</td>
 											<td>{{ $row->email }}</td>
-											<td>{{ $row->status }}</td>
+											
+											@if($row->status == "Pending")
+											<td style="color:#f97316">{{ $row->status }}</td>
+										@elseif($row->status == "Recommended")
+											<td class="text-blue-500 ">{{ $row->status }}</td>
+										@elseif($row->status == "Approved")
+											<td class="text-yellow-500 ">{{ $row->status }}</td>
+										@elseif($row->status == "Admitted")
+											<td class="text-green-500">{{ $row->status }}</td>
+										@elseif($row->status == "Rejected")
+											<td class="text-red-500">{{ $row->status }}</td>
+										@endif
+
 											@foreach($programs as $program)
 													@if($row->programs_id == $program->id)
 														<td class="text-left">{{ $program->description }}</td>
