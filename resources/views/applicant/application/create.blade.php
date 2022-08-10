@@ -37,19 +37,22 @@
               <label class="font-bold mb-1 text-gray-700 block">Applicant Information</label>
               <div class="grid grid-cols-6  gap-4 border-t-2 border-gray-200">
                 <label class="font-medium mb-1 text-gray-600 pt-4 block col-span-6">Basic Information</label>
+
+                <x-jet-input id="applicant_id" class="hidden" type="applicant_id" name="applicant_id" value="{{Auth::user()->id}}" required autofocus />
+                
                 <div class="mt-4 col-span-2">
                   <x-jet-label class="" for="firstName" value="{{ __('First Name') }}" />
-                  <x-jet-input id="firstName" class="block mt-1 w-full" type="text" name="firstName" :value="old('firstName')" required autofocus autocomplete="firstName" />
+                  <x-jet-input id="firstName" class="block mt-1 w-full" type="text" name="firstName" value="{{Auth::user()->first_name}}" required autofocus autocomplete="firstName" />
                 </div>
                 <!--Middle Name-->
                 <div class="mt-4 col-span-2">
                   <x-jet-label for="middleName" value="{{ __('Middle Name') }}" />
-                  <x-jet-input id="middleName" class="block mt-1 w-full" type="text" name="middleName" :value="old('middleName')" required autofocus autocomplete="middleName" />
+                  <x-jet-input id="middleName" class="block mt-1 w-full" type="text" name="middleName" value="{{Auth::user()->middle_name}}" required autofocus autocomplete="middleName" />
                 </div>
                 <!--Last Name-->
                 <div class="mt-4 col-span-2 ">
                   <x-jet-label for="lastName" value="{{ __('Last Name') }}" />
-                  <x-jet-input id="lastName" class="block mt-1 w-full" type="text" name="lastName" :value="old('lastName')" required autofocus autocomplete="lastName" />
+                  <x-jet-input id="lastName" class="block mt-1 w-full" type="text" name="lastName" value="{{Auth::user()->last_name}}" required autofocus autocomplete="lastName" />
                 </div>
               </div>
               <div class="mt-10 col-span-6 border-t-2 border-gray-200"></div>
@@ -59,7 +62,7 @@
                 <!--Birthdate-->
                 <div class="mt-4 col-span-2">
                   <x-jet-label for="birthDate" value="{{ __('Birth date') }}" />
-                  <x-jet-input id="birthDate" class="block mt-1 w-full" type="date" name="birthDate" :value="old('birthDate')" required autofocus autocomplete="birthDate" />
+                  <x-jet-input id="birthDate" class="block mt-1 w-full" type="date" name="birthDate" value="old('birthDate')" required autofocus autocomplete="birthDate" />
                 </div>
                 <!--Gender-->
                 <div class="mt-4 col-span-2">
@@ -77,7 +80,7 @@
                 <!--Email-->
                 <div class="mt-4 col-span-4">
                   <x-jet-label for="email" value="{{ __('Email Address') }}" />
-                  <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="email" />
+                  <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" value="{{Auth::user()->email}}" required autofocus autocomplete="email" />
                 </div>
                 <!--Phone-->
                 <div class="mt-4 col-span-3">
@@ -134,18 +137,33 @@
 
               <div class="grid grid-cols-6  gap-4 pt-10">
 
-                <!--Subject Selection-->
+                <!--Program Selection-->
                 <div class="mt-4 col-span-6">
-                  <label class="pb-4 font-bold mb-1 text-gray-700 block border-b-2 border-gray-200">Subject Selection</label>
+                  <label class="pb-4 font-bold mb-1 text-gray-700 block border-b-2 border-gray-200">Program Selection</label>
 
                   <x-jet-label for="programs_id" value=" Programs" class="pt-6" />
                   <select name="programs_id" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
-                    <option selected>Select Subject</option>
+                    <option selected>Select Program</option>
                     @foreach($programs as $row)
                     <option class="block mt-1 w-full" name="programs_id" value="{{ $row->id}}">{{ $row->description}}</option>
                     @endforeach
+                    </select>
 
-                  </select>
+                   <!--Program Selection-->
+								<div class="mt-4 col-span-6">
+									<label class="pb-4 font-bold mb-1 text-gray-700 block border-b-2 border-gray-200">Subject Selection</label>
+
+									<x-jet-label for="programs_id" value=" Programs" class="pt-6" />
+									<select name="subjects_id" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
+										<option selected>Select Program</option>
+										@foreach($subjects as $row)		
+										<option class="block mt-1 w-full" name="subjects_id" value="{{ $row->id}}">{{ $row->title}}</option>
+										@endforeach
+
+									</select>
+								</div>
+
+                  
                 </div>
 
 

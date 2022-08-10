@@ -37,10 +37,24 @@
 					@foreach($application as $row)
 										<tr>
 									<!--Filter Table-->
-									<!--@/if($row['user_id']=="users->id")-->
+									@if($row->applicant_id == Auth::user()->id)
 											<td>{{ $row->firstName.' '.$row->lastName }}</td>
 											<td>{{ $row->email }}</td>
-											<td>{{ $row->status }}</td>
+
+
+											@if($row->status == "Pending")
+												<td style="color:#f97316">{{ $row->status }}</td>
+											@elseif($row->status == "Recommended")
+												<td class="text-blue-500 ">{{ $row->status }}</td>
+											@elseif($row->status == "Approved")
+												<td class="text-yellow-500 ">{{ $row->status }}</td>
+											@elseif($row->status == "Admitted")
+												<td class="text-green-500">{{ $row->status }}</td>
+											@elseif($row->status == "Rejected")
+												<td class="text-red-500">{{ $row->status }}</td>
+											@endif
+
+
 											@foreach($programs as $program)
 													@if($row->programs_id == $program->id)
 														<td class="text-left">{{ $program->description }}</td>
@@ -55,7 +69,7 @@
 											<a href="{{ route('application.edit', $row->id) }}" class="text-white rounded-lg hover:bg-indigo-900 mb-2 mr-2 bg-indigo-400 py-1 px-3">Edit</a>
 											</td>
 									
-									<!--@/endif-->
+									@endif
 						
 										</tr>
 							@endforeach
