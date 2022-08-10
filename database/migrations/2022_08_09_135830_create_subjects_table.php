@@ -15,14 +15,19 @@ return new class extends Migration
     {
         Schema::create('subjects', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('subj_code')->unique();
             $table->string('title');
-            $table->timestamps();
+            $table->string('category');
 
             $table->unsignedInteger('programs_id');
             $table->foreign('programs_id')
             ->references('id')->on('programs')
             ->onDelete('cascade');
-            
+
+            $table->decimal('units');
+            $table->string('term');
+            $table->boolean('is_enabled')->default(false);
+            $table->timestamps();
         });
     }
 
