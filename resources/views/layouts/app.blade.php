@@ -7,6 +7,8 @@
 
   <title>{{ config('app.name', 'Laravel') }}</title>
 
+  <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.2/dist/flowbite.min.css" />
+
   <!-- MY TABLE LAYOUT STARTS HERE-->
   <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel=" stylesheet">
 

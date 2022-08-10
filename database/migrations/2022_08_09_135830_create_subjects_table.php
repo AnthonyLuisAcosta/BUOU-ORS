@@ -17,16 +17,16 @@ return new class extends Migration
             $table->increments('id');
             $table->string('subj_code')->unique();
             $table->string('title');
-            $table->string('category');
+            $table->unsignedInteger('cat_id');
 
             $table->unsignedInteger('programs_id');
             $table->foreign('programs_id')
             ->references('id')->on('programs')
             ->onDelete('cascade');
-
-            $table->decimal('units');
-            $table->string('term');
-            $table->boolean('is_enabled')->default(false);
+            
+            $table->string('prof');
+           /* $table->decimal('units', 3, 1);
+            $table->enum('term', ['2022-2023, 1st Sem', '2022-2023, 2nd Sem']);*/
             $table->timestamps();
         });
     }

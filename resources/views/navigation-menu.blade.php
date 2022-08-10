@@ -248,6 +248,15 @@
             <span class="inline-flex justify-center items-center px-2 ml-3 text-sm font-medium  rounded-full bg-yellow-200  text-black">Pending</span>
           </a>
         </li>
+        <li>
+          <a href="subjects" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:group-hover:text-black hover:bg-gray-100 dark:hover:bg-blue-100">
+            <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:dark:group-hover:text-black" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
+            </svg>
+            <span class="flex-1 ml-3 whitespace-nowrap">Subjects</span>
+            <span class="inline-flex justify-center items-center px-2 ml-3 text-sm font-medium  rounded-full bg-yellow-200  text-black">Pending</span>
+          </a>
+        </li>
         @if(Auth::user()->role_id == 1)
         <li>
           <a href="users" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:group-hover:text-black hover:bg-gray-100 dark:hover:bg-blue-100">
