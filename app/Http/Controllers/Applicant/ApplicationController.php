@@ -42,7 +42,7 @@ class ApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $request->validate([
             'lastName'          =>  'required',
             'firstName'          =>  'required',
@@ -81,8 +81,8 @@ class ApplicationController extends Controller
         #$application->programs_id = $programs_id;
 
         $application->save();
-
-        return redirect()->route('applicant.application.index')->with('success', 'Application Added successfully.');
+        //ROUTE MODIFIED BASED ON DEFINED ROUTES ON ROUTE:LIST
+        return redirect()->route('application.index')->with('success', 'Application Added successfully.');
     }
 
     /**
@@ -92,7 +92,7 @@ class ApplicationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Application $application)
-    {    
+    {
         $programs = Programs::all();
         return view('applicant.application.show', compact('application'))->with('programs', $programs);
     }
@@ -104,10 +104,10 @@ class ApplicationController extends Controller
      * @param  \App\Models\Programs  $programs
      * @return \Illuminate\Http\Response
      */
-    public function edit(Application $application, Programs $programs )
+    public function edit(Application $application, Programs $programs)
     {
         $programs = Programs::all();
-        return view('applicant.application.edit', compact('application'))->with('programs',$programs)->with('application', $application);
+        return view('applicant.application.edit', compact('application'))->with('programs', $programs)->with('application', $application);
     }
 
     /**
@@ -118,17 +118,17 @@ class ApplicationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $count = count($request->all());
 
-        if($count == 4){
+        if ($count == 4) {
 
             $application = Application::find($id);
             $application->status = $request->input('status');
 
             #return dd($count);
 
-        }else{
+        } else {
             $programs = Programs::all();
 
             $application = Application::find($id);
@@ -144,32 +144,32 @@ class ApplicationController extends Controller
             $application->address = $request->input('address');
 
             $application->programs_id = $request->input('programs_id');
-        
-        #$request->validate([
-        #'lastName',          
-        #'middleName',          
-        #'birthDate',          
-        #'gender' ,
-        #'status' => 'required',
-        #'email' ,         
-        #'phone'   ,
-        #'company' ,
-        #'address',
-        #'applicantImage'     =>'image|mimes:jpg,png,jpeg,gif,svg'
-        #]);
 
-        if ($request->hasfile('applicantImage')) {
-            $destination = 'requirements' . $application->applicantImage;
-            if (File::exists($destination)) {
-                File::delete($destination);
+            #$request->validate([
+            #'lastName',          
+            #'middleName',          
+            #'birthDate',          
+            #'gender' ,
+            #'status' => 'required',
+            #'email' ,         
+            #'phone'   ,
+            #'company' ,
+            #'address',
+            #'applicantImage'     =>'image|mimes:jpg,png,jpeg,gif,svg'
+            #]);
+
+            if ($request->hasfile('applicantImage')) {
+                $destination = 'requirements' . $application->applicantImage;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('applicantImage');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('requirements', $filename);
+                $application->applicantImage = $filename;
             }
-            $file = $request->file('applicantImage');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            $file->move('requirements', $filename);
-            $application->applicantImage = $filename;
         }
-    }
         #$applicantImage = $request->hidden_applicantImage;
 
         #if($request->applicantImage != '')
@@ -189,14 +189,14 @@ class ApplicationController extends Controller
         #$application->status = $request->status;
         #$application->email  = $request->email;
         #$application->phone  = $request->phone;
-         #$application->company  = $request->company;
+        #$application->company  = $request->company;
         #$application->address  = $request->address;
 
         #$application->applicantImage = $applicantImage;
 
         $application->update();
-
-        return redirect()->route('applicant.application.index')->with('success', 'Application has been updated successfully');
+        //ROUTE MODIFIED BASED ON DEFINED ROUTES ON ROUTE:LIST
+        return redirect()->route('application.index')->with('success', 'Application has been updated successfully');
     }
 
     /**
@@ -208,7 +208,7 @@ class ApplicationController extends Controller
     public function destroy(Application $application)
     {
         $application->delete();
-
-        return redirect()->route('applicant.application.index')->with('success', 'Application deleted successfully!');
+        //ROUTE MODIFIED BASED ON DEFINED ROUTES ON ROUTE:LIST
+        return redirect()->route('application.index')->with('success', 'Application deleted successfully!');
     }
 }
