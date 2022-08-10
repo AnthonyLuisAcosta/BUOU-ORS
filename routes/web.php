@@ -29,6 +29,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'a
     Route::resource('application', Admin\ApplicationController::class);
     Route::resource('programs', Admin\ProgramsController::class);
     Route::resource('users', Admin\UsersController::class);
+    Route::resource('subjects', Admin\SubjectsController::class);
 });
 
 //REGISTRAR ROUTES

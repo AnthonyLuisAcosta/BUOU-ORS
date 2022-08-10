@@ -13,8 +13,16 @@ class Subjects extends Model
 
     protected $table='subjects';
     protected $primaryKey = 'id';
+   /* protected $casts = ["is_enabled" => "boolean", ];*/
     protected $fillable = [
-        'name',
+        'subj_code',
+        'title',
+        'cat_id',
+        'programs_id',
+        'prof',
+        /*'units',
+        'term',*/
+      
     ];
 
     
