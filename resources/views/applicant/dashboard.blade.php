@@ -74,7 +74,7 @@
             </h2>
             @foreach($announcement as $value)
             @if($value->title == 'default')
-            <p class="mt-2 text-xs sm:text-sm md:text-md lg:text-lg">
+            <p class="whitespace-pre-line mt-2 text-xs sm:text-sm md:text-md lg:text-lg">
               {{$value->field}}
             </p>
             @endif
