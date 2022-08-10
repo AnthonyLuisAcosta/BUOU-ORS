@@ -37,9 +37,12 @@ return new class extends Migration
             ->onDelete('cascade');
             
 
-
-           
-
+            $table->unsignedInteger('subjects_id');
+            $table->foreign('subjects_id')
+            ->references('id')->on('subjects')
+            ->onDelete('cascade');
+            
+            
           
         });
     }

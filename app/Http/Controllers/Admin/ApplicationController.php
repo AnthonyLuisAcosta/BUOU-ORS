@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Application;
 use App\Models\Programs;
+use App\Models\Subjects;
+use App\Models\Application;
+use App\Models\Selectedsub;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
@@ -19,8 +21,9 @@ class ApplicationController extends Controller
     {
         $programs = Programs::all();
         $application = Application::all();
+        $subjects = Subjects::all();
 
-        return view('admin.application.index')->with('programs', $programs)->with('application', $application);
+        return view('admin.application.index')->with('programs', $programs)->with('application', $application)->with('subjects', $subjects);
     }
 
     /**
@@ -31,7 +34,10 @@ class ApplicationController extends Controller
     public function create()
     {
         $programs = Programs::all();
-        return view('admin.application.create')->with('programs', $programs);
+        $subjects = Subjects::all();
+        #$selectedsub = Selectedsub::all();
+        $application = Application::all();
+        return view('admin.application.create')->with('programs', $programs)->with('subjects', $subjects)->with('application', $application);
     }
 
     /**
@@ -56,9 +62,14 @@ class ApplicationController extends Controller
             'address'          =>  'required',
             'programs_id'       => 'required',
 
+            'subjects_id'       => 'required',
+            #'selectedsub'       => 'required',
 
             'applicantImage'         =>  'required|file|mimes:jpg,png,jpeg,gif,svg,pdf,docx,doc'
         ]);
+
+
+
 
         $file_name = time() . '.' . request()->applicantImage->getClientOriginalExtension();
 
@@ -77,8 +88,13 @@ class ApplicationController extends Controller
         $application->company = $request->company;
         $application->address = $request->address;
         $application->programs_id = $request->programs_id;
+        $application->subjects_id = $request->subjects_id;
         $application->applicantImage = $file_name;
-        #$application->programs_id = $programs_id;
+        
+        #$selectedsub = $request->input('selectedsub');
+        #foreach($selectedsub as $selectedsub){
+        #Selectedsub::create($selectedsub);
+        #}
 
         $application->save();
 

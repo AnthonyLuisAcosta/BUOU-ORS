@@ -132,15 +132,29 @@
 
 							<div class="grid grid-cols-6  gap-4 pt-10">
 
-								<!--Subject Selection-->
+								<!--Program Selection-->
 								<div class="mt-4 col-span-6">
 									<label class="pb-4 font-bold mb-1 text-gray-700 block border-b-2 border-gray-200">Subject Selection</label>
 
 									<x-jet-label for="programs_id" value=" Programs" class="pt-6" />
 									<select name="programs_id" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
-										<option selected>Select Subject</option>
+										<option selected>Select Program</option>
 										@foreach($programs as $row)		
 										<option class="block mt-1 w-full" name="programs_id" value="{{ $row->id}}">{{ $row->description}}</option>
+										@endforeach
+
+									</select>
+								</div>
+								
+								<!--Program Selection-->
+								<div class="mt-4 col-span-6">
+									<label class="pb-4 font-bold mb-1 text-gray-700 block border-b-2 border-gray-200">Subject Selection</label>
+
+									<x-jet-label for="programs_id" value=" Programs" class="pt-6" />
+									<select name="subjects_id" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
+										<option selected>Select Program</option>
+										@foreach($subjects as $row)		
+										<option class="block mt-1 w-full" name="subjects_id" value="{{ $row->id}}">{{ $row->title}}</option>
 										@endforeach
 
 									</select>
