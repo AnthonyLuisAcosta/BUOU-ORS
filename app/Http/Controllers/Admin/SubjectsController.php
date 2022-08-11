@@ -59,7 +59,9 @@ class SubjectsController extends Controller
     public function show($id)
     {
         $subjects = Subjects::find($id);
-        return view('admin.programs.show')->with('subjects', $subjects);
+        $programs = Programs::all();
+        $categories = Category::all();
+        return view('admin.subjects.show')->with('subjects', $subjects)->with('programs', $programs)->with('categories', $categories);
     }
 
     /**
