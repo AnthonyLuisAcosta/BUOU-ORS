@@ -6,40 +6,6 @@
         </h2>
 </x-slot>
 
-<div>
-<a href ="{{ route('dean.application.status')}}" class="btn btn-success">Approve all</a>
-
-	<div class="inline-flex justify-end">
-			@php
-				$count = 0
-			@endphp
-		@foreach($application as $app)
-		<form method="post" action="{{ route('dean.application.update', $app->id) }}">
-			@csrf
-			@method('PUT')
-		
-		
-
-		<input type="submit" class="hidden" name="status" value="Approved" />
-		
-		@endforeach
-		<div class="block mb-8">
-			<button class="">
-				<input type="hidden" name="submit" value="Approved" />
-				<a name="submit" class="ml-1 inline-flex items-center px-4 py-2 bg-green-400 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Approve</a>
-		</button>
-</form>
-			@php
-				$count++
-			@endphp
-		
-
-	
-            </div>
-        
-
-		
-	</div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 			
             <div class="flex items-center justify-end px-3 py-4"></div>

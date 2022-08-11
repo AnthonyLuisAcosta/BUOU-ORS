@@ -22,11 +22,6 @@ class ApplicationController extends Controller
 
         return view('dean.application.index')->with('programs', $programs)->with('application', $application);
     }
-    public function status(){
-
-        $recommeded_status = Application::where('status',"Recommended")->update(['status' => "Approved"]);
-         return redirect()->back();
-       }
     /**
      * Show the form for creating a new resource.
      *
