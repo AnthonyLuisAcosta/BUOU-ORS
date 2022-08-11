@@ -60,7 +60,7 @@
 											<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-center">
 												
 												
-												<a href="{{ route('adviser.application.show', $row->id) }}" class="text-white rounded-lg hover:bg-blue-900 mb-2 mr-2 bg-blue-400 py-1 px-2">View</a>
+												<a href="{{ route('registrar.application.show', $row->id) }}" class="text-white rounded-lg hover:bg-blue-900 mb-2 mr-2 bg-blue-400 py-1 px-2">View</a>
 												
 											</td>
 									

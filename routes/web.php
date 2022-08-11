@@ -44,8 +44,8 @@ Route::group(['as' => 'dean.', 'prefix' => 'dean', 'middleware' => ['auth', 'dea
     Route::get('/dashboard', [App\Http\Controllers\Dean\DashboardController::class, 'index'])->name('dashboard');
     Route::get('/programs', [App\Http\Controllers\Dean\ProgramsController::class, 'index']);
     Route::resource('application', App\Http\Controllers\Dean\ApplicationController::class);
+    Route::post('/application/status', 'App\Http\Controllers\Dean\ApplicationController@status');
 });
-
 //ADVISER ROUTES
 Route::group(['as' => 'adviser.', 'prefix' => 'adviser', 'middleware' => ['auth', 'adviser']], function () {
     Route::get('/dashboard', [App\Http\Controllers\Adviser\DashboardController::class, 'index'])->name('dashboard');
