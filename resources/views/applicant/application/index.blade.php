@@ -8,10 +8,34 @@
 
 <div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+		@if ($application->isNotEmpty())
+		
+		@php
+			$count = 0
+		@endphp
+		
+    			
+			@foreach ($application as $app )
+				@if ($app->applicant_id == Auth::user()->id)
+						@php
+							$count++
+						@endphp
+						
+				@endif
+			@endforeach
+
+			@if ( $count < "1")
+				
 			
-            <div class="flex items-center justify-end px-3 py-4">
-                <a href="{{ route('application.create') }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">New Application</a>
-            </div>
+			@endif
+			
+		@else
+		<div class="flex items-center justify-end px-3 py-4">
+					<a href="{{ route('application.create') }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">New Application</a>
+				</div>	
+		@endif
+		
 
 		<!--Container-->
 		<div class="container w-full mx-auto px-2">
@@ -67,6 +91,23 @@
 												
 											<a href="{{ route('application.show', $row->id) }}" class="text-white rounded-lg hover:bg-blue-900 mb-2 mr-2 bg-blue-400 py-1 px-3">View</a>
 											<a href="{{ route('application.edit', $row->id) }}" class="text-white rounded-lg hover:bg-indigo-900 mb-2 mr-2 bg-indigo-400 py-1 px-3">Edit</a>
+											@if ($row->status == "Rejected")
+												<!--DELETE BUTTON-->
+												<div id="{{$row->id}}" class="modal">
+													<p>Are you sure you want to delete account?</p>
+													<div class="text-right">
+													<form class="inline-block" action="{{ route('admin.application.destroy', $row->id) }}" method="POST">
+														<input type="hidden" name="_method" value="DELETE">
+														<input type="hidden" name="_token" value="{{ csrf_token() }}">
+														<input type="submit" class="inline-flex items-center px-4 py-2 bg-red-700 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-red-900 focus:outline-none focus:border-red-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150" rel="modal:close" value="Yes">
+													</form>
+													<a href="" rel="modal:close" class="ml-1 inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-600 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Close</a>
+													</div>
+												</div>
+												<!-- Link to open the modal -->
+												<a href="#{{$row->id}}" rel="modal:open" class="text-white rounded-lg hover:bg-red-900 mb-2 mr-2 bg-red-400 py-1 px-2 cursor-pointer">Delete</a>
+												<!--END OF DELETE BUTT-->
+											@endif
 											</td>
 									
 									@endif
