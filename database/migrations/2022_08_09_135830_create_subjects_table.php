@@ -25,8 +25,8 @@ return new class extends Migration
             ->onDelete('cascade');
             
             $table->string('prof');
-           /* $table->decimal('units', 3, 1);
-            $table->enum('term', ['2022-2023, 1st Sem', '2022-2023, 2nd Sem']);*/
+            $table->decimal('units', 3, 1);
+            /*$table->String('term');   from terms table*/
             $table->timestamps();
         });
     }

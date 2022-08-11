@@ -8,6 +8,16 @@
     <div>
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
+        <!-- Alert-->
+        @if (session ('success'))
+        <div id="alert" class="flex p-4 mb-4 bg-blue-100 border-t-4 border-blue-500 dark:bg-blue-200" role="alert">
+          <svg class="flex-shrink-0 w-5 h-5 text-blue-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+          <div class="ml-3 font-medium text-blue-700">
+          {{ session('success') }}
+          </div>
+        </div>
+        @endif
+
         <div class="block mb-8">
           <a href="{{ route('admin.subjects.index') }}" class="ml-1 inline-flex items-center px-4 py-1 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-500 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
@@ -29,17 +39,22 @@
                   <div class="mt-4">
                     <x-jet-label for="subj_code" value="{{ __('Code') }}" />
                     <x-jet-input id="subj_code" class="block mt-1 w-full" type="text" name="subj_code" :value="old('subj_code')" required autocomplete="subj_code" />
+                    
+                    <!-- Error message if code already exist -->
+                    @error('subj_code')
+                    <p class="text-sm text-red-600">This code already exist</p>
+                    @enderror
                   </div>
 
                   <!--Term Field-->
-                  <!--<div class="mt-4">
+                  <div class="mt-4">
                     <x-jet-label for="term" value="Term" />
                     <select id="term" name="term" required autocomplete="term" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                         <option selected></option>
-                        <option class="block mt-1 w-full" value="2022-2023, 1st Sem">2022-2023, 1st Sem</option>
-                        <option class="block mt-1 w-full" value="2022-2023, 2nd Sem">2022-2023, 2nd Sem</option>
+                        <option>2022-2023, 1st Sem</option>
+                        <option>2022-2023, 2nd Sem</option>
                     </select>
-                  </div>-->
+                  </div>
 
                   <!--Title Field-->
                   <div class="mt-4">
@@ -67,10 +82,10 @@
                   </div>
 
                   <!--Units Field-->
-                  <!--<div class="mt-4">
+                  <div class="mt-4">
                     <x-jet-label for="units" value="{{ __('Units') }}" />
                     <x-jet-input id="units" class="block mt-1 w-full" type="number" name="units" :value="old('units')" required autocomplete="units" />
-                  </div>-->
+                  </div>
 
                   <!--Program Field-->
                   <div class="mt-4">
@@ -100,6 +115,9 @@
               <div class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6">
                 <button class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
                   Create
+                </button>
+                <button class="ml-1 inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">
+                  <a href="{{ route('admin.subjects.create') }}">Create & add</a>
                 </button>
                 
               </div>

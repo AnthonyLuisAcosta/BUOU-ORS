@@ -33,10 +33,10 @@
 							<th data-priority="2">Title</th>
 							<th data-priority="3">Category</th>
 							<th data-priority="3">Program</th>
-							<th data-priority="4">Professor</th>
-							<!--<th data-priority="5">Units</th>
-							<th data-priority="6">Term</th>-->
-							<th data-priority="4">Action</th>
+							<th data-priority="4">Units</th>
+							<th data-priority="5">Professor</th>
+							<th data-priority="6">Term</th>
+							<th data-priority="6">Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -44,9 +44,9 @@
 								<td>{{ $subject->subj_code }}</td>
 								<td>{{ $subject->title }}</td>
 							
-								@foreach($categories as $cat)
-									@if($subject->cat_id == $cat->id)
-										<td>{{ $cat->category }}</td>
+								@foreach($categories as $category)
+									@if($subject->cat_id == $category->id)
+										<td>{{ $category->category }}</td>
 									@endif
 								@endforeach
 								
@@ -55,9 +55,9 @@
 										<td>{{ $program->description }}</td>
 									@endif
 								@endforeach
+								<td>{{ $subject->units }}</td>
 								<td>{{ $subject->prof }}</td>
-								<!--<td>{{ $subject->units }}</td>
-								<td>{{ $subject->term }}</td>-->
+								<td>pending pa po</td>
 								
 								<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
 									<a href="{{ route('admin.subjects.show', $subject->id) }}" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View</a>

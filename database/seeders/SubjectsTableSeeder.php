@@ -21,8 +21,8 @@ class SubjectsTableSeeder extends Seeder
             'cat_id' => '1',
             'programs_id' => '1',
             'prof' => 'Daniella Pena',
-            /*'units' => '3.0',
-            'term' =>'2022-2023, 1st Sem',*/
+            'units' => '3.0',
+            /*'term' =>'2022-2023, 1st Sem',*/
             'created_at'  => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);

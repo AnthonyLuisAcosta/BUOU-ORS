@@ -20,8 +20,8 @@ class Subjects extends Model
         'cat_id',
         'programs_id',
         'prof',
-        /*'units',
-        'term',*/
+        'units',
+        /*'term',*/
       
     ];
 
