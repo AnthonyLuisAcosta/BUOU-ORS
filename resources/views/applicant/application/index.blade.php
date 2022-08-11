@@ -6,9 +6,10 @@
         </h2>
 </x-slot>
 
+<!-- Applicants allowed to submit only one application -->
 <div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
+			
 		@if ($application->isNotEmpty())
 		
 		@php
@@ -26,14 +27,16 @@
 			@endforeach
 
 			@if ( $count < "1")
-				
+			<div class="flex items-center justify-end px-3 py-4">
+					<a href="{{ route('application.create') }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">New Application</a>
+			</div>	
 			
 			@endif
 			
 		@else
 		<div class="flex items-center justify-end px-3 py-4">
 					<a href="{{ route('application.create') }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">New Application</a>
-				</div>	
+		</div>	
 		@endif
 		
 
@@ -96,7 +99,7 @@
 												<div id="{{$row->id}}" class="modal">
 													<p>Are you sure you want to delete account?</p>
 													<div class="text-right">
-													<form class="inline-block" action="{{ route('admin.application.destroy', $row->id) }}" method="POST">
+													<form class="inline-block" action="{{ route('application.destroy', $row->id) }}" method="POST">
 														<input type="hidden" name="_method" value="DELETE">
 														<input type="hidden" name="_token" value="{{ csrf_token() }}">
 														<input type="submit" class="inline-flex items-center px-4 py-2 bg-red-700 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-red-900 focus:outline-none focus:border-red-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150" rel="modal:close" value="Yes">

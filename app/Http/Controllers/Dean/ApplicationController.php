@@ -22,7 +22,6 @@ class ApplicationController extends Controller
 
         return view('dean.application.index')->with('programs', $programs)->with('application', $application);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -132,18 +131,9 @@ class ApplicationController extends Controller
             $programs = Programs::all();
 
             $application = Application::find($id);
-            $application->firstName = $request->input('firstName');
-            $application->middleName = $request->input('middleName');
-            $application->lastName = $request->input('lastName');
-            $application->birthDate = $request->input('birthDate');
-            $application->gender = $request->input('gender');
+         
             $application->status = $request->input('status');
-            $application->email = $request->input('email');
-            $application->phone = $request->input('phone');
-            $application->company = $request->input('company');
-            $application->address = $request->input('address');
-
-            $application->programs_id = $request->input('programs_id');
+  
         
         #$request->validate([
         #'lastName',          
@@ -194,6 +184,7 @@ class ApplicationController extends Controller
 
         #$application->applicantImage = $applicantImage;
 
+
         $application->update();
 
         return redirect()->route('dean.application.index')->with('success', 'Application has been updated successfully');
@@ -211,4 +202,5 @@ class ApplicationController extends Controller
 
         return redirect()->route('dean.application.index')->with('success', 'Application deleted successfully!');
     }
+
 }
