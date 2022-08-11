@@ -32,7 +32,7 @@
                 <x-jet-input id="code" class="block mt-1 w-full" type="text" name="code" :value="old('code')" required autocomplete="code" />
               </div>
 
-              <!-- Error Message -->
+              <!-- Error message if code already exist -->
               @error('code')
                 <p class="text-sm text-red-600">This code already exist</p>
               @enderror

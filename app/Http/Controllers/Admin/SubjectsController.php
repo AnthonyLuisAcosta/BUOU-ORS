@@ -34,7 +34,7 @@ class SubjectsController extends Controller
     {
         $programs = Programs::all();
         $categories = Category::all();
-        return view('admin.subjects.create')->with('programs', $programs)->with('categories', $categories);
+        return view('admin.subjects.create')->with('programs', $programs)->with('categories', $categories)->with('success', 'Program created successfully');
     }
 
     /**
