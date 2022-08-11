@@ -72,7 +72,10 @@ class SubjectsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $subjects = Subjects::find($id);
+        $programs = Programs::all();
+        $categories = Category::all();
+        return view('admin.subjects.edit')->with('subjects', $subjects)->with('programs', $programs)->with('categories', $categories);
     }
 
     /**
@@ -82,9 +85,12 @@ class SubjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreSubjectsRequest $request, $id)
     {
-        //
+        $subjects = Subjects::find($id);
+        $input = $request->validated();
+        $subjects->update($input);
+        return redirect()->route('admin.subjects.index')->with('success', 'Subject updated successfully');
     }
 
     /**
@@ -93,8 +99,9 @@ class SubjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Subjects $subject)
     {
-        //
+        $subject->delete();
+        return back()->with('success', 'Subject deleted successfully'); 
     }
 }
