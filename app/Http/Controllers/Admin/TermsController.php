@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Terms;
+use App\Http\Requests\StoreTermRequest;
 
 class TermsController extends Controller
 {
@@ -15,6 +17,11 @@ class TermsController extends Controller
     public function index()
     {
         //
+        $terms = Terms::all();
+        $stat = Terms::pluck('status')->toArray();
+        return view('admin.terms.index')
+            ->with(compact('stat'))
+            ->with(compact('terms'));
     }
 
     /**
@@ -25,6 +32,7 @@ class TermsController extends Controller
     public function create()
     {
         //
+        return view('admin.terms.create');
     }
 
     /**
@@ -33,22 +41,13 @@ class TermsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTermRequest $request)
     {
         //
+        $input = $request->validated();
+        Terms::create($input);
+        return redirect()->route('admin.terms.index');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -58,6 +57,8 @@ class TermsController extends Controller
     public function edit($id)
     {
         //
+        $term = Terms::find($id);
+        return view('admin.terms.edit')->with(compact('term'));
     }
 
     /**
@@ -70,6 +71,21 @@ class TermsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $count = count($request->all());
+        $term = Terms::find($id);
+        if ($count == 3) {
+            $term->status = ($request->input('status'));
+            $term->update();
+            return back();
+        } else {
+            $input = $request->all();
+            $term->update([
+                'year' => $input['year'],
+                'label' => $input['label'],
+                'status' => $input['status'],
+            ]);
+            return redirect()->route('admin.terms.index');
+        }
     }
 
     /**
@@ -78,8 +94,10 @@ class TermsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Terms $term)
     {
         //
+        $term->delete();
+        return back();
     }
 }

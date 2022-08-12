@@ -53,7 +53,7 @@ class UsersController extends Controller
             'last_name' => $input['last_name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
-        ]);;
+        ]);
         return redirect()->route('admin.users.index');
     }
 

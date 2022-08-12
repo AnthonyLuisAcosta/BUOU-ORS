@@ -10,7 +10,7 @@
       <div class="block mb-8">
         <a href="{{ route('admin.users.index') }}" class="ml-1 inline-flex items-center px-4 py-1 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-500 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
           </svg>
           <span class="flex-1 ml-1 whitespace-nowrap">Back to list</span>
         </a>
@@ -49,7 +49,7 @@
                   <select id="role" name="role_id" class="block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
                     @foreach($roles as $role)
                     @if($user->role_id == $role->role_id)
-                    <option selected>{{$role->role_name }}</option>
+                    <option selected value="{{$role->role_id}}">{{$role->role_name }}</option>
 
                     @endif
                     @endforeach
