@@ -11,15 +11,21 @@
 			<!--Container-->
 			<div class="container w-full mx-auto px-2 ">
 
-				<!--Program info -->
-				<div class="shadow overflow-hidden sm:rounded-md pt-1 block mb-7 bg-gray-300">
-					<div class="px-6 sm:p-3 font-semibold"> MY PROGRAM</div>
-					<div class="px-4 py-5 bg-white sm:p-6">
-						<div><strong>Code: </strong><span>MM</span></div>
-						<div><strong>Description: </strong><span>Master in Management</span></div>
-						<div><strong>Term: </strong><span>2022-2023, 1st Term</span></div>
-					</div>
-				</div>
+				@foreach ($programs as $program)
+					@if($program->adviser == Auth::user()->id)
+
+						<!--Program info -->
+						<div class="shadow overflow-hidden sm:rounded-md pt-1 block mb-7 bg-gray-300">
+							<div class="px-6 sm:p-4 font-semibold"> MY PROGRAM</div>
+							<div class="px-4 py-5 bg-white sm:p-6">
+								<div><strong>Code: </strong><span>{{ $program->code }}</span></div>
+								<div><strong>Description: </strong><span>{{ $program->description }}</span></div>
+								<div><strong>Term: </strong><span>waiting pa sa terms module</span></div>
+							</div>
+						</div>
+
+					@endif
+				@endforeach
 
 				<!--Card-->
 				<div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
