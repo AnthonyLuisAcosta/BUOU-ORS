@@ -41,7 +41,7 @@
 											<td>{{ $row->firstName.' '.$row->lastName }}</td>
 											<td>{{ $row->email }}</td>
 											
-											@if($row->status == "Pending")
+										@if($row->status == "Pending")
 											<td >
 											<span style="background-color: rgb(253 186 116);" class="inline-flex justify-center items-center px-5 py-1 ml-3 text-sm font-medium  rounded-full text-white">{{ $row->status }}</span>
 											</td>
