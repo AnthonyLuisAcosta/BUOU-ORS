@@ -13,7 +13,7 @@ class StoreTermRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class StoreTermRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'year' => ['required', 'string'],
+            'label' => ['required', 'string'],
+            'status' => ['required', 'boolean'],
         ];
     }
 }

@@ -18,7 +18,7 @@
 
   <!--Sample Content-->
 
-  <div class="flex-wrap h-full bg-green-500 md:bg-red-500 lg:bg-amber-500">
+  <div class="flex-wrap h-full">
     <!--WELCOME and TERM-->
     <div class="flex">
       <!--WELCOME-->
@@ -65,7 +65,7 @@
                 Pending
               </h2>
               <p class="mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-orange-500">
-                100
+                {{$pending}}
               </p>
             </div>
           </div>
@@ -75,7 +75,7 @@
                 Recommended
               </h2>
               <p class="mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-blue-400">
-                50
+                {{$recommended}}
               </p>
             </div>
           </div>
@@ -85,7 +85,7 @@
                 Admitted
               </h2>
               <p class="mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-green-500">
-                20
+                {{$admitted}}
               </p>
             </div>
           </div>
@@ -97,7 +97,7 @@
                 Processed
               </h2>
               <p class="mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-yellow-400">
-                15
+                {{$processed}}
               </p>
             </div>
           </div>
@@ -107,7 +107,7 @@
                 Rejected
               </h2>
               <p class="mt-2 text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-red-400">
-                15
+                {{$rejected}}
               </p>
             </div>
           </div>
@@ -120,9 +120,13 @@
             <h2 class="text-gray-900 text-xs sm:text-md md:text-lg lg:text-2xl font-bold leading-snug text-center">
               Announcement
             </h2>
-            <p class="mt-2 text-xs sm:text-sm md:text-md lg:text-lg">
-              Welcome to BUOU Online Admission System The 1st Semester 2022-2023 admission for BUOU programs is until May 15, 2022.
+            @foreach($announcement as $value)
+            @if($value->title == 'default')
+            <p class="whitespace-pre-line mt-2 text-xs sm:text-sm md:text-md lg:text-lg">
+              {{$value->field}}
             </p>
+            @endif
+            @endforeach
             <p class="mt-2 text-xs sm:text-sm md:text-md lg:text-lg">
               For a short tutorial on how to file an application and how the online admission system works please see :
               <a target="blank" href="https://www.youtube.com/watch?v=uU0E3IR4aY4" class="inline-block text-blue-700 hover:text-amber-500">BUOU Online Admission - Applicant's Guide</a>
