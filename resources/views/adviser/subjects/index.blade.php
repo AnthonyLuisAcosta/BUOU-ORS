@@ -7,6 +7,7 @@
 
     <div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
 			<!--Container-->
 			<div class="container w-full mx-auto px-2">
 				<!--Card-->
@@ -15,22 +16,28 @@
 						<thead>
 							<tr>
 								<th data-priority="1">Code</th>
-								<th data-priority="2">Description</th>
-								<th data-priority="3">Adviser</th>
-								<th data-priority="4">Admitted</th>
+                                <th data-priority="2">Title</th>
+                                <th data-priority="3">Category</th>
+                                <th data-priority="4">Units</th>
+                                <th data-priority="5">Professor</th>
 							</tr>
 						</thead>
 						<tbody>
-							@foreach($programs as $program)
-								<td>{{ $program->code }}</td>
-								<td>{{ $program->description }}</td>
-								@foreach($users as $user)
-									@if ($program->adviser == $user->id)                       
-											<td>{{ $user->first_name.' '.$user->last_name }} </td>                 
-									@endif
-								@endforeach
-								<td>pending pa po</td>
-							</tr>
+                            @foreach($programs as $program)
+							    @foreach($subjects as $subject)
+                                    @if($subject->programs_id == $program->id && $program->adviser == Auth::user()->id)
+                                        <td>{{ $subject->subj_code }}</td>
+                                        <td>{{ $subject->title }}</td>
+                                        @foreach($categories as $category)
+                                            @if($subject->cat_id == $category->id)
+                                                <td>{{ $category->category }}</td>
+                                            @endif
+                                        @endforeach
+                                        <td>{{ $subject->units }}</td>  
+                                        <td>{{ $subject->prof }}</td>
+                                    @endif	
+								</tr>
+                                @endforeach
 							@endforeach
 						</tbody>
 					</table>
@@ -56,5 +63,4 @@
 				.responsive.recalc();
 		});
 	</script>
-
 </x-app-layout>
