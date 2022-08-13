@@ -33,7 +33,8 @@ class UsersController extends Controller
     {
         //
         $roles = Role::all();
-        return view('admin.users.create')->with('roles', $roles);
+        return view('admin.users.create')
+            ->with('roles', $roles);
     }
 
     /**
@@ -54,7 +55,7 @@ class UsersController extends Controller
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->with('success', 'User Created.');
     }
 
     /**
@@ -68,7 +69,9 @@ class UsersController extends Controller
         //
         $user = User::find($id);
         $roles = Role::all();
-        return view('admin.users.show')->with('user', $user)->with('roles', $roles);
+        return view('admin.users.show')
+            ->with('user', $user)
+            ->with('roles', $roles);
     }
 
     /**
@@ -82,7 +85,9 @@ class UsersController extends Controller
         //
         $user = User::find($id);
         $roles = Role::all();
-        return view('admin.users.edit')->with('user', $user)->with('roles', $roles);
+        return view('admin.users.edit')
+            ->with('user', $user)
+            ->with('roles', $roles);
     }
 
     /**
@@ -105,7 +110,8 @@ class UsersController extends Controller
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')
+            ->with('success', 'User Updated.');
     }
 
     /**
@@ -118,6 +124,6 @@ class UsersController extends Controller
     {
         //
         $user->delete();
-        return back();
+        return back()->with('success', 'User Deleted.');
     }
 }
