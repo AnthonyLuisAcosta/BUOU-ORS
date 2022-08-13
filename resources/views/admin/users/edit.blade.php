@@ -26,35 +26,34 @@
                 <!--First Name-->
                 <div class="mt-4">
                   <x-jet-label for="name" value="{{ __('First Name') }}" />
-                  <x-jet-input id="name" class="block mt-1 w-full" type="text" name="first_name" :value="old('name')" required autofocus autocomplete="name" placeholder="{{$user->first_name}}" />
+                  <x-jet-input id="name" class="block mt-1 w-full" type="text" name="first_name" required autofocus autocomplete="name" value="{{$user->first_name}}" />
                 </div>
                 <!--Middle Name-->
                 <div class="mt-4">
                   <x-jet-label for="name" value="{{ __('Middle Name') }}" />
-                  <x-jet-input id="name" class="block mt-1 w-full" type="text" name="middle_name" :value="old('name')" required autofocus autocomplete="name" placeholder="{{$user->middle_name}}" />
+                  <x-jet-input id="name" class="block mt-1 w-full" type="text" name="middle_name" required autofocus autocomplete="name" value="{{$user->middle_name}}" />
                 </div>
                 <!--Last Name-->
                 <div class="mt-4">
                   <x-jet-label for="name" value="{{ __('Last Name') }}" />
-                  <x-jet-input id="name" class="block mt-1 w-full" type="text" name="last_name" :value="old('name')" required autofocus autocomplete="name" placeholder="{{$user->last_name}}" />
+                  <x-jet-input id="name" class="block mt-1 w-full" type="text" name="last_name" required autofocus autocomplete="name" value="{{$user->last_name}}" />
                 </div>
                 <!--Email-->
                 <div class="mt-4">
                   <x-jet-label for="email" value="{{ __('Email') }}" />
-                  <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required placeholder="{{$user->email}}" />
+                  <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" required value="{{$user->email}}" />
                 </div>
 
                 <div class="mt-4">
                   <x-jet-label for="role" value="Role" />
-                  <select id="role" name="role_id" class="block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
+                  <select id="role" name="role_id" class="block mt-1 w-full text-gray-800 bg-white border-solid border-gray-300 rounded-md">
                     @foreach($roles as $role)
                     @if($user->role_id == $role->role_id)
                     <option selected value="{{$role->role_id}}">{{$role->role_name }}</option>
-
                     @endif
                     @endforeach
                     @foreach($roles as $role)
-                    <option class="block mt-1 w-full" value="{{$role->role_id}}">{{$role->role_name }}</option>
+                    <option class="block mt-1 w-full text-gray-500" value="{{$role->role_id}}">{{$role->role_name }}</option>
                     @endforeach
                   </select>
                 </div>
