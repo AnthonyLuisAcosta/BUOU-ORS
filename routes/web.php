@@ -38,6 +38,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'a
 Route::group(['as' => 'registrar.', 'prefix' => 'registrar', 'middleware' => ['auth', 'registrar']], function () {
     Route::get('/dashboard', [App\Http\Controllers\Registrar\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('programs', App\Http\Controllers\Registrar\ProgramsController::class);
+    Route::resource('subjects', App\Http\Controllers\Registrar\SubjectsController::class);
     Route::resource('application', App\Http\Controllers\Registrar\ApplicationController::class);
     Route::resource('terms', App\Http\Controllers\Registrar\TermsController::class);
 });

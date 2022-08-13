@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Registrar;
 
 use App\Models\Terms;
 use App\Models\Category;
@@ -23,7 +23,7 @@ class SubjectsController extends Controller
         $programs = Programs::all();
         $categories = Category::all();
         $terms = Terms::all();
-        return view('admin.subjects.index')->with('subjects', $subjects)
+        return view('registrar.subjects.index')->with('subjects', $subjects)
             ->with('programs', $programs)
             ->with('categories', $categories)
             ->with('terms', $terms);
@@ -40,7 +40,7 @@ class SubjectsController extends Controller
         $programs = Programs::all();
         $categories = Category::all();
         $terms = Terms::all();
-        return view('admin.subjects.create')
+        return view('registrar.subjects.create')
             ->with('programs', $programs)
             ->with('categories', $categories)
             ->with('terms', $terms)
@@ -57,7 +57,7 @@ class SubjectsController extends Controller
     {
         $input = $request->validated();
         Subjects::create($input);
-        return redirect()->route('admin.subjects.index')->with('success', 'Subject created successfully');
+        return redirect()->route('registrar.subjects.index')->with('success', 'Subject created successfully');
     }
 
     /**
@@ -72,7 +72,7 @@ class SubjectsController extends Controller
         $programs = Programs::all();
         $categories = Category::all();
         $terms = Terms::all();
-        return view('admin.subjects.show')
+        return view('registrar.subjects.show')
             ->with('subjects', $subjects)
             ->with('programs', $programs)
             ->with('categories', $categories)
@@ -91,7 +91,7 @@ class SubjectsController extends Controller
         $programs = Programs::all();
         $categories = Category::all();
         $terms = Terms::all();
-        return view('admin.subjects.edit')
+        return view('registrar.subjects.edit')
             ->with('subjects', $subjects)
             ->with('programs', $programs)
             ->with('categories', $categories)
@@ -110,7 +110,7 @@ class SubjectsController extends Controller
         $subjects = Subjects::find($id);
         $input = $request->validated();
         $subjects->update($input);
-        return redirect()->route('admin.subjects.index')->with('success', 'Subject updated successfully');
+        return redirect()->route('registrar.subjects.index')->with('success', 'Subject updated successfully');
     }
 
     /**
