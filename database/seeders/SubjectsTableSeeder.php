@@ -26,5 +26,41 @@ class SubjectsTableSeeder extends Seeder
             'created_at'  => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
+
+        DB::table('subjects')->insert([
+            'subj_code' => 'MLGM 202',
+            'title' => 'Local Government System',
+            'cat_id' => '3',
+            'programs_id' => '2',
+            'prof' => 'Professor X',
+            'units' => '5.0',
+            /*'term' =>'2022-2023, 1st Sem',*/
+            'created_at'  => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+        ]);
+
+        DB::table('subjects')->insert([
+            'subj_code' => 'MPA 299',
+            'title' => 'Thesis Writing',
+            'cat_id' => '2',
+            'programs_id' => '3',
+            'prof' => 'Professor Y',
+            'units' => '1.0',
+            /*'term' =>'2022-2023, 1st Sem',*/
+            'created_at'  => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+        ]);
+
+        DB::table('subjects')->insert([
+            'subj_code' => 'MPA 211',
+            'title' => 'Local Government',
+            'cat_id' => '4',
+            'programs_id' => '3',
+            'prof' => 'Professor Z',
+            'units' => '1.0',
+            /*'term' =>'2022-2023, 1st Sem',*/
+            'created_at'  => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+        ]);
     }
 }
