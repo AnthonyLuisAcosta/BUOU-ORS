@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Adviser;
 
 use App\Models\User;
+use App\Models\Terms;
 use App\Models\Programs;
 use App\Models\Application;
 use App\Http\Controllers\Controller;
@@ -14,6 +15,10 @@ class ProgramsController extends Controller
     {
         $programs = Programs::all();
         $applications = Application::all();
-        return view('adviser.programs.index')->with('programs', $programs)->with('applications', $applications);
+        $terms = Terms::all();
+        return view('adviser.programs.index')
+            ->with('programs', $programs)
+            ->with('applications', $applications)
+            ->with('terms', $terms);
     }
 }
