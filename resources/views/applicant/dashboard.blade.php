@@ -64,9 +64,19 @@
             <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
               Status
             </h2>
-            <p class="mt-2 text-md sm:text-lg md:text-xl lg:text-3xl font-extrabold text-amber-500">
-              Processing
+            @if(count($stats) == 0)
+            <p class="mt-2 text-md sm:text-lg md:text-xl lg:text-2xl font-bold text-gray-600">
+              No existing application
             </p>
+            @else
+            @foreach($stats as $stat)
+            @if($stat->applicant_id == Auth::user()->id)
+            <p class="mt-2 text-md sm:text-lg md:text-xl lg:text-3xl font-extrabold text-blue-500">
+              {{$stat->status}}
+            </p>
+            @endif
+            @endforeach
+            @endif
           </div>
         </div>
       </div>

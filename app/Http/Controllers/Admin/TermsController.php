@@ -46,7 +46,7 @@ class TermsController extends Controller
         //
         $input = $request->validated();
         Terms::create($input);
-        return redirect()->route('admin.terms.index');
+        return redirect()->route('admin.terms.index')->with('success', 'Term Created.');
     }
     /**
      * Show the form for editing the specified resource.
@@ -76,7 +76,7 @@ class TermsController extends Controller
         if ($count == 3) {
             $term->status = ($request->input('status'));
             $term->update();
-            return back();
+            return back()->with('success', $term->year . ' ' . $term->label . ' ' . 'Status Updated.');
         } else {
             $input = $request->all();
             $term->update([
@@ -84,7 +84,7 @@ class TermsController extends Controller
                 'label' => $input['label'],
                 'status' => $input['status'],
             ]);
-            return redirect()->route('admin.terms.index');
+            return redirect()->route('admin.terms.index')->with('success', 'Term Updated.');
         }
     }
 
@@ -98,6 +98,6 @@ class TermsController extends Controller
     {
         //
         $term->delete();
-        return back();
+        return back()->with('success', 'Term Deleted.');
     }
 }
