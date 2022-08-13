@@ -59,8 +59,6 @@
                 </select>
               </div>
 
-              
-
               <!-- Dean field -->
               <div class="mt-4">
                 <x-jet-label for="dean" value="Dean" />
