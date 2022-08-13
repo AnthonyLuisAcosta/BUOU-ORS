@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dean;
 
 use App\Models\User;
 use App\Models\Programs;
+use App\Models\Application;
 use App\Http\Controllers\Controller;
 
 class ProgramsController extends Controller
@@ -13,6 +14,18 @@ class ProgramsController extends Controller
     {
         $programs = Programs::all();
         $users = User::all();
-        return view('dean.programs.index')->with('programs', $programs)->with('users', $users);
+        $applications = Application::all();
+        /*if($programs->id == $applications->id){
+            $count = Application::where('status', 'Admitted')->count();
+        }*/
+
+        $count = Application::where('status', 'Admitted')->count();
+            
+        
+      
+        return view('dean.programs.index')->with('programs', $programs)->with('users', $users)->with('applications', $applications)->with('count', $count);
     }
+
+
+
 }

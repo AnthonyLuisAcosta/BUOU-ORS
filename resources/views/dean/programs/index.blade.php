@@ -17,7 +17,7 @@
 								<th data-priority="1">Code</th>
 								<th data-priority="2">Description</th>
 								<th data-priority="3">Adviser</th>
-								<th data-priority="4">Enrolled</th>
+								<th data-priority="4">Admitted</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -29,10 +29,8 @@
 											<td>{{ $user->first_name.' '.$user->last_name }} </td>                 
 									@endif
 								@endforeach
-								<td>
-									<span class="inline-flex justify-center items-center px-2 ml-3 text-sm font-medium  rounded-full bg-yellow-200  text-black">Pending</span>
-								</td>	
-								</tr>
+								<td>pending pa po</td>
+							</tr>
 							@endforeach
 						</tbody>
 					</table>
