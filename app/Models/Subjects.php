@@ -21,7 +21,7 @@ class Subjects extends Model
         'programs_id',
         'prof',
         'units',
-        /*'term',*/
+        'term',
       
     ];
 

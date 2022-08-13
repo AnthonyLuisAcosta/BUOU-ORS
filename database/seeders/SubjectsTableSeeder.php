@@ -22,7 +22,7 @@ class SubjectsTableSeeder extends Seeder
             'programs_id' => '1',
             'prof' => 'Daniella Pena',
             'units' => '3.0',
-            /*'term' =>'2022-2023, 1st Sem',*/
+            'term' =>'1',
             'created_at'  => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
@@ -34,7 +34,7 @@ class SubjectsTableSeeder extends Seeder
             'programs_id' => '2',
             'prof' => 'Professor X',
             'units' => '5.0',
-            /*'term' =>'2022-2023, 1st Sem',*/
+            'term' =>'1',
             'created_at'  => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
@@ -46,7 +46,7 @@ class SubjectsTableSeeder extends Seeder
             'programs_id' => '3',
             'prof' => 'Professor Y',
             'units' => '1.0',
-            /*'term' =>'2022-2023, 1st Sem',*/
+            'term' =>'1',
             'created_at'  => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
@@ -58,7 +58,7 @@ class SubjectsTableSeeder extends Seeder
             'programs_id' => '3',
             'prof' => 'Professor Z',
             'units' => '1.0',
-            /*'term' =>'2022-2023, 1st Sem',*/
+            'term' =>'1',
             'created_at'  => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);

@@ -50,11 +50,14 @@
                   <div class="mt-4">
                     <x-jet-label for="term" value="Term" />
                     <select id="term" name="term" required autocomplete="term" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                        <option selected></option>
-                        <option>2022-2023, 1st Sem</option>
-                        <option>2022-2023, 2nd Sem</option>
-                    </select>
-                  </div>
+                      <option selected></option>
+                      @foreach ($terms as $term)
+                          <option class="block mt-1 w-full" value="{{ $term->id }}">
+                            {{$term->year.' '.$term->label}}
+                          </option>
+                      @endforeach
+                  </select>
+                </div>
 
                   <!--Title Field-->
                   <div class="mt-4">

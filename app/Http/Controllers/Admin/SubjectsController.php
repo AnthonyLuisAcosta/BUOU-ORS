@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Terms;
+use App\Models\Category;
 use App\Models\Programs;
 use App\Models\Subjects;
 use Illuminate\Http\Request;
-use App\Models\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSubjectsRequest;
 
@@ -21,7 +22,11 @@ class SubjectsController extends Controller
         $subjects = Subjects::all();
         $programs = Programs::all();
         $categories = Category::all();
-        return view('admin.subjects.index')->with('subjects', $subjects)->with('programs', $programs)->with('categories', $categories);
+        $terms = Terms::all();
+        return view('admin.subjects.index')->with('subjects', $subjects)
+            ->with('programs', $programs)
+            ->with('categories', $categories)
+            ->with('terms', $terms);
     }
 
 
@@ -34,7 +39,12 @@ class SubjectsController extends Controller
     {
         $programs = Programs::all();
         $categories = Category::all();
-        return view('admin.subjects.create')->with('programs', $programs)->with('categories', $categories)->with('success', 'Program created successfully');
+        $terms = Terms::all();
+        return view('admin.subjects.create')
+            ->with('programs', $programs)
+            ->with('categories', $categories)
+            ->with('terms', $terms)
+            ->with('success', 'Program created successfully');
     }
 
     /**
@@ -61,7 +71,12 @@ class SubjectsController extends Controller
         $subjects = Subjects::find($id);
         $programs = Programs::all();
         $categories = Category::all();
-        return view('admin.subjects.show')->with('subjects', $subjects)->with('programs', $programs)->with('categories', $categories);
+        $terms = Terms::all();
+        return view('admin.subjects.show')
+            ->with('subjects', $subjects)
+            ->with('programs', $programs)
+            ->with('categories', $categories)
+            ->with('terms', $terms);
     }
 
     /**
@@ -75,7 +90,12 @@ class SubjectsController extends Controller
         $subjects = Subjects::find($id);
         $programs = Programs::all();
         $categories = Category::all();
-        return view('admin.subjects.edit')->with('subjects', $subjects)->with('programs', $programs)->with('categories', $categories);
+        $terms = Terms::all();
+        return view('admin.subjects.edit')
+            ->with('subjects', $subjects)
+            ->with('programs', $programs)
+            ->with('categories', $categories)
+            ->with('terms', $terms);
     }
 
     /**

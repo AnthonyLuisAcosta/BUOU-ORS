@@ -36,7 +36,7 @@ class StoreSubjectsRequest extends FormRequest
             'programs_id' => ['required', 'string'],
             'prof' => ['required', 'string'],
             'units' => ['required', 'numeric'],
-             /*'term' => ['required', 'enum'],
+             'term' => ['required', 'string'],
             /*'is_enabled' => ['required', 'boolean'],*/
         ];
     }
