@@ -26,7 +26,7 @@ return new class extends Migration
             
             $table->string('prof');
             $table->decimal('units', 3, 1);
-            /*$table->String('term');   from terms table*/
+            $table->String('term');
             $table->timestamps();
         });
     }

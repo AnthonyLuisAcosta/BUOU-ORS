@@ -57,7 +57,11 @@
 								@endforeach
 								<td>{{ $subject->units }}</td>
 								<td>{{ $subject->prof }}</td>
-								<td>pending pa po</td>
+								@foreach($terms as $term)
+									@if($subject->term == $term->id)
+										<td>{{$term->year.' '.$term->label}}</td>
+									@endif
+								@endforeach
 								
 								<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
 									<a href="{{ route('admin.subjects.show', $subject->id) }}" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View</a>

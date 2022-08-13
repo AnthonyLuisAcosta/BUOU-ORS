@@ -37,7 +37,7 @@
               <label class="font-bold mb-1 text-gray-700 block">Applicant Information</label>
               <div class="grid grid-cols-6  gap-4 border-t-2 border-gray-200">
                 <label class="font-medium mb-1 text-gray-600 pt-4 block col-span-6">Basic Information</label>
-
+                
                 <x-jet-input id="applicant_id" class="hidden" type="applicant_id" name="applicant_id" value="{{Auth::user()->id}}" required autofocus />
                 
                 <div class="mt-4 col-span-2">
@@ -155,7 +155,7 @@
 
 									<x-jet-label for="programs_id" value=" Programs" class="pt-6" />
 									<select name="subjects_id" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
-										<option selected>Select Program</option>
+										<option selected>Select Subject</option>
 										@foreach($subjects as $row)		
 										<option class="block mt-1 w-full" name="subjects_id" value="{{ $row->id}}">{{ $row->title}}</option>
 										@endforeach
