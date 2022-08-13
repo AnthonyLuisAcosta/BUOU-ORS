@@ -41,9 +41,13 @@
       <div class="w-1/2 mx-4 p-2">
         <div class="flex justify-center ">
           <div class="h-max w-full px-10 py-4 text-center bg-white rounded-lg shadow-lg">
+            @foreach($terms as $term)
+            @if($term->status == 1)
             <h2 class="lg:text-xl md:text-lg sm:text-md text-xs font-bold tracking-tight">
-              2022-2023, 1st Sem
+              {{$term->year.' '.$term->label}}
             </h2>
+            @endif
+            @endforeach
             <p class="space-y-1 text-gray-600 focus:outline-none focus:underline lg:text-md md:text-sm sm:text-xs text-xs">
               Active Term
             </p>
@@ -61,7 +65,7 @@
               Admitted
             </h2>
             <p class="mt-2 text-md sm:text-lg md:text-xl lg:text-3xl font-extrabold text-green-500">
-              100
+              {{$admitted}}
             </p>
           </div>
         </div>

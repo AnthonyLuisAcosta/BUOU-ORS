@@ -31,7 +31,7 @@ class RedirectIfAuthenticated
             } elseif (Auth::guard($guard)->check() && Auth::user()->role_id == 4) {
                 return redirect()->route('adviser.dashboard');
             } elseif (Auth::guard($guard)->check() && Auth::user()->role_id == 5) {
-                return redirect()->route('applicant.dashboard');
+                return redirect()->route('dashboard');
             } else {
                 return $next($request);
             }
