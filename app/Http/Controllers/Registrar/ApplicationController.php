@@ -6,6 +6,7 @@ use App\Models\Application;
 use App\Models\Programs;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
 class ApplicationController extends Controller
@@ -31,58 +32,8 @@ class ApplicationController extends Controller
     public function create()
     {
         $programs = Programs::all();
-        return view('registrar.application.create')->with('programs', $programs);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        
-        $request->validate([
-            'lastName'          =>  'required',
-            'firstName'          =>  'required',
-            'middleName'          =>  'required',
-            'birthDate'          =>  'required',
-            'gender'          =>  'required',
-            'status',
-            'email'          =>  'required',
-            'phone'          =>  'required',
-            'company'          =>  'required',
-            'address'          =>  'required',
-            'programs_id'       => 'required',
-
-
-            'registrarImage'         =>  'required|file|mimes:jpg,png,jpeg,gif,svg,pdf,docx,doc'
-        ]);
-
-        $file_name = time() . '.' . request()->registrarImage->getClientOriginalExtension();
-
-        request()->registrarImage->move(public_path('requirements'), $file_name);
-
-        $application = new Application;
-
-        $application->lastName = $request->lastName;
-        $application->firstName = $request->firstName;
-        $application->middleName = $request->middleName;
-        $application->birthDate = $request->birthDate;
-        $application->gender = $request->gender;
-        $application->status;
-        $application->email = $request->email;
-        $application->phone = $request->phone;
-        $application->company = $request->company;
-        $application->address = $request->address;
-        $application->programs_id = $request->programs_id;
-        $application->registrarImage = $file_name;
-        #$application->programs_id = $programs_id;
-
-        $application->save();
-
-        return redirect()->route('registrar.application.index')->with('success', 'Application Added successfully.');
+        $application = Application::all();
+        return view('registrar.application.create')->with('programs', $programs)->with('application', $application);
     }
 
     /**
@@ -94,8 +45,11 @@ class ApplicationController extends Controller
     public function show(Application $application)
     {    
         $programs = Programs::all();
-        return view('registrar.application.show', compact('application'))->with('programs', $programs);
+        $id = Auth::user()->id;
+        $app = Application::all();
+        return view('registrar.application.show', compact('application'))->with('programs', $programs)->with('app', $app);
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -109,6 +63,7 @@ class ApplicationController extends Controller
         $programs = Programs::all();
         return view('registrar.application.edit', compact('application'))->with('programs',$programs)->with('application', $application);
     }
+    
 
     /**
      * Update the specified resource in storage.

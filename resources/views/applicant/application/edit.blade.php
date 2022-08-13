@@ -1,3 +1,4 @@
+
 <x-app-layout>
 
 	<x-slot name="header">
@@ -18,13 +19,7 @@
 					@method('PUT')
 					<div class="shadow overflow-hidden sm:rounded-md">
 						<div class="px-4 py-5 bg-white sm:p-6 border-0">
-							<!--Status-->
-							<div class="mt-4 col-span-2 pb-16">
-								<label class="font-bold mb-4 text-gray-700 block">Application Status</label>
-								<label class="font-bold box-border border text-center w-2/12 rounded-full block py-2 border-gray-300 text-gray-700">{{$application->status}}</label>
-								<x-jet-input class="form-control mt-1 w-full hidden" type="text" name="status" value="{{$application->status}}" required autofocus />				
-							</div>
-
+						
 							<label class="font-bold mb-1 text-gray-700 block">Applicant Information</label>
 							<div class="grid grid-cols-6  gap-4 border-t-2 border-gray-200">
 								<label class="font-medium mb-1 text-gray-600 pt-4 block col-span-6">Basic Information</label>
@@ -162,5 +157,8 @@
 		</div>
 	</div>
 
+	<style>
+		[x-cloak] { display: none }
+	</style>
 		
 </x-app-layout>

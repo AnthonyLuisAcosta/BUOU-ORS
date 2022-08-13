@@ -10,9 +10,10 @@
     <div class="block mb-8">
         <a href="{{ route('registrar.application.index') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Back to list</a>
     </div>
-
+    @foreach ($app as $app )
+        @if ($app->status == "Approved")
     <!--Status Button-->
-    
+
     <div class="inline-flex justify-end">
         <form method="post" action="{{ route('registrar.application.update', $application->id) }}">
             @csrf
@@ -41,6 +42,10 @@
             </div>
         </form>
     </div>
+
+    @endif
+
+    @endforeach
 
 
 
@@ -132,7 +137,9 @@
     </div>
 
     <style>
-        [x-cloak] { display: none }
+        [x-cloak] {
+            display: none
+        }
     </style>
 
 </x-app-layout>

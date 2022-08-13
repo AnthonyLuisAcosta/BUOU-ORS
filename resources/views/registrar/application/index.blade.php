@@ -9,7 +9,9 @@
 <div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 			
-            <div class="flex items-center justify-end px-3 py-4"></div>
+            <div class="flex items-center justify-end px-3 py-4">
+				<a href="{{ route('registrar.application.create') }}" class="ml-1 inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">View Amitted Applications</a>
+			</div>
 
 		<!--Container-->
 		<div class="container w-full mx-auto px-2">
@@ -41,13 +43,25 @@
 											<td>{{ $row->email }}</td>
 
 											@if($row->status == "Pending")
-												<td style="color:#f97316">{{ $row->status }}</td>
+												<td >
+												<span style="background-color: rgb(253 186 116);" class="inline-flex justify-center items-center px-5 py-1 ml-3 text-sm font-medium  rounded-full text-white">{{ $row->status }}</span>
+												</td>
 											@elseif($row->status == "Recommended")
-												<td class="text-blue-500 ">{{ $row->status }}</td>
+												<td>
+												<span class="inline-flex justify-center items-center px-5 py-1 ml-3 text-sm font-medium  rounded-full bg-blue-400 text-white">{{ $row->status }}</span>
+												</td>
 											@elseif($row->status == "Approved")
-												<td class="text-yellow-500 ">{{ $row->status }}</td>
+												<td>
+												<span class="inline-flex justify-center items-center px-5 py-1 ml-3 text-sm font-medium  rounded-full bg-yellow-300 text-white">{{ $row->status }}</span>
+												</td>
 											@elseif($row->status == "Admitted")
-												<td class="text-green-500">{{ $row->status }}</td>
+												<td>
+												<span class="inline-flex justify-center items-center px-5 py-1 ml-3 text-sm font-medium  rounded-full bg-green-400 text-white">{{ $row->status }}</span>
+												</td>
+											@elseif($row->status == "Rejected")
+												<td>
+												<span class="inline-flex justify-center items-center px-5 py-1 ml-3 text-sm font-medium  rounded-full bg-red-400 text-white">{{ $row->status }}</span>
+												</td>
 											@endif
 											
 											@foreach($programs as $program)
