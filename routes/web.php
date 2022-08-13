@@ -38,6 +38,7 @@ Route::group(['as' => 'registrar.', 'prefix' => 'registrar', 'middleware' => ['a
     Route::get('/dashboard', [App\Http\Controllers\Registrar\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('programs', App\Http\Controllers\Registrar\ProgramsController::class);
     Route::resource('application', App\Http\Controllers\Registrar\ApplicationController::class);
+    Route::resource('terms', App\Http\Controllers\Registrar\TermsController::class);
 });
 
 //DEAN ROUTES
