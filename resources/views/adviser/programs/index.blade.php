@@ -40,12 +40,16 @@
 						</thead>
 						<tbody>
 							@foreach($applications as $application)
+							 @foreach($programs as $program)
+							 	@if($application->programs_id == $program->id && $program->adviser == Auth::user()->id)
 								<tr>
 								<td>{{ $application->id }}</td>
 								<td>{{ $application->firstName.' '. $application->lastName }}</td>
 								<td>{{ $application->email }}</td>	
 								<td>{{ $application->phone }}</td>
 								</tr>
+								@endif
+								@endforeach
 							@endforeach
 						</tbody>
 					</table>
