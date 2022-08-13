@@ -16,11 +16,16 @@
 
 						<!--Program info -->
 						<div class="shadow overflow-hidden sm:rounded-md pt-1 block mb-7 bg-gray-300">
-							<div class="px-6 sm:p-4 font-semibold"> MY PROGRAM</div>
+							<div class="px-6 sm:p-5 font-semibold"> MY PROGRAM</div>
 							<div class="px-4 py-5 bg-white sm:p-6">
 								<div><strong>Code: </strong><span>{{ $program->code }}</span></div>
 								<div><strong>Description: </strong><span>{{ $program->description }}</span></div>
-								<div><strong>Term: </strong><span>waiting pa sa terms module</span></div>
+								@foreach($terms as $term)
+									@if($term->status == 1)
+									<div><strong>Term: </strong>
+										<span>{{$term->year.' '.$term->label}}</span></div>
+									@endif
+								@endforeach
 							</div>
 						</div>
 
@@ -28,6 +33,8 @@
 				@endforeach
 
 				<!--Card-->
+				<div class="shadow overflow-hidden sm:rounded-md pt-1 block mb-7 bg-gray-300">
+				<div class="px-6 sm:p-5 font-semibold">ADMITTED APPLICANTS UNDER MY PROGRAM</div>
 				<div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
 					<table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
 						<thead>
@@ -40,16 +47,21 @@
 						</thead>
 						<tbody>
 							@foreach($applications as $application)
+							 @foreach($programs as $program)
+							 	@if($application->programs_id == $program->id &&$application->status == 'Admitted' && $program->adviser == Auth::user()->id)
 								<tr>
 								<td>{{ $application->id }}</td>
 								<td>{{ $application->firstName.' '. $application->lastName }}</td>
 								<td>{{ $application->email }}</td>	
 								<td>{{ $application->phone }}</td>
 								</tr>
+								@endif
+								@endforeach
 							@endforeach
 						</tbody>
 					</table>
 				</div>
+			</div>
 				<!--/Card-->
 			</div>
 			<!--/container-->

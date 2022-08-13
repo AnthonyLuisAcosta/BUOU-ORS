@@ -26,10 +26,13 @@ class ProgramsTableSeeder extends Seeder
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
 
-        /*DB::table('programs')->insert([
+        DB::table('programs')->insert([
             'id' => '2',
             'code' => 'MLGM',
             'description' => 'Master in Local Government Management',
+            'adviser' => '5',
+            'dean' => '3',
+            'registrar' => '2',
             'created_at'  => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
@@ -38,11 +41,14 @@ class ProgramsTableSeeder extends Seeder
             'id' => '3',
             'code' => 'MPA',
             'description' => 'Master of Public Administration',
+            'adviser' => '6',
+            'dean' => '3',
+            'registrar' => '2',
             'created_at'  => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
 
-        DB::table('programs')->insert([
+       /* DB::table('programs')->insert([
             'id' => '4',
             'code' => 'MAELM',
             'description' => 'Master in Education Leadership Management',
@@ -50,7 +56,7 @@ class ProgramsTableSeeder extends Seeder
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
 
-        DB::table('programs')->insert([
+        /*DB::table('programs')->insert([
             'id' => '5',
             'code' => 'MAEngEd',
             'description' => 'Master of Arts in English Education',
