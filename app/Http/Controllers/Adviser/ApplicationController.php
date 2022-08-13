@@ -144,6 +144,7 @@ class ApplicationController extends Controller
             $application->address = $request->input('address');
 
             $application->programs_id = $request->input('programs_id');
+            $application->adviser = $request->input('adviser');
         
         #$request->validate([
         #'lastName',          

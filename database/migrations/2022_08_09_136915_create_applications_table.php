@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('company');
             $table->string('address');
             $table->string('applicantImage');
+            $table->string('adviser');
 
             $table->unsignedInteger('applicant_id');
 
@@ -38,14 +39,13 @@ return new class extends Migration
             ->references('id')->on('programs')
             ->onDelete('cascade');
             
-
+            
             $table->unsignedInteger('subjects_id');
             $table->foreign('subjects_id')
             ->references('id')->on('subjects')
             ->onDelete('cascade');
             
             
-          
         });
     }
 

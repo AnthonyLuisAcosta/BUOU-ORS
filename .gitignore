@@ -132,3 +132,17 @@ public/build/manifest.json
 public/build/assets/app.123e0070.js
 public/build/assets/app.3529807e.css
 public/build/assets/app.d40bae24.css
+public/requirements/1660372378.png
+public/requirements/1660377953.png
+.gitignore
+app/Http/Controllers/Applicant/ApplicationController.php
+public/requirements/1660389970.png
+public/requirements/1660390075.png
+public/requirements/1660390302.png
+public/requirements/1660392032.png
+public/requirements/1660392079.png
+public/requirements/1660392106.png
+public/requirements/1660392217.png
+public/requirements/1660392246.png
+database/migrations/2022_08_09_136915_create_applications_table.php
+.gitignore

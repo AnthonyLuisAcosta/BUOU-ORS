@@ -49,7 +49,7 @@ class ApplicationController extends Controller
      */
     public function store(Request $request)
     {
-
+        $programs = Programs::all();
         $request->validate([
             'lastName'          =>  'required',
             'firstName'          =>  'required',
@@ -64,6 +64,7 @@ class ApplicationController extends Controller
             'programs_id'       => 'required',
             'subjects_id'       => 'required',
             'applicant_id'      => 'required',
+            'adviser'  ,
 
             'applicantImage'         =>  'required|file|mimes:jpg,png,jpeg,gif,svg,pdf,docx,doc'
         ]);
@@ -86,11 +87,14 @@ class ApplicationController extends Controller
         $application->address = $request->address;
         $application->subjects_id = $request->subjects_id;
         $application->programs_id = $request->programs_id;
-        $application->applicantImage = $file_name;
-        #$application->programs_id = $programs_id;
-
         $application->applicant_id = $request->applicant_id;
 
+        $application->applicantImage = $file_name;
+        #$application->programs_id = $programs_id;
+        foreach($programs as $prog){
+            if($prog->id == $application->programs_id )
+            $application->adviser = $prog->adviser;
+        }
         $application->save();
         //ROUTE MODIFIED BASED ON DEFINED ROUTES ON ROUTE:LIST
         return redirect()->route('application.index')->with('success', 'Application Added successfully.');
@@ -149,7 +153,7 @@ class ApplicationController extends Controller
             $application->lastName = $request->input('lastName');
             $application->birthDate = $request->input('birthDate');
             $application->gender = $request->input('gender');
-            $application->status = $request->input('status');
+            $application->status;
             $application->email = $request->input('email');
             $application->phone = $request->input('phone');
             $application->company = $request->input('company');
@@ -157,7 +161,7 @@ class ApplicationController extends Controller
 
 
             $application->programs_id = $request->input('programs_id');
-            $application->applicant_id = $request->input('applicant_id');
+            $application->applicant_id;
             #$request->validate([
             #'lastName',          
             #'middleName',          
