@@ -54,6 +54,25 @@ class UsersTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
+            'role_id' => '4',
+            'first_name' => 'Program Adviser 2',
+            'email' => 'adviser2@gmail.com',
+            'password' => Hash::make('pass@adviser'),
+            'created_at'  => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+        ]);
+
+        DB::table('users')->insert([
+            'role_id' => '4',
+            'first_name' => 'Program Adviser 3',
+            'email' => 'adviser3@gmail.com',
+            'password' => Hash::make('pass@adviser'),
+            'created_at'  => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+        ]);
+
+
+        DB::table('users')->insert([
             'role_id' => '5',
             'first_name' => 'Applicant',
             'email' => 'applicant@gmail.com',
