@@ -41,7 +41,7 @@ class ApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $request->validate([
             'lastName'          =>  'required',
             'firstName'          =>  'required',
@@ -91,7 +91,7 @@ class ApplicationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Application $application)
-    {    
+    {
         $programs = Programs::all();
         return view('dean.application.show', compact('application'))->with('programs', $programs);
     }
@@ -103,10 +103,10 @@ class ApplicationController extends Controller
      * @param  \App\Models\Programs  $programs
      * @return \Illuminate\Http\Response
      */
-    public function edit(Application $application, Programs $programs )
+    public function edit(Application $application, Programs $programs)
     {
         $programs = Programs::all();
-        return view('dean.application.edit', compact('application'))->with('programs',$programs)->with('application', $application);
+        return view('dean.application.edit', compact('application'))->with('programs', $programs)->with('application', $application);
     }
 
     /**
@@ -117,77 +117,27 @@ class ApplicationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $count = count($request->all());
 
-        if($count == 4){
+        if ($count == 4) {
 
             $application = Application::find($id);
             $application->status = $request->input('status');
-
+            $application->update();
+            return redirect()->route('dean.application.index')->with('success', 'Application has been updated successfully');
             #return dd($count);
 
-        }else{
-            $programs = Programs::all();
-
-            $application = Application::find($id);
-         
-            $application->status = $request->input('status');
-  
-        
-        #$request->validate([
-        #'lastName',          
-        #'middleName',          
-        #'birthDate',          
-        #'gender' ,
-        #'status' => 'required',
-        #'email' ,         
-        #'phone'   ,
-        #'company' ,
-        #'address',
-        #'applicantImage'     =>'image|mimes:jpg,png,jpeg,gif,svg'
-        #]);
-
-        if ($request->hasfile('applicantImage')) {
-            $destination = 'requirements' . $application->applicantImage;
-            if (File::exists($destination)) {
-                File::delete($destination);
-            }
-            $file = $request->file('applicantImage');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            $file->move('requirements', $filename);
-            $application->applicantImage = $filename;
+        } else {
+            $application = Application::all();
+            foreach ($application as $app) {
+                if ($app->status == "Recommended") {
+                    $app->status = $request->input('status');
+                    $app->update();
+                }
+            };
+            return redirect()->route('dean.application.index')->with('success', 'All application has been updated successfully');
         }
-    }
-        #$applicantImage = $request->hidden_applicantImage;
-
-        #if($request->applicantImage != '')
-        #{
-        #    $applicantImage = time() . '.' . request()->applicantImage->getClientOriginalExtension();
-
-        #   request()->applicantImage->move(public_path('requirements'), $applicantImage);
-        #}
-
-        #$application = Application::find($request->hidden_id);
-
-        #$application->firstName = $request->firstName;
-        #$application->middleName = $request->middleName;
-        #$application->LastName  = $request->lastName;
-        #$application->birthDate  = $request->birthDate;
-        #$application->gender  = $request->gender;
-        #$application->status = $request->status;
-        #$application->email  = $request->email;
-        #$application->phone  = $request->phone;
-         #$application->company  = $request->company;
-        #$application->address  = $request->address;
-
-        #$application->applicantImage = $applicantImage;
-
-
-        $application->update();
-
-        return redirect()->route('dean.application.index')->with('success', 'Application has been updated successfully');
     }
 
     /**
@@ -202,5 +152,4 @@ class ApplicationController extends Controller
 
         return redirect()->route('dean.application.index')->with('success', 'Application deleted successfully!');
     }
-
 }
