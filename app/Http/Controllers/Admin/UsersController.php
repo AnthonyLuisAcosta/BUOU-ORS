@@ -9,6 +9,9 @@ use App\Models\User;
 use App\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use App\Notifications\SignUpEmail;
+use App\Rules\AcceptGmailOnly;
+use Laravel\Jetstream\Jetstream;
+use Laravel\Fortify\Rules\Password;
 
 class UsersController extends Controller
 {
@@ -47,6 +50,14 @@ class UsersController extends Controller
     public function store(StoreUserRequest $request)
     {
         /**/
+        $request->validate([
+            'role_id' => ['required', 'numeric', 'max:11'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'middle_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users', new AcceptGmailOnly],
+            'password' => ['required', 'string', new Password],
+        ]);
         $input = $request->all();
         $user = User::create([
             'role_id' => $input['role_id'],
