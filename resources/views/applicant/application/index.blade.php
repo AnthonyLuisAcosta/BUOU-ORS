@@ -109,7 +109,7 @@
 											@if ($row->status == "Rejected")
 												<!--DELETE BUTTON-->
 												<div id="{{$row->id}}" class="modal">
-													<p>Are you sure you want to delete account?</p>
+													<p>Are you sure you want to delete this application?</p>
 													<div class="text-right">
 													<form class="inline-block" action="{{ route('application.destroy', $row->id) }}" method="POST">
 														<input type="hidden" name="_method" value="DELETE">
