@@ -47,14 +47,15 @@ Route::group(['as' => 'registrar.', 'prefix' => 'registrar', 'middleware' => ['a
 Route::group(['as' => 'dean.', 'prefix' => 'dean', 'middleware' => ['auth', 'dean']], function () {
     Route::get('/dashboard', [App\Http\Controllers\Dean\DashboardController::class, 'index'])->name('dashboard');
     Route::get('/programs', [App\Http\Controllers\Dean\ProgramsController::class, 'index']);
+    Route::get('/subjects', [App\Http\Controllers\Dean\SubjectsController::class, 'index']);
     Route::resource('application', App\Http\Controllers\Dean\ApplicationController::class);
 });
 
 //ADVISER ROUTES
 Route::group(['as' => 'adviser.', 'prefix' => 'adviser', 'middleware' => ['auth', 'adviser']], function () {
     Route::get('/dashboard', [App\Http\Controllers\Adviser\DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('programs', App\Http\Controllers\Adviser\ProgramsController::class);
-    Route::resource('subjects', App\Http\Controllers\Adviser\SubjectsController::class);
+    Route::get('/programs', [App\Http\Controllers\Adviser\ProgramsController::class, 'index']);
+    Route::get('/subjects', [App\Http\Controllers\Adviser\SubjectsController::class, 'index']);
     Route::resource('application', App\Http\Controllers\Adviser\ApplicationController::class);
 });
 
