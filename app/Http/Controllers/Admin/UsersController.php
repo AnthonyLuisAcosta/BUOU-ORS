@@ -8,6 +8,7 @@ use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Support\Facades\Hash;
+use App\Notifications\SignUpEmail;
 
 class UsersController extends Controller
 {
@@ -47,7 +48,7 @@ class UsersController extends Controller
     {
         /**/
         $input = $request->all();
-        User::create([
+        $user = User::create([
             'role_id' => $input['role_id'],
             'first_name' => $input['first_name'],
             'middle_name' => $input['middle_name'],
@@ -55,6 +56,7 @@ class UsersController extends Controller
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
+        $user->notify(new SignUpEmail());
         return redirect()->route('admin.users.index')->with('success', 'User Created.');
     }
 

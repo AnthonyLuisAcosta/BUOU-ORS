@@ -6,7 +6,10 @@ use App\Models\Application;
 use App\Models\Programs;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Notifications\ApplicationRecommendedEmail;
+use App\Notifications\ApplicationRejectedEmail;
 use Illuminate\Support\Facades\File;
+use Illuminate\Notifications\Notifiable;
 
 class ApplicationController extends Controller
 {
@@ -42,7 +45,7 @@ class ApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $request->validate([
             'lastName'          =>  'required',
             'firstName'          =>  'required',
@@ -92,7 +95,7 @@ class ApplicationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Application $application)
-    {    
+    {
         $programs = Programs::all();
         return view('adviser.application.show', compact('application'))->with('programs', $programs);
     }
@@ -104,10 +107,10 @@ class ApplicationController extends Controller
      * @param  \App\Models\Programs  $programs
      * @return \Illuminate\Http\Response
      */
-    public function edit(Application $application, Programs $programs )
+    public function edit(Application $application, Programs $programs)
     {
         $programs = Programs::all();
-        return view('adviser.application.edit', compact('application'))->with('programs',$programs)->with('application', $application);
+        return view('adviser.application.edit', compact('application'))->with('programs', $programs)->with('application', $application);
     }
 
     /**
@@ -118,17 +121,23 @@ class ApplicationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $count = count($request->all());
 
-        if($count == 4){
+        if ($count == 4) {
 
             $application = Application::find($id);
             $application->status = $request->input('status');
-
+            if ($request->input('status') == "Recommended") {
+                //If recommend button was pressed
+                $application->notify(new ApplicationRecommendedEmail());
+            } else if ($request->input('status') == "Rejected") {
+                //If reject button was pressed
+                $application->notify(new ApplicationRejectedEmail());
+            }
             #return dd($count);
 
-        }else{
+        } else {
             $programs = Programs::all();
 
             $application = Application::find($id);
@@ -145,32 +154,32 @@ class ApplicationController extends Controller
 
             $application->programs_id = $request->input('programs_id');
             $application->adviser = $request->input('adviser');
-        
-        #$request->validate([
-        #'lastName',          
-        #'middleName',          
-        #'birthDate',          
-        #'gender' ,
-        #'status' => 'required',
-        #'email' ,         
-        #'phone'   ,
-        #'company' ,
-        #'address',
-        #'applicantImage'     =>'image|mimes:jpg,png,jpeg,gif,svg'
-        #]);
 
-        if ($request->hasfile('applicantImage')) {
-            $destination = 'requirements' . $application->applicantImage;
-            if (File::exists($destination)) {
-                File::delete($destination);
+            #$request->validate([
+            #'lastName',          
+            #'middleName',          
+            #'birthDate',          
+            #'gender' ,
+            #'status' => 'required',
+            #'email' ,         
+            #'phone'   ,
+            #'company' ,
+            #'address',
+            #'applicantImage'     =>'image|mimes:jpg,png,jpeg,gif,svg'
+            #]);
+
+            if ($request->hasfile('applicantImage')) {
+                $destination = 'requirements' . $application->applicantImage;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('applicantImage');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('requirements', $filename);
+                $application->applicantImage = $filename;
             }
-            $file = $request->file('applicantImage');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            $file->move('requirements', $filename);
-            $application->applicantImage = $filename;
         }
-    }
         #$applicantImage = $request->hidden_applicantImage;
 
         #if($request->applicantImage != '')
@@ -190,7 +199,7 @@ class ApplicationController extends Controller
         #$application->status = $request->status;
         #$application->email  = $request->email;
         #$application->phone  = $request->phone;
-         #$application->company  = $request->company;
+        #$application->company  = $request->company;
         #$application->address  = $request->address;
 
         #$application->applicantImage = $applicantImage;

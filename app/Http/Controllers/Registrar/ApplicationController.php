@@ -6,6 +6,8 @@ use App\Models\Application;
 use App\Models\Programs;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Notifications\ApplicationAdmissionEmail;
+use App\Notifications\ApplicationRejectedEmail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
@@ -43,7 +45,7 @@ class ApplicationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Application $application)
-    {    
+    {
         $programs = Programs::all();
         $id = Auth::user()->id;
         $app = Application::all();
@@ -58,12 +60,12 @@ class ApplicationController extends Controller
      * @param  \App\Models\Programs  $programs
      * @return \Illuminate\Http\Response
      */
-    public function edit(Application $application, Programs $programs )
+    public function edit(Application $application, Programs $programs)
     {
         $programs = Programs::all();
-        return view('registrar.application.edit', compact('application'))->with('programs',$programs)->with('application', $application);
+        return view('registrar.application.edit', compact('application'))->with('programs', $programs)->with('application', $application);
     }
-    
+
 
     /**
      * Update the specified resource in storage.
@@ -73,17 +75,24 @@ class ApplicationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $count = count($request->all());
 
-        if($count == 4){
+        if ($count == 4) {
 
             $application = Application::find($id);
             $application->status = $request->input('status');
+            if ($request->input('status') == "Admitted") {
+                //If approve button was pressed
+                $application->notify(new ApplicationAdmissionEmail());
+            } else if ($request->input('status') == "Rejected") {
+                //If reject button was pressed
+                $application->notify(new ApplicationRejectedEmail());
+            }
 
             #return dd($count);
 
-        }else{
+        } else {
             $programs = Programs::all();
 
             $application = Application::find($id);
@@ -99,32 +108,32 @@ class ApplicationController extends Controller
             $application->address = $request->input('address');
 
             $application->programs_id = $request->input('programs_id');
-        
-        #$request->validate([
-        #'lastName',          
-        #'middleName',          
-        #'birthDate',          
-        #'gender' ,
-        #'status' => 'required',
-        #'email' ,         
-        #'phone'   ,
-        #'company' ,
-        #'address',
-        #'registrarImage'     =>'image|mimes:jpg,png,jpeg,gif,svg'
-        #]);
 
-        if ($request->hasfile('registrarImage')) {
-            $destination = 'requirements' . $application->registrarImage;
-            if (File::exists($destination)) {
-                File::delete($destination);
+            #$request->validate([
+            #'lastName',          
+            #'middleName',          
+            #'birthDate',          
+            #'gender' ,
+            #'status' => 'required',
+            #'email' ,         
+            #'phone'   ,
+            #'company' ,
+            #'address',
+            #'registrarImage'     =>'image|mimes:jpg,png,jpeg,gif,svg'
+            #]);
+
+            if ($request->hasfile('registrarImage')) {
+                $destination = 'requirements' . $application->registrarImage;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('registrarImage');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('requirements', $filename);
+                $application->registrarImage = $filename;
             }
-            $file = $request->file('registrarImage');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            $file->move('requirements', $filename);
-            $application->registrarImage = $filename;
         }
-    }
         #$registrarImage = $request->hidden_registrarImage;
 
         #if($request->registrarImage != '')
@@ -144,7 +153,7 @@ class ApplicationController extends Controller
         #$application->status = $request->status;
         #$application->email  = $request->email;
         #$application->phone  = $request->phone;
-         #$application->company  = $request->company;
+        #$application->company  = $request->company;
         #$application->address  = $request->address;
 
         #$application->registrarImage = $registrarImage;

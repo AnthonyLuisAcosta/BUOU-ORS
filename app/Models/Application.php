@@ -6,20 +6,24 @@ use App\Models\Programs;
 use App\Models\Selectedsub;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Notifications\Notifiable;
 
 class Application extends Model
 {
     use HasFactory;
+    use Notifiable;
     protected $primaryKey = 'id';
-    protected $fillable = ['lastName', 'firstName', 'middleName', 'birthDate', 'gender', 'email', 'phone', 'status', 'company', 'address','applicantImage', 'programs_id', 'subjects_id', 'applicant_id, adviser'];
+    protected $fillable = ['lastName', 'firstName', 'middleName', 'birthDate', 'gender', 'email', 'phone', 'status', 'company', 'address', 'applicantImage', 'programs_id', 'subjects_id', 'applicant_id, adviser'];
     protected $table = 'applications';
 
-    public function programs(){
+    public function programs()
+    {
 
-        return $this->hasMany(Programs::class); 
+        return $this->hasMany(Programs::class);
     }
-    
-    public function Selectedsub(){
+
+    public function Selectedsub()
+    {
 
         return $this->hasMany(Selectedsub::class);
     }
