@@ -8,6 +8,7 @@ use App\Models\Subjects;
 use App\Models\Application;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Notifications\NewApplicationEmail;
 use Illuminate\Support\Facades\File;
 
 class ApplicationController extends Controller
@@ -64,7 +65,7 @@ class ApplicationController extends Controller
             'programs_id'       => 'required',
             'subjects_id'       => 'required',
             'applicant_id'      => 'required',
-            'adviser'  ,
+            'adviser',
 
             'applicantImage'         =>  'required|file|mimes:jpg,png,jpeg,gif,svg,pdf,docx,doc'
         ]);
@@ -91,10 +92,12 @@ class ApplicationController extends Controller
 
         $application->applicantImage = $file_name;
         #$application->programs_id = $programs_id;
-        foreach($programs as $prog){
-            if($prog->id == $application->programs_id )
-            $application->adviser = $prog->adviser;
+        foreach ($programs as $prog) {
+            if ($prog->id == $application->programs_id)
+                $application->adviser = $prog->adviser;
         }
+        //NEW APPLICATION MAIL
+        $application->notify(new NewApplicationEmail());
         $application->save();
         //ROUTE MODIFIED BASED ON DEFINED ROUTES ON ROUTE:LIST
         return redirect()->route('application.index')->with('success', 'Application Added successfully.');

@@ -9,11 +9,16 @@ use App\Models\Application;
 use App\Models\Selectedsub;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Notifications\ApplicationAdmissionEmail;
+use App\Notifications\ApplicationApprovalEmail;
+use App\Notifications\ApplicationPendingEmail;
+use App\Notifications\ApplicationRecommendedEmail;
+use App\Notifications\ApplicationRejectedEmail;
 use Illuminate\Support\Facades\File;
 
 class ApplicationController extends Controller
 {
-/**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -105,7 +110,7 @@ class ApplicationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Application $application)
-    {    
+    {
         $programs = Programs::all();
         return view('admin.application.show', compact('application'))->with('programs', $programs);
     }
@@ -117,10 +122,10 @@ class ApplicationController extends Controller
      * @param  \App\Models\Programs  $programs
      * @return \Illuminate\Http\Response
      */
-    public function edit(Application $application, Programs $programs )
+    public function edit(Application $application, Programs $programs)
     {
         $programs = Programs::all();
-        return view('admin.application.edit', compact('application'))->with('programs',$programs)->with('application', $application);
+        return view('admin.application.edit', compact('application'))->with('programs', $programs)->with('application', $application);
     }
 
     /**
@@ -131,17 +136,16 @@ class ApplicationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $count = count($request->all());
 
-        if($count == 4){
+        if ($count == 4) {
 
             $application = Application::find($id);
             $application->status = $request->input('status');
 
             #return dd($count);
-
-        }else{
+        } else {
             $programs = Programs::all();
 
             $application = Application::find($id);
@@ -157,32 +161,45 @@ class ApplicationController extends Controller
             $application->address = $request->input('address');
 
             $application->programs_id = $request->input('programs_id');
-        
-        #$request->validate([
-        #'lastName',          
-        #'middleName',          
-        #'birthDate',          
-        #'gender' ,
-        #'status' => 'required',
-        #'email' ,         
-        #'phone'   ,
-        #'company' ,
-        #'address',
-        #'applicantImage'     =>'image|mimes:jpg,png,jpeg,gif,svg'
-        #]);
 
-        if ($request->hasfile('applicantImage')) {
-            $destination = 'requirements' . $application->applicantImage;
-            if (File::exists($destination)) {
-                File::delete($destination);
+            #$request->validate([
+            #'lastName',          
+            #'middleName',          
+            #'birthDate',          
+            #'gender' ,
+            #'status' => 'required',
+            #'email' ,         
+            #'phone'   ,
+            #'company' ,
+            #'address',
+            #'applicantImage'     =>'image|mimes:jpg,png,jpeg,gif,svg'
+            #]);
+
+            if ($request->hasfile('applicantImage')) {
+                $destination = 'requirements' . $application->applicantImage;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('applicantImage');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('requirements', $filename);
+                $application->applicantImage = $filename;
             }
-            $file = $request->file('applicantImage');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            $file->move('requirements', $filename);
-            $application->applicantImage = $filename;
+            if ($request->input('status') == "Admitted") {
+                //If approve button was pressed
+                $application->notify(new ApplicationAdmissionEmail());
+            } else if ($request->input('status') == "Approved") {
+                $application->notify(new ApplicationApprovalEmail());
+            } else if ($request->input('status') == "Recommended") {
+                $application->notify(new ApplicationRecommendedEmail());
+            } else if ($request->input('status') == "Pending") {
+                $application->notify(new ApplicationPendingEmail());
+            } else if ($request->input('status') == "Rejected") {
+                //If reject button was pressed
+                $application->notify(new ApplicationRejectedEmail());
+            }
         }
-    }
         #$applicantImage = $request->hidden_applicantImage;
 
         #if($request->applicantImage != '')
@@ -202,7 +219,7 @@ class ApplicationController extends Controller
         #$application->status = $request->status;
         #$application->email  = $request->email;
         #$application->phone  = $request->phone;
-         #$application->company  = $request->company;
+        #$application->company  = $request->company;
         #$application->address  = $request->address;
 
         #$application->applicantImage = $applicantImage;

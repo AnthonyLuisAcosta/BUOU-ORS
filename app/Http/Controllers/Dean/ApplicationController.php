@@ -6,6 +6,9 @@ use App\Models\Application;
 use App\Models\Programs;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Notifications\ApplicationApprovalEmail;
+use App\Notifications\ApplicationRecommendedEmail;
+use App\Notifications\ApplicationRejectedEmail;
 use Illuminate\Support\Facades\File;
 
 class ApplicationController extends Controller
@@ -125,6 +128,13 @@ class ApplicationController extends Controller
             $application = Application::find($id);
             $application->status = $request->input('status');
             $application->update();
+            if ($request->input('status') == "Approved") {
+                //If recommend button was pressed
+                $application->notify(new ApplicationApprovalEmail());
+            } else if ($request->input('status') == "Rejected") {
+                //If reject button was pressed
+                $application->notify(new ApplicationRejectedEmail());
+            }
             return redirect()->route('dean.application.index')->with('success', 'Application has been updated successfully');
             #return dd($count);
 
