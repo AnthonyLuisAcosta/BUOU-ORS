@@ -4,6 +4,13 @@
       {{ __('Users') }} | <span class=" text-md text-gray-500">{{__('Create User')}}</span>
     </h2>
   </x-slot>
+  <x-jet-validation-errors class="mb-4" />
+
+  @if (session('status'))
+  <div class="mb-4 font-medium text-sm text-green-600">
+    {{ session('status') }}
+  </div>
+  @endif
 
   <div>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -41,9 +48,6 @@
                 <div class="mt-4">
                   <x-jet-label for="email" value="{{ __('Email') }}" />
                   <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-                  @error('email')
-                  <p class="text-sm text-red-600">This email is already taken.</p>
-                  @enderror
                 </div>
 
                 <div class="mt-4">
