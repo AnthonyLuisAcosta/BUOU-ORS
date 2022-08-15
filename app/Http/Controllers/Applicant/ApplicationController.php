@@ -95,7 +95,7 @@ class ApplicationController extends Controller
         $application->programs_id = $request->programs_id;
         $application->applicant_id = $request->applicant_id;
 
-        
+        $application->subject1 = $request->subject1;
         $application->subject2 = $request->subject2;
         $application->subject3 = $request->subject3;
 
@@ -105,9 +105,18 @@ class ApplicationController extends Controller
             if ($prog->id == $application->programs_id)
                 $application->adviser = $prog->adviser;
         }
+
+        
         foreach($subjects as $sub){
-            if($application->programs_id == $sub->programs_id){
-                $application->subject1 = $request->subject1;
+            if($application->subject1 == $sub->id){
+                $selected = Subjects::where('id', $application->subject1)->first()->programs_id;
+            if($application->programs_id == $selected){
+                $application->notify(new NewApplicationEmail());
+                $application->save();
+            }else
+                dd($selected);
+            
+                
         }
 
         }
