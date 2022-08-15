@@ -17,11 +17,6 @@
                 <span class="flex-1 ml-1 whitespace-nowrap">Back to list</span>
                 </a>
             </div>
-
-            <!-- View List of Subjects Button -->
-            <!--<div class="flex items-center justify-end px-3 py-4">
-                <a href="{{ route('admin.subjects.list') }}" class=" px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">List of Subjects</a>
-            </div>-->
             
             <div class="flex flex-col">
                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

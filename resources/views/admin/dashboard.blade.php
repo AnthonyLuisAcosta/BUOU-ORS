@@ -155,7 +155,7 @@
             <!--END MODAL-->
             <!--MODAL BUTTON-->
             <div class="text-right">
-              <a href="#{{$value->id}}" rel="modal:open" class="bg-amber-200 hover:bg-amber-300 hover:text-black rounded-md px-4 py-1 text-xs lg:text-xs text-gray-700 cursor-pointer">EDIT</a>
+              <a href="{{$value->id}}" rel="modal:open" class="bg-amber-200 hover:bg-amber-300 hover:text-black rounded-md px-4 py-1 text-xs lg:text-xs text-gray-700 cursor-pointer">EDIT</a>
             </div>
             <p class="mt-2 text-xs sm:text-sm md:text-md lg:text-lg">
               For a short tutorial on how to file an application and how the online admission system works please see :
