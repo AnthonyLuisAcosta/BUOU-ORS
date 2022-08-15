@@ -146,6 +146,7 @@
                     <option selected>Select Program</option>
                     @foreach($programs as $row)
                     <option class="block mt-1 w-full" name="programs_id" value="{{ $row->id}}">{{ $row->description}}</option>
+
                     @endforeach
                     </select>
 
@@ -153,11 +154,29 @@
 								<div class="mt-4 col-span-6">
 									<label class="pb-4 font-bold mb-1 text-gray-700 block border-b-2 border-gray-200">Subject Selection</label>
 
-									<x-jet-label for="programs_id" value=" Programs" class="pt-6" />
-									<select name="subjects_id" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
+									<x-jet-label for="programs_id" value=" Subjects" class="pt-6" />
+									<select name="subject1" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
 										<option selected>Select Subject</option>
 										@foreach($subjects as $row)		
-										<option class="block mt-1 w-full" name="subjects_id" value="{{ $row->id}}">{{ $row->title}}</option>
+										<option class="block mt-1 w-full" name="subject1" value="{{ $row->id}}">{{ $row->title}}</option>
+										@endforeach
+
+									</select>
+
+                  <x-jet-label for="programs_id" value=" Subjects" class="pt-6" />
+									<select name="subject2" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
+										<option selected disabled>Select Subject</option>
+										@foreach($subjects as $row)		
+										<option class="block mt-1 w-full" name="subject2" value="{{ $row->id}}">{{ $row->title}}</option>
+										@endforeach
+
+									</select>
+
+                  <x-jet-label for="programs_id" value=" Subjects" class="pt-6" />
+									<select name="subject3" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
+										<option selected disabled>Select Subject</option>
+										@foreach($subjects as $row)		
+										<option class="block mt-1 w-full" name="subject3" value="{{ $row->id}}">{{ $row->title}}</option>
 										@endforeach
 
 									</select>

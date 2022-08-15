@@ -51,6 +51,7 @@ class ApplicationController extends Controller
     public function store(Request $request)
     {
         $programs = Programs::all();
+        $subjects = Subjects::all();
         $request->validate([
             'lastName'          =>  'required',
             'firstName'          =>  'required',
@@ -63,9 +64,13 @@ class ApplicationController extends Controller
             'company'          =>  'required',
             'address'          =>  'required',
             'programs_id'       => 'required',
-            'subjects_id'       => 'required',
+            #'subjects_id'       => 'required',
             'applicant_id'      => 'required',
             'adviser',
+
+            'subject1' => 'required',
+            'subject2',
+            'subject3',
 
             'applicantImage'         =>  'required|file|mimes:jpg,png,jpeg,gif,svg,pdf,docx,doc'
         ]);
@@ -86,15 +91,25 @@ class ApplicationController extends Controller
         $application->phone = $request->phone;
         $application->company = $request->company;
         $application->address = $request->address;
-        $application->subjects_id = $request->subjects_id;
+        #$application->subjects_id = $request->subjects_id;
         $application->programs_id = $request->programs_id;
         $application->applicant_id = $request->applicant_id;
+
+        
+        $application->subject2 = $request->subject2;
+        $application->subject3 = $request->subject3;
 
         $application->applicantImage = $file_name;
         #$application->programs_id = $programs_id;
         foreach ($programs as $prog) {
             if ($prog->id == $application->programs_id)
                 $application->adviser = $prog->adviser;
+        }
+        foreach($subjects as $sub){
+            if($application->programs_id == $sub->programs_id){
+                $application->subject1 = $request->subject1;
+        }
+
         }
         //NEW APPLICATION MAIL
         $application->notify(new NewApplicationEmail());

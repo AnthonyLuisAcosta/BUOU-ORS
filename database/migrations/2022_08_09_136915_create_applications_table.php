@@ -31,6 +31,10 @@ return new class extends Migration
 
             $table->unsignedInteger('applicant_id');
 
+            $table->unsignedInteger('subject1')->nullable();
+            $table->unsignedInteger('subject2')->nullable();
+            $table->unsignedInteger('subject3')->nullable();
+
             $table->timestamps();
 
 
@@ -39,11 +43,7 @@ return new class extends Migration
             ->references('id')->on('programs')
             ->onDelete('cascade');
             
-            
-            $table->unsignedInteger('subjects_id');
-            $table->foreign('subjects_id')
-            ->references('id')->on('subjects')
-            ->onDelete('cascade');
+        
             
             
         });
