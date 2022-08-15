@@ -6,12 +6,6 @@
   </x-slot>
   <x-jet-validation-errors class="mb-4" />
 
-  @if (session('status'))
-  <div class="mb-4 font-medium text-sm text-green-600">
-    {{ session('status') }}
-  </div>
-  @endif
-
   <div>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="block mb-8">

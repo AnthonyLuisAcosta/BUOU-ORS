@@ -193,8 +193,6 @@ class ApplicationController extends Controller
                 $application->notify(new ApplicationApprovalEmail());
             } else if ($request->input('status') == "Recommended") {
                 $application->notify(new ApplicationRecommendedEmail());
-            } else if ($request->input('status') == "Pending") {
-                $application->notify(new ApplicationPendingEmail());
             } else if ($request->input('status') == "Rejected") {
                 //If reject button was pressed
                 $application->notify(new ApplicationRejectedEmail());
