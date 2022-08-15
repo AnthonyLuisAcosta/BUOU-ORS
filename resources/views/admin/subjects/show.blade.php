@@ -99,10 +99,10 @@
                                     </th>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 bg-white divide-y divide-gray-200">
                                         @foreach($terms as $term)
-                                            @if($subjects->term == $term->id)
-                                                <td>{{$term->year.' '.$term->label}}</td>
+                                            @if ($subjects->term == $term->id)                       
+                                                    {{$term->year.' '.$term->label }}                  
                                             @endif
-								        @endforeach
+                                        @endforeach
                                     </td>
                                 </tr>
 

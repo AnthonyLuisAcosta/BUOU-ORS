@@ -21,7 +21,7 @@
   <!-- Styles -->
   @livewireStyles
 
-  <!--Regular Datatables CSS-->
+  <!--Regular Datatables CSS--> 
   <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
   <!--Responsive Extension Datatables CSS-->
   <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
@@ -96,7 +96,7 @@
       /*font-bold*/
       border-radius: .25rem;
       /*rounded*/
-      background: #b2c0ff !important;
+      background: #aae1f7 !important;
       /*bg-indigo-500*/
       border: 1px solid transparent;
       /*border border-transparent*/
