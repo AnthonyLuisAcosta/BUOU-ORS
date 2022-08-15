@@ -10,7 +10,6 @@ use App\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use App\Notifications\SignUpEmail;
 use App\Rules\AcceptGmailOnly;
-use Laravel\Jetstream\Jetstream;
 use Laravel\Fortify\Rules\Password;
 
 class UsersController extends Controller
