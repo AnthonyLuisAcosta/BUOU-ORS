@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
   <!--jQuery Modals CSS-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
 
   <!-- Styles -->
   <!-- Styles -->
@@ -543,29 +545,47 @@
 
 </head>
 <body class="antialiased">
-  <div class="relative flex items-top justify-center min-h-screensm:items-center py-4 sm:pt-0">
-    @if (Route::has('login'))
-    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-      @auth
-      <a href="{{ url('dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 ">Dashboard</a>
-      @else
-      <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 ">Log in</a>
-
-      @if (Route::has('register'))
-      <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 ">Register</a>
+  <!--AUTH NAVIGATION MENU-->
+  <div class="relative flex items-top justify-end min-h-screensm:items-center py-4 sm:pt-0">
+    <div class="hidden space-x-8 lg:flex float-right">
+      @if (Route::has('login'))
+      <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+        @auth
+        <a href="{{ url('dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 ">Dashboard</a>
+        @else
+        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 ">Log in</a>
+        @if (Route::has('register'))
+        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 ">Register</a>
+        @endif
+        @endauth
+      </div>
       @endif
-      @endauth
     </div>
-    @endif
-
-    <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-
+    <!--Hamburger-->
+    <div class="text-right m-auto lg:hidden fixed right-5">
+      <button id="menu" class="inline-flex p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-blue-200 focus:outline-none  focus:text-gray-500 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <div id="items" class="hidden block absolute right-0">
+        @if (Route::has('login'))
+        @auth
+        <a href="{{ url('dashboard') }}" class="block py-2 px-4 hover:bg-blue-200 rounded-lg">Dashboard</a>
+        @else
+        <a href="{{ route('login') }}" class="block py-2 px-4 hover:bg-blue-200 rounded-lg">Log in</a>
+        @if (Route::has('register'))
+        <a href="{{ route('register') }}" class="block py-2 px-4 hover:bg-blue-200 rounded-lg">Register</a>
+        @endif
+        @endauth
+        @endif
+      </div>
     </div>
   </div>
+  <!--END OF AUTH NAVIGATION MENU-->
   <div class="BUOU_logo">
     <img src="img\buou.png" class="center">
   </div>
-
   <!-- Slideshow container -->
   <div class="slideshow-container">
 
@@ -666,6 +686,16 @@
       }
       slides[slideIndex - 1].style.display = "block";
       dots[slideIndex - 1].className += " active";
+    }
+
+  </script>
+  <script>
+    //MENU BUTTON
+    const btn = document.getElementById('menu');
+
+    btn.onclick = function() {
+      const items = document.getElementById('items')
+      items.classList.toggle("hidden");
     }
 
   </script>
