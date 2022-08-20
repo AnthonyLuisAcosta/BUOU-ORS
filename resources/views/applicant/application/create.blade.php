@@ -24,6 +24,17 @@
 
   <div>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-6">
+
+      			<!-- Alert-->
+			@if (session ('success'))
+			<div id="alert" class="flex p-4 mb-4 bg-red-500 dark:bg-red-200" role="alert">
+				<svg class="flex-shrink-0 w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+				<div class="ml-3 font-medium text-white">
+				{{ session('success') }}
+			</div>
+			</div>
+			@endif
+      
       <div class="block mb-8">
         <!--from route('applicant.application.index') to ('application.index')-->
         <a href="{{ route('application.index') }}" class="ml-1 inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Back to list</a>
@@ -137,28 +148,31 @@
 
               <div class="grid grid-cols-6  gap-4 pt-10">
 
-                <!--Program Selection-->
-                <div class="mt-4 col-span-6">
+                 <!--Program Selection-->
+                 <div class="mt-4 col-span-6">
                   <label class="pb-4 font-bold mb-1 text-gray-700 block border-b-2 border-gray-200">Program Selection</label>
 
                   <x-jet-label for="programs_id" value=" Programs" class="pt-6" />
                   <select name="programs_id" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
                     <option selected>Select Program</option>
                     @foreach($programs as $row)
-                    <option class="block mt-1 w-full" name="programs_id" value="{{ $row->id}}">{{ $row->description}}</option>
-
+                    <option class="block mt-1 w-full" name="programs_id" value="{{ $row->id}}">{{ $row->code}}: &ensp; {{ $row->description}}</option>
                     @endforeach
                     </select>
-
-                   <!--Program Selection-->
+                
+                   <!--Subject Selection-->
 								<div class="mt-4 col-span-6">
 									<label class="pb-4 font-bold mb-1 text-gray-700 block border-b-2 border-gray-200">Subject Selection</label>
 
 									<x-jet-label for="programs_id" value=" Subjects" class="pt-6" />
 									<select name="subject1" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
-										<option selected>Select Subject</option>
-										@foreach($subjects as $row)		
-										<option class="block mt-1 w-full" name="subject1" value="{{ $row->id}}">{{ $row->title}}</option>
+										<option value="null" selected>Select Subject</option>
+										@foreach($subjects as $row)
+                      @foreach($programs as $prog)
+                          @if($prog->id == $row->programs_id)
+										          <option class="block mt-1 w-full" name="subject1" value="{{ $row->id}}">{{ $prog->code}}: &emsp;  {{ $row->title}} &emsp; Units: {{ $row->units}} </option>
+                          @endif
+                      @endforeach
 										@endforeach
 
 									</select>
@@ -166,8 +180,13 @@
                   <x-jet-label for="programs_id" value=" Subjects" class="pt-6" />
 									<select name="subject2" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
 										<option selected disabled>Select Subject</option>
-										@foreach($subjects as $row)		
-										<option class="block mt-1 w-full" name="subject2" value="{{ $row->id}}">{{ $row->title}}</option>
+                  
+										@foreach($subjects as $row)
+                      @foreach($programs as $prog)
+                          @if($prog->id == $row->programs_id)
+										          <option class="block mt-1 w-full" name="subject2"  value="{{ $row->id}}">{{ $prog->code}}: &emsp;  {{ $row->title}} &emsp; Units: {{ $row->units}}</option>
+                          @endif
+                      @endforeach
 										@endforeach
 
 									</select>
@@ -175,8 +194,12 @@
                   <x-jet-label for="programs_id" value=" Subjects" class="pt-6" />
 									<select name="subject3" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
 										<option selected disabled>Select Subject</option>
-										@foreach($subjects as $row)		
-										<option class="block mt-1 w-full" name="subject3" value="{{ $row->id}}">{{ $row->title}}</option>
+										@foreach($subjects as $row)
+                      @foreach($programs as $prog)
+                          @if($prog->id == $row->programs_id)
+										          <option class="block mt-1 w-full" name="subject3"  value="{{ $row->id}}">{{ $prog->code}}: &emsp;  {{ $row->title}} &emsp; Units: {{ $row->units}}</option>
+                          @endif
+                      @endforeach
 										@endforeach
 
 									</select>
@@ -184,7 +207,6 @@
 
                   
                 </div>
-
 
 
 

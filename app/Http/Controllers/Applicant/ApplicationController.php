@@ -106,29 +106,78 @@ class ApplicationController extends Controller
                 $application->adviser = $prog->adviser;
         }
 
-        
+        #####Technically Dependent Subject Selection######
+
         foreach($subjects as $sub){
-            if($application->subject1 == $sub->id){
-                $selected = Subjects::where('id', $application->subject1)->first()->programs_id;
-                
-                if(!empty($application->subject2 )){
-                    
-                    if($application->subject2 == $sub->id){
-                        $selected2 = Subjects::where('id', $application->subject2)->first()->programs_id;
+        if($application->subject1 == $sub->id){
+            if ($application->programs_id != $sub->programs_id) {
+                if($sub->cat_id != 4){
+                return redirect()->back()
+                    ->withInput($request->input())
+                    ->with('success', "Selected $sub->title is not  under the chosen program");
                     }
-                }if(!empty($application->subject3 == $sub->id)){
-                    if($application->subject3 == $sub->id){
-                        $selected3 = Subjects::where('id', $application->subject3)->first()->programs_id;
-                        }
-                    }
-            }else{
-                $application->notify(new NewApplicationEmail());
-                $application->save();
+                }
+
             }
 
-            dd($selected);
+        if(!empty($application->subject2)){
+            if($application->subject2 == $application->subject1 || $application->subject2 == $application->subject3){
+                return redirect()->back()
+                ->withInput($request->input())
+                ->with('success', "Choose a different subject");
+            }
+            if($application->subject2 == $sub->id){
+                if ($application->programs_id != $sub->programs_id) {
+                    if($sub->cat_id != 4){
+                    return redirect()->back()
+                    ->withInput($request->input())
+                    ->with('success', "Selected $sub->title is not  under the chosen program");
+                        }
+                    }
+                }
+            
+        }
+
+        if(!empty($application->subject3)){
+            if($application->subject3 == $application->subject2 || $application->subject3 == $application->subject1){
+                return redirect()->back()
+                ->withInput($request->input())
+                ->with('success', "Choose a different subject");
+            }
+            if($application->subject3 == $sub->id){
+                if ($application->programs_id != $sub->programs_id) {
+                    if($sub->cat_id != 4){
+                    return redirect()->back()
+                    ->withInput($request->input())
+                    ->with('success', "Selected $sub->title is not  under the chosen program");
+                        }
+                    }
+                }
+        }
 
         }
+
+        ####Selected Units#####
+
+        $unit = 0;
+        foreach($subjects as $sub){
+            if($application->subject1 == $sub->id){
+                $unit+= $sub->units;
+            }
+            if($application->subject2 == $sub->id){
+                $unit+=$sub->units;
+            }
+            if($application->subject3 == $sub->id){
+                $unit+=$sub->units;
+            }
+            if($unit > 12){
+                return redirect()->back()
+                ->withInput($request->input())
+                ->with('success', "Units Exceeded");
+            }
+        
+        }
+
         //NEW APPLICATION MAIL
         $application->notify(new NewApplicationEmail());
         $application->save();
@@ -145,7 +194,8 @@ class ApplicationController extends Controller
     public function show(Application $application)
     {
         $programs = Programs::all();
-        return view('applicant.application.show', compact('application'))->with('programs', $programs);
+        $subjects = Subjects::all();
+        return view('applicant.application.show', compact('application'))->with('programs', $programs)->with('subjects', $subjects);
     }
 
     /**
@@ -159,7 +209,8 @@ class ApplicationController extends Controller
     {
         $programs = Programs::all();
         $user = User::all();
-        return view('applicant.application.edit', compact('application'))->with('programs', $programs)->with('application', $application)->with('user', $user);
+        $subjects = Subjects::all();
+        return view('applicant.application.edit', compact('application'))->with('programs', $programs)->with('application', $application)->with('user', $user)->with('subjects', $subjects);
     }
 
     /**
@@ -170,6 +221,8 @@ class ApplicationController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        
 
         $count = count($request->all());
 
@@ -182,7 +235,7 @@ class ApplicationController extends Controller
 
         } else {
             $programs = Programs::all();
-
+            $subjects = Subjects::all();
             $application = Application::find($id);
             $application->firstName = $request->input('firstName');
             $application->middleName = $request->input('middleName');
@@ -195,7 +248,9 @@ class ApplicationController extends Controller
             $application->company = $request->input('company');
             $application->address = $request->input('address');
 
-
+            $application->subject1 = $request->input('subject1');
+            $application->subject2 = $request->input('subject2');
+            $application->subject3 = $request->input('subject3');
             $application->programs_id = $request->input('programs_id');
             $application->applicant_id;
             #$request->validate([
@@ -221,6 +276,79 @@ class ApplicationController extends Controller
                 $filename = time() . '.' . $extension;
                 $file->move('requirements', $filename);
                 $application->applicantImage = $filename;
+            }
+        
+
+         #####Technically Dependent Subject Selection######
+
+         foreach($subjects as $sub){
+            if($application->subject1 == $sub->id){
+                if ($application->programs_id != $sub->programs_id) {
+                    if($sub->cat_id != 4){
+                    return redirect()->back()
+                        ->withInput($request->input())
+                        ->with('success', "Selected $sub->title is not  under the chosen program");
+                        }
+                    }
+    
+                }
+    
+            if(!empty($application->subject2)){
+                if($application->subject2 == $application->subject1 || $application->subject2 == $application->subject3){
+                    return redirect()->back()
+                    ->withInput($request->input())
+                    ->with('success', "Choose a different subject");
+                }
+                if($application->subject2 == $sub->id){
+                    if ($application->programs_id != $sub->programs_id) {
+                        if($sub->cat_id != 4){
+                        return redirect()->back()
+                        ->withInput($request->input())
+                        ->with('success', "Selected $sub->title is not  under the chosen program");
+                            }
+                        }
+                    }
+                
+            }
+    
+            if(!empty($application->subject3)){
+                if($application->subject3 == $application->subject2 || $application->subject3 == $application->subject1){
+                    return redirect()->back()
+                    ->withInput($request->input())
+                    ->with('success', "Choose a different subject");
+                }
+                if($application->subject3 == $sub->id){
+                    if ($application->programs_id != $sub->programs_id) {
+                        if($sub->cat_id != 4){
+                        return redirect()->back()
+                        ->withInput($request->input())
+                        ->with('success', "Selected $sub->title is not  under the chosen program");
+                            }
+                        }
+                    }
+            }
+    
+            }
+    
+            ####Selected Units#####
+    
+            $unit = 0;
+            foreach($subjects as $sub){
+                if($application->subject1 == $sub->id){
+                    $unit+= $sub->units;
+                }
+                if($application->subject2 == $sub->id){
+                    $unit+=$sub->units;
+                }
+                if($application->subject3 == $sub->id){
+                    $unit+=$sub->units;
+                }
+                if($unit > 12){
+                    return redirect()->back()
+                    ->withInput($request->input())
+                    ->with('success', "Units Exceeded");
+                }
+            
             }
         }
         #$applicantImage = $request->hidden_applicantImage;

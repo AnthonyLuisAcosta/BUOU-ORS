@@ -77,6 +77,41 @@
                             </ul>
                         </dd>
                     </div>
+
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Program</dt>
+                        @foreach($programs as $row)
+                        @if( $row->id == $application->programs_id)
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{$row->description}}</dd>
+                        @endif
+                        @endforeach
+                    </div>
+
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Subjects</dt>
+                        @foreach($subjects as $row)
+                        @if( $row->id == $application->subject1)
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{$row->title}}</dd>
+                        @endif
+                        @endforeach
+                    </div>
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500"></dt>
+                        @foreach($subjects as $row)
+                        @if( $row->id == $application->subject2)
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{$row->title}}</dd>
+                        @endif
+                        @endforeach
+                    </div>
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500"></dt>
+                        @foreach($subjects as $row)
+                        @if( $row->id == $application->subject3)
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{$row->title}}</dd>
+                        @endif
+                        @endforeach
+                    </div>
+
                 </dl>
             </div>
         </div>
@@ -100,10 +135,43 @@
                         @endif
                         @endforeach
                     </div>
+
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Subjects</dt>
+                        @foreach($subjects as $row)
+                        @if( $row->id == $application->subject1)
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{$row->title}}</dd>
+                        @endif
+                        @endforeach
+                    </div>
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500"></dt>
+                        @foreach($subjects as $row)
+                        @if( $row->id == $application->subject2)
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{$row->title}}</dd>
+                        
+                        @endif
+                        @endforeach
+                    </div>
+                    
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500"></dt>
+                        @foreach($subjects as $row)
+                        @if( $row->id == $application->subject3)
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{$row->title}}</dd>
+                       
+                        @endif
+                        @endforeach
+                    </div>
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500"></dt>
+    
+                    
+                    </div>
                 </dl>
 
             </div>
         </div>
     </div>
-
+<br> <br><br>
 </x-app-layout>

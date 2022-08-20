@@ -25,17 +25,17 @@
 								<label class="font-medium mb-1 text-gray-600 pt-4 block col-span-6">Basic Information</label>
 								<div class="mt-4 col-span-2">
 									<x-jet-label for="firstName" value="{{ __('First Name') }}" />
-									<x-jet-input class="form-control block mt-1 w-full" type="text" name="firstName" value="{{$application->firstName}}" required autofocus />
+									<x-jet-input readonly class="form-control block mt-1 w-full" type="text" name="firstName" value="{{$application->firstName}}" required autofocus />
 								</div>
 								<!--Middle Name-->
 								<div class="mt-4 col-span-2">
 									<x-jet-label for="middleName" value="{{ __('Middle Name') }}" />
-									<x-jet-input class="block mt-1 w-full" type="text" name="middleName" value="{{$application->middleName}}" required autofocus />
+									<x-jet-input readonly class="block mt-1 w-full" type="text" name="middleName" value="{{$application->middleName}}" required autofocus />
 								</div>
 								<!--Last Name-->
 								<div class="mt-4 col-span-2 ">
 									<x-jet-label for="name" value="{{ __('Last Name') }}" />
-									<x-jet-input class="form-control block mt-1 w-full" type="text" name="lastName" value="{{$application->lastName}}" required autofocus />
+									<x-jet-input readonly class="form-control block mt-1 w-full" type="text" name="lastName" value="{{$application->lastName}}" required autofocus />
 								</div>
 							</div>
 							<div class="mt-10 col-span-6 border-t-2 border-gray-200"></div>
@@ -45,15 +45,15 @@
 								<!--Birthdate-->
 								<div class="mt-4 col-span-2">
 									<x-jet-label for="birthDate" value="{{ __('Birth date') }}" />
-									<x-jet-input id="birthDate" class="form-control block mt-1 w-full" type="date" name="birthDate" value="{{$application->birthDate}}" required autofocus />
+									<x-jet-input id="birthDate" readonly class="form-control block mt-1 w-full" type="date" name="birthDate" value="{{$application->birthDate}}" required autofocus />
 								</div>
 								<!--Gender-->
 								<div class="mt-4 col-span-2">
 									<x-jet-label for="gender" value="Gender" />
-									<select name="gender" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
-										<option selected>{{$application->gender}}</option>
-										<option class="block mt-1 w-full" value="Male">Male</option>
-										<option class="block mt-1 w-full" value="Female">Female</option>
+									<select readonly name="gender" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
+										<option readonly selected>{{$application->gender}}</option>
+										<option readonly class="block mt-1 w-full" value="Male">Male</option>
+										<option  readonly class="block mt-1 w-full" value="Female">Female</option>
 
 									</select>
 								</div>
@@ -63,12 +63,12 @@
 								<!--Email-->
 								<div class="mt-4 col-span-4">
 									<x-jet-label for="email" value="{{ __('Email Address') }}" />
-									<x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" value="{{$application->email}}" required autofocus />
+									<x-jet-input readonly id="email" class="block mt-1 w-full" type="email" name="email" value="{{$application->email}}" required autofocus />
 								</div>
 								<!--Phone-->
 								<div class="mt-4 col-span-3">
 									<x-jet-label for="phone" value="{{ __('Contact Number') }}" />
-									<x-jet-input id="phone" class="block mt-1 w-full" type="number" name="phone" value="{{$application->phone}}" required autofocus />
+									<x-jet-input readonly id="phone" class="block mt-1 w-full" type="number" name="phone" value="{{$application->phone}}" required autofocus />
 								</div>
 
 								<div class="mt-10 col-span-6 border-t-2 border-gray-200"></div>
@@ -77,12 +77,12 @@
 								<!--Address-->
 								<div class="mt-4 col-span-6">
 									<x-jet-label for="address" value="{{ __('Address') }}" />
-									<x-jet-input id="address" class="block mt-1 w-full" type="text" name="address" value="{{$application->address}}" required autofocus />
+									<x-jet-input readonly id="address" class="block mt-1 w-full" type="text" name="address" value="{{$application->address}}" required autofocus />
 								</div>
 								<!--Company-->
 								<div class="mt-4 col-span-3">
 									<x-jet-label for="company" value="{{ __('Company') }}" />
-									<x-jet-input id="company" class="block mt-1 w-full" type="text" name="company" value="{{$application->company}}" required autofocus />
+									<x-jet-input readonly id="company" class="block mt-1 w-full" type="text" name="company" value="{{$application->company}}" required autofocus />
 								</div>
 
 							</div>
@@ -113,7 +113,7 @@
 								<img src="{{ asset('requirements/' . $application->applicantImage) }}" width="100" class="img-thumbnail" />
 								<br><br>
 								<input type="hidden" id="applicantImage" name="applicantImage" value="{{ $application->applicationImage }}" class="form-control" />
-								<input type="file" name="applicantImage" />
+								<input hidden type="file" name="applicantImage" />
 							</div>
 							<div class="grid grid-cols-6  gap-4 pt-10">
 

@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Adviser;
 
-use App\Models\Application;
 use App\Models\Programs;
+use App\Models\Subjects;
+use App\Models\Application;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Notifications\ApplicationRecommendedEmail;
-use App\Notifications\ApplicationRejectedEmail;
 use Illuminate\Support\Facades\File;
 use Illuminate\Notifications\Notifiable;
+use App\Notifications\ApplicationRejectedEmail;
+use App\Notifications\ApplicationRecommendedEmail;
 
 class ApplicationController extends Controller
 {
@@ -110,7 +111,8 @@ class ApplicationController extends Controller
     public function edit(Application $application, Programs $programs)
     {
         $programs = Programs::all();
-        return view('adviser.application.edit', compact('application'))->with('programs', $programs)->with('application', $application);
+        $subjects = Subjects::all();
+        return view('adviser.application.edit', compact('application'))->with('programs', $programs)->with('subjects', $subjects)->with('application', $application);
     }
 
     /**
@@ -139,6 +141,7 @@ class ApplicationController extends Controller
 
         } else {
             $programs = Programs::all();
+            $subjects = Subjects::all();
 
             $application = Application::find($id);
             $application->firstName = $request->input('firstName');
@@ -151,6 +154,10 @@ class ApplicationController extends Controller
             $application->phone = $request->input('phone');
             $application->company = $request->input('company');
             $application->address = $request->input('address');
+
+            $application->subject1 = $request->input('subject1');
+            $application->subject2 = $request->input('subject2');
+            $application->subject3 = $request->input('subject3');
 
             $application->programs_id = $request->input('programs_id');
             $application->adviser = $request->input('adviser');
@@ -179,7 +186,72 @@ class ApplicationController extends Controller
                 $file->move('requirements', $filename);
                 $application->applicantImage = $filename;
             }
+                    #####Technically Dependent Subject Selection######
+
+        foreach($subjects as $sub){
+            if($application->subject1 == $sub->id){
+                if ($application->programs_id != $sub->programs_id) {
+                    return redirect()->back()
+                        ->withInput($request->input())
+                        ->with('success', "Selected $sub->title is not  under the chosen program");
+                    }
+                }
+    
+            if(!empty($application->subject2)){
+                if($application->subject2 == $application->subject1 || $application->subject2 == $application->subject3){
+                    return redirect()->back()
+                    ->withInput($request->input())
+                    ->with('success', "Choose a different subject");
+                }
+                if($application->subject2 == $sub->id){
+                    if ($application->programs_id != $sub->programs_id) {
+                        return redirect()->back()
+                        ->withInput($request->input())
+                        ->with('success', "Selected $sub->title is not  under the chosen program");
+                        }
+                    }
+                
+            }
+    
+            if(!empty($application->subject3)){
+                if($application->subject3 == $application->subject2 || $application->subject3 == $application->subject1){
+                    return redirect()->back()
+                    ->withInput($request->input())
+                    ->with('success', "Choose a different subject");
+                }
+                if($application->subject3 == $sub->id){
+                    if ($application->programs_id != $sub->programs_id) {
+                        return redirect()->back()
+                        ->withInput($request->input())
+                        ->with('success', "Selected $sub->title is not  under the chosen program");
+                        }
+                    }
+            }
+    
+            }
+    
+            ####Selected Units#####
+    
+            $unit = 0;
+            foreach($subjects as $sub){
+                if($application->subject1 == $sub->id){
+                    $unit+= $sub->units;
+                }
+                if($application->subject2 == $sub->id){
+                    $unit+=$sub->units;
+                }
+                if($application->subject3 == $sub->id){
+                    $unit+=$sub->units;
+                }
+                if($unit > 12){
+                    return redirect()->back()
+                    ->withInput($request->input())
+                    ->with('success', "Units Exceeded");
+                }
+            
+            }
         }
+        
         #$applicantImage = $request->hidden_applicantImage;
 
         #if($request->applicantImage != '')
