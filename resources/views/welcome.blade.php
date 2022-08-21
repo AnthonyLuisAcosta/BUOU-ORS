@@ -547,7 +547,7 @@
 <body class="antialiased">
   <!--AUTH NAVIGATION MENU-->
   <div class="relative flex items-top justify-end min-h-screensm:items-center py-4 sm:pt-0">
-    <div class="hidden space-x-8 lg:flex float-right">
+    <div class="hidden space-x-8 lg:flex">
       @if (Route::has('login'))
       <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
         @auth
@@ -562,20 +562,20 @@
       @endif
     </div>
     <!--Hamburger-->
-    <div class="text-right m-auto lg:hidden fixed right-5">
-      <button id="menu" class="inline-flex p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-blue-200 focus:outline-none  focus:text-gray-500 transition">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <div class=" text-right text-xs  m-auto lg:hidden fixed top-0e">
+      <button id="menu" class="hover:shadow-md inline-flex mt-2 mr-2 p-1 rounded-md text-gray-400 hover:text-gray-500 hover:bg-blue-200 focus:outline-none  focus:text-gray-500 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
-      <div id="items" class="hidden block absolute right-0">
+      <div id="items" class="shadow-md mr-2 mt-1 hidden block absolute right-0 text-xs bg-white rounded-md">
         @if (Route::has('login'))
         @auth
-        <a href="{{ url('dashboard') }}" class="block py-2 px-4 hover:bg-blue-200 rounded-lg">Dashboard</a>
+        <a href="{{ url('dashboard') }}" class="block py-2 px-4 hover:bg-blue-200 rounded-md text-gray-500">Dashboard</a>
         @else
-        <a href="{{ route('login') }}" class="block py-2 px-4 hover:bg-blue-200 rounded-lg">Log in</a>
+        <a href="{{ route('login') }}" class="block py-2 px-4 hover:bg-blue-200 rounded-t-md text-gray-500 ">Log in</a>
         @if (Route::has('register'))
-        <a href="{{ route('register') }}" class="block py-2 px-4 hover:bg-blue-200 rounded-lg">Register</a>
+        <a href="{{ route('register') }}" class="block py-2 px-4 hover:bg-blue-200 rounded-b-md text-gray-500 ">Register</a>
         @endif
         @endauth
         @endif
@@ -647,16 +647,16 @@
 
   </div>
 
- 
-<br><br><br>
-<br><br><br>
+
+  <br><br><br>
+  <br><br><br>
   </div>
   </div>
-  <div class="text-center text-gray-700 p-4">
+  <div class="text-center text-gray-500 p-4">
     © 2022 Copyright:
-    <a class="text-gray-800" href="https://tailwind-elements.com/">Bicol University Open University</a>
+    <a class="text-gray-600" href="https://tailwind-elements.com/">Bicol University Open University</a>
   </div>
-  
+
   <script>
     let slideIndex = 1;
     showSlides(slideIndex);

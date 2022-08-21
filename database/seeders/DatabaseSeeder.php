@@ -28,5 +28,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SubjectsTableSeeder::class);
         $this->call(Subj_CategorySeeder::class);
         $this->call(AnnouncementSeeder::class);
+        $this->call(TermsSeeder::class);
     }
 }
