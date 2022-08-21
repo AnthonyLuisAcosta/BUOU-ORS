@@ -18,9 +18,16 @@
 							  </div>
 							  </div>
 							  @endif
-			<div class="block mb-8">
-				<a href="{{ route('application.index') }}" class="ml-1 inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Back to list</a>
+			
+			<div class="flex items-center text-right sm:px-6 py-6">
+							<button onclick="window.print();" class="btn printBtn inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">
+									<a >Print</a>
+								</button>
+								<div class="p-4">
+				<a href="{{ route('application.index') }}" class="btn inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Back to list</a>
 			</div>
+							
+							</div>
 			
 			<div class="mt-5 md:mt-0 md:col-span-2">
 				<form method="post" action="{{ route('application.update', $application->id) }}" enctype="multipart/form-data">
@@ -97,12 +104,12 @@
 							</div>
 
 
-							<label class="py-4 pt-10 font-bold mb-1 text-gray-700 block border-b-2 border-gray-200">Upload Requirements</label>
+							<label class="req py-4 pt-10 font-bold mb-1 text-gray-700 block border-b-2 border-gray-200">Upload Requirements</label>
 
 
 
 
-							<div class="col-sm-10">
+							<div class="req1 col-sm-10">
 								<ul role="list" class="border border-gray-200 rounded-md divide-y divide-gray-200 w-auto">
 									<li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
 										<div class="w-0 flex-1 flex items-center">
@@ -231,11 +238,12 @@
 							</div>
 							<!--Button-->
 							<div class="flex items-center justify-end px-4 bg-white text-right sm:px-6 py-6">
-								<button class="m-6 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
+							
+								<button class="btn m-6 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
 									<input type="hidden" name="hidden_id" value="{{ $application->id }}" />
 									<input type="submit" class="btn btn-primary" value="Update" />
 								</button>
-								<button class="inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">
+								<button class="btn inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">
 									<a href="{{ route('application.index') }}">Cancel</a>
 								</button>
 							</div>
@@ -249,6 +257,28 @@
 
 	<style>
 		[x-cloak] { display: none }
+		@media print {
+  @page { margin: 0; }
+  body { margin-left:-180px;
+	margin-top: -200px; 
+		height: 100%;
+	width:110%;}
+  nav {display: none;}
+header{visibility: hidden;}
+.content {margin:0;}
+.btn {
+    display: none;
+  }
+  .sidebar{
+	display: none;
+  }
+  .req{
+	display:none;
+  }
+  .req1{
+	visibility: hidden;
+  }
+}
 	</style>
-		
+
 </x-app-layout>
