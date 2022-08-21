@@ -35,7 +35,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'a
 });
 
 //REGISTRAR ROUTES
-Route::group(['as' => 'registrar.', 'prefix' => 'registrar', 'middleware' => ['auth', 'registrar']], function () {
+Route::group(['as' => 'registrar.', 'prefix' => 'registrar', 'middleware' => ['auth', 'registrar',]], function () {
     Route::get('/dashboard', [App\Http\Controllers\Registrar\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('programs', App\Http\Controllers\Registrar\ProgramsController::class);
     Route::resource('subjects', App\Http\Controllers\Registrar\SubjectsController::class);
@@ -60,7 +60,7 @@ Route::group(['as' => 'adviser.', 'prefix' => 'adviser', 'middleware' => ['auth'
 });
 
 //APPLICANT ROUTES
-Route::group(['as' => '', 'prefix' => '', 'middleware' => ['auth', 'applicant']], function () {
+Route::group(['as' => '', 'prefix' => '', 'middleware' => ['auth', 'applicant', 'verified']], function () {
     Route::get('dashboard', [App\Http\Controllers\Applicant\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('application', App\Http\Controllers\Applicant\ApplicationController::class);
 });  

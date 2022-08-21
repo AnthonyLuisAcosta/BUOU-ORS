@@ -9,7 +9,6 @@ use App\Models\User;
 use App\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use App\Notifications\SignUpEmail;
-use App\Rules\AcceptGmailOnly;
 use Laravel\Fortify\Rules\Password;
 
 class UsersController extends Controller
@@ -54,7 +53,7 @@ class UsersController extends Controller
             'first_name' => ['required', 'string', 'max:255'],
             'middle_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users', new AcceptGmailOnly],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', new Password],
         ]);
         $input = $request->all();
