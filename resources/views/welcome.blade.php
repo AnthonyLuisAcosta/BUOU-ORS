@@ -647,15 +647,16 @@
 
   </div>
 
-  <div class="footer">
-
-
-  </div>
-
-
+ 
+<br><br><br>
+<br><br><br>
   </div>
   </div>
-
+  <div class="text-center text-gray-700 p-4">
+    © 2022 Copyright:
+    <a class="text-gray-800" href="https://tailwind-elements.com/">Bicol University Open University</a>
+  </div>
+  
   <script>
     let slideIndex = 1;
     showSlides(slideIndex);
