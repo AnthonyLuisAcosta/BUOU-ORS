@@ -129,7 +129,7 @@
                       <label for="applicantImage" class="cursor-pointer bg-white rounded-md font-bold text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                       </label>
                       <!-- actual upload which is hidden -->
-                      <input type="file" id="applicantImage" name="applicantImage" hidden />
+                      <input type="file" id="applicantImage" name="applicantImage" hidden :value="old('applicantImage')"/>
 
                       <!-- our custom upload button -->
                       <label for="applicantImage" class="cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">Choose File</label>

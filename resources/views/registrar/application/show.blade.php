@@ -10,8 +10,13 @@
     <div class="block mb-8">
         <a href="{{ route('registrar.application.index') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Back to list</a>
     </div>
+    @php
+    $count = 0
+    @endphp
     @foreach ($app as $app )
         @if ($app->status == "Approved")
+        @php $count++ @endphp
+        @if ($count <= 1)
     <!--Status Button-->
     <!--Recommend Modal-->
     <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
@@ -143,7 +148,7 @@
                 </button>
             </div>
     </div>
-
+@endif
 @endif
 
 @endforeach
