@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Registrar;
 
-use App\Models\Application;
 use App\Models\Programs;
+use App\Models\Subjects;
+use App\Models\Application;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Notifications\ApplicationAdmissionEmail;
-use App\Notifications\ApplicationRejectedEmail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use App\Notifications\ApplicationRejectedEmail;
+use App\Notifications\ApplicationAdmissionEmail;
 
 class ApplicationController extends Controller
 {
@@ -49,7 +50,8 @@ class ApplicationController extends Controller
         $programs = Programs::all();
         $id = Auth::user()->id;
         $app = Application::all();
-        return view('registrar.application.show', compact('application'))->with('programs', $programs)->with('app', $app);
+        $subjects = Subjects::all();
+        return view('registrar.application.show', compact('application'))->with('programs', $programs)->with('app', $app)->with('subjects', $subjects);
     }
 
 

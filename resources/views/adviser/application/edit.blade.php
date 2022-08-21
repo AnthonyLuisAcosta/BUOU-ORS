@@ -5,7 +5,17 @@
 			{{ __('Applications') }} | Edit
 		</h2>
 	</x-slot>
-
+						<!-- Alert-->
+						@if (session ('success'))
+						<div id="alert" class="flex p-4 mb-4 z-50 bg-red-200 border-t-4 dark:bg-green-200" role="alert">
+							<svg class="flex-shrink-0 w-5 h-5 text-gray-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+							</svg>
+							<div class="ml-3 font-medium text-gray-700">
+								{{ session('success') }}
+							</div>
+						</div>
+						@endif
 	<div>
 		<div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-6">
 			<div class="block mb-8">
@@ -52,9 +62,6 @@
 									<x-jet-label for="gender" value="Gender" />
 									<select readonly name="gender" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
 										<option readonly selected>{{$application->gender}}</option>
-										<option readonly class="block mt-1 w-full" value="Male">Male</option>
-										<option  readonly class="block mt-1 w-full" value="Female">Female</option>
-
 									</select>
 								</div>
 								<div class="mt-10 col-span-6 border-t-2 border-gray-200"></div>
@@ -117,7 +124,7 @@
 							</div>
 							<div class="grid grid-cols-6  gap-4 pt-10">
 
-								<!--Subject Selection-->
+								<!--Program Selection-->
 								<div class="mt-4 col-span-6">
 									<label class="pb-4 font-bold mb-1 text-gray-700 block border-b-2 border-gray-200">Subject Selection</label>
 
@@ -136,7 +143,87 @@
 									</select>
 								</div>
 
+								<!-- Subject Selection -->
+								<div class="mt-4 col-span-6">
+									<label class="pb-4 font-bold mb-1 text-gray-700 block border-b-2 border-gray-200">Subject Selection</label>
 
+									<x-jet-label for="programs_id" value=" Subjects" class="pt-6" />
+									<select name="subject1" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
+									
+									@foreach($subjects as $row)
+										@foreach($programs as $prog)
+										@if($prog->id == $application->programs_id)
+											@if($row->id == $application->subject1)
+													<option selected class="block mt-1 w-full" name="subject1"  value="{{$application->subject1}}">{{ $prog->code}}: &emsp;  {{ $row->title}} &emsp; Units: {{ $row->units}}</option>
+											@endif
+										@endif
+										@endforeach
+											
+										
+									@endforeach
+									<option value = ""class="block mt-1 w-full">No Subject</option>
+										@foreach($subjects as $row)
+											@foreach($programs as $prog)
+											@if($row->programs_id == $prog->id)
+													<option class="block mt-1 w-full" name="subject1"  value="{{$row->id}}">{{ $prog->code}}: &emsp;  {{ $row->title}} &emsp; Units: {{ $row->units}}</option>
+												@endif
+											@endforeach
+										@endforeach
+
+									</select>
+
+								<x-jet-label for="programs_id" value=" Subjects" class="pt-6" />
+								<select name="subject2" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
+									
+									@foreach($subjects as $row)
+										@foreach($programs as $prog)
+										@if($prog->id == $application->programs_id)
+											@if($row->id == $application->subject2)
+													<option selected disabled class="block mt-1 w-full" name="subject2"  value="{{$application->subject2}}">{{ $prog->code}}: &emsp;  {{ $row->title}} &emsp; Units: {{ $row->units}}</option>
+													<option selected class="hidden block mt-1 w-full" name="subject2"  value="{{$application->subject2}}">{{ $prog->code}}: &emsp;  {{ $row->title}} &emsp; Units: {{ $row->units}}</option>
+											@endif
+										@endif
+										@endforeach
+											
+										
+									@endforeach
+									<option value = ""class="block mt-1 w-full">No Subject</option>
+										@foreach($subjects as $row)
+											@foreach($programs as $prog)
+											@if($row->programs_id == $prog->id)
+													<option class="block mt-1 w-full" name="subject2"  value="{{$row->id}}">{{ $prog->code}}: &emsp;  {{ $row->title}} &emsp; Units: {{ $row->units}}</option>
+												@endif
+											@endforeach
+										@endforeach
+
+									</select>
+
+                  <x-jet-label for="programs_id" value=" Subjects" class="pt-6" />
+				  <select name="subject3" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
+									
+									@foreach($subjects as $row)
+										@foreach($programs as $prog)
+										@if($prog->id == $application->programs_id)
+											@if($row->id == $application->subject3)
+											<option selected disabled class="block mt-1 w-full" name="subject3"  value="{{$application->subject3}}">{{ $prog->code}}: &emsp;  {{ $row->title}} &emsp; Units: {{ $row->units}}</option>
+													<option selected class="hidden block mt-1 w-full" name="subject3"  value="{{$application->subject3}}">{{ $prog->code}}: &emsp;  {{ $row->title}} &emsp; Units: {{ $row->units}}</option>
+											@endif
+										@endif
+										@endforeach
+											
+										
+									@endforeach
+									<option value = ""class="block mt-1 w-full">No Subject</option>
+										@foreach($subjects as $row)
+											@foreach($programs as $prog)
+											@if($row->programs_id == $prog->id)
+													<option class="block mt-1 w-full" name="subject3"  value="{{$row->id}}">{{ $prog->code}}: &emsp;  {{ $row->title}} &emsp; Units: {{ $row->units}}</option>
+												@endif
+											@endforeach
+										@endforeach
+
+</select>
+								</div>
 
 							</div>
 							<!--Button-->

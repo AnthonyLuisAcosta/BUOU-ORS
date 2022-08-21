@@ -253,6 +253,11 @@ class ApplicationController extends Controller
             $application->subject3 = $request->input('subject3');
             $application->programs_id = $request->input('programs_id');
             $application->applicant_id;
+
+            foreach ($programs as $prog) {
+                if ($prog->id == $application->programs_id)
+                    $application->adviser = $prog->adviser;
+            }
             #$request->validate([
             #'lastName',          
             #'middleName',          

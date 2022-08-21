@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Dean;
 
-use App\Models\Application;
 use App\Models\Programs;
+use App\Models\Subjects;
+use App\Models\Application;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Notifications\ApplicationApprovalEmail;
-use App\Notifications\ApplicationRecommendedEmail;
-use App\Notifications\ApplicationRejectedEmail;
 use Illuminate\Support\Facades\File;
+use App\Notifications\ApplicationApprovalEmail;
+use App\Notifications\ApplicationRejectedEmail;
+use App\Notifications\ApplicationRecommendedEmail;
 
 class ApplicationController extends Controller
 {
@@ -96,7 +97,8 @@ class ApplicationController extends Controller
     public function show(Application $application)
     {
         $programs = Programs::all();
-        return view('dean.application.show', compact('application'))->with('programs', $programs);
+        $subjects = Subjects::all();
+        return view('dean.application.show', compact('application'))->with('programs', $programs)->with('subjects', $subjects);
     }
 
     /**

@@ -98,7 +98,8 @@ class ApplicationController extends Controller
     public function show(Application $application)
     {
         $programs = Programs::all();
-        return view('adviser.application.show', compact('application'))->with('programs', $programs);
+        $subjects = Subjects::all();
+        return view('adviser.application.show', compact('application'))->with('programs', $programs)->with('subjects', $subjects);
     }
 
     /**
@@ -149,7 +150,7 @@ class ApplicationController extends Controller
             $application->lastName = $request->input('lastName');
             $application->birthDate = $request->input('birthDate');
             $application->gender = $request->input('gender');
-            $application->status = $request->input('status');
+            $application->status;
             $application->email = $request->input('email');
             $application->phone = $request->input('phone');
             $application->company = $request->input('company');
@@ -160,7 +161,10 @@ class ApplicationController extends Controller
             $application->subject3 = $request->input('subject3');
 
             $application->programs_id = $request->input('programs_id');
-            $application->adviser = $request->input('adviser');
+            foreach ($programs as $prog) {
+                if ($prog->id == $application->programs_id)
+                    $application->adviser = $prog->adviser;
+            }
 
             #$request->validate([
             #'lastName',          
@@ -186,15 +190,18 @@ class ApplicationController extends Controller
                 $file->move('requirements', $filename);
                 $application->applicantImage = $filename;
             }
-                    #####Technically Dependent Subject Selection######
+        #####Technically Dependent Subject Selection######
 
         foreach($subjects as $sub){
             if($application->subject1 == $sub->id){
                 if ($application->programs_id != $sub->programs_id) {
+                    if($sub->cat_id != 4){
                     return redirect()->back()
                         ->withInput($request->input())
                         ->with('success', "Selected $sub->title is not  under the chosen program");
+                        }
                     }
+    
                 }
     
             if(!empty($application->subject2)){
@@ -205,9 +212,11 @@ class ApplicationController extends Controller
                 }
                 if($application->subject2 == $sub->id){
                     if ($application->programs_id != $sub->programs_id) {
+                        if($sub->cat_id != 4){
                         return redirect()->back()
                         ->withInput($request->input())
                         ->with('success', "Selected $sub->title is not  under the chosen program");
+                            }
                         }
                     }
                 
@@ -221,9 +230,11 @@ class ApplicationController extends Controller
                 }
                 if($application->subject3 == $sub->id){
                     if ($application->programs_id != $sub->programs_id) {
+                        if($sub->cat_id != 4){
                         return redirect()->back()
                         ->withInput($request->input())
                         ->with('success', "Selected $sub->title is not  under the chosen program");
+                            }
                         }
                     }
             }
