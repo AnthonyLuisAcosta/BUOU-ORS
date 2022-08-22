@@ -7,115 +7,200 @@
 
     <!-- This example requires Tailwind CSS v2.0+ -->
 
-    <div class="block mb-8">
-        <a href="{{ route('application.index') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Back to list</a>
-    </div>
-
-    <!--Status Button-->
     
-    <div class="inline-flex justify-end">
-       
-    </div>
+    <div class="flex items-center text-right sm:px-6 py-6">
+                        <button onclick="window.print();" class="btn printBtn inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">
+                            <a>Print</a>
+                        </button>
+                        <div class="p-4">
+                            <a href="{{ route('application.index') }}" class="btn inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Back to list</a>
+                        </div>
 
-
+                    </div>
+    <!--Status Button-->
 
     <div class=" border-t-2 w-full border-gray-200 flex gap-4">
         <div class="bg-white shadow overflow-hidden sm:rounded-lg max-w-9/12 w-9/12">
 
-            <div class="px-4 py-5 sm:px-6">
-                <h3 class="text-lg leading-6 font-medium text-gray-900">Applicant Information</h3>
-                <p class="mt-1 max-w-2xl text-sm text-gray-500">Personal details and application.</p>
-            </div>
-            <div class="border-t border-gray-200">
-                <dl>
-                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">Full name</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ $application->firstName."  ".$application->middleName."  ".$application->lastName}}</dd>
-                    </div>
-                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">Gender</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ $application->gender }}</dd>
-                    </div>
-                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">Birthdate</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ $application->birthDate }}</dd>
-                    </div>
-                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">Email address</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ $application->email }}</dd>
-                    </div>
-                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">Phone Number</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ $application->phone}}</dd>
-                    </div>
-                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">Company</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ $application->company }}</dd>
-                    </div>
-                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">Address</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ $application->address }}</dd>
-                    </div>
 
-                    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">Attachments</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            <ul role="list" class="border border-gray-200 rounded-md divide-y divide-gray-200">
+            <div class="form">
+                <div class="borderhide max-w-7xl mx-auto sm:px-6 lg:px-8 py-6">
 
-                                <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
-                                    <div class="w-0 flex-1 flex items-center">
-                                        <!-- Heroicon name: solid/paper-clip -->
-                                        <svg class="flex-shrink-0 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                            <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd" />
-                                        </svg>
-                                        <x-jet-label for="applicantImage" value="{{ asset($application->applicantImage) }}" />
+                    
+
+                    <div class="mt-5 md:mt-0 md:col-span-2">
+                       
+                            <div class="shadow overflow-hidden sm:rounded-md">
+                                <div class="px-4 py-5 bg-white sm:p-6 border-0">
+
+                                    <label class="font-bold mb-1 text-gray-700 block">Applicant Information</label>
+                                    <div class="grid grid-cols-6  gap-4 border-t-2 border-gray-200">
+                                        <label class="font-medium mb-1 text-gray-600 pt-2 block col-span-6">Basic Information</label>
+                                        <div class="mt-4 col-span-2">
+                                            <x-jet-label for="firstName" value="{{ __('First Name') }}" />
+                                            <x-jet-input readonly class="form-control block mt-1 w-full" type="text" name="firstName" value="{{$application->firstName}}" required autofocus />
+                                        </div>
+                                        <!--Middle Name-->
+                                        <div class="mt-4 col-span-2">
+                                            <x-jet-label for="middleName" value="{{ __('Middle Name') }}" />
+                                            <x-jet-input readonly class="block mt-1 w-full" type="text" name="middleName" value="{{$application->middleName}}" required autofocus />
+                                        </div>
+                                        <!--Last Name-->
+                                        <div class="mt-4 col-span-2 ">
+                                            <x-jet-label for="name" value="{{ __('Last Name') }}" />
+                                            <x-jet-input readonly class="form-control block mt-1 w-full" type="text" name="lastName" value="{{$application->lastName}}" required autofocus />
+                                        </div>
                                     </div>
-                                    <div class="ml-4 flex-shrink-0">
-                                        <a href="{{ asset('requirements/' .  $application->applicantImage) }}" class="font-medium text-indigo-600 hover:text-indigo-500"> Download </a>
+                                    <div class="mt-4 col-span-6 border-t-2 border-gray-200"></div>
+
+                                    <div class="grid grid-cols-6  gap-4">
+
+                                        <!--Birthdate-->
+                                        <div class="mt-4 col-span-2">
+                                            <x-jet-label for="birthDate" value="{{ __('Birth date') }}" />
+                                            <x-jet-input readonly id="birthDate" class="form-control block mt-1 w-full" type="date" name="birthDate" value="{{$application->birthDate}}" required autofocus />
+                                        </div>
+                                        <!--Gender-->
+                                        <div class="mt-4 col-span-2">
+                                            <x-jet-label for="gender" value="Gender" />
+                                            <x-jet-input readonly class="block mt-1 w-full " type="text" name="" value="{{$application->gender}}" required autofocus />
+                        
+                                        </div>
+                                        <div class="mt-4 col-span-6 border-t-2 border-gray-200"></div>
+                                        <label class="font-medium mb-1 text-gray-600 pt-4 block col-span-6">Contacts</label>
+
+                                        <!--Email-->
+                                        <div class="mt-4 col-span-4">
+                                            <x-jet-label for="email" value="{{ __('Email Address') }}" />
+                                            <x-jet-input readonly id="email" class="block mt-1 w-full" type="email" name="email" value="{{$application->email}}" required autofocus />
+                                        </div>
+                                        <!--Phone-->
+                                        <div class="mt-4 col-span-3">
+                                            <x-jet-label for="phone" value="{{ __('Contact Number') }}" />
+                                            <x-jet-input readonly id="phone" class="block mt-1 w-full" type="number" name="phone" value="{{$application->phone}}" required autofocus />
+                                        </div>
+
+                                        <div class="mt-4 col-span-6 border-t-2 border-gray-200"></div>
+                                        <label class="font-medium mb-1 text-gray-600 pt-4 block col-span-6">Residence Address</label>
+
+                                        <!--Address-->
+                                        <div class="mt-4 col-span-6">
+                                            <x-jet-label for="address" value="{{ __('Address') }}" />
+                                            <x-jet-input readonly id="address" class="block mt-1 w-full" type="text" name="address" value="{{$application->address}}" required autofocus />
+                                        </div>
+                                        <!--Company-->
+                                        <div class="mt-4 col-span-3">
+                                            <x-jet-label for="company" value="{{ __('Company') }}" />
+                                            <x-jet-input readonly id="company" class="block mt-1 w-full" type="text" name="company" value="{{$application->company}}" required autofocus />
+                                        </div>
+
                                     </div>
-                                </li>
-                            </ul>
-                        </dd>
-                    </div>
 
-                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">Program</dt>
-                        @foreach($programs as $row)
-                        @if( $row->id == $application->programs_id)
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{$row->description}}</dd>
-                        @endif
-                        @endforeach
-                    </div>
 
-                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">Subjects</dt>
-                        @foreach($subjects as $row)
-                        @if( $row->id == $application->subject1)
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Units: {{$row->units}} &emsp; {{$row->title}}</dd>
-                        @endif
-                        @endforeach
-                    </div>
-                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500"></dt>
-                        @foreach($subjects as $row)
-                        @if( $row->id == $application->subject2)
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Units: {{$row->units}} &emsp;  {{$row->title}}</dd>
-                        @endif
-                        @endforeach
-                    </div>
-                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500"></dt>
-                        @foreach($subjects as $row)
-                        @if( $row->id == $application->subject3)
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Units: {{$row->units}} &emsp; {{$row->title}}</dd>
-                        @endif
-                        @endforeach
-                    </div>
+                                    <label class="req py-4 pt-10 font-bold mb-1 text-gray-700 block border-b-2 border-gray-200">Upload Requirements</label>
 
-                </dl>
+
+
+
+                                    <div class="req1 col-sm-10">
+                                        <ul role="list" class="border border-gray-200 rounded-md divide-y divide-gray-200 w-auto">
+                                            <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                                                <div class="w-0 flex-1 flex items-center">
+                                                    <!-- Heroicon name: solid/paper-clip -->
+                                                    <svg class="flex-shrink-0 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                        <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd" />
+                                                    </svg>
+                                                    <x-jet-label for="applicantImage" value="{{ asset($application->applicantImage) }}" />
+                                                </div>
+                                                <div class="ml-4 flex-shrink-0">
+
+                                                </div>
+                                            </li>
+                                        </ul>
+
+                                        <br />
+                                        <img src="{{ asset('requirements/' . $application->applicantImage) }}" width="100" class="img-thumbnail" />
+                                        <br><br>
+                                        
+                                    </div>
+                                    <div class="grid grid-cols-6  gap-4 pt-10">
+
+                                        <!--Programs Selection-->
+                                        <div class="mt-4 col-span-6">
+                                            <label class="pb-4 font-bold mb-1 text-gray-700 block border-b-2 border-gray-200">Program Selection</label>
+
+                                          
+                                                @foreach($programs as $row)
+                                                @if( $row->id == $application->programs_id)
+                                                
+                                                <x-jet-input readonly class="block mt-1 w-full " type="text" name="" value="{{ $row->description}}" required autofocus />
+                        
+                                                @endif
+                                                @endforeach
+
+                                              
+
+                                            </select>
+                                        </div>
+                                        <!-- Subject Selection -->
+                                        <div class="mt-4 col-span-6">
+                                            <label class="pb-4 font-bold mb-1 text-gray-700 block border-b-2 border-gray-200">Subject Selection</label>
+                                                @foreach($subjects as $row)
+                                                @foreach($programs as $prog)
+                                                @if($prog->id == $application->programs_id)
+                                                @if($row->id == $application->subject1)
+                                              
+                                                <x-jet-input readonly  class="block mt-1 w-full  " type="text" name="" value="{{ $prog->code}}: &emsp; {{ $row->title}} &emsp; Units: {{ $row->units}}" required autofocus />
+                                                @endif
+                                                @endif
+                                                @endforeach
+                                                @endforeach
+                                    
+
+                                          
+                                                @foreach($subjects as $row)
+                                                @foreach($programs as $prog)
+                                                @if($prog->id == $application->programs_id)
+                                                @if($row->id == $application->subject2)
+                                               
+                                                <x-jet-input readonly  class="block mt-1 w-full " type="text" name="" value="{{ $prog->code}}: &emsp; {{ $row->title}} &emsp; Units: {{ $row->units}}" required autofocus />
+                                                @endif
+                                                @endif
+                                                @endforeach
+                                                @endforeach
+                                         
+                                            
+                                            
+                                                @foreach($subjects as $row)
+                                                @foreach($programs as $prog)
+                                                @if($prog->id == $application->programs_id)
+                                                @if($row->id == $application->subject3)
+                                               
+                                                <x-jet-input readonly  class="block mt-1 w-full  " type="text" name="" value="{{ $prog->code}}: &emsp; {{ $row->title}} &emsp; Units: {{ $row->units}}" required autofocus />
+                        
+                                                @endif
+                                                @endif
+                                                @endforeach
+                                                @endforeach
+                                              
+                                         
+                                        </div>
+
+
+                                    </div>
+                              
+                                </div>
+                           
+                            </div>
+                      
+                    </div>
+                </div>
             </div>
+
+
+
         </div>
-        <div class="bg-white shadow overflow-hidden sm:rounded-lg max-w-6xl w-fit">
+        <div class="monitor bg-white shadow overflow-hidden sm:rounded-lg max-w-6xl w-fit h-5/6">
 
             <div class="px-4 py-5 sm:px-6">
                 <h3 class="text-lg leading-6 font-medium text-gray-900">Application Information</h3>
@@ -125,34 +210,34 @@
                 <dl>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">Application Status</dt>
-                        
-                        @if($application->status == "Pending")
-												<td >
-                                                <dd style="color: rgb(253 186 116);" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
 
-												</td>
-											@elseif($application->status == "Recommended")
-												<td>
-                                                <dd class="mt-1 text-sm text-blue-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
-												
-												</td>
-                                               
-											@elseif($application->status == "Approved")
-												<td>
-                                                <dd class="mt-1 text-sm text-yellow-300 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
-												
-												</td>
-											@elseif($application == "Admitted")
-												<td>
-                                                <dd class="mt-1 text-sm text-green-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
-											
-												</td>
-											@elseif($application == "Rejected")
-												<td>
-                                                <dd class="mt-1 text-sm text-red-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
-												
-												</td>
-											@endif
+                        @if($application->status == "Pending")
+                        <td>
+                            <dd style="color: rgb(253 186 116);" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
+
+                        </td>
+                        @elseif($application->status == "Recommended")
+                        <td>
+                            <dd class="mt-1 text-sm text-blue-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
+
+                        </td>
+
+                        @elseif($application->status == "Approved")
+                        <td>
+                            <dd class="mt-1 text-sm text-yellow-300 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
+
+                        </td>
+                        @elseif($application == "Admitted")
+                        <td>
+                            <dd class="mt-1 text-sm text-green-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
+
+                        </td>
+                        @elseif($application == "Rejected")
+                        <td>
+                            <dd class="mt-1 text-sm text-red-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
+
+                        </td>
+                        @endif
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">Program</dt>
@@ -167,38 +252,117 @@
                         <dt class="text-sm font-medium text-gray-500">Subjects</dt>
                         @foreach($subjects as $row)
                         @if( $row->id == $application->subject1)
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Units: {{$row->units}} &emsp;  {{$row->title}}</dd>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Units: {{$row->units}} &emsp; {{$row->title}}</dd>
                         @endif
                         @endforeach
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500"></dt>
+                        <dt class="text-sm font-medium text-gray-500"></dt>
                         @foreach($subjects as $row)
                         @if( $row->id == $application->subject2)
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Units: {{$row->units}} &emsp;  {{$row->title}}</dd>
-                        
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Units: {{$row->units}} &emsp; {{$row->title}}</dd>
+
                         @endif
                         @endforeach
                     </div>
-                    
+
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500"></dt>
+                        <dt class="text-sm font-medium text-gray-500"></dt>
                         @foreach($subjects as $row)
                         @if( $row->id == $application->subject3)
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Units: {{$row->units}} &emsp;  {{$row->title}}</dd>
-                       
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Units: {{$row->units}} &emsp; {{$row->title}}</dd>
+
                         @endif
                         @endforeach
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500"></dt>
-    
-                    
+                        <dt class="text-sm font-medium text-gray-500"></dt>
+
+
                     </div>
                 </dl>
 
             </div>
         </div>
     </div>
-<br> <br><br>
+    <br><br><br>
+    <br><br><br>
+    <style>
+        [x-cloak] {
+            display: none
+        }
+
+        @media print {
+            @page {
+                margin: 0;
+            }
+
+            body {
+                margin-left: -210px;
+                margin-top: -130px;
+                height: 100%;
+                width: 110%;
+                border-style: none;
+            }
+            html{
+                border-style: none;
+            }
+            nav {
+                display: none;
+            }
+
+            header {
+                display: none;
+            }
+
+            .content {
+                margin: 0;
+                width: 110%;
+                border-style: none;
+            }
+
+            .btn {
+                display: none;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .req {
+                display: none;
+                border-style: none;
+            }
+
+            .req1 {
+                display: none;
+                border-style: none;
+            }
+
+            .monitor {
+                display: none;
+                box-shadow:none;
+                border-style: none;
+            }
+
+            .form {
+                width: screen;
+                box-shadow:none;
+                border-style: none;
+            }
+            .main {
+                width: 300%;
+                box-shadow:none;
+                border-style: none;
+            }
+            .hide{
+                display: none;
+            }
+            .borderhide{
+                box-shadow:none;
+                border-style: none;
+                border-width: 0px;
+            }
+        }
+    </style>
 </x-app-layout>
