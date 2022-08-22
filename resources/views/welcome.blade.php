@@ -551,11 +551,11 @@
       @if (Route::has('login'))
       <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
         @auth
-        <a href="{{ url('dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 ">Dashboard</a>
+        <a href="{{ url('dashboard') }}" class="text-sm text-gray-700 hover:text-black p-2 dark:text-gray-500 ">Dashboard</a>
         @else
-        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 ">Log in</a>
+        <a href="{{ route('login') }}" class="text-sm text-gray-700 hover:text-black p-2 dark:text-gray-500 ">Log in</a>
         @if (Route::has('register'))
-        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 ">Register</a>
+        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 hover:text-black p-2 dark:text-gray-500 ">Register</a>
         @endif
         @endauth
       </div>
@@ -571,11 +571,11 @@
       <div id="items" class="shadow-md mr-2 mt-1 hidden block absolute right-0 text-xs bg-white rounded-md">
         @if (Route::has('login'))
         @auth
-        <a href="{{ url('dashboard') }}" class="block py-2 px-4 hover:bg-blue-200 rounded-md text-gray-500">Dashboard</a>
+        <a href="{{ url('dashboard') }}" class="block py-2 px-4 hover:bg-blue-200 rounded-md text-gray-500 hover:text-black">Dashboard</a>
         @else
-        <a href="{{ route('login') }}" class="block py-2 px-4 hover:bg-blue-200 rounded-t-md text-gray-500 ">Log in</a>
+        <a href="{{ route('login') }}" class="block py-2 px-4 hover:bg-blue-200 rounded-t-md text-gray-500 hover:text-black ">Log in</a>
         @if (Route::has('register'))
-        <a href="{{ route('register') }}" class="block py-2 px-4 hover:bg-blue-200 rounded-b-md text-gray-500 ">Register</a>
+        <a href="{{ route('register') }}" class="block py-2 px-4 hover:bg-blue-200 rounded-b-md text-gray-500 hover:text-black ">Register</a>
         @endif
         @endauth
         @endif
