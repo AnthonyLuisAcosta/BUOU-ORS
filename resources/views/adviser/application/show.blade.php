@@ -325,6 +325,8 @@
 
             </div>
         </div>
+        </div>
+<br><br><br>
 
     <style>
         [x-cloak] {
