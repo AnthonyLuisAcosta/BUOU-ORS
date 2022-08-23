@@ -162,5 +162,17 @@
 				.columns.adjust()
 				.responsive.recalc();
 		});
+
+			//Alert Timeout
+	
+			setTimeout(function () {
+			$("#alert").hide();
+		}, 3000);
+		
 	</script>
+
+<style>
+	[x-cloak] { display: none }
+</style>
+
 </x-app-layout>
