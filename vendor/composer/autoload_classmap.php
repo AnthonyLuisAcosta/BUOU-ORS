@@ -264,6 +264,7 @@ return array(
     'Database\\Seeders\\RolesTableSeeder' => $baseDir . '/database/seeders/RolesTableSeeder.php',
     'Database\\Seeders\\Subj_CategorySeeder' => $baseDir . '/database/seeders/Subj_CategorySeeder.php',
     'Database\\Seeders\\SubjectsTableSeeder' => $baseDir . '/database/seeders/SubjectsTableSeeder.php',
+    'Database\\Seeders\\TermsSeeder' => $baseDir . '/database/seeders/TermsSeeder.php',
     'Database\\Seeders\\UsersTableSeeder' => $baseDir . '/database/seeders/UsersTableSeeder.php',
     'DeepCopy\\DeepCopy' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
     'DeepCopy\\Exception\\CloneException' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',

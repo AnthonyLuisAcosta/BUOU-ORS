@@ -176,4 +176,13 @@
 				.responsive.recalc();
 		});
 	</script>
+
+	<!--Alert Timeout-->
+	<script>
+		setTimeout(function () {
+			$("#alert").hide();
+		}, 3000);
+	
+</script>
+
 </x-app-layout>
