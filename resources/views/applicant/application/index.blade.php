@@ -120,8 +120,8 @@
 											<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-center">
 												
 												
-												<a href="{{ route('adviser.application.show', $row->id) }}" class="text-white rounded-lg hover:bg-blue-900 mb-2 mr-2 bg-blue-400 py-1 px-2">View</a>
-												<a href="{{ route('adviser.application.edit', $row->id) }}" class="text-white rounded-lg hover:bg-indigo-900 mb-2 mr-2 bg-indigo-400 py-1 px-3">Edit</a>
+												<a href="{{ route('application.show', $row->id) }}" class="text-white rounded-lg hover:bg-blue-900 mb-2 mr-2 bg-blue-400 py-1 px-2">View</a>
+												<a href="{{ route('application.edit', $row->id) }}" class="text-white rounded-lg hover:bg-indigo-900 mb-2 mr-2 bg-indigo-400 py-1 px-3">Edit</a>
 												
 											</td>
 									
