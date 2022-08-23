@@ -21,7 +21,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 			
             <div class="flex items-center justify-end px-3 py-4">
-                <a href="{{ route('admin.application.create') }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">New Application</a>
+               
             </div>
 
 		<!--Container-->
@@ -85,7 +85,7 @@
 												
 												
 											<a href="{{ route('admin.application.show', $row->id) }}" class="text-white rounded-lg hover:bg-blue-900 mb-2 mr-2 bg-blue-400 py-1 px-3">View</a>
-											<a href="{{ route('admin.application.edit', $row->id) }}" class="text-white rounded-lg hover:bg-indigo-900 mb-2 mr-2 bg-indigo-400 py-1 px-3">Edit</a>
+										
 												<!--DELETE BUTTON-->
 												<div id="{{$row->id}}" class="modal">
 													<p>Are you sure you want to delete this application?</p>

@@ -70,6 +70,41 @@
                             </ul>
                         </dd>
                     </div>
+
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Program</dt>
+                        @foreach($programs as $row)
+                        @if( $row->id == $application->programs_id)
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{$row->description}}</dd>
+                        @endif
+                        @endforeach
+                    </div>
+
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Subjects</dt>
+                        @foreach($subjects as $row)
+                        @if( $row->id == $application->subject1)
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Units: {{$row->units}} &emsp; {{$row->title}}</dd>
+                        @endif
+                        @endforeach
+                    </div>
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500"></dt>
+                        @foreach($subjects as $row)
+                        @if( $row->id == $application->subject2)
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Units: {{$row->units}} &emsp;  {{$row->title}}</dd>
+                        @endif
+                        @endforeach
+                    </div>
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500"></dt>
+                        @foreach($subjects as $row)
+                        @if( $row->id == $application->subject3)
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Units: {{$row->units}} &emsp; {{$row->title}}</dd>
+                        @endif
+                        @endforeach
+                    </div>
+
                 </dl>
             </div>
         </div>
@@ -83,7 +118,33 @@
                 <dl>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">Application Status</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{$application->status}}</dd>
+                        
+                                            @if($application->status == "Pending")
+												<td >
+                                                <dd style="color: rgb(253 186 116);" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
+
+												</td>
+											@elseif($application->status == "Recommended")
+												<td>
+                                                <dd class="mt-1 text-sm text-blue-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
+												
+												</td>
+                                               
+											@elseif($application->status == "Approved")
+												<td>
+                                                <dd class="mt-1 text-sm text-yellow-300 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
+												
+												</td>
+											@elseif($application == "Admitted")
+												<td>
+                                                <dd class="mt-1 text-sm text-green-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
+											
+												</td>
+											@elseif($application == "Rejected")
+												<td>
+                                                <dd class="mt-1 text-sm text-red-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
+												</td>
+											@endif
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">Program</dt>
@@ -93,12 +154,45 @@
                         @endif
                         @endforeach
                     </div>
+
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Subjects</dt>
+                        @foreach($subjects as $row)
+                        @if( $row->id == $application->subject1)
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Units: {{$row->units}} &emsp;  {{$row->title}}</dd>
+                        @endif
+                        @endforeach
+                    </div>
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500"></dt>
+                        @foreach($subjects as $row)
+                        @if( $row->id == $application->subject2)
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Units: {{$row->units}} &emsp;  {{$row->title}}</dd>
+                        
+                        @endif
+                        @endforeach
+                    </div>
+                    
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500"></dt>
+                        @foreach($subjects as $row)
+                        @if( $row->id == $application->subject3)
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Units: {{$row->units}} &emsp;  {{$row->title}}</dd>
+                       
+                        @endif
+                        @endforeach
+                    </div>
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500"></dt>
+    
+                    
+                    </div>
                 </dl>
 
             </div>
         </div>
-    </div>
-
+        </div>
+<br><br><br>
     <style>
         [x-cloak] { display: none }
     </style>
