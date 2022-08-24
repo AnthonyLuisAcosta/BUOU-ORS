@@ -828,6 +828,7 @@ class ComposerStaticInitdad8f2b36718e563acf74822e9c6cac9
         'Database\\Seeders\\RolesTableSeeder' => __DIR__ . '/../..' . '/database/seeders/RolesTableSeeder.php',
         'Database\\Seeders\\Subj_CategorySeeder' => __DIR__ . '/../..' . '/database/seeders/Subj_CategorySeeder.php',
         'Database\\Seeders\\SubjectsTableSeeder' => __DIR__ . '/../..' . '/database/seeders/SubjectsTableSeeder.php',
+        'Database\\Seeders\\TermsSeeder' => __DIR__ . '/../..' . '/database/seeders/TermsSeeder.php',
         'Database\\Seeders\\UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeders/UsersTableSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',

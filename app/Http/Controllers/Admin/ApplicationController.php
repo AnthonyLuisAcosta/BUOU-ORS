@@ -112,7 +112,8 @@ class ApplicationController extends Controller
     public function show(Application $application)
     {
         $programs = Programs::all();
-        return view('admin.application.show', compact('application'))->with('programs', $programs);
+        $subjects = Subjects::all();
+        return view('admin.application.show', compact('application'))->with('programs', $programs)->with('subjects', $subjects);
     }
 
     /**
