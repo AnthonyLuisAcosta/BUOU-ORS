@@ -60,7 +60,7 @@ Route::group(['as' => 'adviser.', 'prefix' => 'adviser', 'middleware' => ['auth'
 });
 
 //APPLICANT ROUTES
-Route::group(['as' => '', 'prefix' => '', 'middleware' => ['auth', 'applicant', 'verified']], function () {
+Route::group(['as' => '', 'prefix' => '', 'middleware' => ['auth', 'applicant']], function () {
     Route::get('dashboard', [App\Http\Controllers\Applicant\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('application', App\Http\Controllers\Applicant\ApplicationController::class);
 });  
