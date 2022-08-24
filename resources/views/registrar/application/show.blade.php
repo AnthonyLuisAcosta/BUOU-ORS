@@ -263,32 +263,31 @@
                         <dt class="text-sm font-medium text-gray-500">Application Status</dt>
                         
                         @if($application->status == "Pending")
-												<td >
-                                                <dd style="color: rgb(253 186 116);" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
+                        <td>
+                            <dd style="color: rgb(253 186 116);" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
 
-												</td>
-											@elseif($application->status == "Recommended")
-												<td>
-                                                <dd class="mt-1 text-sm text-blue-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
-												
-												</td>
-                                               
-											@elseif($application->status == "Approved")
-												<td>
-                                                <dd class="mt-1 text-sm text-yellow-300 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
-												
-												</td>
-											@elseif($application == "Admitted")
-												<td>
-                                                <dd class="mt-1 text-sm text-green-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
-											
-												</td>
-											@elseif($application == "Rejected")
-												<td>
-                                                <dd class="mt-1 text-sm text-red-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
-												
-												</td>
-											@endif
+                        </td>
+                        @elseif($application->status == "Recommended")
+                        <td>
+                            <dd class="mt-1 text-sm text-blue-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
+                        </td>
+
+                        @elseif($application->status == "Approved")
+                        <td>
+                            <dd class="mt-1 text-sm text-yellow-300 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
+                        </td>
+                      
+                        @elseif($application->status == "Rejected")
+                        <td>
+                            <dd class="mt-1 text-sm text-red-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
+                        </td>
+                        
+                        @elseif($application->status == "Admitted")
+                        <td>
+                            <dd  class="mt-1 text-sm text-green-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
+
+                        </td>
+                        @endif
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">Program</dt>

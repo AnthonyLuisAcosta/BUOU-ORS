@@ -219,22 +219,21 @@
                         @elseif($application->status == "Recommended")
                         <td>
                             <dd class="mt-1 text-sm text-blue-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
-
                         </td>
 
                         @elseif($application->status == "Approved")
                         <td>
                             <dd class="mt-1 text-sm text-yellow-300 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
-
                         </td>
-                        @elseif($application == "Admitted")
-                        <td>
-                            <dd class="mt-1 text-sm text-green-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
-
-                        </td>
-                        @elseif($application == "Rejected")
+                      
+                        @elseif($application->status == "Rejected")
                         <td>
                             <dd class="mt-1 text-sm text-red-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
+                        </td>
+                        
+                        @elseif($application->status == "Admitted")
+                        <td>
+                            <dd  class="mt-1 text-sm text-green-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
 
                         </td>
                         @endif
