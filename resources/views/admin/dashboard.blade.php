@@ -62,56 +62,56 @@
     <!--STATUS AND ANNOUNCEMENT-->
     <div class="flex justify-center">
       <!--STATUS-->
-      <div class="w-1/2 mx-4 p-2">
-        <div class="flex justify-center">
-          <div class="w-1/3 p-2">
-            <div class="w-full px-8 py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
+      <div class="w-1/2 sm:w-1/2 mx-4 p-2">
+        <div class="block sm:flex justify-center">
+          <div class="w-full mb-1 sm:w-1/3 p-0 sm:p-2">
+            <div class="w-full px-0 py-2 sm:px-8 sm:py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
               <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
                 Pending
               </h2>
-              <p class="mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-orange-500">
+              <p class="mt-0 sm:mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-orange-500">
                 {{$pending}}
               </p>
             </div>
           </div>
-          <div class="w-1/3  p-2">
-            <div class="w-full px-8 py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
+          <div class="w-full mb-1 sm:w-1/3 p-0 sm:p-2">
+            <div class="w-full px-0 py-2 sm:px-8 sm:py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
               <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
                 Recommended
               </h2>
-              <p class="mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-blue-400">
+              <p class="mt-0 sm:mt-2 text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-blue-400">
                 {{$recommended}}
               </p>
             </div>
           </div>
-          <div class="w-1/3  p-2">
-            <div class="w-full px-8 py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
+          <div class="w-full mb-1 sm:w-1/3 p-0 sm:p-2">
+            <div class="w-full px-0 py-2 sm:px-8 sm:py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
               <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
                 Admitted
               </h2>
-              <p class="mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-green-500">
+              <p class="mt-0 sm:mt-2 text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-green-500">
                 {{$admitted}}
               </p>
             </div>
           </div>
         </div>
-        <div class="flex items-center justify-center">
-          <div class="w-1/3  p-2">
-            <div class="w-full px-8 py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
+        <div class="block sm:flex items-center justify-center">
+          <div class="w-full mb-1 sm:w-1/3 p-0 sm:p-2">
+            <div class="w-full px-0 py-2 sm:px-8 sm:py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
               <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
                 Approved
               </h2>
-              <p class="mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-yellow-400">
+              <p class="mt-0 sm:mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-yellow-400">
                 {{$approved}}
               </p>
             </div>
           </div>
-          <div class="w-1/3  p-2 ">
-            <div class="w-full px-8 py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
+          <div class="w-full mb-1 sm:w-1/3 p-0 sm:p-2">
+            <div class="w-full px-0 py-2 sm:px-8 sm:py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
               <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
                 Rejected
               </h2>
-              <p class="mt-2 text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-red-400">
+              <p class="mt-0 sm:mt-2 text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-red-400">
                 {{$rejected}}
               </p>
             </div>
@@ -121,7 +121,7 @@
       <!--ANNOUNCEMENT-->
       <div class="w-1/2 mx-4 p-2 ">
         <div class="flex justify-center">
-          <div class="h-max w-full px-10 pt-8 pb-12 bg-white rounded-lg shadow-lg ">
+          <div class="h-full w-full px-10 pt-8 pb-12 bg-white rounded-lg shadow-lg ">
             <h2 class="text-gray-900 text-xs sm:text-md md:text-lg lg:text-2xl font-bold leading-snug text-center">
               Announcement
             </h2>
@@ -133,18 +133,17 @@
             @endif
             @endforeach
             <!--MODAL EDIT FORM-->
-            <div id="{{$value->id}}" class="modal">
-              <div class="">
+            <div id="{{$value->id}}" class="modal p-20">
+              <div>
                 <form action="{{ route('admin.dashboard.update', $value->id) }}" method="POST">
                   @csrf
                   @method("PUT")
-                  <div class="">
+                  <div>
                     <input type="hidden" name="id" value="1">
                     <input type="hidden" name="title" value="default">
                     <label for="field" class="text-lg font-bold">Announcement Field</label>
-                    <textarea id="field" class="mt-4 w-full rounded-lg" type="field" name="field" placeholder="{{$value->field}}" required autofocus></textarea>
+                    <textarea id="field" class="mt-4 w-full rounded-lg h-48" type="field" name="field" placeholder="{{$value->field}}" required autofocus></textarea>
                   </div>
-
               </div>
               <div class="text-right mt-2">
                 <input type="submit" class="hover:cursor-pointer text-green-500 hover:text-green-700 font-bold" rel="modal:close" value="Save Changes">
@@ -155,7 +154,7 @@
             <!--END MODAL-->
             <!--MODAL BUTTON-->
             <div class="text-right">
-              <a href="{{$value->id}}" rel="modal:open" class="bg-amber-200 hover:bg-amber-300 hover:text-black rounded-md px-4 py-1 text-xs lg:text-xs text-gray-700 cursor-pointer">EDIT</a>
+              <a href="#{{$value->id}}" rel="modal:open" class="bg-amber-200 hover:bg-amber-300 hover:text-black rounded-md px-4 py-1 text-xs lg:text-xs text-gray-700 cursor-pointer">EDIT</a>
             </div>
             <p class="mt-2 text-xs sm:text-sm md:text-md lg:text-lg">
               For a short tutorial on how to file an application and how the online admission system works please see :
@@ -177,4 +176,4 @@
   <!-- jQuery Modal -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-</x-app-layout>
+  </x-app-layout->

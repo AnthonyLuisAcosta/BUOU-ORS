@@ -20,10 +20,7 @@ class ProgramsController extends Controller
         }*/
 
         $count = Application::where('status', 'Admitted')->count();
-            
-        
-      
+
         return view('dean.programs.index')->with('programs', $programs)->with('users', $users)->with('applications', $applications)->with('count', $count);
     }
-
 }
