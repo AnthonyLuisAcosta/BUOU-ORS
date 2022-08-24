@@ -61,56 +61,56 @@
     <!--STATUS AND ANNOUNCEMENT-->
     <div class="flex justify-center">
       <!--STATUS-->
-      <div class="w-1/2 mx-4 p-2">
-        <div class="flex justify-center">
-          <div class="w-1/3 p-2">
-            <div class="w-full px-8 py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
+      <div class="w-1/2 sm:w-1/2 mx-4 p-2">
+        <div class="block sm:flex justify-center">
+          <div class="w-full mb-1 lg:w-1/3 p-0 sm:p-2">
+            <div class="w-full px-0 py-2 sm:px-8 sm:py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
               <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
                 Pending
               </h2>
-              <p class="mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-orange-500">
+              <p class="mt-0 sm:mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-orange-500">
                 {{$pending}}
               </p>
             </div>
           </div>
-          <div class="w-1/3  p-2">
-            <div class="w-full px-8 py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
+          <div class="w-full mb-1 lg:w-1/3 p-0 sm:p-2">
+            <div class="w-full px-0 py-2 sm:px-8 sm:py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
               <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
                 Recommended
               </h2>
-              <p class="mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-blue-400">
+              <p class="mt-0 sm:mt-2 text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-blue-400">
                 {{$recommended}}
               </p>
             </div>
           </div>
-          <div class="w-1/3  p-2">
-            <div class="w-full px-8 py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
+          <div class="w-full mb-1 lg:w-1/3 p-0 sm:p-2">
+            <div class="w-full px-0 py-2 sm:px-8 sm:py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
               <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
                 Admitted
               </h2>
-              <p class="mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-green-500">
+              <p class="mt-0 sm:mt-2 text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-green-500">
                 {{$admitted}}
               </p>
             </div>
           </div>
         </div>
-        <div class="flex items-center justify-center">
-          <div class="w-1/3  p-2">
-            <div class="w-full px-8 py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
+        <div class="block sm:flex items-center justify-center">
+          <div class="w-full mb-1 lg:w-1/3 p-0 sm:p-2">
+            <div class="w-full px-0 py-2 sm:px-8 sm:py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
               <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
                 Approved
               </h2>
-              <p class="mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-yellow-400">
+              <p class="mt-0 sm:mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-yellow-400">
                 {{$approved}}
               </p>
             </div>
           </div>
-          <div class="w-1/3  p-2 ">
-            <div class="w-full px-8 py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
+          <div class="w-full mb-1 sm:w-1/3 p-0 sm:p-2">
+            <div class="w-full px-0 py-2 sm:px-8 sm:py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
               <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
                 Rejected
               </h2>
-              <p class="mt-2 text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-red-400">
+              <p class="mt-0 sm:mt-2 text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-red-400">
                 {{$rejected}}
               </p>
             </div>
