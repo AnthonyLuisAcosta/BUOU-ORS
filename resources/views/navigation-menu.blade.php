@@ -141,7 +141,7 @@
         <div>
           <x-jet-responsive-nav-link class="inline-flex" href="{{url('admin/dashboard')}}" :active="request()->routeIs('admin.dashboard')">
             Dashboard
-            
+
           </x-jet-responsive-nav-link>
           <x-jet-responsive-nav-link class="inline-flex" href="{{url('admin/application')}}" :active="request()->routeIs('admin.application.*')">
             Application
@@ -312,7 +312,7 @@
               <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
             </svg>
             <span class="ml-3 pr-24">Dashboard</span>
-           
+
           </a>
         </li>
         <li>

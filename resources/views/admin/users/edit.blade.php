@@ -4,7 +4,7 @@
       {{ __('Users') }} | <span class=" text-md text-gray-500">{{__('Edit User')}}</span>
     </h2>
   </x-slot>
-
+  @include('alert')
   <div>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="block mb-8">
