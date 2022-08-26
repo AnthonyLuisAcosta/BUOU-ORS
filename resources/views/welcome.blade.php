@@ -623,20 +623,24 @@
   <br><br><br><br><br>
   <div class="Content">
     <div class="center" alt="About" style="width: 60%">
-      <H1 style="text-align:center; color:#009BDF">About us</H1>
-      <H3 style="text-align:center; color:#E67E22">THE BICOL UNIVERSITY OPEN UNIVERSITY</H3>
+      <H1 style="text-align:center; color:#009BDF; font-size: 30px; font-weight: bold;">About us</H1>
+      <br>
+      <H3 style="text-align:center; color:#E67E22; font-size: 20px; font-weight: bold; ">THE BICOL UNIVERSITY OPEN UNIVERSITY</H3>
+      <br>
       <p style="text-align: justify">
         On November 20, 1997, the Bicol University (BU) Board of Regents (BOR) passed BOR Resolution No. 24, series of 1997 which approved the setting up of the BU Open University. The objective of the BU Open University was to bring the curricular programs of the University to a wider populace of students in the Bicol Region. To fully operationalize BOR Resolution No. 24 in accordance with the present thrust and direction set forth in the BU Comprehensive Development Plan, Administrative Order No. 177, series of 2004 was issued to provide the general implementing guidelines for the operation of the BU Open University. The emphasis of the BU Open University under the present leadership is to initially address the educational capability enhancement need of professionals by offering selected graduate programs via distance education/open learning. The long-term direction of the BU Open University is to eventually offer some baccalaureate courses in support of regional development. The re-structured BU Open University (BUOU) is now mandated to be the degree-offering and eventually a degree-granting academic unit of the University. It was also given authority by the Board of Regents to expand its program offering into offering selected undergraduate courses and non-degree/short term courses needed in the region.
       </p>
-
+      
     </div>
     <div class="MV_container">
       <div class="MV">
-        <h1 style="text-align: center; color:#E67E22">Vision</h1>
+        <h1 style="text-align: center; color:#E67E22; font-size: 20px; font-weight: bold;">Vision</h1>
+        <br>
         <p style="text-align: justify">A world-class University producing leaders and change agents for social transformation and development.</p>
       </div>
       <div class="MV">
-        <h1 style="text-align: center; color:#E67E22">Mission</h1>
+        <h1 style="text-align: center; color:#E67E22; font-size: 20px; font-weight: bold;">Mission</h1>
+        <br>
         <p style="text-align: justify">To give and professional and technical training and provide advanced and specialized instruction in literature, philosophy. the sciences and arts, besides providing for the promotion of technological researches.</p>
       </div>
     </div>

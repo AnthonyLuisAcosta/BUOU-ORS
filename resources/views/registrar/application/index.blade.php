@@ -18,9 +18,13 @@
 <div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 			
-            <div class="flex items-center justify-end px-3 py-4">
-				<a href="{{ route('registrar.application.create') }}" class="ml-1 inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">View Admitted Applications</a>
-			</div>
+		<div class="block mb-8">
+			<a href="{{ route('registrar.application.create') }}" class="ml-1 inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
+          
+
+          <span class="flex-1 ml-1 whitespace-nowrap">View All Admitted Applications</span>
+        </a>
+      </div>
 
 		<!--Container-->
 		<div class="container w-full mx-auto px-2">

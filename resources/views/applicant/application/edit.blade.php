@@ -18,16 +18,16 @@
 							  </div>
 							  </div>
 							  @endif
-			
-			<div class="flex items-center text-right sm:px-6 py-6">
-							<button onclick="window.print();" class="btn printBtn inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">
-									<a >Print</a>
-								</button>
-								<div class="p-4">
-				<a href="{{ route('application.index') }}" class="btn inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Back to list</a>
-			</div>
-							
-							</div>
+			 
+			 <div class="block mb-8 ">
+
+        <a href="{{ route('application.index') }}" class="ml-1 inline-flex items-center px-4 py-1 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+          </svg>
+          <span class="flex-1 ml-1 whitespace-nowrap">Back to list</span>
+        </a>
+      </div>
 			
 			<div class="mt-5 md:mt-0 md:col-span-2">
 				<form method="post" action="{{ route('application.update', $application->id) }}" enctype="multipart/form-data">
@@ -237,16 +237,14 @@
 
 							</div>
 							<!--Button-->
-							<div class="flex items-center justify-end px-4 bg-white text-right sm:px-6 py-6">
-							
-								<button class="btn m-6 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
-									<input type="hidden" name="hidden_id" value="{{ $application->id }}" />
-									<input type="submit" class="btn btn-primary" value="Update" />
-								</button>
-								<button class="btn inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">
-									<a href="{{ route('application.index') }}">Cancel</a>
-								</button>
-							</div>
+							<div class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6">
+              <button class="inline-flex items-center px-4 py-2  border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest text-gray-800 shadow-md bg-green-200 hover:bg-green-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
+                Update
+              </button>
+              <button class="ml-1 inline-flex items-center px-4 py-2  border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-red-200 hover:bg-red-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
+                <a href="{{ route('application.index') }}">Cancel</a>
+              </button>
+            </div>
 						</div>
 						<!--END OF GRID-->
 					</div>
