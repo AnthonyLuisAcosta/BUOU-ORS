@@ -26,7 +26,7 @@ class StoreSubjectsRequest extends FormRequest
     {
         return [
             'subj_code' => [
-                'required', 'string', 'unique:subjects',
+                'required', 'string',
             ],
             'title' => [
                 'required', 'string',

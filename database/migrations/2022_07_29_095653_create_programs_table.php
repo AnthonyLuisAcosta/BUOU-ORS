@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('programs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('code')->unique();
+            $table->string('code');
             $table->longText('description');
             $table->string('adviser');
             $table->string('dean');
