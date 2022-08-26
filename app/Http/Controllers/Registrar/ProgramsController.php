@@ -27,8 +27,21 @@ class ProgramsController extends Controller
     /* Store a newly created resource in storage*/
     public function store(StoreProgramsRequest $request)
     {
-        $input = $request->validated();
-        Programs::create($input);
+        $programs = Programs::all();
+        $users = User::all();
+        #$input = $request->validated();
+        $programs->code = $request->code;
+        $programs->description = $request->description;
+        $programs->adviser = $request->adviser;
+        $programs->dean = $request->dean;
+        $programs->registrar = $request->registrar;
+
+        #Programs::create($input);
+        foreach($programs as $prog){
+            if($prog->adviser == $request->adviser){
+                return back()->with('success', 'Choose another adviser');
+            }
+        }
         return redirect()->route('registrar.programs.index')->with('success', 'Program created successfully');
     }
 
@@ -52,8 +65,17 @@ class ProgramsController extends Controller
     public function update(StoreProgramsRequest $request, $id)
     {
         $programs = Programs::find($id);
-        $input = $request->validated();
-        $programs->update($input);
+        $programs->code = $request->input('code');
+        $programs->description = $request->input('description');
+        $programs->adviser = $request->input('adviser');
+        $programs->dean = $request->input('dean');
+        $programs->registrar = $request->input('registrar');
+        
+        foreach($programs as $prog){
+            if($prog->adviser == $request->input('adviser')){
+                return back()->with('success', 'Choose another adviser');
+            }
+        }
         return redirect()->route('registrar.programs.index')->with('success', 'Program updated successfully');
     }
 
