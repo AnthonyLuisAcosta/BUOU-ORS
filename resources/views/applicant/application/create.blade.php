@@ -251,4 +251,8 @@
 		
 	</script>
 
+<style>
+	[x-cloak] { display: none }
+</style>
+
 </x-app-layout>
