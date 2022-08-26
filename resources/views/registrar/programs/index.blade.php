@@ -42,6 +42,7 @@
 									<td>{{ $program->description }}</td>
 									<td>{{ $program->created_at }}</td>
 									<td>{{ $program->updated_at }}</td>
+									
 									<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
 										<a href="{{ route('registrar.programs.show', $program->id) }}" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View</a>
 										<a href="{{ route('registrar.programs.edit', $program->id) }}" class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">Edit</a>

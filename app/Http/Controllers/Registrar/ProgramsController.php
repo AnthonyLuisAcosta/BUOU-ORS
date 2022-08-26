@@ -67,15 +67,15 @@ class ProgramsController extends Controller
         $programs = Programs::find($id);
         $programs->code = $request->input('code');
         $programs->description = $request->input('description');
-        $programs->adviser = $request->input('adviser');
+        #$programs->adviser = $request->input('adviser');
         $programs->dean = $request->input('dean');
         $programs->registrar = $request->input('registrar');
         
-        foreach($programs as $prog){
-            if($prog->adviser == $request->input('adviser')){
+        
+            if($programs->adviser != $request->input('adviser')){
                 return back()->with('success', 'Choose another adviser');
             }
-        }
+        
         return redirect()->route('registrar.programs.index')->with('success', 'Program updated successfully');
     }
 

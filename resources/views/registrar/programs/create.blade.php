@@ -8,6 +8,15 @@
   <div>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
+    @if (session ('success'))
+			<div id="alert" class="flex p-4 mb-4 bg-red-500 dark:bg-red-200" role="alert">
+				<svg class="flex-shrink-0 w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+				<div class="ml-3 font-medium text-white">
+				{{ session('success') }}
+			</div>
+			</div>
+			@endif
+
       <!-- Return Button -->
       <div class="block mb-8">
         <a href="{{ route('registrar.programs.index') }}" class="ml-1 inline-flex items-center px-4 py-1 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
