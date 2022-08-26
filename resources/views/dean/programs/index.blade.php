@@ -17,7 +17,7 @@
                 <th data-priority="1">Code</th>
                 <th data-priority="2">Description</th>
                 <th data-priority="3">Adviser</th>
-                <th data-priority="4">Admitted</th>
+                
               </tr>
             </thead>
             <tbody>
@@ -29,7 +29,7 @@
               <td>{{ $user->first_name.' '.$user->last_name }} </td>
               @endif
               @endforeach
-              <td>{{$count}}</td>
+              
               </tr>
               @endforeach
             </tbody>
