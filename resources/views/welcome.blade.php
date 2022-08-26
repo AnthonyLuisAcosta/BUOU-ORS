@@ -658,7 +658,7 @@
   </div>
   <div class="text-center text-gray-500 p-4">
     © 2022 Copyright:
-    <a class="text-gray-600" href="https://tailwind-elements.com/">Bicol University Open University</a>
+    <a class="text-gray-600">Bicol University Open University</a>
   </div>
 
   <script>
