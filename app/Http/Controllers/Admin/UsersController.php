@@ -111,11 +111,22 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $request->validate([
-            'password' => ['required', 'string', new Password],
-        ]);
         $user = User::find($id);
         $input = $request->all();
+        #condition statement for email address update
+        #if $request->email holds an email address that matches the old email, $request will only validate password to check for e
+        if ($request->email == $user->email) {
+            $request->validate([
+                'password' => ['required', 'string', new Password],
+            ]);
+        }
+        #else if $request->email holds an email address that does not match with the old email, it will validate the request to check for email duplication within the database
+        else {
+            $request->validate([
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', new Password],
+            ]);
+        }
         $user->update([
             'role_id' => $input['role_id'],
             'first_name' => $input['first_name'],

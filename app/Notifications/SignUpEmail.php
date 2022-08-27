@@ -42,8 +42,8 @@ class SignUpEmail extends Notification
     {
         return (new MailMessage)
             ->line('Welcome to Bicol University Open University!')
-            ->action('Go to Home Page', url('/'))
-            ->line('Thank you for signing up!');
+            ->line('Thank you for signing up!')
+            ->action('Go to Home Page', url('/'));
     }
 
     /**

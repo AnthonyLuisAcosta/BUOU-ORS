@@ -41,9 +41,11 @@ class ApplicationRejectedEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('We have reviewed your application you have recently passed. Unfortunately, your application has been rejected. We do encourage you to apply again in the future.')
-            ->action('Go to Home Page', url('/'))
-            ->line('Thank you again for your application and best wishes ');
+            ->line('To whom it may concern;')
+            ->line('Thank you for applying to Bicol University Open University. We have reviewed your application that you have submitted.')
+            ->line('We regret to inform you that we are unable to offer you admission to any of the degree programs that you indicated in your application. We do encourage you to apply again in the future')
+            ->line('Thank you again for your application and best wishes.')
+            ->action('Go to Home Page', url('/'));
     }
 
     /**
