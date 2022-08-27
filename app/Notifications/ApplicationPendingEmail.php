@@ -41,9 +41,10 @@ class ApplicationPendingEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line("We have reviewed your application and changed it's status to Pending. We are holding your application as it needs further reviewing.")
-            ->action('Go to Home Page', url('/'))
-            ->line('We will keep you posted on the status of your application.');
+            ->line('To whom it may concern;')
+            ->line('We have reviewed your application and changed its status to Pending. We are holding your application as it needs further reviewing. We will keep you posted on the status of your application. ')
+            ->line('If you have not received a message from us within the next five working days, please contact us.')
+            ->action('Go to Home Page', url('/'));
     }
 
     /**

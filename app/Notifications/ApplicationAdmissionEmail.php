@@ -41,9 +41,9 @@ class ApplicationAdmissionEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('I am pleased to inform you that your application has been Approved!')
-            ->line('Congratulations on being admitted!')
-            ->line('Welcome to Bicol University Open University!')
+            ->line('To whom it may concern;')
+            ->line('This is to inform you that your application has been approved.')
+            ->line('Congratulations and Welcome to Bicol University Open University! ')
             ->action('Home Page', url('/'));
     }
 
