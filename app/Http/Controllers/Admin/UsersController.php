@@ -111,6 +111,9 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'password' => ['required', 'string', new Password],
+        ]);
         $user = User::find($id);
         $input = $request->all();
         $user->update([

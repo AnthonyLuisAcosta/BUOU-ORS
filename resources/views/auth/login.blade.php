@@ -37,14 +37,14 @@
 
       <div class="flex items-center justify-end mt-4">
         @if (Route::has('password.request'))
-        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+        <a class="underline text-sm text-gray-600 hover:text-gray-900 mr-2" href="{{ route('password.request') }}">
           {{ __('Forgot your password?') }}
         </a>
         @endif
 
-        <x-jet-button class="ml-4 text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200">
+        <button class="inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
           {{ __('Login') }}
-        </x-jet-button>
+        </button>
       </div>
     </form>
   </x-jet-authentication-card>

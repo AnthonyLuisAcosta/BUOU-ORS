@@ -70,9 +70,9 @@
             {{ __('Sign in to your Account') }}
           </a>
         </div>
-        <x-jet-button class="ml-4 text-gray-800 shadow-md bg-amber-100 hover:bg-amber-200  hover:text-gray-600">
+        <button class="ml-4 inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest text-gray-800 shadow-md bg-amber-100 hover:bg-amber-200 hover:text-white disabled:opacity-25 transition ease-in-out duration-150">
           {{ __('Register') }}
-        </x-jet-button>
+        </button>
       </div>
     </form>
   </x-jet-authentication-card>

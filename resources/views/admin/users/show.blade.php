@@ -14,34 +14,49 @@
           <span class="flex-1 ml-1 whitespace-nowrap">Back to list</span>
         </a>
       </div>
-      <div class="flex items-center justify-center mt-5">
-        <div class="w-2/3 shadow overflow-hidden rounded-lg">
-          <div class="px-4 py-5 bg-white sm:p-6 border-0">
-            <!--GRID-->
-            <div class="grid grid-rows-flow gap-2">
-              <!--First Name-->
-              <div class="flex">
-                <p class="text-md text-gray-500 p-2 pl-2 w-1/3 text-right border-r-2 mr-2">Name</p>
-                <p class="text-md p-2 w-2/3 block rounded-md bg-gray-100">{{$user->first_name.' '.$user->last_name}}</p>
-              </div>
-              <div class=" mt-3 flex">
-                <p class="text-md text-gray-500 p-2 pl-2 w-1/3 text-right border-r-2 mr-2">Email</p>
-                <p class="text-md p-2 w-2/3 block rounded-md bg-gray-100">{{$user->email}}</p>
-              </div>
-              <div class=" mt-3 flex">
-                <p class="text-md text-gray-500 p-2 pl-2 w-1/3 text-right border-r-2 mr-2">Account Type</p>
-                @foreach($roles as $role)
-                @if($user->role_id == $role->role_id)
-                <p class="text-md p-2 w-2/3 block rounded-md bg-gray-100">{{$role->role_name}}</p>
-                @endif
-                @endforeach
-              </div>
+      <div class="flex flex-col">
+        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+            <div class="shadow overflow-hidden border-b border-gray-200 rounded-lg">
+              <table class="min-w-full divide-y divide-gray-200 w-full">
+                <!-- Code -->
+                <tr class="border-b">
+                  <th scope="col" class="px-6 py-3 bg-gray-50 text-xs text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Name
+                  </th>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 bg-white divide-y divide-gray-200">
+                    {{$user->first_name.' '.$user->last_name}}
+                  </td>
+                </tr>
+
+                <!-- Description -->
+                <tr class="border-b">
+                  <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Email
+                  </th>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 bg-white divide-y divide-gray-200">
+                    {{$user->email}}
+                  </td>
+                </tr>
+
+                <!-- Program Adviser -->
+                <tr class="border-b">
+                  <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Account Type
+                  </th>
+                  @foreach($roles as $role)
+                  @if($user->role_id == $role->role_id)
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 bg-white divide-y divide-gray-200">
+                    {{$role->role_name}}
+                  </td>
+                  @endif
+                  @endforeach
+                </tr>
+              </table>
             </div>
           </div>
-          <!--END OF GRID-->
         </div>
       </div>
     </div>
   </div>
-
 </x-app-layout>
