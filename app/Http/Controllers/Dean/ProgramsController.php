@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Dean;
 
 use App\Models\User;
+use App\Models\Terms;
+use App\Models\Category;
 use App\Models\Programs;
+use App\Models\Subjects;
 use App\Models\Application;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ProgramsController extends Controller
 {
@@ -13,14 +17,39 @@ class ProgramsController extends Controller
     public function index()
     {
         $programs = Programs::all();
-        $users = User::all();
         $applications = Application::all();
-        /*if($programs->id == $applications->id){
-            $count = Application::where('status', 'Admitted')->count();
-        }*/
+        $terms = Terms::all();
+        return view('dean.programs.index')
+            ->with('programs', $programs)
+            ->with('applications', $applications)
+            ->with('terms', $terms);
+    }
 
-        $count = Application::where('status', 'Admitted')->count();
+    public function create()
+    {
+        $programs = Programs::all();
+        $users = User::all();
+        return view('dean.programs.create')->with('programs', $programs)
+        ->with('users', $users);
+    }
 
-        return view('dean.programs.index')->with('programs', $programs)->with('users', $users)->with('applications', $applications)->with('count', $count);
+    /* Display the specified resource*/
+    public function show($id)
+    {
+        $programs = Programs::find($id);
+        $id = Auth::user()->id;
+        $applications = Application::all();
+        return view('dean.programs.show')->with('programs', $programs)->with('applications', $applications);
+    }
+
+    public function edit( $id)
+    {
+        $programs = Programs::find($id);
+        $id = Auth::user()->id;
+        $subjects = Subjects::all();
+        $categories = Category::all();
+
+        return view('dean.programs.edit')->with('programs', $programs)->with('subjects', $subjects)
+        ->with('categories', $categories);
     }
 }
