@@ -49,11 +49,17 @@ class ProgramsController extends Controller
     }
 
     /* Update the specified resource in storage*/
-    public function update(StoreProgramsRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $programs = Programs::find($id);
-        $input = $request->validated();
-        $programs->update($input);
+        $programs->code = $request->input('code');
+        $programs->description = $request->input('description');
+        $programs->adviser = $request->input('adviser');
+        $programs->dean = $request->input('dean');
+        $programs->registrar = $request->input('registrar');
+        
+        $programs->update();
+        
         return redirect()->route('admin.programs.index')->with('success', 'Program updated successfully');
     }
 
