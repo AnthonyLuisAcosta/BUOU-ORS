@@ -122,8 +122,25 @@
 												@if ($row->status == "Pending")	
 												<a href="{{ route('application.edit', $row->id) }}" class="text-white rounded-lg hover:bg-indigo-900 mb-2 mr-2 bg-indigo-400 py-1 px-3">Edit</a>
 												@endif
+												@if($row->status == "Rejected")
+												<div id="{{$row->id}}" class="modal">
+													<p>Are you sure you want to delete this application?</p>
+													<div class="text-right">
+													<form class="inline-block" action="{{ route('application.destroy', $row->id) }}" method="POST">
+														<input type="hidden" name="_method" value="DELETE">
+														<input type="hidden" name="_token" value="{{ csrf_token() }}">
+														<input type="submit" class="inline-flex items-center px-4 py-2 bg-red-700 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-600 active:bg-red-900 focus:outline-none focus:border-red-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150" rel="modal:close" value="Yes">
+													</form>
+													<a href="" rel="modal:close" class="ml-1 inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-600 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Close</a>
+													</div>
+												</div>
+												<!-- Link to open the modal -->
+												<a href="#{{$row->id}}" rel="modal:open" class="text-white rounded-lg hover:bg-red-900 mb-2 mr-2 bg-red-400 py-1 px-2 cursor-pointer">Delete</a>
+												<!--END OF DELETE BUTTON-->
+												@endif
 											</td>
 									
+
 									<!--@/endif-->
 						
 										</tr>
