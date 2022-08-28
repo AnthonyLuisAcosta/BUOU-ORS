@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Adviser;
 
 use App\Models\User;
 use App\Models\Terms;
+use App\Models\Category;
 use App\Models\Programs;
+use App\Models\Subjects;
 use App\Models\Application;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -24,11 +26,24 @@ class ProgramsController extends Controller
     }
 
     /* Display the specified resource*/
-    public function show(Application $application, $id)
+    public function show( $id)
     {
         $programs = Programs::find($id);
         $id = Auth::user()->id;
         $applications = Application::all();
-        return view('adviser.programs.show', compact('application'))->with('programs', $programs)->with('applications', $applications);
+        return view('adviser.programs.show')->with('programs', $programs)->with('applications', $applications);
     }
+
+    public function edit( $id)
+    {
+        $programs = Programs::find($id);
+        $id = Auth::user()->id;
+        $subjects = Subjects::all();
+        $categories = Category::all();
+
+        return view('adviser.programs.edit')->with('programs', $programs)->with('subjects', $subjects)
+        ->with('categories', $categories);
+    }
+
+    
 }
