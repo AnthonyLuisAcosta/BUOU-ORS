@@ -72,6 +72,8 @@ class ApplicationController extends Controller
             'subject2',
             'subject3',
 
+            'adviser',
+
             'applicantImage'         =>  'required|file|mimes:jpg,png,jpeg,gif,svg,pdf,docx,doc'
         ]);
 
@@ -101,6 +103,9 @@ class ApplicationController extends Controller
 
         $application->applicantImage = $file_name;
         #$application->programs_id = $programs_id;
+
+        $application->adviser;
+
         foreach ($programs as $prog) {
             if ($prog->id == $application->programs_id)
                 $application->adviser = $prog->adviser;
