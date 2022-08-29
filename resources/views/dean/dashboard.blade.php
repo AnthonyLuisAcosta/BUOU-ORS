@@ -22,9 +22,9 @@
     <!--WELCOME and TERM-->
     <div class="flex">
       <!--WELCOME-->
-      <div class="w-1/2 mx-4 p-2">
+      <div class="w-1/2 xl:w-1/2 mx-4 p-2">
         <div class="flex justify-center ">
-          <div class="w-full px-10 py-4 bg-white rounded-lg shadow-lg">
+          <div class="w-full px-4 py-2 lg:px-10 lg:py-4  bg-white rounded-lg shadow-lg">
             <h2 class="lg:text-xl md:text-lg sm:text-md text-xs font-bold tracking-tight">
               Welcome, {{Auth::user()->first_name}}!
             </h2>
@@ -40,17 +40,17 @@
         </div>
       </div>
       <!--TERM-->
-      <div class="w-1/2 mx-4 p-2">
+      <div class="w-1/2 xl:w-1/2 mx-4 p-2">
         <div class="flex justify-center ">
-          <div class="h-max w-full px-10 py-4 text-center bg-white rounded-lg shadow-lg">
+          <div class="h-max w-full px-4 py-2 lg:px-10 lg:py-4 text-center bg-white rounded-lg shadow-lg">
             @foreach($terms as $term)
             @if($term->status == 1)
-            <h2 class="lg:text-xl md:text-lg sm:text-md text-xs font-bold tracking-tight">
+            <h2 class="text-xs lg:text-xl font-bold tracking-tight">
               {{$term->year.' '.$term->label}}
             </h2>
             @endif
             @endforeach
-            <p class="space-y-1 text-gray-600 focus:outline-none focus:underline lg:text-md md:text-sm sm:text-xs text-xs">
+            <p class="space-y-1 text-gray-600 focus:outline-none focus:underline lg:text-lg text-xs">
               Active Term
             </p>
           </div>
@@ -61,10 +61,10 @@
     <!--STATUS AND ANNOUNCEMENT-->
     <div class="flex justify-center">
       <!--STATUS-->
-      <div class="w-1/2 sm:w-1/2 mx-4 p-2">
-        <div class="block sm:flex justify-center">
-          <div class="w-full mb-1 lg:w-1/3 p-0 sm:p-2">
-            <div class="w-full px-0 py-2 sm:px-8 sm:py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
+      <div class="w-1/2 xl:w-1/2 mx-4 p-2">
+        <div class="block xl:flex justify-center">
+          <div class="w-full mb-1 xl:w-1/3 p-0 xl:p-2">
+            <div class="w-full px-0 py-2 xl:px-8 xl:py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
               <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
                 Pending
               </h2>
@@ -73,8 +73,8 @@
               </p>
             </div>
           </div>
-          <div class="w-full mb-1 lg:w-1/3 p-0 sm:p-2">
-            <div class="w-full px-0 py-2 sm:px-8 sm:py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
+          <div class="w-full mb-1 xl:w-1/3 p-0 xl:p-2">
+            <div class="w-full px-0 py-2 xl:px-8 xl:py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
               <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
                 Recommended
               </h2>
@@ -83,8 +83,8 @@
               </p>
             </div>
           </div>
-          <div class="w-full mb-1 lg:w-1/3 p-0 sm:p-2">
-            <div class="w-full px-0 py-2 sm:px-8 sm:py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
+          <div class="w-full mb-1 xl:w-1/3 p-0 xl:p-2">
+            <div class="w-full px-0 py-2 xl:px-8 xl:py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
               <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
                 Admitted
               </h2>
@@ -94,9 +94,9 @@
             </div>
           </div>
         </div>
-        <div class="block sm:flex items-center justify-center">
-          <div class="w-full mb-1 lg:w-1/3 p-0 sm:p-2">
-            <div class="w-full px-0 py-2 sm:px-8 sm:py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
+        <div class="block xl:flex items-center justify-center">
+          <div class="w-full mb-1 xl:w-1/3 p-0 xl:p-2">
+            <div class="w-full px-0 py-2 xl:px-8 xl:py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
               <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
                 Approved
               </h2>
@@ -105,8 +105,8 @@
               </p>
             </div>
           </div>
-          <div class="w-full mb-1 sm:w-1/3 p-0 sm:p-2">
-            <div class="w-full px-0 py-2 sm:px-8 sm:py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
+          <div class="w-full mb-1 xl:w-1/3 p-0 xl:p-2">
+            <div class="w-full px-0 py-2 xl:px-8 xl:py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
               <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
                 Rejected
               </h2>
@@ -118,9 +118,9 @@
         </div>
       </div>
       <!--ANNOUNCEMENT-->
-      <div class="w-1/2 mx-4 p-2 ">
+      <div class="w-1/2 xl:w-1/2 mx-4 p-2">
         <div class="flex justify-center">
-          <div class="h-max w-full px-10 pt-8 pb-12 bg-white rounded-lg shadow-lg ">
+          <div class="h-max w-full px-4 py-2 lg:px-10 lg:py-4 bg-white rounded-lg shadow-lg ">
             <h2 class="text-gray-900 text-xs sm:text-md md:text-lg lg:text-2xl font-bold leading-snug text-center">
               Announcement
             </h2>
