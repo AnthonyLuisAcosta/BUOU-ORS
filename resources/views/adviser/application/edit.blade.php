@@ -131,20 +131,16 @@
 
 								<!--Program Selection-->
 								<div class="mt-4 col-span-6">
-									<label class="pb-4 font-bold mb-1 text-gray-700 block border-b-2 border-gray-200">Subject Selection</label>
+									<label class="pb-4 font-bold mb-1 text-gray-700 block border-b-2 border-gray-200">Program Selection</label>
 
 									<x-jet-label for="programs_id" value=" Programs" class="pt-6" />
-									<select name="programs_id" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
+									<select readonly name="programs_id" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
 										@foreach($programs as $row)				
 												@if( $row->id == $application->programs_id)
-												<option  selected class="block mt-1 w-full" value="{{ $application->programs_id }}">{{ $row->description}}</option>
+												<option readonly selected class="block mt-1 w-full" value="{{ $application->programs_id }}">{{ $row->description}}</option>
 												@endif
 										@endforeach
 										
-										@foreach($programs as $row)
-										<option class="block mt-1 w-full" name="programs_id" value="{{ $row->id}}">{{ $row->description}}</option>
-										@endforeach
-
 									</select>
 								</div>
 
