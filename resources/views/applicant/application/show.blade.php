@@ -28,7 +28,23 @@
 
     <div class=" border-t-2 w-full border-gray-200 flex gap-4">
         <div class="bg-white shadow overflow-hidden sm:rounded-lg max-w-9/12 w-9/12">
+            <div class="Formlogo m-5 inline-flex grid grid-cols-3 place-items-center content-center" >
+              
 
+            <div class=" place-items-center center content-center pl-20">
+            <img src="/img/OU.png" class="w-3/6 place-items-center center content-center " alt="..." >
+            </div>
+            <div class = "text-lg text-center"> 
+                <tr>Bicol University</tr><br>
+                <tr>Open University</tr><br>
+                <tr>Legazpi City</tr> 
+            </div>
+
+            <div class=" place-items-center center content-center pl-36"> 
+                <img src="/img/BU.png" class="w-7/12  place-items-center content-center" alt="..." />
+            </div>
+           
+            </div>
 
             <div class="form">
                 <div class="borderhide max-w-7xl mx-auto sm:px-6 lg:px-8 py-6">
@@ -297,16 +313,22 @@
         [x-cloak] {
             display: none
         }
+        .Formlogo{
+           display: none;
+            
+            }
         
         .pointer {cursor: pointer;}
         @media print {
             @page {
                 margin: 0;
             }
-
+            .Formlogo{
+                display: grid;
+            }
             body {
                 margin-left: -210px;
-                margin-top: -60px;
+                margin-top: -30px;
                 height: 100%;
                 width: 110%;
                 border-style: none;
