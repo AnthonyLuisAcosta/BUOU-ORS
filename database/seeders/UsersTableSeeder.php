@@ -29,6 +29,8 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'role_id' => '2',
             'first_name' => 'Registrar',
+            'middle_name' => 'Registrar',
+            'last_name' => 'Registrar',
             'email' => 'registrar@gmail.com',
             'password' => Hash::make('pass@registrar'),
             'created_at'  => date("Y-m-d H:i:s"),
