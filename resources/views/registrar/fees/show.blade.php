@@ -1,17 +1,24 @@
 <x-app-layout>
-  <x-slot name="header">
-    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+  <x-slot name="header" class="toHide">
+    <h2 class="toHide font-semibold text-xl text-gray-800 leading-tight">
       {{ __('Fees') }} | <span class=" text-md text-gray-500">{{__('Generate')}}</span>
     </h2>
   </x-slot>
   <div>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <div class="block mb-8">
-        <a href="{{ route('registrar.fees.index') }}" class="ml-1 inline-flex items-center px-4 py-1 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-cyan-200 hover:bg-cyan-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
+    <div class="toHide block mb-8">
+        
+			<a href="{{ route('registrar.fees.index') }}" class="ml-1 inline-flex items-center px-4 py-1 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
             <path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
           </svg>
           <span class="flex-1 ml-1 whitespace-nowrap">Back to list</span>
+        </a>
+
+        <a onclick="window.print();" class="btn pointer printBtn ml-1 inline-flex items-center px-4 py-1 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
+          <svg class="h-5 w-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+          </svg>
+          <span class="flex-1 ml-1 whitespace-nowrap">Print</span>
         </a>
       </div>
       <div class="flex">
@@ -178,7 +185,7 @@
                   <p>Registrar</p>
                 </div>
               </div>
-              <div class="flex justify-center items-center mt-5 bg-cyan-200 p-1">
+              <div class="bgBlue flex justify-center items-center mt-5 bg-cyan-200 p-1">
                 <p>KEEP THIS CERTIFICATE. YOU WILL BE REQUIRED TO PRESENT THIS IN ALL YOUR DEALINGS WITH THE COLLEGE.</p>
               </div>
               <div class="text-red-500 text-xs">
@@ -186,11 +193,11 @@
               </div>
             </div>
             <!--JS BUTTONS-->
-            <div class="float-right">
+            <div class="toHide float-right">
               <input id="tuitionCost" class="p-1 rounded-md shadow-md outline-none text-right" placeholder="Enter tuition fee">
-              <button id="tuitionButton" class="mt-5 text-sm bg-amber-200 text-gray-800 py-1 px-2 rounded-md shadow-md hover:bg-amber-400 hover:text-gray-200">Tuition Fee</button>
+              <button id="tuitionButton" class=" mt-5 text-sm bg-amber-200 text-gray-800 py-1 px-2 rounded-md shadow-md hover:bg-amber-400 hover:text-gray-200">Tuition Fee</button>
               <input id="misCost" class="p-1 rounded-md shadow-md outline-none text-right" placeholder="Enter misc fees">
-              <button id="misButton" class="mt-5 text-sm bg-amber-200 text-gray-800 py-1 px-2 rounded-md shadow-md hover:bg-amber-400 hover:text-gray-200">Misc Fees</button>
+              <button id="misButton" class=" mt-5 text-sm bg-amber-200 text-gray-800 py-1 px-2 rounded-md shadow-md hover:bg-amber-400 hover:text-gray-200">Misc Fees</button>
               <button id="solveTotal" class="mt-5 text-sm bg-green-200 text-gray-800 py-1 px-2 rounded-md shadow-md hover:bg-green-400 hover:text-gray-200">Generate Total</button>
             </div>
           </div>
@@ -229,4 +236,68 @@
 
     </script>
   </div>
+  <style>
+            @media print {
+            @page {
+                margin: 0;
+            }
+
+            body {
+                margin-left: -290px;
+                
+                height: 40%;
+                width: 100%;
+                
+              
+            }
+            html{
+                font-size: 85%;
+                box-shadow:none;
+                -webkit-box-shadow: none;
+                -moz-box-shadow:    none;
+                box-shadow:         none; 
+                
+            }
+            nav {
+                display: none;
+            }
+
+            header {
+                display: none;
+            }
+
+            .content {
+                margin: 0;
+                height: 0%;
+                width: 110%;
+               
+            }
+
+            .btn {
+                display: none;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+
+
+        
+            .main {
+                width: 300%;
+                box-shadow:none;
+               
+            }
+    
+            .toHide{
+                display: none;
+            }
+            .bgBlue{
+              background-color: #a5f3fc !important;
+             -webkit-print-color-adjust: exact;
+            }
+        }
+    </style>
+  </style>
 </x-app-layout>
