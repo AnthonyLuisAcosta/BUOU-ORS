@@ -191,7 +191,7 @@
                   <p class="border-b-2 border-gray-500 font-semibold">{{strtoupper($application->lastName.', '.$application->firstName.' '.$application->middleName[0].'.') }}</p>
                 </div>
                 <div class="flex justify-center items-center mr-2">
-                  <p class="border-b-2 border-gray-500 font-semibold">{{strtoupper(Auth::user()->first_name.' '.Auth::user()->middle_name[0].'. '.Auth::user()->first_name) }}</p>
+                  <p class="border-b-2 border-gray-500 font-semibold">{{strtoupper(Auth::user()->first_name.' '.Auth::user()->middle_name[0].'. '.Auth::user()->last_name) }}</p>
                 </div>
                 <div>
                   <p>Payment/Validation Date:</p>
