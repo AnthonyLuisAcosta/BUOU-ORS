@@ -25,7 +25,25 @@
         <div class="w-full -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div class="py-2 align-middle sm:px-6 lg:px-8">
             <!--content-->
+            
             <div id="printForm" class="shadow overflow-hidden border-b border-gray-200 bg-white p-12">
+            <div class="Formlogo m-5 inline-flex grid grid-cols-3 place-items-center content-center" >
+              
+
+              <div class=" place-items-center center content-center pl-20">
+              <img src="/img/OU.png" class="w-4/12 place-items-center center content-center " alt="..." >
+              </div>
+              <div class = "text-sm text-center"> 
+                  <tr>Bicol University</tr><br>
+                  <tr>Open University</tr><br>
+                  <tr>Legazpi City</tr> 
+              </div>
+  
+              <div class=" place-items-center center content-center pl-36"> 
+                  <img src="/img/BU.png" class="w-5/12  place-items-center content-center" alt="..." />
+              </div>
+             
+              </div>
               <div class="flex justify-center items center">
                 <h1 class="font-semibold text-lg py-5 ">CERTIFICATE OF REGISTRATION</h1>
               </div>
@@ -237,6 +255,9 @@
     </script>
   </div>
   <style>
+    .Formlogo{
+      display: none;
+    }
             @media print {
             @page {
                 margin: 0;
@@ -244,7 +265,7 @@
 
             body {
                 margin-left: -290px;
-                
+                margin-top: -7%;
                 height: 40%;
                 width: 100%;
                 
@@ -296,6 +317,10 @@
             .bgBlue{
               background-color: #a5f3fc !important;
              -webkit-print-color-adjust: exact;
+            }
+
+            .Formlogo{
+                display: grid;
             }
         }
     </style>
