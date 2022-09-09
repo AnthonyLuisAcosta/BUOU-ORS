@@ -136,11 +136,20 @@
     
     <div class="inline-flex justify-end">
         <!--Button-->
+        
+        @if($application->status == "Pending")
+        <div class="block mb-8">
+            <button class="">
+                <a class="modal-open ml-1 inline-flex items-center px-4 py-2 bg-green-400 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Recommend and Approve</a>
+            </button>
+        </div>
+       @else
         <div class="block mb-8">
             <button class="">
                 <a class="modal-open ml-1 inline-flex items-center px-4 py-2 bg-green-400 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Approve</a>
             </button>
         </div>
+        @endif
         <!--Reject Status Button-->
             <!--Button-->
             <div class="block mb-8">
@@ -148,6 +157,7 @@
                     <a class="modal-open-reject ml-1 inline-flex items-center px-4 py-2 bg-rose-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Reject</a>
                 </button>
             </div>
+        
     </div>
     
 
