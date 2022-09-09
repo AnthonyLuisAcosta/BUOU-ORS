@@ -177,6 +177,9 @@
           <x-jet-responsive-nav-link class="inline-flex" href="{{url('registrar/terms')}}" :active="request()->routeIs('registrar.terms.*')">
             Terms
           </x-jet-responsive-nav-link>
+          <x-jet-responsive-nav-link class="inline-flex" href="{{url('registrar/fees')}}" :active="request()->routeIs('registrar.fees.*')">
+            Fees
+          </x-jet-responsive-nav-link>
         </div>
         @elseif(Auth::user()->role_id == 3)
         <!--DEAN ABSOLUTE RESPONSIVE NAV-MENU-->
@@ -206,7 +209,7 @@
           <x-jet-responsive-nav-link class="inline-flex" href="{{url('adviser/programs')}}" :active="request()->routeIs('adviser.programs.index')">
             Programs
           </x-jet-responsive-nav-link>
-    
+
         </div>
         @elseif(Auth::user()->role_id == 5)
         <!--APPLICANT ABSOLUTE RESPONSIVE NAV-MENU-->
@@ -398,6 +401,14 @@
               <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
             </svg>
             <span class="flex-1 ml-3 whitespace-nowrap pr-24">Terms</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{url('registrar/fees')}}" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:group-hover:text-black hover:bg-gray-100 dark:hover:bg-blue-100">
+            <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:dark:group-hover:text-black" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+            </svg>
+            <span class="flex-1 ml-3 whitespace-nowrap pr-24">Fees</span>
           </a>
         </li>
       </ul>

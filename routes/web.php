@@ -41,6 +41,8 @@ Route::group(['as' => 'registrar.', 'prefix' => 'registrar', 'middleware' => ['a
     Route::resource('subjects', App\Http\Controllers\Registrar\SubjectsController::class);
     Route::resource('application', App\Http\Controllers\Registrar\ApplicationController::class);
     Route::resource('terms', App\Http\Controllers\Registrar\TermsController::class);
+    Route::get('fees',  [App\Http\Controllers\Registrar\FeesController::class, 'index'])->name('fees.index');
+    Route::get('fees/{id}/generate',  [App\Http\Controllers\Registrar\FeesController::class, 'show'])->name('fees.show');
 });
 
 //DEAN ROUTES
