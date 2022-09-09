@@ -177,6 +177,9 @@
           <x-jet-responsive-nav-link class="inline-flex" href="{{url('registrar/terms')}}" :active="request()->routeIs('registrar.terms.*')">
             Terms
           </x-jet-responsive-nav-link>
+          <x-jet-responsive-nav-link class="inline-flex" href="{{url('registrar/fees')}}" :active="request()->routeIs('registrar.fees.*')">
+            Fees
+          </x-jet-responsive-nav-link>
         </div>
         @elseif(Auth::user()->role_id == 3)
         <!--DEAN ABSOLUTE RESPONSIVE NAV-MENU-->
