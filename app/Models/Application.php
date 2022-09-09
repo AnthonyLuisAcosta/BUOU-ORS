@@ -7,6 +7,7 @@ use App\Models\Selectedsub;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
+use Carbon\Carbon;
 
 class Application extends Model
 {
@@ -26,5 +27,11 @@ class Application extends Model
     {
 
         return $this->hasMany(Selectedsub::class);
+    }
+    public function getAge()
+    {
+        //return dd($this->birthDate);
+        //ageCalculate
+        return Carbon::parse($this->birthDate)->diff(Carbon::now())->format('%y');
     }
 }

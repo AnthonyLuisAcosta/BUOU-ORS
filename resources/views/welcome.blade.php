@@ -562,7 +562,7 @@
       @endif
     </div>
     <!--Hamburger-->
-    <div class=" text-right text-xs  m-auto lg:hidden fixed top-0e">
+    <div class=" text-right text-xs  m-auto lg:hidden fixed top-0">
       <button id="menu" class="hover:shadow-md inline-flex mt-2 mr-2 p-1 rounded-md text-gray-400 hover:text-gray-500 hover:bg-blue-200 focus:outline-none  focus:text-gray-500 transition">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -630,7 +630,7 @@
       <p style="text-align: justify">
         On November 20, 1997, the Bicol University (BU) Board of Regents (BOR) passed BOR Resolution No. 24, series of 1997 which approved the setting up of the BU Open University. The objective of the BU Open University was to bring the curricular programs of the University to a wider populace of students in the Bicol Region. To fully operationalize BOR Resolution No. 24 in accordance with the present thrust and direction set forth in the BU Comprehensive Development Plan, Administrative Order No. 177, series of 2004 was issued to provide the general implementing guidelines for the operation of the BU Open University. The emphasis of the BU Open University under the present leadership is to initially address the educational capability enhancement need of professionals by offering selected graduate programs via distance education/open learning. The long-term direction of the BU Open University is to eventually offer some baccalaureate courses in support of regional development. The re-structured BU Open University (BUOU) is now mandated to be the degree-offering and eventually a degree-granting academic unit of the University. It was also given authority by the Board of Regents to expand its program offering into offering selected undergraduate courses and non-degree/short term courses needed in the region.
       </p>
-      
+
     </div>
     <div class="MV_container">
       <div class="MV">
