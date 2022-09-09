@@ -266,7 +266,7 @@
 
       body {
         margin-left: -290px;
-        margin-top: -2%;
+        margin-top: -6%;
         height: 40%;
         width: 100%;
 
