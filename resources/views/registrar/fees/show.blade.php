@@ -139,7 +139,7 @@
                 $totalUnits =number_format("$totalUnits",1);
                 @endphp
                 <div>
-                  <p class="text-xs">Total Units: {{$totalUnits}}</p>
+                  <p class="text-xs mt-3">Total Units: {{$totalUnits}}</p>
                 </div>
               </div>
               <div class="flex flex-col w-1/3 mt-4 ">
@@ -156,6 +156,33 @@
                   <p class="w-1/2 text-sm font-semibold">Total Fee</p>
                   <p id="totalFee" class="w-1/2 text-sm font-semibold text-right"></p>
                 </div>
+              </div>
+              <div class="grid grid-cols-3 grid-rows-2 text-sm mt-10">
+                <div class="flex flex-rows-2">
+                  <p class="w-1/3">Official Receipt:</p>
+                  <p class="w-2/3 border-b-2 border-gray-500 mr-2"></p>
+                </div>
+                <div class="flex justify-center items-center mr-2">
+                  <p class="border-b-2 border-gray-500 font-semibold">{{strtoupper($application->lastName.', '.$application->firstName.' '.$application->middleName[0].'.') }}</p>
+                </div>
+                <div class="flex justify-center items-center mr-2">
+                  <p class="border-b-2 border-gray-500 font-semibold">{{strtoupper(Auth::user()->first_name.' '.Auth::user()->middle_name[0].'. '.Auth::user()->first_name) }}</p>
+                </div>
+                <div>
+                  <p>Payment/Validation Date:</p>
+                </div>
+                <div class="flex justify-center items-center">
+                  <p>Student's Signature</p>
+                </div>
+                <div class="flex justify-center items-center">
+                  <p>Registrar</p>
+                </div>
+              </div>
+              <div class="flex justify-center items-center mt-5 bg-cyan-200 p-1">
+                <p>KEEP THIS CERTIFICATE. YOU WILL BE REQUIRED TO PRESENT THIS IN ALL YOUR DEALINGS WITH THE COLLEGE.</p>
+              </div>
+              <div class="text-red-500 text-xs">
+                <p>Note : Invalid without the Registrar's Signature</p>
               </div>
             </div>
             <!--JS BUTTONS-->
