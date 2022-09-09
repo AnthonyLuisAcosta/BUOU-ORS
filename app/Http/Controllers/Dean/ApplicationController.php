@@ -111,7 +111,8 @@ class ApplicationController extends Controller
     public function edit(Application $application, Programs $programs)
     {
         $programs = Programs::all();
-        return view('dean.application.edit', compact('application'))->with('programs', $programs)->with('application', $application);
+        $subjects = Subjects::all();
+        return view('dean.application.edit', compact('application'))->with('programs', $programs)->with('subjects', $subjects)->with('application', $application);
     }
 
     /**

@@ -109,7 +109,9 @@
 							<td>{{ $row->updated_at }}</td>
 							<td class="px-6 py-4 whitespace-nowrap text-sm text-center font-medium">
 								<a href="{{ route('dean.application.show', $row->id) }}" class="text-white rounded-lg hover:bg-blue-900 mb-2 mr-2 bg-blue-400 py-1 px-3">View</a>
+								@if($row->status == "Pending")
 								<a href="{{ route('dean.application.edit', $row->id) }}" class="text-white rounded-lg hover:bg-indigo-900 mb-2 mr-2 bg-indigo-400 py-1 px-3">Edit</a>
+								@endif
 							</td>
 
 							<!--@/endif-->
