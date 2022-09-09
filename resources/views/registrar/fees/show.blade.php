@@ -6,16 +6,16 @@
   </x-slot>
   <div>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-    <div class="toHide block mb-8">
-        
-			<a href="{{ route('registrar.fees.index') }}" class="ml-1 inline-flex items-center px-4 py-1 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
+      <div class="toHide block mb-8">
+
+        <a href="{{ route('registrar.fees.index') }}" class="ml-1 inline-flex items-center px-4 py-1 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
             <path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
           </svg>
           <span class="flex-1 ml-1 whitespace-nowrap">Back to list</span>
         </a>
 
-        <a onclick="window.print();" class="btn pointer printBtn ml-1 inline-flex items-center px-4 py-1 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
+        <a onclick="window.print();" class="btn pointer printBtn ml-1 inline-flex items-center px-4 py-1 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150 cursor-pointer">
           <svg class="h-5 w-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
           </svg>
           <span class="flex-1 ml-1 whitespace-nowrap">Print</span>
@@ -25,24 +25,24 @@
         <div class="w-full -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div class="py-2 align-middle sm:px-6 lg:px-8">
             <!--content-->
-            
-            <div id="printForm" class="shadow overflow-hidden border-b border-gray-200 bg-white p-12">
-            <div class="Formlogo m-5 inline-flex grid grid-cols-3 place-items-center content-center" >
-              
 
-              <div class=" place-items-center center content-center pl-20">
-              <img src="/img/OU.png" class="w-4/12 place-items-center center content-center " alt="..." >
-              </div>
-              <div class = "text-sm text-center"> 
+            <div id="printForm" class=" overflow-hidden bg-white p-12">
+              <div class="Formlogo m-5 inline-flex grid grid-cols-3 place-items-center content-center">
+
+
+                <div class=" place-items-center center content-center pl-20">
+                  <img src="/img/OU.png" class="w-4/12 place-items-center center content-center " alt="...">
+                </div>
+                <div class="text-sm text-center">
                   <tr>Bicol University</tr><br>
                   <tr>Open University</tr><br>
-                  <tr>Legazpi City</tr> 
-              </div>
-  
-              <div class=" place-items-center center content-center pl-36"> 
+                  <tr>Legazpi City</tr>
+                </div>
+
+                <div class=" place-items-center center content-center pl-36">
                   <img src="/img/BU.png" class="w-5/12  place-items-center content-center" alt="..." />
-              </div>
-             
+                </div>
+
               </div>
               <div class="flex justify-center items center">
                 <h1 class="font-semibold text-lg py-5 ">CERTIFICATE OF REGISTRATION</h1>
@@ -255,74 +255,79 @@
     </script>
   </div>
   <style>
-    .Formlogo{
+    .Formlogo {
       display: none;
     }
-            @media print {
-            @page {
-                margin: 0;
-            }
 
-            body {
-                margin-left: -290px;
-                margin-top: -7%;
-                height: 40%;
-                width: 100%;
-                
-              
-            }
-            html{
-                font-size: 85%;
-                box-shadow:none;
-                -webkit-box-shadow: none;
-                -moz-box-shadow:    none;
-                box-shadow:         none; 
-                
-            }
-            nav {
-                display: none;
-            }
+    @media print {
+      @page {
+        margin: 0;
+      }
 
-            header {
-                display: none;
-            }
-
-            .content {
-                margin: 0;
-                height: 0%;
-                width: 110%;
-               
-            }
-
-            .btn {
-                display: none;
-            }
-
-            .sidebar {
-                display: none;
-            }
+      body {
+        margin-left: -290px;
+        margin-top: -2%;
+        height: 40%;
+        width: 100%;
 
 
+      }
 
-        
-            .main {
-                width: 300%;
-                box-shadow:none;
-               
-            }
-    
-            .toHide{
-                display: none;
-            }
-            .bgBlue{
-              background-color: #a5f3fc !important;
-             -webkit-print-color-adjust: exact;
-            }
+      html {
+        font-size: 85%;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
 
-            .Formlogo{
-                display: grid;
-            }
-        }
-    </style>
+      }
+
+      nav {
+        display: none;
+      }
+
+      header {
+        display: none;
+      }
+
+      .content {
+        margin: 0;
+        height: 0%;
+        width: 110%;
+
+      }
+
+      .btn {
+        display: none;
+      }
+
+      .sidebar {
+        display: none;
+      }
+
+
+
+
+      .main {
+        width: 300%;
+        box-shadow: none;
+
+      }
+
+      .toHide {
+        display: none;
+      }
+
+      .bgBlue {
+        background-color: #a5f3fc !important;
+        -webkit-print-color-adjust: exact;
+      }
+
+      .Formlogo {
+        display: grid;
+      }
+    }
+
+  </style>
   </style>
 </x-app-layout>
