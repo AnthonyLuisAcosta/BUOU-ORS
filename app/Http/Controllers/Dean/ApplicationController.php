@@ -34,7 +34,8 @@ class ApplicationController extends Controller
     public function create()
     {
         $programs = Programs::all();
-        return view('dean.application.create')->with('programs', $programs);
+        $application = Application::all();
+        return view('dean.application.create')->with('programs', $programs)->with('application', $application);
     }
 
     /**
@@ -141,28 +142,257 @@ class ApplicationController extends Controller
             return redirect()->route('dean.application.index')->with('success', 'Application has been updated successfully');
             #return dd($count);
 
-        } else {
+        }elseif ($count == 17){
+              
+            $programs = Programs::all();
+            $subjects = Subjects::all();
+
+            $application = Application::find($id);
+            $application->firstName = $request->input('firstName');
+            $application->middleName = $request->input('middleName');
+            $application->lastName = $request->input('lastName');
+            $application->birthDate = $request->input('birthDate');
+            $application->gender = $request->input('gender');
+            $application->status= $request->input('status');
+            $application->email = $request->input('email');
+            $application->phone = $request->input('phone');
+            $application->company = $request->input('company');
+            $application->address = $request->input('address');
+
+            $application->subject1 = $request->input('subject1');
+            $application->subject2 = $request->input('subject2');
+            $application->subject3 = $request->input('subject3');
+
+            $application->programs_id = $request->input('programs_id');
+            foreach ($programs as $prog) {
+                if ($prog->id == $application->programs_id)
+                    $application->adviser = $prog->adviser;
+            }
+            
+            if ($request->hasfile('applicantImage')) {
+                $destination = 'requirements' . $application->applicantImage;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('applicantImage');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('requirements', $filename);
+                $application->applicantImage = $filename;
+            }
+        #####Technically Dependent Subject Selection######
+
+        foreach($subjects as $sub){
+            if($application->subject1 == $sub->id){
+                if ($application->programs_id != $sub->programs_id) {
+                    if($sub->cat_id != 4){
+                    return redirect()->back()
+                        ->withInput($request->input())
+                        ->with('success', "Selected $sub->title is not  under the chosen program");
+                        }
+                    }
+    
+                }
+    
+            if(!empty($application->subject2)){
+                if($application->subject2 == $application->subject1 || $application->subject2 == $application->subject3){
+                    return redirect()->back()
+                    ->withInput($request->input())
+                    ->with('success', "Choose a different subject");
+                }
+                if($application->subject2 == $sub->id){
+                    if ($application->programs_id != $sub->programs_id) {
+                        if($sub->cat_id != 4){
+                        return redirect()->back()
+                        ->withInput($request->input())
+                        ->with('success', "Selected $sub->title is not  under the chosen program");
+                            }
+                        }
+                    }
+                
+            }
+    
+            if(!empty($application->subject3)){
+                if($application->subject3 == $application->subject2 || $application->subject3 == $application->subject1){
+                    return redirect()->back()
+                    ->withInput($request->input())
+                    ->with('success', "Choose a different subject");
+                }
+                if($application->subject3 == $sub->id){
+                    if ($application->programs_id != $sub->programs_id) {
+                        if($sub->cat_id != 4){
+                        return redirect()->back()
+                        ->withInput($request->input())
+                        ->with('success', "Selected $sub->title is not  under the chosen program");
+                            }
+                        }
+                    }
+            }
+    
+            }
+    
+            ####Selected Units#####
+    
+            $unit = 0;
+            foreach($subjects as $sub){
+                if($application->subject1 == $sub->id){
+                    $unit+= $sub->units;
+                }
+                if($application->subject2 == $sub->id){
+                    $unit+=$sub->units;
+                }
+                if($application->subject3 == $sub->id){
+                    $unit+=$sub->units;
+                }
+                if($unit > 12){
+                    return redirect()->back()
+                    ->withInput($request->input())
+                    ->with('success', "Units Exceeded");
+                }
+            
+            }
+
+        $application->save();
+
+        return redirect()->route('dean.application.index')->with('success', 'Application has been updated successfully');
+        } 
+        else {
             $application = Application::all();
+            $application->status = $request->input('status');
+            if($request->input('status') != "Pending"){
             foreach ($application as $app) {
                 if ($app->status == "Recommended") {
                     $app->status = $request->input('status');
                     $app->update();
                 }
             };
-            return redirect()->route('dean.application.index')->with('success', 'All application has been updated successfully');
+            
+        }
+        return redirect()->route('dean.application.index')->with('success', 'All application has been updated successfully');
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
+/**
+     * Update the specified resource in storage.
      *
-     * @param  \App\Models\Application  $application
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Application $application)
+    public function destroy(Request $request, $id)
     {
-        $application->delete();
 
-        return redirect()->route('dean.application.index')->with('success', 'Application deleted successfully!');
+   
+            $programs = Programs::all();
+            $subjects = Subjects::all();
+
+            $application = Application::find($id);
+            $application->firstName = $request->input('firstName');
+            $application->middleName = $request->input('middleName');
+            $application->lastName = $request->input('lastName');
+            $application->birthDate = $request->input('birthDate');
+            $application->gender = $request->input('gender');
+            $application->status= $request->input('status');
+            $application->email = $request->input('email');
+            $application->phone = $request->input('phone');
+            $application->company = $request->input('company');
+            $application->address = $request->input('address');
+
+            $application->subject1 = $request->input('subject1');
+            $application->subject2 = $request->input('subject2');
+            $application->subject3 = $request->input('subject3');
+
+            $application->programs_id = $request->input('programs_id');
+            foreach ($programs as $prog) {
+                if ($prog->id == $application->programs_id)
+                    $application->adviser = $prog->adviser;
+            }
+            
+            if ($request->hasfile('applicantImage')) {
+                $destination = 'requirements' . $application->applicantImage;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('applicantImage');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('requirements', $filename);
+                $application->applicantImage = $filename;
+            }
+        #####Technically Dependent Subject Selection######
+
+        foreach($subjects as $sub){
+            if($application->subject1 == $sub->id){
+                if ($application->programs_id != $sub->programs_id) {
+                    if($sub->cat_id != 4){
+                    return redirect()->back()
+                        ->withInput($request->input())
+                        ->with('success', "Selected $sub->title is not  under the chosen program");
+                        }
+                    }
+    
+                }
+    
+            if(!empty($application->subject2)){
+                if($application->subject2 == $application->subject1 || $application->subject2 == $application->subject3){
+                    return redirect()->back()
+                    ->withInput($request->input())
+                    ->with('success', "Choose a different subject");
+                }
+                if($application->subject2 == $sub->id){
+                    if ($application->programs_id != $sub->programs_id) {
+                        if($sub->cat_id != 4){
+                        return redirect()->back()
+                        ->withInput($request->input())
+                        ->with('success', "Selected $sub->title is not  under the chosen program");
+                            }
+                        }
+                    }
+                
+            }
+    
+            if(!empty($application->subject3)){
+                if($application->subject3 == $application->subject2 || $application->subject3 == $application->subject1){
+                    return redirect()->back()
+                    ->withInput($request->input())
+                    ->with('success', "Choose a different subject");
+                }
+                if($application->subject3 == $sub->id){
+                    if ($application->programs_id != $sub->programs_id) {
+                        if($sub->cat_id != 4){
+                        return redirect()->back()
+                        ->withInput($request->input())
+                        ->with('success', "Selected $sub->title is not  under the chosen program");
+                            }
+                        }
+                    }
+            }
+    
+            }
+    
+            ####Selected Units#####
+    
+            $unit = 0;
+            foreach($subjects as $sub){
+                if($application->subject1 == $sub->id){
+                    $unit+= $sub->units;
+                }
+                if($application->subject2 == $sub->id){
+                    $unit+=$sub->units;
+                }
+                if($application->subject3 == $sub->id){
+                    $unit+=$sub->units;
+                }
+                if($unit > 12){
+                    return redirect()->back()
+                    ->withInput($request->input())
+                    ->with('success', "Units Exceeded");
+                }
+            
+            }
+
+        $application->save();
+
+        return redirect()->route('dean.application.index')->with('success', 'Application has been updated successfully');
     }
+
 }

@@ -19,7 +19,7 @@
 	<div>
 		<div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-6">
 			<div class="block mb-8">
-			<a href="{{ route('adviser.application.index') }}" class="ml-1 inline-flex items-center px-4 py-1 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
+			<a href="{{ route('dean.application.index') }}" class="ml-1 inline-flex items-center px-4 py-1 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
             <path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
           </svg>
@@ -28,7 +28,7 @@
       </div>
 			
 			<div class="mt-5 md:mt-0 md:col-span-2">
-				<form method="post" action="{{ route('adviser.application.update', $application->id) }}" enctype="multipart/form-data">
+				<form method="post" action="{{ route('dean.application.update', $application->id) }}" enctype="multipart/form-data">
 					@csrf
 					@method('PUT')
 					<div class="shadow overflow-hidden sm:rounded-md">
@@ -38,6 +38,9 @@
 							<label class="font-bold mb-1 text-gray-700 block">Applicant Information</label>
 							<div class="grid grid-cols-6  gap-4 border-t-2 border-gray-200">
 								<label class="font-medium mb-1 text-gray-600 pt-4 block col-span-6">Basic Information</label>
+								
+								<x-jet-input id="status" class="hidden" type="status" name="status" value="Pending" required autofocus />
+								
 								<div class="mt-4 col-span-2">
 									<x-jet-label for="firstName" value="{{ __('First Name') }}" />
 									<x-jet-input readonly class="form-control block mt-1 w-full" type="text" name="firstName" value="{{$application->firstName}}" required autofocus />
@@ -233,7 +236,7 @@
                 Update
               </button>
               <button class="ml-1 inline-flex items-center px-4 py-2  border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-red-200 hover:bg-red-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
-                <a href="{{ route('adviser.application.index') }}">Cancel</a>
+                <a href="{{ route('dean.application.index') }}">Cancel</a>
               </button>
             </div>
 						</div>

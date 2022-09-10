@@ -19,7 +19,7 @@
 
 
 	<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-		<div class="inline-flex justify-end">
+		<div class="inline-flex justify-end mb-8">
 		@php
 			$count = 0
 		@endphp
@@ -38,7 +38,7 @@
 				@method('PUT')
 				<input type="hidden" name="status" value="Approved" />
 				<!--Button-->
-				<div class="block mb-8">
+				<div class="block mr-5">
 					<button class="">
 						<input type="hidden" name="submit" value="Update" />
 						<a name="submit" class="ml-1 inline-flex items-center px-4 py-2 bg-green-400 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Approve All</a>
@@ -47,7 +47,12 @@
 			</form>
 
 			@endif
-		</div>
+			<a href="{{ route('dean.application.create') }}" class="ml-1 inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
+          
+
+          <span class="flex-1 ml-1 whitespace-nowrap">View Pending Applications</span>
+        </a>
+      </div>
 		<!--Container-->
 		<div class="container w-full mx-auto px-2">
 
@@ -70,7 +75,7 @@
 					</thead>
 					<tbody>
 						@foreach($application as $row)
-						@if($row->status == "Recommended" || $row->status == "Pending" && $row->adviser == Auth::user()->id)
+						@if($row->status == "Recommended")
 
 						<tr>
 							<!--Filter Table-->
