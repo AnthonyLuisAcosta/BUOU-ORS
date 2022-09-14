@@ -211,12 +211,12 @@
               </div>
             </div>
             <!--JS BUTTONS-->
-            <div class="toHide float-right">
-              <input id="tuitionCost" class="p-1 rounded-md shadow-md outline-none text-right" placeholder="Enter tuition fee">
-              <button id="tuitionButton" class=" mt-5 text-sm bg-amber-200 text-gray-800 py-1 px-2 rounded-md shadow-md hover:bg-amber-400 hover:text-gray-200">Tuition Fee</button>
-              <input id="misCost" class="p-1 rounded-md shadow-md outline-none text-right" placeholder="Enter misc fees">
-              <button id="misButton" class=" mt-5 text-sm bg-amber-200 text-gray-800 py-1 px-2 rounded-md shadow-md hover:bg-amber-400 hover:text-gray-200">Misc Fees</button>
-              <button id="solveTotal" class="mt-5 text-sm bg-green-200 text-gray-800 py-1 px-2 rounded-md shadow-md hover:bg-green-400 hover:text-gray-200">Generate Total</button>
+            <div class="toHide float-right mt-4">
+              <input id="tuitionCost" class="p-1 rounded-md shadow-md outline-none text-right text-sm shadow-md" placeholder="Enter amount (₱)">
+              <button id="tuitionButton" class="ml-1 inline-flex items-center px-4 py-1 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">Tuition Fee</button>
+              <input id="misCost" class="p-1 rounded-md shadow-md outline-none text-right text-sm shadow-md" placeholder="Enter amount (₱)">
+              <button id="misButton" class="ml-1 inline-flex items-center px-4 py-1 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">Misc Fees</button>
+              <button id="solveTotal" class="ml-1 inline-flex items-center px-4 py-1 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-green-200 hover:bg-green-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">Generate Total</button>
             </div>
           </div>
         </div>
@@ -229,7 +229,7 @@
       //field to submit value
       let tuitionFee = document.getElementById("tuitionFee");
       tuitionButton.onclick = function() {
-        tuitionFee.innerHTML = tuitionField.value;
+        tuitionFee.innerHTML = Number(parseFloat(tuitionField.value.replace(/,/g, '')).toFixed(2)).toLocaleString('en');
         tuitionField.value = "";
       }
       //MISC FEES
@@ -238,7 +238,7 @@
       //field to submit value
       let miscFee = document.getElementById("miscFee");
       miscButton.onclick = function() {
-        miscFee.innerHTML = miscField.value;
+        miscFee.innerHTML = Number(parseFloat(miscField.value.replace(/,/g, '')).toFixed(2)).toLocaleString('en');
         miscField.value = "";
       }
       //GENERATE TOTAL FEE
