@@ -21,7 +21,7 @@
   <div class="h-screen">
     <!--WELCOME and TERM-->
     <div class="flex">
-      <div class="w-1/2 mx-4 p-2">
+      <div class="w-1/2 xl:w-1/2 mx-4 p-2">
         <div class="flex justify-center ">
           <div class="w-full px-10 py-4 bg-white rounded-lg shadow-lg">
             <h2 class="lg:text-xl md:text-lg sm:text-md text-xs font-bold tracking-tight">
@@ -38,7 +38,7 @@
           </div>
         </div>
       </div>
-      <div class="w-1/2 mx-4 p-2">
+      <div class="w-1/2 xl:w-1/2 mx-4 p-2">
         <div class="flex justify-center ">
           <div class="h-max w-full px-10 py-4 text-center bg-white rounded-lg shadow-lg">
             @foreach($terms as $term)
@@ -58,7 +58,7 @@
     <!--END-->
     <!--STATUS AND ANNOUNCEMENT-->
     <div class="flex">
-      <div class="w-1/2 mx-4 p-2">
+      <div class="w-1/2 xl:w-1/2 mx-4 p-2">
         <div class="flex justify-center">
           <div class="h-full w-full px-8 py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
             <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
@@ -70,7 +70,7 @@
           </div>
         </div>
       </div>
-      <div class="w-1/2 mx-4 p-2 ">
+      <div class="w-1/2 xl:w-1/2 mx-4 p-2 ">
         <div class="flex justify-center">
           <div class="h-max w-full px-10 pt-8 pb-12 bg-white rounded-lg shadow-lg ">
             <h2 class="text-gray-900 text-xs sm:text-sm md:text-md lg:text-2xl font-bold leading-snug text-center">
