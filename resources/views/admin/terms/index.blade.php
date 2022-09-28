@@ -28,22 +28,26 @@
                 <td class="text-center">{{ $term->year.' '.$term->label }}</td>
                 <!--0 is inactive, 1 is active-->
                 @if($term->status == 0)
-                <td class="text-center text-amber-500 font-bold">Inactive</td>
+                <td class="text-center text-sm">
+                  <p class="text-white rounded-md bg-amber-400">Inactive</p>
+                </td>
                 @else
-                <td class="text-center text-green-500 font-bold">Active</td>
+                <td class="text-center text-sm">
+                  <p class="text-white rounded-md bg-green-400">Active</p>
+                </td>
                 @endif
                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-center">
                   <!--0 is inactive, 1 is active-->
                   @if($term->status == 0)
                   <!--ENABLE BUTTON-->
                   @if(in_array("1", $stat))
-                  <button title="There is an active term. Please disable it before enabling another term." class="inline text-green-500 hover:font-bold mr-2 cursor-not-allowed">Enable</button>
+                  <button title="There is an active term. Please disable it before enabling another term." class="inline text-green-500 font-bold mr-2 cursor-not-allowed">Enable</button>
                   @else
                   <form class="inline" action="{{route('admin.terms.update', $term->id)}}" method="post">
                     @csrf
                     @method('PATCH')
                     <input type="hidden" name="status" value="1">
-                    <input type="submit" class="text-green-500 hover:font-bold mr-2 hover:cursor-pointer" value="Enable">
+                    <input type="submit" class="text-green-500 font-bold mr-2 hover:cursor-pointer" value="Enable">
                   </form>
                   @endif
                   @else
@@ -51,12 +55,12 @@
                     @csrf
                     @method('PATCH')
                     <input type="hidden" name="status" value="0">
-                    <input type="submit" class="text-amber-500 hover:font-bold mr-2 hover:cursor-pointer" value="Disable">
+                    <input type="submit" class="text-amber-500 font-bold mr-2 hover:cursor-pointer" value="Disable">
                   </form>
                   @endif
-                  <a href="{{ route('admin.terms.edit', $term->id) }}" class="text-indigo-600 hover:font-bold mr-2">Edit</a>
+                  <a href="{{ route('admin.terms.edit', $term->id) }}" class="text-indigo-600 font-bold mr-2">Edit</a>
                   <!-- Link to open the modal -->
-                  <a href="#{{$term->id}}" rel="modal:open" class="text-red-600 hover:font-bold mr-2 cursor-pointer">Delete</a>
+                  <a href="#{{$term->id}}" rel="modal:open" class="text-red-600 font-bold mr-2 cursor-pointer">Delete</a>
                 </td>
                 <!--DELETE BUTTON-->
                 <div id="{{$term->id}}" class="modal">
