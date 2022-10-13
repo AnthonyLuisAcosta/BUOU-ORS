@@ -14,7 +14,7 @@ class Application extends Model
     use HasFactory;
     use Notifiable;
     protected $primaryKey = 'id';
-    protected $fillable = ['lastName', 'firstName', 'middleName', 'birthDate', 'gender', 'email', 'phone', 'status', 'company', 'address', 'applicantImage', 'programs_id', 'subjects_id', 'applicant_id, adviser'];
+    protected $fillable = ['lastName', 'firstName', 'middleName', 'birthDate', 'gender', 'email', 'phone', 'status', 'company', 'address', 'applicantImage', 'programs_id', 'subjects_id', 'applicant_id', 'adviser', 'remarks'];
     protected $table = 'applications';
 
     public function programs()

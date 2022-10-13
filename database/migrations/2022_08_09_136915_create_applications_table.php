@@ -35,6 +35,8 @@ return new class extends Migration
             $table->unsignedInteger('subject2')->nullable();
             $table->unsignedInteger('subject3')->nullable();
 
+            $table->string('remarks')->nullable();
+
             $table->timestamps();
 
 

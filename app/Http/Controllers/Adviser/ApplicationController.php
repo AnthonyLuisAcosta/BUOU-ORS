@@ -127,10 +127,11 @@ class ApplicationController extends Controller
 
         $count = count($request->all());
 
-        if ($count == 4) {
+        if ($count == 5) {
 
             $application = Application::find($id);
             $application->status = $request->input('status');
+            $application->remarks = $request->input('remarks');
             if ($request->input('status') == "Recommended") {
                 //If recommend button was pressed
                 $application->notify(new ApplicationRecommendedEmail());
