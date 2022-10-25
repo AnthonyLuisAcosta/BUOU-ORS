@@ -32,6 +32,8 @@ class RedirectIfAuthenticated
                 return redirect()->route('adviser.dashboard');
             } elseif (Auth::guard($guard)->check() && Auth::user()->role_id == 5) {
                 return redirect()->route('dashboard');
+            } elseif (Auth::guard($guard)->check() && Auth::user()->role_id == 6) {
+                return redirect()->route('cashier.dashboard');
             } else {
                 return $next($request);
             }

@@ -65,10 +65,9 @@ Route::group(['as' => 'adviser.', 'prefix' => 'adviser', 'middleware' => ['auth'
 Route::group(['as' => '', 'prefix' => '', 'middleware' => ['auth', 'applicant']], function () {
     Route::get('dashboard', [App\Http\Controllers\Applicant\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('application', App\Http\Controllers\Applicant\ApplicationController::class);
-});  
+});
 
-
-/*
-Route::resource('/application', ApplicationController::class);
-Route::resource('/programs', ProgramsController::class);
-*/
+//CASHIER ROUTES
+Route::group(['as' => 'cashier.', 'prefix' => 'cashier', 'middleware' => ['auth', 'cashier']], function () {
+    Route::get('/dashboard', [App\Http\Controllers\Cashier\DashboardController::class, 'index'])->name('dashboard');
+});
