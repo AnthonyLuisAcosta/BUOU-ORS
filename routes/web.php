@@ -2,6 +2,7 @@
 
 use App\Http\Controllers;
 use App\Http\Controllers\Admin;
+use App\Http\Controllers\Cashier\TemplateController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -70,4 +71,5 @@ Route::group(['as' => '', 'prefix' => '', 'middleware' => ['auth', 'applicant']]
 //CASHIER ROUTES
 Route::group(['as' => 'cashier.', 'prefix' => 'cashier', 'middleware' => ['auth', 'cashier']], function () {
     Route::get('/dashboard', [App\Http\Controllers\Cashier\DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('template', TemplateController::class);
 });
