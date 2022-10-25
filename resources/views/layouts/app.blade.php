@@ -21,7 +21,7 @@
   <!-- Styles -->
   @livewireStyles
 
-  <!--Regular Datatables CSS--> 
+  <!--Regular Datatables CSS-->
   <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
   <!--Responsive Extension Datatables CSS-->
   <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
@@ -119,8 +119,8 @@
 
   </style>
   <!-- MY TABLE LAYOUT ENDS HERE-->
-  </head>
-  <body class="font-sans antialiased" style="overflow-x: hidden;">
+</head>
+<body class="font-sans antialiased" style="overflow-x: hidden;">
   <x-jet-banner />
   <div class="">
     <div class="sidebar">
@@ -156,7 +156,7 @@
   @livewireScripts
 </body>
 
-    <!--responsive content CSS>-->
+<!--responsive content CSS>-->
 <style>
   html {
     background-color: rgb(235, 235, 235);
