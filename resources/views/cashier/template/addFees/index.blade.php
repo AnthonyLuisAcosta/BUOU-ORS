@@ -8,7 +8,8 @@
     <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
       @include('alert')
       <div class="flex justify-end items-center px-3 py-4 gap-80">
-        <a href="{{ route('cashier.additional.create') }}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">Add Fee</a></a>
+        <a href="{{ route('cashier.template.index') }}" class="inline-flex items-center px-4 py-2 mr-14 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">View Fees Templates</a>
+        <a href="{{ route('cashier.additional.create') }}" class="inline-flex items-center px-4 py-2 ml-4 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">Add Fee</a>
       </div>
       <!--Container-->
       <div class="container w-full mx-auto px-2">
@@ -35,7 +36,7 @@
                 </td>
                 <!--DELETE BUTTON-->
                 <div id="{{$add->id}}" class="modal">
-                  <p>Are you sure you want to delete account?</p>
+                  <p>Are you sure you want to delete item?</p>
                   <div class="text-right">
                     <form class="inline-block" action="{{ route('cashier.additional.destroy', $add->id) }}" method="POST">
                       <input type="hidden" name="_method" value="DELETE">

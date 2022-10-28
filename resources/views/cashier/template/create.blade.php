@@ -27,8 +27,8 @@
                 <div class="mt-4">
                   <x-jet-label for="type" value="Degree Type" />
                   <select id="type" type="text" name="type" class="block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
-                    <option selected>Select an option</option>
-                    <option class="block mt-1 w-full" value="Masteral">Master's Degree</option>
+                    <option selected>Select degree type</option>
+                    <option class="block mt-1 w-full" value="Masteral">Masteral Degree</option>
                     <option class="block mt-1 w-full" value="Doctoral">Doctoral Degree</option>
                   </select>
                 </div>
@@ -36,7 +36,7 @@
                 <div class="mt-4">
                   <x-jet-label for="type" value="Units" />
                   <select id="role" type="number" name="units" class="block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
-                    <option selected>Select an option</option>
+                    <option selected>Select units</option>
                     <option class="block mt-1 w-full" value="3.0">3.0</option>
                     <option class="block mt-1 w-full" value="6.0">6.0</option>
                     <option class="block mt-1 w-full" value="9.0">9.0</option>
@@ -45,52 +45,52 @@
                 </div>
                 <!--Admission Fee-->
                 <div class="mt-4">
-                  <x-jet-label for="admission" value="{{ __('Admission Fee') }}" />
+                  <x-jet-label for="admission" value="{{ __('Admission Fee (₱)') }}" />
                   <x-jet-input id="admission" class="block mt-1 w-full amount" type="number" step="0.01" name="admission" required autofocus />
                 </div>
                 <!--Tuition Fee-->
                 <div class="mt-4">
-                  <x-jet-label for="tuition" value="{{ __('Tuition Fee') }}" />
+                  <x-jet-label for="tuition" value="{{ __('Tuition Fee (₱)') }}" />
                   <x-jet-input id="tuition" class="block mt-1 w-full amount" type="number" step="0.01" name="tuition" required autofocus />
                 </div>
                 <!--Matricula Fee-->
                 <div class="mt-4">
-                  <x-jet-label for="matricula" value="{{ __('Matriculation Fee') }}" />
+                  <x-jet-label for="matricula" value="{{ __('Matriculation Fee (₱)') }}" />
                   <x-jet-input id="matricula" class="block mt-1 w-full amount" type="number" step="0.01" name="matricula" required autofocus />
                 </div>
                 <!--Medical Fee-->
                 <div class="mt-4">
-                  <x-jet-label for="medical" value="{{ __('Medical/Dental Fee') }}" />
+                  <x-jet-label for="medical" value="{{ __('Medical/Dental Fee (₱)') }}" />
                   <x-jet-input id="medical" class="block mt-1 w-full amount" type="number" step="0.01" name="medical" required autofocus />
                 </div>
                 <!--library Fee-->
                 <div class="mt-4">
-                  <x-jet-label for="library" value="{{ __('Library Fee') }}" />
+                  <x-jet-label for="library" value="{{ __('Library Fee (₱)') }}" />
                   <x-jet-input id="library" class="block mt-1 w-full amount" type="number" step="0.01" name="library" required autofocus />
                 </div>
                 <!--athletic Fee-->
                 <div class="mt-4">
-                  <x-jet-label for="athletic" value="{{ __('Athletic Fee') }}" />
+                  <x-jet-label for="athletic" value="{{ __('Athletic Fee (₱)') }}" />
                   <x-jet-input id="athletic" class="block mt-1 w-full amount" type="number" step="0.01" name="athletic" required autofocus />
                 </div>
                 <!--cultural Fee-->
                 <div class="mt-4">
-                  <x-jet-label for="cultural" value="{{ __('Cultural Fee (PFD)') }}" />
+                  <x-jet-label for="cultural" value="{{ __('Cultural Fee (₱)') }}" />
                   <x-jet-input id="cultural" class="block mt-1 w-full amount" type="number" step="0.01" name="cultural" required autofocus />
                 </div>
                 <!--guidance Fee-->
                 <div class="mt-4">
-                  <x-jet-label for="guidance" value="{{ __('Guidance Fee') }}" />
+                  <x-jet-label for="guidance" value="{{ __('Guidance Fee (₱)') }}" />
                   <x-jet-input id="guidance" class="block mt-1 w-full amount" type="number" step="0.01" name="guidance" required autofocus />
                 </div>
                 <!--scuaa Fee-->
                 <div class="mt-4">
-                  <x-jet-label for="scuaa" value="{{ __('SCUAA Fee') }}" />
+                  <x-jet-label for="scuaa" value="{{ __('SCUAA Fee (₱)') }}" />
                   <x-jet-input id="scuaa" class="block mt-1 w-full amount" type="number" step="0.01" name="scuaa" required autofocus />
                 </div>
                 <!--distLearn Fee-->
                 <div class="mt-4">
-                  <x-jet-label for="distLearn" value="{{ __('Distance Learning Fee') }}" />
+                  <x-jet-label for="distLearn" value="{{ __('Distance Learning Fee (₱)') }}" />
                   <x-jet-input id="distLearn" onblur="findTotal()" class="block mt-1 w-full amount" type="number" step="0.01" name="distLearn" required autofocus />
                 </div>
                 <!--Grand Total-->

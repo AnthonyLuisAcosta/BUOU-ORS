@@ -24,11 +24,11 @@
               <!--GRID-->
               <div class="grid grid-rows-2 gap-4">
                 <div class="mt-4">
-                  <x-jet-label for="label" value="{{ __('Label') }}" />
+                  <x-jet-label for="label" value="{{ __('Fee Name') }}" />
                   <x-jet-input id="label" class="block mt-1 w-full amount" type="text" name="label" value="{{$fee->label}}" required autofocus />
                 </div>
                 <div class="mt-4">
-                  <x-jet-label for="cost" value="{{ __('Fee') }}" />
+                  <x-jet-label for="cost" value="{{ __('Cost (₱)') }}" />
                   <x-jet-input id="cost" class="block mt-1 w-full amount" type="number" step="0.01" name="cost" value="{{$fee->cost}}" required autofocus />
                 </div>
               </div>

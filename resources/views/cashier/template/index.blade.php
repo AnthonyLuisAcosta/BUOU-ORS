@@ -8,7 +8,7 @@
     <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
       @include('alert')
       <div class="flex items-center px-3 py-4 gap-80">
-        <a href="{{ route('cashier.additional.index') }}" class="inline-flex items-center px-4 py-2 mr-4 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">View Additional Fees</a></a>
+        <a href="{{ route('cashier.additional.index') }}" class="inline-flex items-center px-4 py-2 mr-4 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">View Additional Fees</a>
         <a href="{{ route('cashier.template.create') }}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">New Template</a>
       </div>
       <!--Container-->
