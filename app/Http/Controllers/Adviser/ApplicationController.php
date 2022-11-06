@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Adviser;
 
 use App\Models\Programs;
 use App\Models\Subjects;
+use App\Models\File;
 use App\Models\Application;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\File;
+
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\ApplicationRejectedEmail;
 use App\Notifications\ApplicationRecommendedEmail;
@@ -95,11 +96,12 @@ class ApplicationController extends Controller
      * @param  \App\Models\Application  $application
      * @return \Illuminate\Http\Response
      */
-    public function show(Application $application)
+    public function show(Application $application, File $files)
     {
         $programs = Programs::all();
         $subjects = Subjects::all();
-        return view('adviser.application.show', compact('application'))->with('programs', $programs)->with('subjects', $subjects);
+        $files = File::all();
+        return view('adviser.application.show', compact('application'))->with('programs', $programs)->with('subjects', $subjects)->with('files', $files);
     }
 
     /**
