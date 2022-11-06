@@ -29,5 +29,6 @@ class DatabaseSeeder extends Seeder
         $this->call(Subj_CategorySeeder::class);
         $this->call(AnnouncementSeeder::class);
         $this->call(TermsSeeder::class);
+        $this->call(FeesTemplateSeeder::class);
     }
 }

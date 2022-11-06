@@ -8,6 +8,7 @@ use App\Http\Middleware\RegistrarMiddleware;
 use App\Http\Middleware\DeanMiddleware;
 use App\Http\Middleware\AdviserMiddleware;
 use App\Http\Middleware\ApplicantMiddleware;
+use App\Http\Middleware\CashierMiddleware;
 
 class Kernel extends HttpKernel
 {
@@ -75,5 +76,6 @@ class Kernel extends HttpKernel
         'dean' => DeanMiddleware::class,
         'adviser' => AdviserMiddleware::class,
         'applicant' => ApplicantMiddleware::class,
+        'cashier'   => CashierMiddleware::class,
     ];
 }
