@@ -17,6 +17,7 @@
 
     <!--Status Button-->
 
+    <!--Status Button-->
     <!--Recommend Modal-->
     <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
         <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
@@ -50,32 +51,32 @@
                                         <div class="mt-2">
                                             <p class="text-sm text-gray-500">Are you sure you want to recommend this application? This action cannot be undone.</p>
                                         </div>
-                                       
+
                                     </div>
                                 </div>
                             </div>
                             <form method="post" action="{{ route('adviser.application.update', $application->id) }}">
-                            @csrf
-                            @method('PUT')
-                            <div class="bg-gray-50 px-4 py-3">
-                            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                @csrf
+                                @method('PUT')
+                                <div class="bg-gray-50 px-4 py-3">
+                                    <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                                         <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Remarks:</h3>
                                         <div class="mt-2">
-                                        <!--<input type="text" name="remarks" value="{{$application->remarks}}" class="h-52 w-96"/>-->
-                                        <textarea name="remarks" id="remarks"  cols="30" rows="10" class="w-full">{{$application->remarks}}</textarea>
+                                            <!--<input type="text" name="remarks" value="{{$application->remarks}}" class="h-52 w-96"/>-->
+                                            <textarea name="remarks" id="remarks" cols="30" rows="10" class="w-full">{{$application->remarks}}</textarea>
                                         </div>
                                     </div>
-            
-                            </div>
-                            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                                
+
+                                </div>
+                                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+
                                     <input type="hidden" name="status" value="Recommended" class="" />
                                     <!--Button-->
                                     <button name="submit" value="Update" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-green-400 text-base font-medium text-g-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
                                         Proceed
                                     </button>
                                     <button type="button" class="modal-close mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
-                            </div>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -121,22 +122,32 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                        
                                 <form method="post" action="{{ route('adviser.application.update', $application->id) }}">
                                     @csrf
                                     @method('PUT')
-                                    <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Remarks:</h3>
-                                    <input type="text" name="remarks" value="{{$application->remarks}}"/>
-                                    <input type="hidden" name="status" value="Recommended" class="" />
-                                    <input type="hidden" name="status" value="Rejected" />
-                                    <!--Button-->
-                                    <button name="submit" value="Update" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-red-400 text-base font-medium text-g-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
-                                        Reject
-                                    </button>
+                                    <div class="bg-gray-50 px-4 py-3">
+                                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                            <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Remarks:</h3>
+                                            <div class="mt-2">
+                                                <!--<input type="text" name="remarks" value="{{$application->remarks}}" class="h-52 w-96"/>-->
+                                                <textarea name="remarks" id="remarks" cols="30" rows="10" class="w-full">{{$application->remarks}}</textarea>
+                                            </div>
+                                        </div>
 
+                                    </div>
+                                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+
+                                        <input type="hidden" name="status" value="Rejected" class="" />
+                                        <!--Button-->
+                                        <button name="submit" value="Update" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-red-400 text-base font-medium text-g-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                                            Proceed
+                                        </button>
+                                        <button type="button" class="modal-close1 mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
+                                    </div>
                                 </form>
-                                <button type="button" class="modal-close1 mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
-                            </div>
+
+                            
                         </div>
                     </div>
                 </div>
@@ -305,6 +316,12 @@
 												
 												</td>
 											@endif
+                    </div>
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Applicant Classification</dt>
+                        <td>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{$application->classification}}</dd>
+                        </td>
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">Program</dt>

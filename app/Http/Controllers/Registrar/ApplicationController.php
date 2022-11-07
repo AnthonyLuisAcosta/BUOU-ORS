@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Registrar;
 
+use App\Models\File;
 use App\Models\Programs;
 use App\Models\Subjects;
 use App\Models\Application;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
 use App\Notifications\ApplicationRejectedEmail;
 use App\Notifications\ApplicationAdmissionEmail;
 
@@ -51,7 +51,8 @@ class ApplicationController extends Controller
         $id = Auth::user()->id;
         $app = Application::all();
         $subjects = Subjects::all();
-        return view('registrar.application.show', compact('application'))->with('programs', $programs)->with('app', $app)->with('subjects', $subjects);
+        $files = File::all();
+        return view('registrar.application.show', compact('application'))->with('programs', $programs)->with('app', $app)->with('subjects', $subjects)->with('files', $files);
     }
 
 
@@ -62,10 +63,11 @@ class ApplicationController extends Controller
      * @param  \App\Models\Programs  $programs
      * @return \Illuminate\Http\Response
      */
-    public function edit(Application $application, Programs $programs)
+    public function edit(Application $application, Programs $programs, File $files)
     {
         $programs = Programs::all();
-        return view('registrar.application.edit', compact('application'))->with('programs', $programs)->with('application', $application);
+        $files = File::all();
+        return view('registrar.application.edit', compact('application'))->with('programs', $programs)->with('application', $application)->with('files', $files);
     }
 
 
@@ -80,10 +82,11 @@ class ApplicationController extends Controller
 
         $count = count($request->all());
 
-        if ($count == 4) {
+        if ($count == 5) {
 
             $application = Application::find($id);
             $application->status = $request->input('status');
+            $application->remarks = $request->input('remarks');
             if ($request->input('status') == "Admitted") {
                 //If approve button was pressed
                 $application->notify(new ApplicationAdmissionEmail());

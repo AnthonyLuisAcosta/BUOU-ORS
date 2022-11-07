@@ -143,7 +143,7 @@
                                                 </div>
                                                 
                                                 <div class="ml-4 flex-shrink-0">
-
+                                                    <a href="{{asset('storage/'. $row->path  )}}" class="font-medium text-indigo-600 hover:text-indigo-500"> Download </a>
                                                 </div>
                                             </li>
                                         </ul>
@@ -318,7 +318,9 @@
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm font-medium text-gray-500">Remarks:</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{$application->remarks}}</dd>
+                        <dd  class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                            <textarea readonly name="remarks" id="remarks" cols="30" rows="10" class="w-full break-all" style="border:none">{{$application->remarks}}</textarea>
+                        </dd>
                     </div>
                 </dl>
 

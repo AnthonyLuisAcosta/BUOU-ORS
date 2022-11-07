@@ -56,22 +56,33 @@
                                         <div class="mt-2">
                                             <p class="text-sm text-gray-500">Are you sure you want to admit this application? This action cannot be undone.</p>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
-                            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                                <form method="post" action="{{ route('registrar.application.update', $application->id) }}">
-                                    @csrf
-                                    @method('PUT')
+                            <form method="post" action="{{ route('registrar.application.update', $application->id) }}">
+                                @csrf
+                                @method('PUT')
+                                <div class="bg-gray-50 px-4 py-3">
+                                    <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                        <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Remarks:</h3>
+                                        <div class="mt-2">
+                                            <!--<input type="text" name="remarks" value="{{$application->remarks}}" class="h-52 w-96"/>-->
+                                            <textarea name="remarks" id="remarks" cols="30" rows="10" class="w-full break-all">{{$application->remarks}}</textarea>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+
                                     <input type="hidden" name="status" value="Admitted" class="" />
                                     <!--Button-->
                                     <button name="submit" value="Update" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-green-400 text-base font-medium text-g-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
                                         Proceed
                                     </button>
-
-                                </form>
-                                <button type="button" class="modal-close mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
-                            </div>
+                                    <button type="button" class="modal-close mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -136,6 +147,8 @@
                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">Attachments</dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        @foreach($files as $row)
+                        @if( $row->application_id == $application->id)
                             <ul role="list" class="border border-gray-200 rounded-md divide-y divide-gray-200">
 
                                 <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
@@ -144,13 +157,18 @@
                                         <svg class="flex-shrink-0 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                             <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd" />
                                         </svg>
-                                        <x-jet-label for="applicantImage" value="{{ asset($application->applicantImage) }}" />
+                                        <x-jet-label value="{{$row->name}}"/>
+                                        
+
                                     </div>
                                     <div class="ml-4 flex-shrink-0">
-                                        <a href="{{ asset('requirements/' .  $application->applicantImage) }}" class="font-medium text-indigo-600 hover:text-indigo-500"> Download </a>
+                                        <a href="{{asset('storage/'. $row->path  )}}" class="font-medium text-indigo-600 hover:text-indigo-500"> Download </a>
                                     </div>
+                                    
                                 </li>
                             </ul>
+                            @endif
+                            @endforeach
                         </dd>
                     </div>
 
@@ -228,6 +246,12 @@
 
                         </td>
                         @endif
+                    </div>
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Applicant Classification</dt>
+                        <td>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{$application->classification}}</dd>
+                        </td>
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">Program</dt>

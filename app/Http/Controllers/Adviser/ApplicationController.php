@@ -60,6 +60,7 @@ class ApplicationController extends Controller
             'company'          =>  'required',
             'address'          =>  'required',
             'programs_id'       => 'required',
+            'classification',
 
 
             'applicantImage'         =>  'required|file|mimes:jpg,png,jpeg,gif,svg,pdf,docx,doc'
@@ -111,11 +112,12 @@ class ApplicationController extends Controller
      * @param  \App\Models\Programs  $programs
      * @return \Illuminate\Http\Response
      */
-    public function edit(Application $application, Programs $programs)
+    public function edit(Application $application, Programs $programs, File $files)
     {
         $programs = Programs::all();
         $subjects = Subjects::all();
-        return view('adviser.application.edit', compact('application'))->with('programs', $programs)->with('subjects', $subjects)->with('application', $application);
+        $files = File::all();
+        return view('adviser.application.edit', compact('application'))->with('programs', $programs)->with('subjects', $subjects)->with('application', $application)->with('files', $files);
     }
 
     /**
@@ -158,6 +160,7 @@ class ApplicationController extends Controller
             $application->phone = $request->input('phone');
             $application->company = $request->input('company');
             $application->address = $request->input('address');
+            $application->classification = $request->input('classification');;
 
             $application->subject1 = $request->input('subject1');
             $application->subject2 = $request->input('subject2');

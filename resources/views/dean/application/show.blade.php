@@ -8,17 +8,17 @@
     <!-- This example requires Tailwind CSS v2.0+ -->
 
     <div class="block mb-8">
-			<a href="{{ route('dean.application.index') }}" class="ml-1 inline-flex items-center px-4 py-1 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
-          </svg>
-          <span class="flex-1 ml-1 whitespace-nowrap">Back to list</span>
+        <a href="{{ route('dean.application.index') }}" class="ml-1 inline-flex items-center px-4 py-1 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+            </svg>
+            <span class="flex-1 ml-1 whitespace-nowrap">Back to list</span>
         </a>
-      </div>
+    </div>
 
     <!--Status Button-->
-     <!--Recommend Modal-->
-     <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
+    <!--Recommend Modal-->
+    <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
         <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
 
         <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
@@ -50,22 +50,33 @@
                                         <div class="mt-2">
                                             <p class="text-sm text-gray-500">Are you sure you want to approve this application? This action cannot be undone.</p>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
-                            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                                <form method="post" action="{{ route('dean.application.update', $application->id) }}">
-                                    @csrf
-                                    @method('PUT')
+                            <form method="post" action="{{ route('dean.application.update', $application->id) }}">
+                                @csrf
+                                @method('PUT')
+                                <div class="bg-gray-50 px-4 py-3">
+                                    <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                        <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Remarks:</h3>
+                                        <div class="mt-2">
+                                            <!--<input type="text" name="remarks" value="{{$application->remarks}}" class="h-52 w-96"/>-->
+                                            <textarea name="remarks" id="remarks" cols="30" rows="10" class="w-full">{{$application->remarks}}</textarea>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+
                                     <input type="hidden" name="status" value="Approved" class="" />
                                     <!--Button-->
                                     <button name="submit" value="Update" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-green-400 text-base font-medium text-g-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
                                         Proceed
                                     </button>
-
-                                </form>
-                                <button type="button" class="modal-close mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
-                            </div>
+                                    <button type="button" class="modal-close mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -110,40 +121,50 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                        
                                 <form method="post" action="{{ route('dean.application.update', $application->id) }}">
                                     @csrf
                                     @method('PUT')
-                                    <input type="hidden" name="status" value="Rejected" />
-                                    <!--Button-->
-                                    <button name="submit" value="Update" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-red-400 text-base font-medium text-g-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
-                                        Reject
-                                    </button>
+                                    <div class="bg-gray-50 px-4 py-3">
+                                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                            <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Remarks:</h3>
+                                            <div class="mt-2">
+                                                <!--<input type="text" name="remarks" value="{{$application->remarks}}" class="h-52 w-96"/>-->
+                                                <textarea name="remarks" id="remarks" cols="30" rows="10" class="w-full">{{$application->remarks}}</textarea>
+                                            </div>
+                                        </div>
 
+                                    </div>
+                                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+
+                                        <input type="hidden" name="status" value="Rejected" class="" />
+                                        <!--Button-->
+                                        <button name="submit" value="Update" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-red-400 text-base font-medium text-g-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                                            Proceed
+                                        </button>
+                                        <button type="button" class="modal-close1 mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
+                                    </div>
                                 </form>
-                                <button type="button" class="modal-close1 mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
-                            </div>
+
+                            
                         </div>
                     </div>
                 </div>
 
-
-             
             </div>
         </div>
     </div>
 
-    
     <div class="inline-flex justify-end">
         <!--Button-->
-        
+
         @if($application->status == "Pending")
         <div class="block mb-8">
             <button class="">
                 <a class="modal-open ml-1 inline-flex items-center px-4 py-2 bg-green-400 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Recommend and Approve</a>
             </button>
         </div>
-       @else
+        @else
         <div class="block mb-8">
             <button class="">
                 <a class="modal-open ml-1 inline-flex items-center px-4 py-2 bg-green-400 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Approve</a>
@@ -151,15 +172,16 @@
         </div>
         @endif
         <!--Reject Status Button-->
-            <!--Button-->
-            <div class="block mb-8">
-                <button class="">
-                    <a class="modal-open-reject ml-1 inline-flex items-center px-4 py-2 bg-rose-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Reject</a>
-                </button>
-            </div>
-        
+        <!--Button-->
+        <div class="block mb-8">
+            <button class="">
+                <a class="modal-open-reject ml-1 inline-flex items-center px-4 py-2 bg-rose-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Reject</a>
+            </button>
+        </div>
+
     </div>
-    
+
+
 
 
     <div class=" border-t-2 w-full border-gray-200 flex gap-4">
@@ -203,6 +225,8 @@
                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">Attachments</dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        @foreach($files as $row)
+                        @if( $row->application_id == $application->id)
                             <ul role="list" class="border border-gray-200 rounded-md divide-y divide-gray-200">
 
                                 <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
@@ -211,13 +235,18 @@
                                         <svg class="flex-shrink-0 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                             <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd" />
                                         </svg>
-                                        <x-jet-label for="applicantImage" value="{{ asset($application->applicantImage) }}" />
+                                        <x-jet-label value="{{$row->name}}"/>
+                                        
+
                                     </div>
                                     <div class="ml-4 flex-shrink-0">
-                                        <a href="{{ asset('requirements/' .  $application->applicantImage) }}" class="font-medium text-indigo-600 hover:text-indigo-500"> Download </a>
+                                        <a href="{{asset('storage/'. $row->path  )}}" class="font-medium text-indigo-600 hover:text-indigo-500"> Download </a>
                                     </div>
+                                    
                                 </li>
                             </ul>
+                            @endif
+                            @endforeach
                         </dd>
                     </div>
 
@@ -239,15 +268,15 @@
                         @endforeach
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500"></dt>
+                        <dt class="text-sm font-medium text-gray-500"></dt>
                         @foreach($subjects as $row)
                         @if( $row->id == $application->subject2)
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Units: {{$row->units}} &emsp;  {{$row->title}}</dd>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Units: {{$row->units}} &emsp; {{$row->title}}</dd>
                         @endif
                         @endforeach
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500"></dt>
+                        <dt class="text-sm font-medium text-gray-500"></dt>
                         @foreach($subjects as $row)
                         @if( $row->id == $application->subject3)
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Units: {{$row->units}} &emsp; {{$row->title}}</dd>
@@ -268,34 +297,40 @@
                 <dl>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">Application Status</dt>
-                        
-                        @if($application->status == "Pending")
-												<td >
-                                                <dd style="color: rgb(253 186 116);" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
 
-												</td>
-											@elseif($application->status == "Recommended")
-												<td>
-                                                <dd class="mt-1 text-sm text-blue-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
-												
-												</td>
-                                               
-											@elseif($application->status == "Approved")
-												<td>
-                                                <dd class="mt-1 text-sm text-yellow-300 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
-												
-												</td>
-											@elseif($application == "Admitted")
-												<td>
-                                                <dd class="mt-1 text-sm text-green-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
-											
-												</td>
-											@elseif($application == "Rejected")
-												<td>
-                                                <dd class="mt-1 text-sm text-red-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
-												
-												</td>
-											@endif
+                        @if($application->status == "Pending")
+                        <td>
+                            <dd style="color: rgb(253 186 116);" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
+
+                        </td>
+                        @elseif($application->status == "Recommended")
+                        <td>
+                            <dd class="mt-1 text-sm text-blue-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
+
+                        </td>
+
+                        @elseif($application->status == "Approved")
+                        <td>
+                            <dd class="mt-1 text-sm text-yellow-300 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
+
+                        </td>
+                        @elseif($application == "Admitted")
+                        <td>
+                            <dd class="mt-1 text-sm text-green-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
+
+                        </td>
+                        @elseif($application == "Rejected")
+                        <td>
+                            <dd class="mt-1 text-sm text-red-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
+
+                        </td>
+                        @endif
+                    </div>
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Applicant Classification</dt>
+                        <td>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{$application->classification}}</dd>
+                        </td>
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">Program</dt>
@@ -310,44 +345,46 @@
                         <dt class="text-sm font-medium text-gray-500">Subjects</dt>
                         @foreach($subjects as $row)
                         @if( $row->id == $application->subject1)
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Units: {{$row->units}} &emsp;  {{$row->title}}</dd>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Units: {{$row->units}} &emsp; {{$row->title}}</dd>
                         @endif
                         @endforeach
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500"></dt>
+                        <dt class="text-sm font-medium text-gray-500"></dt>
                         @foreach($subjects as $row)
                         @if( $row->id == $application->subject2)
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Units: {{$row->units}} &emsp;  {{$row->title}}</dd>
-                        
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Units: {{$row->units}} &emsp; {{$row->title}}</dd>
+
                         @endif
                         @endforeach
                     </div>
-                    
+
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500"></dt>
+                        <dt class="text-sm font-medium text-gray-500"></dt>
                         @foreach($subjects as $row)
                         @if( $row->id == $application->subject3)
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Units: {{$row->units}} &emsp;  {{$row->title}}</dd>
-                       
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Units: {{$row->units}} &emsp; {{$row->title}}</dd>
+
                         @endif
                         @endforeach
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500"></dt>
-    
-                    
+                        <dt class="text-sm font-medium text-gray-500"></dt>
+
+
                     </div>
                 </dl>
 
             </div>
         </div>
-        </div>
-<br><br><br>
+    </div>
+    <br><br><br>
     <style>
-        [x-cloak] { display: none }
+        [x-cloak] {
+            display: none
+        }
     </style>
-     <style>
+    <style>
         .modal,
         .modal-reject {
             transition: opacity 0.25s ease;

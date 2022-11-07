@@ -68,6 +68,7 @@ class ApplicationController extends Controller
             #'subjects_id'       => 'required',
             'applicant_id'      => 'required',
             'adviser',
+            'classification',
 
             'subject1' => 'required',
             'subject2',
@@ -99,6 +100,7 @@ class ApplicationController extends Controller
         #$application->subjects_id = $request->subjects_id;
         $application->programs_id = $request->programs_id;
         $application->applicant_id = $request->applicant_id;
+        $application->classification;
 
         $application->subject1 = $request->subject1;
         $application->subject2 = $request->subject2;
@@ -291,6 +293,7 @@ class ApplicationController extends Controller
             $application->subject3 = $request->input('subject3');
             $application->programs_id = $request->input('programs_id');
             $application->applicant_id;
+            $application->classification;
 
             foreach ($programs as $prog) {
                 if ($prog->id == $application->programs_id)

@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\File;
 use App\Models\User;
 use App\Models\Programs;
 use App\Models\Subjects;
 use App\Models\Application;
-use App\Models\Selectedsub;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Notifications\ApplicationAdmissionEmail;
-use App\Notifications\ApplicationApprovalEmail;
 use App\Notifications\ApplicationPendingEmail;
-use App\Notifications\ApplicationRecommendedEmail;
+use App\Notifications\ApplicationApprovalEmail;
 use App\Notifications\ApplicationRejectedEmail;
-use Illuminate\Support\Facades\File;
+use App\Notifications\ApplicationAdmissionEmail;
+use App\Notifications\ApplicationRecommendedEmail;
 
 class ApplicationController extends Controller
 {
@@ -70,6 +69,7 @@ class ApplicationController extends Controller
             'programs_id'       => 'required',
             'subjects_id'       => 'required',
             'applicant_id'      => 'required',
+            
 
             'applicantImage'         =>  'required|file|mimes:jpg,png,jpeg,gif,svg,pdf,docx,doc'
         ]);
@@ -113,7 +113,8 @@ class ApplicationController extends Controller
     {
         $programs = Programs::all();
         $subjects = Subjects::all();
-        return view('admin.application.show', compact('application'))->with('programs', $programs)->with('subjects', $subjects);
+        $files = File::all();
+        return view('admin.application.show', compact('application'))->with('programs', $programs)->with('subjects', $subjects)->with('files', $files);
     }
 
     /**

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Dean;
 
+use App\Models\File;
+use App\Models\User;
 use App\Models\Programs;
 use App\Models\Subjects;
 use App\Models\Application;
 use Illuminate\Http\Request;
+#use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\File;
 use App\Notifications\ApplicationApprovalEmail;
 use App\Notifications\ApplicationRejectedEmail;
 use App\Notifications\ApplicationRecommendedEmail;
@@ -99,7 +101,9 @@ class ApplicationController extends Controller
     {
         $programs = Programs::all();
         $subjects = Subjects::all();
-        return view('dean.application.show', compact('application'))->with('programs', $programs)->with('subjects', $subjects);
+        $files = File::all();
+        $user = User::all();
+        return view('dean.application.show', compact('application'))->with('programs', $programs)->with('subjects', $subjects)->with('files', $files)->with('user', $user);
     }
 
     /**
@@ -109,11 +113,12 @@ class ApplicationController extends Controller
      * @param  \App\Models\Programs  $programs
      * @return \Illuminate\Http\Response
      */
-    public function edit(Application $application, Programs $programs)
+    public function edit(Application $application, Programs $programs, File $files)
     {
         $programs = Programs::all();
         $subjects = Subjects::all();
-        return view('dean.application.edit', compact('application'))->with('programs', $programs)->with('subjects', $subjects)->with('application', $application);
+        $files = File::all();
+        return view('dean.application.edit', compact('application'))->with('programs', $programs)->with('subjects', $subjects)->with('application', $application)->with('files', $files);
     }
 
     /**
@@ -127,10 +132,11 @@ class ApplicationController extends Controller
 
         $count = count($request->all());
 
-        if ($count == 4) {
+        if ($count == 5) {
 
             $application = Application::find($id);
             $application->status = $request->input('status');
+            $application->remarks = $request->input('remarks');
             $application->update();
             if ($request->input('status') == "Approved") {
                 //If recommend button was pressed
