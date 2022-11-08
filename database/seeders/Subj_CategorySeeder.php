@@ -16,21 +16,21 @@ class Subj_CategorySeeder extends Seeder
     public function run()
     {
         DB::table('category')->insert([
-            'category' => 'Major',
+            'category' => 'Major Courses',
             'created_at'  => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
             
         ]);
 
         DB::table('category')->insert([
-            'category' => 'Thesis',
+            'category' => 'Thesis Courses',
             'created_at'  => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
             
         ]);
 
         DB::table('category')->insert([
-            'category' => 'Foundation',
+            'category' => 'Foundation Courses',
             'created_at'  => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
             
