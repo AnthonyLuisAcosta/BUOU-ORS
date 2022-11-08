@@ -30,7 +30,7 @@
 						<thead>
 							<tr>
 								<th data-priority="1">Code</th>
-								<th data-priority="2">Description</th>
+								<th data-priority="2">Program</th>
 								<th data-priority="3">Created at</th>
 								<th data-priority="4">Updated at</th>
 								<th data-priority="5">Action</th>

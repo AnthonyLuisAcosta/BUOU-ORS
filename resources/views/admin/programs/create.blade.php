@@ -49,7 +49,7 @@
 
               <!-- Description field -->
               <div class="mt-4">
-                <x-jet-label for="description" value="{{ __('Description') }}" />
+                <x-jet-label for="description" value="{{ __('Program') }}" />
                 <x-jet-input id="description" class="block mt-1 w-full" type="text" name="description" :value="old('description')" required autocomplete="description" />
               </div>
               
