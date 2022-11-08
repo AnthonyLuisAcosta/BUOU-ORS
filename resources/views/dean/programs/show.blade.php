@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-          {{ __('My Program') }} | <span class=" text-md text-gray-500">{{__('Admitted Applicants')}}</span>
+          {{ __('My Program') }} | <span class=" text-md text-gray-500">{{__('Enrolled')}}</span>
         </h2>
       </x-slot>
 

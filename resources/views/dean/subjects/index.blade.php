@@ -15,8 +15,8 @@
 				<table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
 					<thead>
 						<tr>
-							<th data-priority="1">Code</th>
-							<th data-priority="2">Title</th>
+							<th data-priority="1">Course Code</th>
+							<th data-priority="2">Course Title</th>
 							<th data-priority="3">Category</th>
 							<th data-priority="3">Program</th>
 							<th data-priority="4">Units</th>

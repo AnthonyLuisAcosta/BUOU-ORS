@@ -29,37 +29,6 @@ class SubjectsController extends Controller
             ->with('terms', $terms);
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $programs = Programs::all();
-        $categories = Category::all();
-        $terms = Terms::all();
-        return view('registrar.subjects.create')
-            ->with('programs', $programs)
-            ->with('categories', $categories)
-            ->with('terms', $terms)
-            ->with('success', 'Subject created successfully');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreSubjectsRequest $request)
-    {
-        $input = $request->validated();
-        Subjects::create($input);
-        return redirect()->route('registrar.subjects.index')->with('success', 'Subject created successfully');
-    }
-
     /**
      * Display the specified resource.
      *
@@ -77,51 +46,5 @@ class SubjectsController extends Controller
             ->with('programs', $programs)
             ->with('categories', $categories)
             ->with('terms', $terms);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $subjects = Subjects::find($id);
-        $programs = Programs::all();
-        $categories = Category::all();
-        $terms = Terms::all();
-        return view('registrar.subjects.edit')
-            ->with('subjects', $subjects)
-            ->with('programs', $programs)
-            ->with('categories', $categories)
-            ->with('terms', $terms);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(StoreSubjectsRequest $request, $id)
-    {
-        $subjects = Subjects::find($id);
-        $input = $request->validated();
-        $subjects->update($input);
-        return redirect()->route('registrar.subjects.index')->with('success', 'Subject updated successfully');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Subjects $subject)
-    {
-        $subject->delete();
-        return back()->with('success', 'Subject deleted successfully'); 
     }
 }
