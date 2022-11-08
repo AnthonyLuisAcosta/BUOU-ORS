@@ -17,7 +17,7 @@
 								<thead>
 									<tr>
 										<th data-priority="1">Code</th>
-										<th data-priority="2">Description</th>
+										<th data-priority="2">Program</th>
 										<th data-priority="3">Term</th>
 										<th data-priority="4">Action</th>
 									</tr>
@@ -35,7 +35,7 @@
 										@endforeach
 										<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
 											<a href="{{ route('adviser.programs.edit', $program->id) }}" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View Subjects</a>
-											<a href="{{ route('adviser.programs.show', $program->id) }}" class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">View Admitted Applicants</a>
+											<a href="{{ route('adviser.programs.show', $program->id) }}" class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">View Enrolled</a>
 										</td>
 										</tr>
 										@endif

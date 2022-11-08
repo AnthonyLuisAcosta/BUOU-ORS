@@ -23,7 +23,7 @@
                     <thead>
                         <tr>
                             <th data-priority="1">Code</th>
-                            <th data-priority="2">Title</th>
+                            <th data-priority="2">Program</th>
                             <th data-priority="3">Category</th>
                             <th data-priority="4">Units</th>
                             <th data-priority="5">Professor</th>
