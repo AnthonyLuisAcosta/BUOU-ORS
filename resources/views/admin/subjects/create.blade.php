@@ -37,7 +37,7 @@
 
                   <!--Subject Code Field-->
                   <div class="mt-4">
-                    <x-jet-label for="subj_code" value="{{ __('Code') }}" />
+                    <x-jet-label for="subj_code" value="{{ __('Course Code') }}" />
                     <x-jet-input id="subj_code" class="block mt-1 w-full" type="text" name="subj_code" :value="old('subj_code')" required autocomplete="subj_code" />
                     
                     <!-- Error message if code already exist -->
@@ -61,7 +61,7 @@
 
                   <!--Title Field-->
                   <div class="mt-4">
-                    <x-jet-label for="title" value="{{ __('Title') }}" />
+                    <x-jet-label for="title" value="{{ __('Course Title') }}" />
                     <x-jet-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" required autocomplete="title" />
                   </div>
 

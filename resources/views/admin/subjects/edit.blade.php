@@ -32,7 +32,7 @@
         
                           <!--Subject Code Field-->
                           <div class="mt-4">
-                            <x-jet-label for="subj_code" value="{{ __('Code') }}" />
+                            <x-jet-label for="subj_code" value="{{ __('Course Code') }}" />
                             <input type="text" name="subj_code" id="subj_code" type="text" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                                    value="{{ old('subj_code', $subjects->subj_code) }}" required = "subj_code" />
                             
@@ -56,7 +56,7 @@
         
                           <!--Title Field-->
                           <div class="mt-4">
-                            <x-jet-label for="title" value="{{ __('Title') }}" />
+                            <x-jet-label for="title" value="{{ __('Course Title') }}" />
                             <input type="text" name="title" id="title" type="text" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                                    value="{{ old('title', $subjects->title) }}" required = "title" />
                           </div>
