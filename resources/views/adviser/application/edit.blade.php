@@ -131,7 +131,7 @@
                                                 </div>
                                                 
                                                 <div class="ml-4 flex-shrink-0">
-                                                    <a href="{{asset('storage/'. $row->path  )}}" class="font-medium text-indigo-600 hover:text-indigo-500"> Download </a>
+                                                    <a href="{{asset('storage/'. $row->path  )}}" class="font-medium text-indigo-600 hover:text-indigo-500"></a>
                                                 </div>
                                             </li>
                                         </ul>
