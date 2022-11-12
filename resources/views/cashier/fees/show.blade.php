@@ -8,7 +8,7 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="toHide block mb-8">
 
-        <a href="{{ route('registrar.fees.index') }}" class="ml-1 inline-flex items-center px-4 py-1 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
+        <a href="{{ route('cashier.fees.index') }}" class="ml-1 inline-flex items-center px-4 py-1 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
             <path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
           </svg>
@@ -335,7 +335,8 @@
                   <p class="border-b-2 border-gray-500 font-semibold">{{strtoupper($application->lastName.', '.$application->firstName.' '.$application->middleName[0].'.') }}</p>
                 </div>
                 <div class="flex justify-center items-center mr-2">
-                  <p class="border-b-2 border-gray-500 font-semibold">{{strtoupper(Auth::user()->first_name.' '.Auth::user()->middle_name[0].'. '.Auth::user()->last_name) }}</p>
+                  <p class="border-b-2 border-gray-500 font-semibold">{{$cashier->first_name.' '.$cashier->middle_name[0].'. '.$cashier->last_name}}
+                  </p>
                 </div>
                 <div>
                   <p>Payment/Validation Date:</p>

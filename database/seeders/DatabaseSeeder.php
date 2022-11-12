@@ -30,5 +30,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AnnouncementSeeder::class);
         $this->call(TermsSeeder::class);
         $this->call(FeesTemplateSeeder::class);
+        $this->call(AdditionalFees::class);
     }
 }

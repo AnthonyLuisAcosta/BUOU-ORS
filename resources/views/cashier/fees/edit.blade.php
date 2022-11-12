@@ -335,7 +335,7 @@
                   <p class="border-b-2 border-gray-500 font-semibold">{{strtoupper($application->lastName.', '.$application->firstName.' '.$application->middleName[0].'.') }}</p>
                 </div>
                 <div class="flex justify-center items-center mr-2">
-                  <p class="border-b-2 border-gray-500 font-semibold">{{strtoupper(Auth::user()->first_name.' '.Auth::user()->middle_name[0].'. '.Auth::user()->last_name) }}</p>
+                  <p class="border-b-2 border-gray-500 font-semibold">{{strtoupper($cashier->first_name.' '.$cashier->middle_name[0].'. '.$cashier->last_name) }}</p>
                 </div>
                 <div>
                   <p>Payment/Validation Date:</p>
@@ -356,6 +356,26 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="flex mt-6 mr-20 float-right">
+        <form class="mr-4" action="{{ route('cashier.fees.update', $fee->id) }}" method="post">
+          @csrf
+          @method("PATCH")
+          <button class="w-full inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest text-gray-800 shadow-md bg-green-200 hover:bg-green-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
+            Full Payment ₱{{number_format($fee->total,2)}}
+            <input type="hidden" name="status" value="1">
+            <input type="hidden" name="total" value="{{$fee->total - $fee->total}}">
+          </button>
+        </form>
+        <form class="mb-10" action="{{ route('cashier.fees.update', $fee->id) }}" method="post">
+          @csrf
+          @method("PATCH")
+          <button class="w-full inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest text-gray-800 shadow-md bg-amber-200 hover:bg-amber-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
+            Installment ₱{{number_format($fee->total/2,2)}}
+            <input type="hidden" name="status" value="2">
+            <input type="hidden" name="total" value="{{$fee->total/2}}">
+          </button>
+        </form>
       </div>
     </div>
   </div>

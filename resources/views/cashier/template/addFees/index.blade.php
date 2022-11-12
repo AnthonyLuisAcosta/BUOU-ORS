@@ -24,6 +24,10 @@
               </tr>
             </thead>
             <tbody>
+              @php
+              $adds->shift();
+              $adds->all();
+              @endphp
               @foreach($adds as $add)
               <tr class="text-center">
                 <td class="text-center">{{ $add->label }}</td>

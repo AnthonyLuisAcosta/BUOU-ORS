@@ -3,7 +3,9 @@
 use App\Http\Controllers;
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\Cashier\AdditionalFeesController;
+use App\Http\Controllers\Cashier\FeesController as CashierFeesController;
 use App\Http\Controllers\Cashier\TemplateController;
+use App\Http\Controllers\Registrar\FeesController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -43,10 +45,10 @@ Route::group(['as' => 'registrar.', 'prefix' => 'registrar', 'middleware' => ['a
     Route::resource('subjects', App\Http\Controllers\Registrar\SubjectsController::class);
     Route::resource('application', App\Http\Controllers\Registrar\ApplicationController::class);
     Route::resource('terms', App\Http\Controllers\Registrar\TermsController::class);
-    Route::get('fees',  [App\Http\Controllers\Registrar\FeesController::class, 'index'])->name('fees.index');
-    Route::get('fees/{id}/generate',  [App\Http\Controllers\Registrar\FeesController::class, 'show'])->name('fees.show');
+    Route::resource('fees', App\Http\Controllers\Registrar\FeesController::class);
 });
-
+//Route::get('fees',  [App\Http\Controllers\Registrar\FeesController::class, 'index'])->name('fees.index');
+//Route::get('fees/{id}/generate',  [App\Http\Controllers\Registrar\FeesController::class, 'show'])->name('fees.show');
 //DEAN ROUTES
 Route::group(['as' => 'dean.', 'prefix' => 'dean', 'middleware' => ['auth', 'dean']], function () {
     Route::get('/dashboard', [App\Http\Controllers\Dean\DashboardController::class, 'index'])->name('dashboard');
@@ -74,4 +76,5 @@ Route::group(['as' => 'cashier.', 'prefix' => 'cashier', 'middleware' => ['auth'
     Route::get('/dashboard', [App\Http\Controllers\Cashier\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('template', TemplateController::class);
     Route::resource('additional', AdditionalFeesController::class);
+    Route::resource('fees', CashierFeesController::class);
 });
