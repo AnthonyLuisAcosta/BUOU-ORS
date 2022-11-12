@@ -16,11 +16,11 @@ class SubjectsTableSeeder extends Seeder
     public function run()
     {
         DB::table('subjects')->insert([
-            'subj_code' => 'MMOU 202',
-            'title' => 'Management of Organization',
+            'subj_code' => 'MLGM 101',
+            'title' => 'Local Governance',
             'cat_id' => '1',
-            'programs_id' => '1',
-            'prof' => 'Daniella Pena',
+            'programs_id' => '2',
+            'prof' => 'Professor A',
             'units' => '3.0',
             'term' =>'1',
             'created_at'  => date("Y-m-d H:i:s"),
@@ -30,34 +30,107 @@ class SubjectsTableSeeder extends Seeder
         DB::table('subjects')->insert([
             'subj_code' => 'MLGM 202',
             'title' => 'Local Government System',
-            'cat_id' => '3',
+            'cat_id' => '1',
             'programs_id' => '2',
-            'prof' => 'Professor X',
-            'units' => '5.0',
+            'prof' => 'Professor A',
+            'units' => '3.0',
             'term' =>'1',
             'created_at'  => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
 
         DB::table('subjects')->insert([
-            'subj_code' => 'MPA 299',
+            'subj_code' => 'MLGM 203',
+            'title' => 'Organization and Management',
+            'cat_id' => '1',
+            'programs_id' => '2',
+            'prof' => 'Professor A',
+            'units' => '3.0',
+            'term' =>'1',
+            'created_at'  => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+        ]);
+
+        DB::table('subjects')->insert([
+            'subj_code' => 'MLGM 214',
+            'title' => 'Economics of Local Government',
+            'cat_id' => '1',
+            'programs_id' => '2',
+            'prof' => 'Professor B',
+            'units' => '3.0',
+            'term' =>'1',
+            'created_at'  => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+        ]);
+
+        DB::table('subjects')->insert([
+            'subj_code' => 'MMOU 202',
+            'title' => 'Management of Organization',
+            'cat_id' => '1',
+            'programs_id' => '1',
+            'prof' => 'Professor B',
+            'units' => '3.0',
+            'term' =>'1',
+            'created_at'  => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+        ]);
+
+        
+        DB::table('subjects')->insert([
+            'subj_code' => 'MMOU 211',
+            'title' => 'Human Resource Development and Management',
+            'cat_id' => '1',
+            'programs_id' => '1',
+            'prof' => 'Professor C',
+            'units' => '3.0',
+            'term' =>'1',
+            'created_at'  => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+        ]);
+
+        DB::table('subjects')->insert([
+            'subj_code' => 'MMOU 213',
+            'title' => 'Problem Solving and Decision Making',
+            'cat_id' => '1',
+            'programs_id' => '1',
+            'prof' => 'Professor C',
+            'units' => '3.0',
+            'term' =>'1',
+            'created_at'  => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+        ]);
+
+        DB::table('subjects')->insert([
+            'subj_code' => 'MPA 202',
+            'title' => 'Organization, Management and Leadership',
+            'cat_id' => '1',
+            'programs_id' => '3',
+            'prof' => 'Professor D',
+            'units' => '3.0',
+            'term' =>'1',
+            'created_at'  => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+        ]);
+
+        DB::table('subjects')->insert([
+            'subj_code' => 'MPA 210',
+            'title' => 'Organization, Management and Leadership',
+            'cat_id' => '1',
+            'programs_id' => '3',
+            'prof' => 'Professor E',
+            'units' => '3.0',
+            'term' =>'1',
+            'created_at'  => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+        ]);
+
+        DB::table('subjects')->insert([
+            'subj_code' => 'MLGM 299',
             'title' => 'Thesis Writing',
             'cat_id' => '2',
-            'programs_id' => '3',
-            'prof' => 'Professor Y',
-            'units' => '1.0',
-            'term' =>'1',
-            'created_at'  => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s"),
-        ]);
-
-        DB::table('subjects')->insert([
-            'subj_code' => 'MPA 211',
-            'title' => 'Local Government',
-            'cat_id' => '4',
-            'programs_id' => '3',
-            'prof' => 'Professor Z',
-            'units' => '1.0',
+            'programs_id' => '2',
+            'prof' => 'Professor E',
+            'units' => '3.0',
             'term' =>'1',
             'created_at'  => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
