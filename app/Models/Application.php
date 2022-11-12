@@ -15,22 +15,23 @@ class Application extends Model
     use Notifiable;
     protected $primaryKey = 'id';
     protected $fillable = [
-    'lastName', 
-    'firstName', 
-    'middleName', 
-    'birthDate', 
-    'gender', 
-    'email', 
-    'phone', 
-    'status', 
-    'company', 
-    'address', 
-    'name', 
-    'programs_id', 
-    'subjects_id', 
-    'applicant_id', 
-    'adviser', 
-    'remarks'];
+        'lastName',
+        'firstName',
+        'middleName',
+        'birthDate',
+        'gender',
+        'email',
+        'phone',
+        'status',
+        'company',
+        'address',
+        'name',
+        'programs_id',
+        'subjects_id',
+        'applicant_id',
+        'adviser',
+        'remarks'
+    ];
     protected $table = 'applications';
 
     public function programs()
@@ -49,5 +50,10 @@ class Application extends Model
         //return dd($this->birthDate);
         //ageCalculate
         return Carbon::parse($this->birthDate)->diff(Carbon::now())->format('%y');
+    }
+
+    public function fees()
+    {
+        return $this->hasOne(Fees::class);
     }
 }
