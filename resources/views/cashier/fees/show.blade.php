@@ -173,39 +173,39 @@
                   <p class="text-md font-semibold">ASSESSED FEES</p>
                   <div class="flex flex-rows">
                     <p class="w-1/2 text-sm font-semibold">Admission Fee</p>
-                    <p class="w-1/2 text-sm font-semibold text-right ">{{$template->admission}}.00</p>
+                    <p class="w-1/2 text-sm font-semibold text-right ">{{number_format($template->admission,2)}}</p>
                   </div>
                   <div class="flex flex-rows">
                     <p class="w-1/2 text-sm font-semibold">Tuition Fee</p>
-                    <p class="w-1/2 text-sm font-semibold text-right ">{{$template->tuition}}.00</p>
+                    <p class="w-1/2 text-sm font-semibold text-right ">{{number_format($template->tuition,2)}}</p>
                   </div>
                   <div class="flex flex-rows">
                     <p class="w-1/2 text-sm font-semibold">Matriculation</p>
-                    <p class="w-1/2 text-sm font-semibold text-right ">{{$template->matricula}}.00</p>
+                    <p class="w-1/2 text-sm font-semibold text-right ">{{number_format($template->matricula,2)}}</p>
                   </div>
                   <div class="flex flex-rows">
                     <p class="w-1/2 text-sm font-semibold">Medical/Dental Fee</p>
-                    <p class="w-1/2 text-sm font-semibold text-right ">{{$template->medical}}.00</p>
+                    <p class="w-1/2 text-sm font-semibold text-right ">{{number_format($template->medical,2)}}</p>
                   </div>
                   <div class="flex flex-rows">
                     <p class="w-1/2 text-sm font-semibold">Library Fee</p>
-                    <p class="w-1/2 text-sm font-semibold text-right ">{{$template->library}}.00</p>
+                    <p class="w-1/2 text-sm font-semibold text-right ">{{number_format($template->library,2)}}</p>
                   </div>
                   <div class="flex flex-rows">
                     <p class="w-1/2 text-sm font-semibold">Athletic Fee</p>
-                    <p class="w-1/2 text-sm font-semibold text-right ">{{$template->athletic}}.00</p>
+                    <p class="w-1/2 text-sm font-semibold text-right ">{{number_format($template->athletic,2)}}</p>
                   </div>
                   <div class="flex flex-rows">
                     <p class="w-1/2 text-sm font-semibold">Cultural Fee (PFD) </p>
-                    <p class="w-1/2 text-sm font-semibold text-right ">{{$template->cultural}}.00</p>
+                    <p class="w-1/2 text-sm font-semibold text-right ">{{number_format($template->cultural,2)}}</p>
                   </div>
                   <div class="flex flex-rows">
                     <p class="w-1/2 text-sm font-semibold">Guidance Fee</p>
-                    <p class="w-1/2 text-sm font-semibold text-right ">{{$template->guidance}}.00</p>
+                    <p class="w-1/2 text-sm font-semibold text-right ">{{number_format($template->guidance,2)}}</p>
                   </div>
                   <div class="flex flex-rows">
                     <p class="w-1/2 text-sm font-semibold">SCUAA Fee</p>
-                    <p class="w-1/2 text-sm font-semibold text-right ">{{$template->scuaa}}.00</p>
+                    <p class="w-1/2 text-sm font-semibold text-right ">{{number_format($template->scuaa,2)}}</p>
                   </div>
                 </div>
                 <!--Additional Fees -->
@@ -220,7 +220,7 @@
                   @if($fee->addFees1 == $add->id)
                   <div class="flex flex-rows-2 mt-1">
                     <p class="w-2/3 text-sm font-semibold">{{$add->label}}</p>
-                    <p class="w-1/3 text-sm font-semibold text-right ">{{$add->cost}}.00</p>
+                    <p class="w-1/3 text-sm font-semibold text-right ">{{number_format($add->cost,2)}}</p>
                   </div>
                   @endif
                   @endforeach
@@ -229,7 +229,7 @@
                   @if($fee->addFees2 == $add->id)
                   <div class="flex flex-rows-2 mt-1">
                     <p class="w-2/3 text-sm font-semibold">{{$add->label}}</p>
-                    <p class="w-1/3 text-sm font-semibold text-right ">{{$add->cost}}.00</p>
+                    <p class="w-1/3 text-sm font-semibold text-right ">{{number_format($add->cost,2)}}</p>
                   </div>
                   @endif
                   @endforeach
@@ -238,7 +238,7 @@
                   @if($fee->addFees3 == $add->id)
                   <div class="flex flex-rows-2 mt-1">
                     <p class="w-2/3 text-sm font-semibold">{{$add->label}}</p>
-                    <p class="w-1/3 text-sm font-semibold text-right ">{{$add->cost}}.00</p>
+                    <p class="w-1/3 text-sm font-semibold text-right ">{{number_format($add->cost,2)}}</p>
                   </div>
                   @endif
                   @endforeach
@@ -247,7 +247,7 @@
                   @if($fee->addFees4 == $add->id)
                   <div class="flex flex-rows-2 mt-1">
                     <p class="w-2/3 text-sm font-semibold">{{$add->label}}</p>
-                    <p class="w-1/3 text-sm font-semibold text-right ">{{$add->cost}}.00</p>
+                    <p class="w-1/3 text-sm font-semibold text-right ">{{number_format($add->cost,2)}}</p>
                   </div>
                   @endif
                   @endforeach
@@ -256,7 +256,7 @@
                   @if($fee->addFees5 == $add->id)
                   <div class="flex flex-rows-2 mt-1">
                     <p class="w-2/3 text-sm font-semibold">{{$add->label}}</p>
-                    <p class="w-1/3 text-sm font-semibold text-right ">{{$add->cost}}.00</p>
+                    <p class="w-1/3 text-sm font-semibold text-right ">{{number_format($add->cost,2)}}</p>
                   </div>
                   @endif
                   @endforeach
@@ -265,7 +265,7 @@
                   @if($fee->addFees6 == $add->id)
                   <div class="flex flex-rows-2 mt-1">
                     <p class="w-2/3 text-sm font-semibold">{{$add->label}}</p>
-                    <p class="w-1/3 text-sm font-semibold text-right ">{{$add->cost}}.00</p>
+                    <p class="w-1/3 text-sm font-semibold text-right ">{{number_format($add->cost,2)}}</p>
                   </div>
                   @endif
                   @endforeach
@@ -274,7 +274,7 @@
                   @if($fee->addFees7 == $add->id)
                   <div class="flex flex-rows-2 mt-1">
                     <p class="w-2/3 text-sm font-semibold">{{$add->label}}</p>
-                    <p class="w-1/3 text-sm font-semibold text-right ">{{$add->cost}}.00</p>
+                    <p class="w-1/3 text-sm font-semibold text-right ">{{number_format($add->cost,2)}}</p>
                   </div>
                   @endif
                   @endforeach
@@ -283,7 +283,7 @@
                   @if($fee->addFees8 == $add->id)
                   <div class="flex flex-rows-2 mt-1">
                     <p class="w-2/3 text-sm font-semibold">{{$add->label}}</p>
-                    <p class="w-1/3 text-sm font-semibold text-right ">{{$add->cost}}.00</p>
+                    <p class="w-1/3 text-sm font-semibold text-right ">{{number_format($add->cost,2)}}</p>
                   </div>
                   @endif
                   @endforeach
@@ -292,7 +292,7 @@
                   @if($fee->addFees9 == $add->id)
                   <div class="flex flex-rows-2 mt-1">
                     <p class="w-2/3 text-sm font-semibold">{{$add->label}}</p>
-                    <p class="w-1/3 text-sm font-semibold text-right ">{{$add->cost}}.00</p>
+                    <p class="w-1/3 text-sm font-semibold text-right ">{{number_format($add->cost,2)}}</p>
                   </div>
                   @endif
                   @endforeach
@@ -301,7 +301,7 @@
                   @if($fee->addFees10 == $add->id)
                   <div class="flex flex-rows-2 mt-1">
                     <p class="w-2/3 text-sm font-semibold">{{$add->label}}</p>
-                    <p class="w-1/3 text-sm font-semibold text-right ">{{$add->cost}}.00</p>
+                    <p class="w-1/3 text-sm font-semibold text-right ">{{number_format($add->cost,2)}}</p>
                   </div>
                   @endif
                   @endforeach
@@ -311,12 +311,21 @@
                 <div class="flex flex-col w-1/3 mt-9 pl-10">
                   <div class="flex flex-rows-2 mt-1">
                     <p class="w-2/3 text-sm font-bold">TOTAL</p>
-                    <p class="w-1/3 text-sm font-bold text-right ">{{$fee->total}}.00</p>
+                    <p class="w-1/3 text-sm font-bold text-right ">{{number_format($fee->total,2)}}</p>
                   </div>
+                  <d class="flex flex-rows-2 mt-1">
+                    <p class="w-2/3 text-sm font-semibold">Outstanding Balance</p>
+                    <p class="w-1/3 text-sm font-semibold text-right ">{{number_format($fee->balance,2)}}</p>
+                  </d>
                   <!--STATUS PAID/UNPAID-->
                   @if($fee->status == 0)
                   <div class="flex flex-rows-2 mt-1 ml-6">
                     <p class="text-right font-bold text-red-600  border-2 border-red-500 rounded-sm px-2 ml-44">UNPAID</p>
+                  </div>
+                  @elseif($fee->status == 2)
+                  <!--INSTALLMENT OPTION-->
+                  <div class="flex flex-rows-2 mt-1">
+                    <p class="text-right font-bold text-amber-600 border-2 border-amber-500 rounded-sm px-2 ml-40">INSTALLMENT</p>
                   </div>
                   @else
                   <div class="flex flex-rows-2 mt-1 ml-4">

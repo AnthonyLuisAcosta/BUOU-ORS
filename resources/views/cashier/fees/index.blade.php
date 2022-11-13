@@ -15,9 +15,10 @@
             <thead>
               <tr>
                 <th data-priority="1">Name</th>
-                <th data-priority="2">Payment Status</th>
-                <th data-priority="3">Balance</th>
-                <th data-priority="4">Action</th>
+                <th data-priority="2">Status</th>
+                <th data-priority="3">Total</th>
+                <th data-priority="4">Balance</th>
+                <th data-priority="5">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -30,18 +31,20 @@
                   @if($fee->status == 0)
                   <p class="font-semibold text-red-500 text-sm">UNPAID</p>
                   @elseif($fee->status == 2)
-                  <p class="font-semibold text-green-500 text-sm">PAID (INSTALLMENT)</p>
+                  <p class="font-semibold text-amber-500 text-sm">INSTALLMENT</p>
                   @else
                   <p class="font-semibold text-green-500 text-sm">PAID</p>
                   @endif
                 </td>
-                <td>
-                  ₱{{number_format($fee->total,2)}}
-                </td>
+                <td class="text-sm">₱{{number_format($fee->total,2)}}</td>
+                <td class="text-sm">₱{{number_format($fee->balance,2)}}</td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                   <a href="{{route ('cashier.fees.show', $fee->id)}} " class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View</a>
-                  @if($fee->total == 0)
+                  @if($fee->balance == 0)
+                  <!--hide update button-->
+                  <!--
                   <button title="Fees have been fully paid." class="inline text-amber-600 hover:text-amber-900 mr-2 cursor-not-allowed">Update</button>
+                  -->
                   @else
                   <a href="{{route ('cashier.fees.edit', $fee->id)}} " class="text-amber-600 hover:text-amber-900 mb-2 mr-2">Update</a>
                   @endif

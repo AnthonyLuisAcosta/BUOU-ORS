@@ -520,7 +520,7 @@
       </ul>
     </div>
     @elseif(Auth::user()->role_id == 6)
-    <!--APPLICANT ABSOLUTE NAV-MENU LINKS-->
+    <!--CASHIER ABSOLUTE NAV-MENU LINKS-->
     <div class="overflow-y-auto py-4 px-3 rounded ">
       <ul class="space-y-2">
         <li>

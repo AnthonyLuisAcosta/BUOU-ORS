@@ -14,21 +14,35 @@
           <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
             <thead>
               <tr>
-                <th data-priority="1">Name of Admitted Applicant</th>
-                <th data-priority="2">Action</th>
+                <th data-priority="1">Applicant</th>
+                <th data-priority="2">Fee Status</th>
+                <th data-priority="3">Action</th>
               </tr>
             </thead>
             <tbody>
               @foreach($applications as $application)
               <tr class="text-center">
-                <td class="text-center">{{ $application->lastName.', '.$application->firstName.' '.$application->middleName[0].'.'}}</td>
+                <td class="text-center">{{$application->firstName.' '.$application->middleName[0].'. '.$application->lastName}}</td>
+                <td>
+                  @if($fees->isEmpty())
+                  <p>UNEVAL</p>
+                  @else
+                  @foreach($fees as $fee)
+                  @if($fee->appRef_id == $application->id)
+                  <p>EVAL</p>
+                  @else
+                  <p>UNEVAL</p>
+                  @endif
+                  @endforeach
+                  @endif
+                </td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                   @if($fees->isEmpty())
                   <a href="{{route ('registrar.fees.edit', $application->id)}} " class="text-blue-600 hover:text-blue-900 mb-2 mr-2">Generate</a>
                   @else
                   @foreach($fees as $fee)
                   @if($fee->appRef_id == $application->id)
-                  <button title="Fee for this applicant has already been generated. Please clear previous assement to generate new fee." class="inline text-blue-600 hover:text-blue-900 mr-2 cursor-not-allowed">Generate</button>
+                  <button title="There is an existing fee for the applicant. Clear previous to generate new fee." class="inline text-blue-600 hover:text-blue-900 mr-2 cursor-not-allowed">Generate</button>
                   @else
                   <a href="{{route ('registrar.fees.edit', $application->id)}} " class="text-blue-600 hover:text-blue-900 mb-2 mr-2">Generate</a>
                   @endif
