@@ -68,8 +68,6 @@ class FeesController extends Controller
         $programs = Programs::all();
         $template = FeesTemplate::find($fee->fees);
         $adds = AdditionalFees::all();
-        $adds->shift();
-        $adds->all();
         $cashier = User::where('role_id', '2')->first();
         return view('cashier.fees.show')
             ->with(compact('fee'))
@@ -99,8 +97,6 @@ class FeesController extends Controller
         $programs = Programs::all();
         $template = FeesTemplate::find($fee->fees);
         $adds = AdditionalFees::all();
-        $adds->shift();
-        $adds->all();
         $cashier = User::where('role_id', '2')->first();
         return view('cashier.fees.edit')
             ->with(compact('fee'))
@@ -125,10 +121,10 @@ class FeesController extends Controller
         //
         $fee = Fees::find($id);
         $status = $request->status;
-        $total = $request->total;
+        $balance = $request->balance;
         $fee->update([
             'status' => $status,
-            'total' => $total,
+            'balance' => $balance,
         ]);
         return redirect()->route('cashier.fees.index')->with('success', 'Payment successful!');
     }

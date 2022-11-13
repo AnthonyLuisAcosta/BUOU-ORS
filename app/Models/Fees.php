@@ -34,6 +34,7 @@ class Fees extends Model
         'addCost9',
         'addCost10',
         'total',
+        'balance',
         'status',
     ];
 

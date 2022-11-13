@@ -7,18 +7,11 @@
   <div>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="toHide block mb-8">
-
         <a href="{{ route('registrar.fees.index') }}" class="ml-1 inline-flex items-center px-4 py-1 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
             <path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
           </svg>
           <span class="flex-1 ml-1 whitespace-nowrap">Back to list</span>
-        </a>
-
-        <a onclick="window.print();" class="btn pointer printBtn ml-1 inline-flex items-center px-4 py-1 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150 cursor-pointer">
-          <svg class="h-5 w-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-          </svg>
-          <span class="flex-1 ml-1 whitespace-nowrap">Print</span>
         </a>
       </div>
       <div class="flex">
@@ -173,39 +166,39 @@
                   <p class="text-md font-semibold">ASSESSED FEES</p>
                   <div class="flex flex-rows">
                     <p class="w-1/2 text-sm font-semibold">Admission Fee</p>
-                    <p class="w-1/2 text-sm font-semibold text-right ">{{$template->admission}}.00</p>
+                    <p class="w-1/2 text-sm font-semibold text-right ">{{number_format($template->admission,2)}}</p>
                   </div>
                   <div class="flex flex-rows">
                     <p class="w-1/2 text-sm font-semibold">Tuition Fee</p>
-                    <p class="w-1/2 text-sm font-semibold text-right ">{{$template->tuition}}.00</p>
+                    <p class="w-1/2 text-sm font-semibold text-right ">{{number_format($template->tuition,2)}}</p>
                   </div>
                   <div class="flex flex-rows">
                     <p class="w-1/2 text-sm font-semibold">Matriculation</p>
-                    <p class="w-1/2 text-sm font-semibold text-right ">{{$template->matricula}}.00</p>
+                    <p class="w-1/2 text-sm font-semibold text-right ">{{number_format($template->matricula,2)}}</p>
                   </div>
                   <div class="flex flex-rows">
                     <p class="w-1/2 text-sm font-semibold">Medical/Dental Fee</p>
-                    <p class="w-1/2 text-sm font-semibold text-right ">{{$template->medical}}.00</p>
+                    <p class="w-1/2 text-sm font-semibold text-right ">{{number_format($template->medical,2)}}</p>
                   </div>
                   <div class="flex flex-rows">
                     <p class="w-1/2 text-sm font-semibold">Library Fee</p>
-                    <p class="w-1/2 text-sm font-semibold text-right ">{{$template->library}}.00</p>
+                    <p class="w-1/2 text-sm font-semibold text-right ">{{number_format($template->library,2)}}</p>
                   </div>
                   <div class="flex flex-rows">
                     <p class="w-1/2 text-sm font-semibold">Athletic Fee</p>
-                    <p class="w-1/2 text-sm font-semibold text-right ">{{$template->athletic}}.00</p>
+                    <p class="w-1/2 text-sm font-semibold text-right ">{{number_format($template->athletic,2)}}</p>
                   </div>
                   <div class="flex flex-rows">
                     <p class="w-1/2 text-sm font-semibold">Cultural Fee (PFD) </p>
-                    <p class="w-1/2 text-sm font-semibold text-right ">{{$template->cultural}}.00</p>
+                    <p class="w-1/2 text-sm font-semibold text-right ">{{number_format($template->cultural,2)}}</p>
                   </div>
                   <div class="flex flex-rows">
                     <p class="w-1/2 text-sm font-semibold">Guidance Fee</p>
-                    <p class="w-1/2 text-sm font-semibold text-right ">{{$template->guidance}}.00</p>
+                    <p class="w-1/2 text-sm font-semibold text-right ">{{number_format($template->guidance,2)}}</p>
                   </div>
                   <div class="flex flex-rows">
                     <p class="w-1/2 text-sm font-semibold">SCUAA Fee</p>
-                    <p class="w-1/2 text-sm font-semibold text-right ">{{$template->scuaa}}.00</p>
+                    <p class="w-1/2 text-sm font-semibold text-right ">{{number_format($template->scuaa,2)}}</p>
                   </div>
                 </div>
                 <!--Additional Fees -->
@@ -220,7 +213,7 @@
                   @if($fee->addFees1 == $add->id)
                   <div class="flex flex-rows-2 mt-1">
                     <p class="w-2/3 text-sm font-semibold">{{$add->label}}</p>
-                    <p class="w-1/3 text-sm font-semibold text-right ">{{$add->cost}}.00</p>
+                    <p class="w-1/3 text-sm font-semibold text-right ">{{number_format($add->cost,2)}}</p>
                   </div>
                   @endif
                   @endforeach
@@ -229,7 +222,7 @@
                   @if($fee->addFees2 == $add->id)
                   <div class="flex flex-rows-2 mt-1">
                     <p class="w-2/3 text-sm font-semibold">{{$add->label}}</p>
-                    <p class="w-1/3 text-sm font-semibold text-right ">{{$add->cost}}.00</p>
+                    <p class="w-1/3 text-sm font-semibold text-right ">{{number_format($add->cost,2)}}</p>
                   </div>
                   @endif
                   @endforeach
@@ -238,7 +231,7 @@
                   @if($fee->addFees3 == $add->id)
                   <div class="flex flex-rows-2 mt-1">
                     <p class="w-2/3 text-sm font-semibold">{{$add->label}}</p>
-                    <p class="w-1/3 text-sm font-semibold text-right ">{{$add->cost}}.00</p>
+                    <p class="w-1/3 text-sm font-semibold text-right ">{{number_format($add->cost,2)}}</p>
                   </div>
                   @endif
                   @endforeach
@@ -247,7 +240,7 @@
                   @if($fee->addFees4 == $add->id)
                   <div class="flex flex-rows-2 mt-1">
                     <p class="w-2/3 text-sm font-semibold">{{$add->label}}</p>
-                    <p class="w-1/3 text-sm font-semibold text-right ">{{$add->cost}}.00</p>
+                    <p class="w-1/3 text-sm font-semibold text-right ">{{number_format($add->cost,2)}}</p>
                   </div>
                   @endif
                   @endforeach
@@ -256,7 +249,7 @@
                   @if($fee->addFees5 == $add->id)
                   <div class="flex flex-rows-2 mt-1">
                     <p class="w-2/3 text-sm font-semibold">{{$add->label}}</p>
-                    <p class="w-1/3 text-sm font-semibold text-right ">{{$add->cost}}.00</p>
+                    <p class="w-1/3 text-sm font-semibold text-right ">{{number_format($add->cost,2)}}</p>
                   </div>
                   @endif
                   @endforeach
@@ -265,7 +258,7 @@
                   @if($fee->addFees6 == $add->id)
                   <div class="flex flex-rows-2 mt-1">
                     <p class="w-2/3 text-sm font-semibold">{{$add->label}}</p>
-                    <p class="w-1/3 text-sm font-semibold text-right ">{{$add->cost}}.00</p>
+                    <p class="w-1/3 text-sm font-semibold text-right ">{{number_format($add->cost,2)}}</p>
                   </div>
                   @endif
                   @endforeach
@@ -274,7 +267,7 @@
                   @if($fee->addFees7 == $add->id)
                   <div class="flex flex-rows-2 mt-1">
                     <p class="w-2/3 text-sm font-semibold">{{$add->label}}</p>
-                    <p class="w-1/3 text-sm font-semibold text-right ">{{$add->cost}}.00</p>
+                    <p class="w-1/3 text-sm font-semibold text-right ">{{number_format($add->cost,2)}}</p>
                   </div>
                   @endif
                   @endforeach
@@ -283,7 +276,7 @@
                   @if($fee->addFees8 == $add->id)
                   <div class="flex flex-rows-2 mt-1">
                     <p class="w-2/3 text-sm font-semibold">{{$add->label}}</p>
-                    <p class="w-1/3 text-sm font-semibold text-right ">{{$add->cost}}.00</p>
+                    <p class="w-1/3 text-sm font-semibold text-right ">{{number_format($add->cost,2)}}</p>
                   </div>
                   @endif
                   @endforeach
@@ -292,7 +285,7 @@
                   @if($fee->addFees9 == $add->id)
                   <div class="flex flex-rows-2 mt-1">
                     <p class="w-2/3 text-sm font-semibold">{{$add->label}}</p>
-                    <p class="w-1/3 text-sm font-semibold text-right ">{{$add->cost}}.00</p>
+                    <p class="w-1/3 text-sm font-semibold text-right ">{{number_format($add->cost,2)}}</p>
                   </div>
                   @endif
                   @endforeach
@@ -301,7 +294,7 @@
                   @if($fee->addFees10 == $add->id)
                   <div class="flex flex-rows-2 mt-1">
                     <p class="w-2/3 text-sm font-semibold">{{$add->label}}</p>
-                    <p class="w-1/3 text-sm font-semibold text-right ">{{$add->cost}}.00</p>
+                    <p class="w-1/3 text-sm font-semibold text-right ">{{number_format($add->cost,2)}}</p>
                   </div>
                   @endif
                   @endforeach
@@ -311,12 +304,21 @@
                 <div class="flex flex-col w-1/3 mt-9 pl-10">
                   <div class="flex flex-rows-2 mt-1">
                     <p class="w-2/3 text-sm font-bold">TOTAL</p>
-                    <p class="w-1/3 text-sm font-bold text-right ">{{$fee->total}}.00</p>
+                    <p class="w-1/3 text-sm font-bold text-right ">{{number_format($fee->total,2)}}</p>
+                  </div>
+                  <div class="flex flex-rows-2 mt-1">
+                    <p class="w-2/3 text-sm font-semibold">Outstanding Balance</p>
+                    <p class="w-1/3 text-sm font-semibold text-right ">{{number_format($fee->balance,2)}}</p>
                   </div>
                   <!--STATUS PAID/UNPAID-->
                   @if($fee->status == 0)
                   <div class="flex flex-rows-2 mt-1 ml-6">
                     <p class="text-right font-bold text-red-600  border-2 border-red-500 rounded-sm px-2 ml-44">UNPAID</p>
+                  </div>
+                  @elseif($fee->status == 2)
+                  <!--INSTALLMENT OPTION-->
+                  <div class="flex flex-rows-2 mt-1">
+                    <p class="text-right font-bold text-amber-600 border-2 border-amber-500 rounded-sm px-2 ml-40">INSTALLMENT</p>
                   </div>
                   @else
                   <div class="flex flex-rows-2 mt-1 ml-4">
@@ -362,18 +364,18 @@
           @csrf
           @method("PATCH")
           <button class="w-full inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest text-gray-800 shadow-md bg-green-200 hover:bg-green-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
-            Full Payment ₱{{number_format($fee->total,2)}}
+            Full Payment ₱{{number_format($fee->balance,2)}}
             <input type="hidden" name="status" value="1">
-            <input type="hidden" name="total" value="{{$fee->total - $fee->total}}">
+            <input type="hidden" name="balance" value="{{$fee->balance - $fee->balance}}">
           </button>
         </form>
         <form class="mb-10" action="{{ route('cashier.fees.update', $fee->id) }}" method="post">
           @csrf
           @method("PATCH")
           <button class="w-full inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest text-gray-800 shadow-md bg-amber-200 hover:bg-amber-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
-            Installment ₱{{number_format($fee->total/2,2)}}
+            Installment ₱{{number_format($fee->balance/2,2)}}
             <input type="hidden" name="status" value="2">
-            <input type="hidden" name="total" value="{{$fee->total/2}}">
+            <input type="hidden" name="balance" value="{{$fee->balance/2}}">
           </button>
         </form>
       </div>

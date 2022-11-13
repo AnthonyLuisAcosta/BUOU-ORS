@@ -4,7 +4,7 @@
       {{ __('Fees') }} | <span class=" text-md text-gray-500">{{__('Generate')}}</span>
     </h2>
   </x-slot>
-
+  @include('alert')
   <div>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="block mb-8">
@@ -123,7 +123,7 @@
                       <option selected value="0">Select an option</option>
                       @foreach($templates as $template)
                       <option value="{{$template->id}}">
-                        {{$template->type.' '.$template->units}}.0 - ₱{{$template->total}}
+                        {{$template->type.' '.$template->units}}.0 - ₱{{number_format($template->total,2)}}
                       </option>
                       @endforeach
                     </select>
@@ -134,92 +134,92 @@
                   @endphp
                   <div class="grid grid-cols-2 gap-4 mt-4">
                     <div class="">
-                      <x-jet-label for="addFees1" value="Additional Fees" />
+                      <x-jet-label for="addFees1" value="Additional Fees 1" />
                       <select id="addFees1" name="addFees1" class="block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
                         <option selected value="1">None</option>
                         @foreach($adds as $add)
-                        <option value="{{$add->id}}">{{$add->label.'- ₱'.$add->cost}}</option>
+                        <option value="{{$add->id}}">{{$add->label.'- ₱'.number_format($add->cost,2)}}</option>
                         @endforeach
                       </select>
                     </div>
                     <div class="">
-                      <x-jet-label for="addFees2" value="Additional Fees" />
+                      <x-jet-label for="addFees2" value="Additional Fees 2" />
                       <select id="addFees2" name="addFees2" class="block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
                         <option selected value="1">None</option>
                         @foreach($adds as $add)
-                        <option value="{{$add->id}}">{{$add->label.'- ₱'.$add->cost}}</option>
+                        <option value="{{$add->id}}">{{$add->label.'- ₱'.number_format($add->cost,2)}}</option>
                         @endforeach
                       </select>
                     </div>
                     <div class="">
-                      <x-jet-label for="addFees3" value="Additional Fees" />
+                      <x-jet-label for="addFees3" value="Additional Fees 3" />
                       <select id="addFees3" name="addFees3" class="block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
                         <option selected value="1">None</option>
                         @foreach($adds as $add)
-                        <option value="{{$add->id}}">{{$add->label.'- ₱'.$add->cost}}</option>
+                        <option value="{{$add->id}}">{{$add->label.'- ₱'.number_format($add->cost,2)}}</option>
                         @endforeach
                       </select>
                     </div>
                     <div class="">
-                      <x-jet-label for="addFees4" value="Additional Fees" />
+                      <x-jet-label for="addFees4" value="Additional Fees 4" />
                       <select id="addFees4" name="addFees4" class="block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
                         <option selected value="1">None</option>
                         @foreach($adds as $add)
-                        <option value="{{$add->id}}">{{$add->label.'- ₱'.$add->cost}}</option>
+                        <option value="{{$add->id}}">{{$add->label.'- ₱'.number_format($add->cost,2)}}</option>
                         @endforeach
                       </select>
                     </div>
                     <div class="">
-                      <x-jet-label for="addFees5" value="Additional Fees" />
+                      <x-jet-label for="addFees5" value="Additional Fees 5" />
                       <select id="addFees5" name="addFees5" class="block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
                         <option selected value="1">None</option>
                         @foreach($adds as $add)
-                        <option value="{{$add->id}}">{{$add->label.'- ₱'.$add->cost}}</option>
+                        <option value="{{$add->id}}">{{$add->label.'- ₱'.number_format($add->cost,2)}}</option>
                         @endforeach
                       </select>
                     </div>
                     <div class="">
-                      <x-jet-label for="addFees6" value="Additional Fees" />
+                      <x-jet-label for="addFees6" value="Additional Fees 6" />
                       <select id="addFees6" name="addFees6" class="block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
                         <option selected value="1">None</option>
                         @foreach($adds as $add)
-                        <option value="{{$add->id}}">{{$add->label.'- ₱'.$add->cost}}</option>
+                        <option value="{{$add->id}}">{{$add->label.'- ₱'.number_format($add->cost)}}</option>
                         @endforeach
                       </select>
                     </div>
                     <div class="">
-                      <x-jet-label for="addFees7" value="Additional Fees" />
+                      <x-jet-label for="addFees7" value="Additional Fees 7" />
                       <select id="addFees7" name="addFees7" class="block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
                         <option selected value="1">None</option>
                         @foreach($adds as $add)
-                        <option value="{{$add->id}}">{{$add->label.'- ₱'.$add->cost}}</option>
+                        <option value="{{$add->id}}">{{$add->label.'- ₱'.number_format($add->cost,2)}}</option>
                         @endforeach
                       </select>
                     </div>
                     <div class="">
-                      <x-jet-label for="addFees8" value="Additional Fees" />
+                      <x-jet-label for="addFees8" value="Additional Fees 8" />
                       <select id="addFees8" name="addFees8" class="block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
                         <option selected value="1">None</option>
                         @foreach($adds as $add)
-                        <option value="{{$add->id}}">{{$add->label.'- ₱'.$add->cost}}</option>
+                        <option value="{{$add->id}}">{{$add->label.'- ₱'.number_format($add->cost,2)}}</option>
                         @endforeach
                       </select>
                     </div>
                     <div class="">
-                      <x-jet-label for="addFees9" value="Additional Fees" />
+                      <x-jet-label for="addFees9" value="Additional Fees 9" />
                       <select id="addFees9" name="addFees9" class="block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
                         <option selected value="1">None</option>
                         @foreach($adds as $add)
-                        <option value="{{$add->id}}">{{$add->label.'- ₱'.$add->cost}}</option>
+                        <option value="{{$add->id}}">{{$add->label.'- ₱'.number_format($add->cost,2)}}</option>
                         @endforeach
                       </select>
                     </div>
                     <div class="">
-                      <x-jet-label for="addFees10" value="Additional Fees" />
+                      <x-jet-label for="addFees10" value="Additional Fees 10" />
                       <select id="addFees10" name="addFees10" class="block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
                         <option selected value="1">None</option>
                         @foreach($adds as $add)
-                        <option value="{{$add->id}}">{{$add->label.'- ₱'.$add->cost}}</option>
+                        <option value="{{$add->id}}">{{$add->label.'- ₱'.number_format($add->cost,2)}}</option>
                         @endforeach
                       </select>
                     </div>
@@ -235,6 +235,8 @@
                     <input type="hidden" name="addCost10" value="0">
                     <input type="hidden" name="status" value="0">
                     <input type="hidden" name="total" value="0">
+                    <input type="hidden" name="balance" value="0">
+
                   </div>
                   <div class="mt-4 rounded-lg flex items-center justify-end py-1 bg-gray-50 text-right sm:px-6 overflow-hidden">
                     <button class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest text-gray-800 shadow-md bg-green-200 hover:bg-green-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">

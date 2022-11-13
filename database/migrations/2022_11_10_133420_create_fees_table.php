@@ -38,6 +38,7 @@ return new class extends Migration
             $table->float('addCost9');
             $table->float('addCost10');
             $table->float('total');
+            $table->float('balance');
             $table->boolean('status');
             $table->timestamps();
         });
