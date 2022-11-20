@@ -22,7 +22,7 @@
         <a href="{{ route('registrar.application.create') }}" class="ml-1 inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
 
 
-          <span class="flex-1 ml-1 whitespace-nowrap">View All Processed Applications</span>
+          <span class="flex-1 ml-1 whitespace-nowrap">View All Enrolled Applications</span>
         </a>
       </div>
 
