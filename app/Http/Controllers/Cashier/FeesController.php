@@ -122,9 +122,11 @@ class FeesController extends Controller
         $fee = Fees::find($id);
         $status = $request->status;
         $balance = $request->balance;
+        $receipt = $request->receipt;
         $fee->update([
             'status' => $status,
             'balance' => $balance,
+            'receipt' => $receipt,
         ]);
         return redirect()->route('cashier.fees.index')->with('success', 'Payment successful!');
     }

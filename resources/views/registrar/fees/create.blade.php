@@ -236,7 +236,7 @@
                     <input type="hidden" name="status" value="0">
                     <input type="hidden" name="total" value="0">
                     <input type="hidden" name="balance" value="0">
-
+                    <input type="hidden" name="receipt" value="0">
                   </div>
                   <div class="mt-4 rounded-lg flex items-center justify-end py-1 bg-gray-50 text-right sm:px-6 overflow-hidden">
                     <button class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest text-gray-800 shadow-md bg-green-200 hover:bg-green-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">

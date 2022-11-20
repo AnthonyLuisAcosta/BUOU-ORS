@@ -49,6 +49,8 @@ class StoreFeesRequest extends FormRequest
             'addCost10' => ['required', 'numeric'],
             'status' => ['required', 'numeric'],
             'total' => ['required', 'numeric'],
+            'balance' => ['required', 'numeric'],
+            'receipt' => ['string'],
         ];
     }
 }
