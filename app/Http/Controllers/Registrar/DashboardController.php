@@ -15,10 +15,10 @@ class DashboardController extends Controller
     {
         $terms = Terms::all();
         $announcement = Announcement::all();
-        $admitted = Application::where('status', 'Admitted')->count();
+        $processed = Application::where('status', 'Processed')->count();
         return view('registrar.dashboard')
             ->with(compact('announcement'))
             ->with(compact('terms'))
-            ->with(compact('admitted'));
+            ->with(compact('processed'));
     }
 }

@@ -18,8 +18,9 @@ class DashboardController extends Controller
 
         $pending = Application::where('status', 'Pending')->count();
         $recommended = Application::where('status', 'Recommended')->count();
-        $admitted = Application::where('status', 'Admitted')->count();
         $approved = Application::where('status', 'Approved')->count();
+        $processed = Application::where('status', 'Processed')->count();
+        $enrolled = Application::where('status', 'enrolled')->count();
         $rejected = Application::where('status', 'Rejected')->count();
 
         $terms = Terms::all();
@@ -27,8 +28,9 @@ class DashboardController extends Controller
         return view('dean.dashboard')
             ->with(compact('pending'))
             ->with(compact('recommended'))
-            ->with(compact('admitted'))
             ->with(compact('approved'))
+            ->with(compact('processed'))
+            ->with(compact('enrolled'))
             ->with(compact('rejected'))
             ->with(compact('announcement'))
             ->with(compact('terms'));

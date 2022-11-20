@@ -62,10 +62,10 @@
         <div class="flex justify-center">
           <div class="h-full w-full px-8 py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
             <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
-              Admitted
+              Processed
             </h2>
-            <p class="mt-2 text-md sm:text-lg md:text-xl lg:text-3xl font-extrabold text-green-500">
-              {{$admitted}}
+            <p class="mt-2 text-md sm:text-lg md:text-xl lg:text-3xl font-extrabold text-violet-500">
+              {{$processed}}
             </p>
           </div>
         </div>

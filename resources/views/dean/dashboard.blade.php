@@ -86,22 +86,32 @@
           <div class="w-full mb-1 xl:w-1/3 p-0 xl:p-2">
             <div class="w-full px-0 py-2 xl:px-8 xl:py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
               <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
-                Admitted
+                Approved
               </h2>
-              <p class="mt-0 sm:mt-2 text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-green-500">
-                {{$admitted}}
+              <p class="mt-0 sm:mt-2 text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-amber-500">
+                {{$approved}}
               </p>
             </div>
           </div>
         </div>
-        <div class="block xl:flex items-center justify-center">
+        <div class="block xl:flex justify-center">
           <div class="w-full mb-1 xl:w-1/3 p-0 xl:p-2">
             <div class="w-full px-0 py-2 xl:px-8 xl:py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
               <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
-                Approved
+                Processed
               </h2>
-              <p class="mt-0 sm:mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-yellow-400">
-                {{$approved}}
+              <p class="mt-0 sm:mt-2  text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-violet-500">
+                {{$processed}}
+              </p>
+            </div>
+          </div>
+          <div class="w-full mb-1 xl:w-1/3 p-0 xl:p-2">
+            <div class="w-full px-0 py-2 xl:px-8 xl:py-10 bg-white rounded-lg shadow-lg hover:bg-gray-100 text-center">
+              <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
+                Enrolled
+              </h2>
+              <p class="mt-0 sm:mt-2 text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-green-400">
+                {{$enrolled}}
               </p>
             </div>
           </div>
@@ -110,7 +120,7 @@
               <h2 class="text-gray-600 text-xs sm:text-sm md:text-md lg:text-md font-bold leading-snug">
                 Rejected
               </h2>
-              <p class="mt-0 sm:mt-2 text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-red-400">
+              <p class="mt-0 sm:mt-2 text-sm sm:text-md md:text-lg lg:text-3xl font-extrabold text-red-500">
                 {{$rejected}}
               </p>
             </div>
@@ -145,5 +155,4 @@
     </div>
     <!--END-->
   </div>
-
 </x-app-layout>
