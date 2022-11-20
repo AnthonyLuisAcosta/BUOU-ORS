@@ -24,27 +24,22 @@
               <tr class="text-center">
                 <td class="text-center">{{$application->firstName.' '.$application->middleName[0].'. '.$application->lastName}}</td>
                 <td>
-                  @if($fees->isEmpty())
+                  @php
+                  $find = $fees->where('appRef_id', $application->id)->first();
+                  @endphp
+                  @if($find == null)
                   <p>UNEVAL</p>
                   @else
-                  @foreach($fees as $fee)
-                  @if($fee->appRef_id == $application->id)
                   <p>EVAL</p>
-                  @else
-                  <p>UNEVAL</p>
-                  @endif
-                  @endforeach
                   @endif
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                  @if($fees->isEmpty())
+                  @if($find == null)
                   <a href="{{route ('registrar.fees.edit', $application->id)}} " class="text-blue-600 hover:text-blue-900 mb-2 mr-2">Generate</a>
                   @else
                   @foreach($fees as $fee)
                   @if($fee->appRef_id == $application->id)
                   <button title="There is an existing fee for the applicant. Clear previous to generate new fee." class="inline text-blue-600 hover:text-blue-900 mr-2 cursor-not-allowed">Generate</button>
-                  @else
-                  <a href="{{route ('registrar.fees.edit', $application->id)}} " class="text-blue-600 hover:text-blue-900 mb-2 mr-2">Generate</a>
                   @endif
                   @endforeach
                   @endif
