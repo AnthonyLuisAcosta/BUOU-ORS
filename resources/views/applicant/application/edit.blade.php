@@ -19,7 +19,7 @@
 	<div>
 		<div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-6">
 			<div class="block mb-8">
-			<a href="{{ route('dean.application.index') }}" class="ml-1 inline-flex items-center px-4 py-1 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
+			<a href="{{ route('application.index') }}" class="ml-1 inline-flex items-center px-4 py-1 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest text-gray-800 shadow-md bg-sky-200 hover:bg-sky-400 hover:text-gray-200 disabled:opacity-25 transition ease-in-out duration-150">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
             <path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
           </svg>
@@ -28,7 +28,7 @@
       </div>
 			
 			<div class="mt-5 md:mt-0 md:col-span-2">
-				<form method="post" action="{{ route('dean.application.update', $application->id) }}" enctype="multipart/form-data">
+				<form method="post" action="{{ route('application.update', $application->id) }}" enctype="multipart/form-data">
 					@csrf
 					@method('PUT')
 					<div class="shadow overflow-hidden sm:rounded-md">
