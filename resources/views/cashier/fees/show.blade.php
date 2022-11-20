@@ -338,7 +338,11 @@
               <div class="grid grid-cols-3 grid-rows-2 text-sm mt-10">
                 <div class="flex flex-rows-2">
                   <p class="w-1/3">Official Receipt:</p>
-                  <p class="w-2/3 border-b-2 border-gray-500 mr-2"></p>
+                  @if($fee->receipt != 0)
+                  <p class="w-2/3 font-semibold border-b-2 border-gray-500 mr-2 text-right">{{$fee->receipt}}</p>
+                  @else
+                  <p class="w-2/3 font-semibold border-b-2 border-gray-500 mr-2 text-right"></p>
+                  @endif
                 </div>
                 <div class="flex justify-center items-center mr-2">
                   <p class="border-b-2 border-gray-500 font-semibold">{{strtoupper($application->lastName.', '.$application->firstName.' '.$application->middleName[0].'.') }}</p>

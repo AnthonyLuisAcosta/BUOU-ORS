@@ -40,6 +40,7 @@ return new class extends Migration
             $table->float('total');
             $table->float('balance');
             $table->boolean('status');
+            $table->string('receipt');
             $table->timestamps();
         });
     }

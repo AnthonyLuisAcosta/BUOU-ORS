@@ -36,6 +36,7 @@ class Fees extends Model
         'total',
         'balance',
         'status',
+        'receipt',
     ];
 
     public function Application()
