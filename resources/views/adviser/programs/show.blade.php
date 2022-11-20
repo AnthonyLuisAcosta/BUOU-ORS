@@ -30,7 +30,7 @@
                     </thead>
                     <tbody>
                         @foreach($applications as $application)
-                             @if($application->programs_id == $programs->id && $application->status == 'Admitted' && $programs->adviser == Auth::user()->id)
+                             @if($application->programs_id == $programs->id && $application->status == 'Enrolled' && $programs->adviser == Auth::user()->id)
                             <tr>
                             <td>{{ $application->id }}</td>
                             <td>{{ $application->firstName.' '. $application->lastName }}</td>

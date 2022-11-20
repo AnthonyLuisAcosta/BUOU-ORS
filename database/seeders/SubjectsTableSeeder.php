@@ -114,7 +114,7 @@ class SubjectsTableSeeder extends Seeder
 
         DB::table('subjects')->insert([
             'subj_code' => 'MPA 210',
-            'title' => 'Organization, Management and Leadership',
+            'title' => 'Human Resource, Ethics and Accountability',
             'cat_id' => '1',
             'programs_id' => '3',
             'prof' => 'Professor E',
