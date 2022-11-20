@@ -120,6 +120,14 @@ class FeesController extends Controller
     {
         //
         $fee = Fees::find($id);
+        //Application status update
+        $appID = $fee->appRef_id;
+        $application = Application::find($appID);
+        $appStatus = $request->appStat;
+        $application->update([
+            'status' => $appStatus,
+        ]);
+        //Fees payment info update
         $status = $request->status;
         $balance = $request->balance;
         $receipt = $request->receipt;

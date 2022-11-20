@@ -14,7 +14,7 @@ class DashboardController extends Controller
     //
     public function index()
     {
-        $forAd = Application::where('status', 'Admitted')->count();
+        $forAd = Application::where('status', 'Processed')->count();
         $terms = Terms::all();
         $announcement = Announcement::all();
         return view('cashier.dashboard')
