@@ -17,7 +17,7 @@ use App\Notifications\ApplicationRejectedEmail;
 use App\Notifications\ApplicationAdmissionEmail;
 use App\Notifications\ApplicationRecommendedEmail;
 
-class ApplicationController extends Controller
+class LogsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,15 +25,14 @@ class ApplicationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $programs = Programs::all();
-        $application = Application::all();
-        $subjects = Subjects::all();
-        $user = User::all();
-
-        return view('admin.application.index')->with('programs', $programs)->with('application', $application)->with('subjects', $subjects)->with('user', $user);
-    }
-
+        {
+            $programs = Programs::all();
+            $subjects = Subjects::all();
+            $user = User::all();
+            $application = Application::all();
+            $logs = Logs::all();
+            return view('admin.application.logs')->with('programs', $programs)->with('subjects', $subjects)->with('user', $user)->with('application', $application)->with('logs', $logs);
+        }
     /**
      * Show the form for creating a new resource.
      *
@@ -108,13 +107,18 @@ class ApplicationController extends Controller
 
     /**
      * Display the specified resource.
+     *
+     * @param  \App\Models\Application  $application
+     * @return \Illuminate\Http\Response
      */
     public function show(Application $application)
     {
-        $programs = Programs::all();
+       $programs = Programs::all();
         $subjects = Subjects::all();
-        $files = File::all();
-        return view('admin.application.show', compact('application'))->with('programs', $programs)->with('subjects', $subjects)->with('files', $files);
+        $user = User::all();
+        $application = Application::all();
+        $logs = Logs::all();
+        return view('admin.application.logs')->with('programs', $programs)->with('subjects', $subjects)->with('user', $user)->with('application', $application)->with('logs', $logs);
     }
 
     /**

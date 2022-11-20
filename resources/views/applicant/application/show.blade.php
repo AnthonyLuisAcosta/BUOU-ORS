@@ -262,7 +262,7 @@
                             <dd class="mt-1 text-sm text-red-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
                         </td>
                         
-                        @elseif($application->status == "Admitted")
+                        @elseif($application->status == "Processed")
                         <td>
                             <dd  class="mt-1 text-sm text-green-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
 
@@ -316,11 +316,35 @@
 
 
                     </div>
+
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm font-medium text-gray-500">Remarks:</dt>
-                        <dd  class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            <textarea readonly name="remarks" id="remarks" cols="30" rows="10" class="w-full break-all" style="border:none">{{$application->remarks}}</textarea>
+                    
+                    <dd  class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-3 border-b-2"></dd>
+                    @foreach($remarks as $row)
+                        @if( $row->application_id == $application->id)
+                        
+                        
+
+                            @foreach($user as $x)
+                            @if( $x->id == $row->user)
+                                @foreach($role as $y)
+                                    @if( $y->role_id == $x->role_id)
+                                    <dt class="text-sm font-medium text-gray-500">{{$y->role_name}}: </dt>         
+                                    @endif
+                                @endforeach
+                                <dd class="text-sm font-medium text-gray-700 sm:col-span-2">{{ $x->first_name }} {{ $x->middle_name }} {{ $x->last_name }}</dd>
+                            @endif
+                            @endforeach
+                            <dt class="text-sm font-medium text-gray-500"> </dt>
+                        <dd  class="mt-1 text-sm text-gray-500 sm:mt-0 sm:col-span-2 text-justify ">
+                            <textarea name="" id="" cols="30" rows="10" readonly style="border:none">{{$row->input}}</textarea>
                         </dd>
+                        <div class="border-b-2 sm:col-span-3 "></div>
+                    
+                        @endif
+                    @endforeach
+              
                     </div>
                 </dl>
 
@@ -329,6 +353,7 @@
     </div>
     <br><br><br>
     <br><br><br>
+    <div></div>
     <style>
         [x-cloak] {
             display: none

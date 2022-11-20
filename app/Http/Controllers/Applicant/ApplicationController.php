@@ -1,14 +1,18 @@
 <?php
 
 namespace App\Http\Controllers\Applicant;
+use App\Models\File;
+use App\Models\Logs;
 use App\Models\User;
+use App\Models\Remarks;
 use App\Models\Programs;
 use App\Models\Subjects;
-use App\Models\File;
 use App\Models\Application;
+use App\Models\Role;
+##use Illuminate\Support\Facades\File;##
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-##use Illuminate\Support\Facades\File;##
+use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewApplicationEmail;
 
 class ApplicationController extends Controller
@@ -49,7 +53,8 @@ class ApplicationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        $user = User::all();
         $programs = Programs::all();
         $application = Application::all();
         $subjects = Subjects::all();
@@ -192,7 +197,12 @@ class ApplicationController extends Controller
         }
 
         }
-
+          ########Create Log#########
+          $logs = new Logs;
+          $logs->user = Auth::user()->id;    
+          $logs->application_id = $application->id;
+          $logs->activity = 'Application Created';
+          $logs->save();
         ####Selected Units#####
 
         $unit = 0;
@@ -232,7 +242,10 @@ class ApplicationController extends Controller
         $programs = Programs::all();
         $subjects = Subjects::all();
         $files = File::all();
-        return view('applicant.application.show', compact('application'))->with('programs', $programs)->with('subjects', $subjects)->with('files', $files);
+        $remarks = Remarks::all();
+        $user = User::all();
+        $role = Role::all();
+        return view('applicant.application.show', compact('application'))->with('programs', $programs)->with('subjects', $subjects)->with('files', $files)->with('remarks', $remarks)->with('user', $user)->with('role', $role);
     }
 
     /**
@@ -248,6 +261,12 @@ class ApplicationController extends Controller
         $user = User::all();
         $subjects = Subjects::all();
         $files = File::all();
+        ########Create Log#########
+        $logs = new Logs;
+        $logs->user = Auth::user()->id;    
+        $logs->application_id = $application->id;
+        $logs->activity = 'Application Updated';
+        $logs->save();
         return view('applicant.application.edit', compact('application'))->with('programs', $programs)->with('application', $application)->with('user', $user)->with('subjects', $subjects)->with('files', $files);
     }
 

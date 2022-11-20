@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Registrar;
 
 use App\Models\File;
+use App\Models\Logs;
+use App\Models\Remarks;
 use App\Models\Programs;
 use App\Models\Subjects;
 use App\Models\Application;
@@ -85,8 +87,23 @@ class ApplicationController extends Controller
         if ($count == 5) {
 
             $application = Application::find($id);
-            $application->status = $request->input('status');
-            $application->remarks = $request->input('remarks');
+            $application->status = $request->input('status'); 
+            $application->update();
+            
+            ########Create Remarks###########
+            $remarks = new Remarks();
+            $remarks->user = Auth::user()->id;    
+            $remarks->application_id = $application->id;
+            $remarks->input = $request->input('remarks');
+            $remarks->save();
+
+            ########Create Log###########
+            $logs = new Logs;
+            $logs->user = Auth::user()->id;    
+            $logs->application_id = $application->id;
+            $logs->activity = 'Application '.  $application->status;
+            $logs->save();
+
             if ($request->input('status') == "Admitted") {
                 //If approve button was pressed
                 $application->notify(new ApplicationAdmissionEmail());

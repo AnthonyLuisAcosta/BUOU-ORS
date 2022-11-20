@@ -151,7 +151,7 @@
                             <dd class="mt-1 text-sm text-red-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
                         </td>
                         
-                        @elseif($application->status == "Admitted")
+                        @elseif($application->status == "Processed")
                         <td>
                             <dd  class="mt-1 text-sm text-green-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
 

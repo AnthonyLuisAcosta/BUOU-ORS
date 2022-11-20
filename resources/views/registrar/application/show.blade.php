@@ -74,7 +74,7 @@
                   </div>
                   <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
 
-                    <input type="hidden" name="status" value="Admitted" class="" />
+                    <input type="hidden" name="status" value="Processed" class="" />
                     <!--Button-->
                     <button name="submit" value="Update" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-green-400 text-base font-medium text-g-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
                       Proceed
@@ -239,7 +239,7 @@
                 <dd class="mt-1 text-sm text-red-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
               </td>
 
-              @elseif($application->status == "Admitted")
+              @elseif($application->status == "Processed")
               <td>
                 <dd class="mt-1 text-sm text-green-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
 

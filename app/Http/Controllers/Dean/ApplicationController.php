@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Dean;
 
 use App\Models\File;
+use App\Models\Logs;
 use App\Models\User;
+use App\Models\Remarks;
 use App\Models\Programs;
 use App\Models\Subjects;
 use App\Models\Application;
-use Illuminate\Http\Request;
 #use Illuminate\Support\Facades\File;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Notifications\ApplicationApprovalEmail;
 use App\Notifications\ApplicationRejectedEmail;
 use App\Notifications\ApplicationRecommendedEmail;
@@ -136,8 +139,23 @@ class ApplicationController extends Controller
 
             $application = Application::find($id);
             $application->status = $request->input('status');
-            $application->remarks = $request->input('remarks');
+           
             $application->update();
+            
+            ########Create Remarks###########
+            $remarks = new Remarks();
+            $remarks->user = Auth::user()->id;    
+            $remarks->application_id = $application->id;
+            $remarks->input = $request->input('remarks');
+            $remarks->save();
+
+            ########Create Log###########
+            $logs = new Logs;
+            $logs->user = Auth::user()->id;    
+            $logs->application_id = $application->id;
+            $logs->activity = 'Application '.  $application->status;
+            $logs->save();
+
             if ($request->input('status') == "Approved") {
                 //If recommend button was pressed
                 $application->notify(new ApplicationApprovalEmail());

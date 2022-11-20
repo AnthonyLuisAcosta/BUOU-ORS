@@ -40,7 +40,7 @@
 					</thead>
 					<tbody>
 					@foreach($application as $row)
-					@if($row->status == "Admitted")
+					@if($row->status == "Processed")
 										<tr>
 									<!--Filter Table-->
 									<!--@/if($row['status']=="Pending")-->
@@ -59,7 +59,7 @@
 												<td>
 												<span class="inline-flex justify-center items-center px-5 py-1 ml-3 text-sm font-medium  rounded-full bg-yellow-300 text-white">{{ $row->status }}</span>
 												</td>
-											@elseif($row->status == "Admitted")
+											@elseif($row->status == "Processed")
 												<td>
 												<span class="inline-flex justify-center items-center px-5 py-1 ml-3 text-sm font-medium  rounded-full bg-green-400 text-white">{{ $row->status }}</span>
 												</td>

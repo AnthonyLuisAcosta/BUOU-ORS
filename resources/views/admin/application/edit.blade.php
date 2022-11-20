@@ -6,11 +6,11 @@
 		</h2>
 	</x-slot>
 
+
 	<div>
+
 		<div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-6">
-			<div class="block mb-8">
-				<a href="{{ route('admin.application.index') }}" class="ml-1 inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">Back to list</a>
-			</div>
+			
 			
 			<div class="mt-5 md:mt-0 md:col-span-2">
 				<form method="post" action="{{ route('admin.application.update', $application->id) }}" enctype="multipart/form-data">
@@ -166,6 +166,7 @@
 				</form>
 			</div>
 		</div>
+		
 	</div>
 
 	<style>

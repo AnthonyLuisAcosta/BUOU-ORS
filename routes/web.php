@@ -31,6 +31,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'a
     Route::get('dashboard', [Admin\DashboardController::class, 'index'])->name('dashboard');
     Route::put('dashboard/{id}', [Admin\DashboardController::class, 'update'])->name('dashboard.update');
     Route::resource('application', Admin\ApplicationController::class);
+    Route::resource('application/logs', Admin\LogsController::class);
     Route::resource('programs', Admin\ProgramsController::class);
     Route::resource('users', Admin\UsersController::class);
     Route::resource('subjects', Admin\SubjectsController::class);

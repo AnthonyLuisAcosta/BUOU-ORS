@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Adviser;
 
+use App\Models\File;
+use App\Models\Logs;
+use App\Models\Remarks;
 use App\Models\Programs;
 use App\Models\Subjects;
-use App\Models\File;
 use App\Models\Application;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\ApplicationRejectedEmail;
 use App\Notifications\ApplicationRecommendedEmail;
@@ -88,6 +91,8 @@ class ApplicationController extends Controller
 
         $application->save();
 
+       
+
         return redirect()->route('adviser.application.index')->with('success', 'Application Added successfully.');
     }
 
@@ -117,6 +122,7 @@ class ApplicationController extends Controller
         $programs = Programs::all();
         $subjects = Subjects::all();
         $files = File::all();
+        
         return view('adviser.application.edit', compact('application'))->with('programs', $programs)->with('subjects', $subjects)->with('application', $application)->with('files', $files);
     }
 
@@ -135,12 +141,29 @@ class ApplicationController extends Controller
 
             $application = Application::find($id);
             $application->status = $request->input('status');
-            $application->remarks = $request->input('remarks');
+            $application->update();
+            
+            ########Create Remarks###########
+            $remarks = new Remarks();
+            $remarks->user = Auth::user()->id;    
+            $remarks->application_id = $application->id;
+            $remarks->input = $request->input('remarks');
+            $remarks->save();
+
+            ########Create Log###########
+            $logs = new Logs;
+            $logs->user = Auth::user()->id;    
+            $logs->application_id = $application->id;
+            $logs->activity = 'Application '.  $application->status;
+            $logs->save();
+            
             if ($request->input('status') == "Recommended") {
                 //If recommend button was pressed
+                
                 $application->notify(new ApplicationRecommendedEmail());
             } else if ($request->input('status') == "Rejected") {
                 //If reject button was pressed
+               
                 $application->notify(new ApplicationRejectedEmail());
             }
             #return dd($count);
@@ -150,16 +173,13 @@ class ApplicationController extends Controller
             $subjects = Subjects::all();
 
             $application = Application::find($id);
-            $application->firstName = $request->input('firstName');
-            $application->middleName = $request->input('middleName');
-            $application->lastName = $request->input('lastName');
-            $application->birthDate = $request->input('birthDate');
-            $application->gender = $request->input('gender');
-            $application->status;
-            $application->email = $request->input('email');
-            $application->phone = $request->input('phone');
-            $application->company = $request->input('company');
-            $application->address = $request->input('address');
+             ########Create Log###########
+             $logs = new Logs;
+             $logs->user = Auth::user()->id;    
+             $logs->application_id = $application->id;
+             $logs->activity = 'Application Updated';
+             $logs->save();
+           
             $application->classification = $request->input('classification');;
 
             $application->subject1 = $request->input('subject1');
@@ -172,30 +192,7 @@ class ApplicationController extends Controller
                     $application->adviser = $prog->adviser;
             }
 
-            #$request->validate([
-            #'lastName',          
-            #'middleName',          
-            #'birthDate',          
-            #'gender' ,
-            #'status' => 'required',
-            #'email' ,         
-            #'phone'   ,
-            #'company' ,
-            #'address',
-            #'applicantImage'     =>'image|mimes:jpg,png,jpeg,gif,svg'
-            #]);
-
-            if ($request->hasfile('applicantImage')) {
-                $destination = 'requirements' . $application->applicantImage;
-                if (File::exists($destination)) {
-                    File::delete($destination);
-                }
-                $file = $request->file('applicantImage');
-                $extension = $file->getClientOriginalExtension();
-                $filename = time() . '.' . $extension;
-                $file->move('requirements', $filename);
-                $application->applicantImage = $filename;
-            }
+        
         #####Technically Dependent Subject Selection######
 
         foreach($subjects as $sub){
@@ -244,6 +241,7 @@ class ApplicationController extends Controller
                         }
                     }
             }
+            
     
             }
     
