@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('remarks', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('user');
-            $table->string('input');
+            $table->string('input')->nullable();
             $table->unsignedInteger('application_id');
             $table->timestamps();
             
