@@ -166,7 +166,7 @@ class ApplicationController extends Controller
             return redirect()->route('dean.application.index')->with('success', 'Application has been updated successfully');
             #return dd($count);
 
-        }elseif ($count == 17){
+        }elseif ($count == 16){
               
             $programs = Programs::all();
             $subjects = Subjects::all();
@@ -296,7 +296,7 @@ class ApplicationController extends Controller
         }
     }
 
-/**
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -304,46 +304,9 @@ class ApplicationController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-
-   
-            $programs = Programs::all();
-            $subjects = Subjects::all();
-
-            $application = Application::find($id);
-            $application->firstName = $request->input('firstName');
-            $application->middleName = $request->input('middleName');
-            $application->lastName = $request->input('lastName');
-            $application->birthDate = $request->input('birthDate');
-            $application->gender = $request->input('gender');
-            $application->status= $request->input('status');
-            $application->email = $request->input('email');
-            $application->phone = $request->input('phone');
-            $application->company = $request->input('company');
-            $application->address = $request->input('address');
-
-            $application->subject1 = $request->input('subject1');
-            $application->subject2 = $request->input('subject2');
-            $application->subject3 = $request->input('subject3');
-
-            $application->programs_id = $request->input('programs_id');
-            foreach ($programs as $prog) {
-                if ($prog->id == $application->programs_id)
-                    $application->adviser = $prog->adviser;
-            }
-            
-            if ($request->hasfile('applicantImage')) {
-                $destination = 'requirements' . $application->applicantImage;
-                if (File::exists($destination)) {
-                    File::delete($destination);
-                }
-                $file = $request->file('applicantImage');
-                $extension = $file->getClientOriginalExtension();
-                $filename = time() . '.' . $extension;
-                $file->move('requirements', $filename);
-                $application->applicantImage = $filename;
-            }
-        #####Technically Dependent Subject Selection######
-
+        $programs = Programs::all();
+        $subjects = Subjects::all();
+        $application = Application::find($id);
         foreach($subjects as $sub){
             if($application->subject1 == $sub->id){
                 if ($application->programs_id != $sub->programs_id) {
@@ -390,6 +353,7 @@ class ApplicationController extends Controller
                         }
                     }
             }
+            
     
             }
     
@@ -414,7 +378,7 @@ class ApplicationController extends Controller
             
             }
 
-        $application->save();
+        $application->update();
 
         return redirect()->route('dean.application.index')->with('success', 'Application has been updated successfully');
     }
