@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Fees;
 use App\Models\File;
 use App\Models\Logs;
 use App\Models\User;
@@ -30,7 +31,7 @@ class ApplicationController extends Controller
         $application = Application::all();
         $subjects = Subjects::all();
         $user = User::all();
-
+        
         return view('admin.application.index')->with('programs', $programs)->with('application', $application)->with('subjects', $subjects)->with('user', $user);
     }
 
@@ -114,7 +115,8 @@ class ApplicationController extends Controller
         $programs = Programs::all();
         $subjects = Subjects::all();
         $files = File::all();
-        return view('admin.application.show', compact('application'))->with('programs', $programs)->with('subjects', $subjects)->with('files', $files);
+        $fees = Fees::all();
+        return view('admin.application.show', compact('application'))->with('programs', $programs)->with('subjects', $subjects)->with('files', $files)->with('fees', $fees);
     }
 
     /**

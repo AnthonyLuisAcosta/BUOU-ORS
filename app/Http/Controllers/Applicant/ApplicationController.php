@@ -1,15 +1,16 @@
 <?php
 
 namespace App\Http\Controllers\Applicant;
+use App\Models\Fees;
 use App\Models\File;
 use App\Models\Logs;
+use App\Models\Role;
 use App\Models\User;
 use App\Models\Remarks;
 use App\Models\Programs;
 use App\Models\Subjects;
-use App\Models\Application;
-use App\Models\Role;
 ##use Illuminate\Support\Facades\File;##
+use App\Models\Application;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -245,7 +246,8 @@ class ApplicationController extends Controller
         $remarks = Remarks::all();
         $user = User::all();
         $role = Role::all();
-        return view('applicant.application.show', compact('application'))->with('programs', $programs)->with('subjects', $subjects)->with('files', $files)->with('remarks', $remarks)->with('user', $user)->with('role', $role);
+        $fees = Fees::all();
+        return view('applicant.application.show', compact('application'))->with('programs', $programs)->with('subjects', $subjects)->with('files', $files)->with('remarks', $remarks)->with('user', $user)->with('role', $role)->with('fees', $fees);
     }
 
     /**

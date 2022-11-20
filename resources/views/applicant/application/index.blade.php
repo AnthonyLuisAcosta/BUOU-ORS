@@ -99,9 +99,13 @@
 												<td>
 												<span class="inline-flex justify-center items-center px-5 py-1 ml-3 text-sm font-medium  rounded-full bg-yellow-300 text-white">{{ $row->status }}</span>
 												</td>
-											@elseif($row->status == "Admitted")
+											@elseif($row->status == "Processed")
 												<td>
 												<span class="inline-flex justify-center items-center px-5 py-1 ml-3 text-sm font-medium  rounded-full bg-green-400 text-white">{{ $row->status }}</span>
+												</td>
+												@elseif($row->status == "Enrolled")
+												<td>
+													<span class="inline-flex justify-center items-center px-5 py-1 ml-3 text-sm font-medium  rounded-full bg-green-400 text-white">{{ $row->status }}</span>
 												</td>
 											@elseif($row->status == "Rejected")
 												<td>

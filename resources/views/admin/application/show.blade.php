@@ -145,7 +145,10 @@
                         <td>
                             <dd class="mt-1 text-sm text-yellow-300 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
                         </td>
-                      
+                        @elseif($application->status == "Enrolled")
+						<td>
+                            <dd class="mt-1 text-sm text-green-300 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
+						</td>
                         @elseif($application->status == "Rejected")
                         <td>
                             <dd class="mt-1 text-sm text-red-400 sm:mt-0 sm:col-span-2 font-bold">{{$application->status}}</dd>
@@ -164,6 +167,31 @@
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{$application->classification}}</dd>
                         </td>
                     </div>
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Fees Status: </dt>
+                        
+                   
+                @foreach ($fees as $row)
+                @if ($row->appRef_id == $application->id)
+                    
+             
+                    @if($row->status == 0)
+                    <td>
+                                <dd class="mt-1 text-sm font-semibold text-red-500 sm:mt-0 sm:col-span-2">UNPAID</dd>
+                    </td>
+                    @elseif($row->status == 2)
+                    <td>
+                                <dd class="mt-1 text-sm font-semibold text-amber-500 sm:mt-0 sm:col-span-2">INSTALLMENT</dd>
+                    </td>
+                    
+                    @else
+                    <td>
+                        <dd class="mt-1 text-sm font-semibold text-green-500 sm:mt-0 sm:col-span-2">PAID</dd>
+                    </td>
+                    @endif 
+                @endif 
+                @endforeach
+                </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">Program</dt>
                         @foreach($programs as $row)
