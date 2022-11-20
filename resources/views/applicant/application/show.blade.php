@@ -352,6 +352,7 @@
                     
                     <dd  class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-3 border-b-2"></dd>
                     @foreach($remarks as $row)
+                    @if( $row->input == !"")
                         @if( $row->application_id == $application->id)
                         
                         
@@ -372,6 +373,7 @@
                         </dd>
                         <div class="border-b-2 sm:col-span-3 "></div>
                     
+                        @endif
                         @endif
                     @endforeach
               
