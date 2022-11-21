@@ -31,8 +31,7 @@
 							<tr>
 								<th data-priority="1">Code</th>
 								<th data-priority="2">Program</th>
-								<th data-priority="3">Created at</th>
-								<th data-priority="4">Updated at</th>
+								<th data-priority="3">Program Adviser</th>
 								<th data-priority="5">Action</th>
 							</tr>
 						</thead>
@@ -40,10 +39,14 @@
 							@foreach($programs as $program)
 									<td>{{ $program->code }}</td>
 									<td>{{ $program->description }}</td>
-									<td>{{ $program->created_at }}</td>
-									<td>{{ $program->updated_at }}</td>
+									<td>
+										@foreach($users as $user)
+										@if ($program->adviser == $user->id)                       
+												{{ $user->first_name.' '.$user->last_name }}                  
+										@endif
+									@endforeach</td>
 									<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-										<a href="{{ route('admin.programs.show', $program->id) }}" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View</a>
+										<a href="{{ route('admin.programs.show', $program->id) }}" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View Enrolled</a>
 										<a href="{{ route('admin.programs.edit', $program->id) }}" class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">Edit</a>
 										
 										<!--DELETE BUTTON-->

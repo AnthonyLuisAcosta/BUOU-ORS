@@ -6,6 +6,7 @@ use App\Models\Terms;
 use App\Models\Category;
 use App\Models\Programs;
 use App\Models\Subjects;
+use App\Models\Application;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSubjectsRequest;
@@ -69,14 +70,8 @@ class SubjectsController extends Controller
     public function show($id)
     {
         $subjects = Subjects::find($id);
-        $programs = Programs::all();
-        $categories = Category::all();
-        $terms = Terms::all();
-        return view('admin.subjects.show')
-            ->with('subjects', $subjects)
-            ->with('programs', $programs)
-            ->with('categories', $categories)
-            ->with('terms', $terms);
+        $applications = Application::all();
+        return view('admin.subjects.show')->with('subjects', $subjects)->with('applications', $applications);
     }
 
     /**

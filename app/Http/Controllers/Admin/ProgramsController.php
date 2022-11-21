@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use App\Models\Programs;
+use App\Models\Application;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProgramsRequest;
@@ -14,7 +15,8 @@ class ProgramsController extends Controller
     public function index()
     {
         $programs = Programs::all();
-        return view('admin.programs.index')->with('programs', $programs);
+        $users = User::all();
+        return view('admin.programs.index')->with('programs', $programs)->with('users', $users);
     }
 
     /*Show the form for creating a new resource */
@@ -36,8 +38,8 @@ class ProgramsController extends Controller
     public function show($id)
     {
         $programs = Programs::find($id);
-        $users = User::all();
-        return view('admin.programs.show')->with('programs', $programs)->with('users', $users);
+        $applications = Application::all();
+        return view('admin.programs.show')->with('programs', $programs)->with('applications', $applications);
     }
 
     /*Show the form for editing the specified resource.*/
