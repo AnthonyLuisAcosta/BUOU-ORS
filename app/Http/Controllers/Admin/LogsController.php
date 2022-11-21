@@ -31,7 +31,7 @@ class LogsController extends Controller
             $user = User::all();
             $application = Application::all();
             $logs = Logs::all();
-            return view('admin.application.logs')->with('programs', $programs)->with('subjects', $subjects)->with('user', $user)->with('application', $application)->with('logs', $logs);
+            return view('admin.application.logs.index')->with('programs', $programs)->with('subjects', $subjects)->with('user', $user)->with('application', $application)->with('logs', $logs);
         }
     /**
      * Show the form for creating a new resource.
@@ -40,12 +40,12 @@ class LogsController extends Controller
      */
     public function create()
     {
-        $programs = Programs::all();
-        $subjects = Subjects::all();
-        $user = User::all();
-        $application = Application::all();
-        $logs = Logs::all();
-        return view('admin.application.logs')->with('programs', $programs)->with('subjects', $subjects)->with('user', $user)->with('application', $application)->with('logs', $logs);
+            $programs = Programs::all();
+            $subjects = Subjects::all();
+            $user = User::all();
+            $application = Application::all();
+            $logs = Logs::all();
+            return view('admin.application.logs.index')->with('programs', $programs)->with('subjects', $subjects)->with('user', $user)->with('application', $application)->with('logs', $logs);
     }
 
     /**
@@ -111,14 +111,15 @@ class LogsController extends Controller
      * @param  \App\Models\Application  $application
      * @return \Illuminate\Http\Response
      */
-    public function show(Application $application)
+    public function show($id)
     {
-       $programs = Programs::all();
+        
+        $programs = Programs::all();
         $subjects = Subjects::all();
         $user = User::all();
-        $application = Application::all();
+        $application = Application::find($id);
         $logs = Logs::all();
-        return view('admin.application.logs')->with('programs', $programs)->with('subjects', $subjects)->with('user', $user)->with('application', $application)->with('logs', $logs);
+        return view('admin.application.showLog', compact('application'))->with('programs', $programs)->with('subjects', $subjects)->with('user', $user)->with('application', $application)->with('logs', $logs);
     }
 
     /**
@@ -130,6 +131,7 @@ class LogsController extends Controller
      */
     public function edit(Application $application, Programs $programs)
     {
+        dd('hello');
         $programs = Programs::all();
         return view('admin.application.edit', compact('application'))->with('programs', $programs)->with('application', $application);
     }

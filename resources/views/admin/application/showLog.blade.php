@@ -55,6 +55,7 @@
 						</thead>
 						<tbody>
 							@foreach($logs as $row)
+                            @if($application->id == $row->application_id)
 							<tr>
 								<!--Filter Table-->
 								<!--@/if($row['status']=="Pending")-->
@@ -80,7 +81,9 @@
 								<!--@/endif-->
 
 							</tr>
+                            @endif
 							@endforeach
+                            
 						</tbody>
 						<div id="count"></div>
 					</table>

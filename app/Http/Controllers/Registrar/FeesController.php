@@ -24,7 +24,7 @@ class FeesController extends Controller
     {
         //
         $fees = Fees::all();
-        $applications = Application::where('status', 'processed')->get();
+        $applications = Application::where('status', 'processed')->orWhere('status', 'enrolled')->get();
         return view('registrar.fees.index')
             ->with(compact('fees'))
             ->with(compact('applications'));

@@ -64,7 +64,7 @@ class ApplicationController extends Controller
             'company'          =>  'required',
             'address'          =>  'required',
             'programs_id'       => 'required',
-
+            'classification',
 
             'applicantImage'         =>  'required|file|mimes:jpg,png,jpeg,gif,svg,pdf,docx,doc'
         ]);
@@ -156,6 +156,9 @@ class ApplicationController extends Controller
             $logs->activity = 'Application '.  $application->status;
             $logs->save();
 
+            $application->classification = $request->input('classification');
+
+
             if ($request->input('status') == "Approved") {
                 //If recommend button was pressed
                 $application->notify(new ApplicationApprovalEmail());
@@ -166,7 +169,7 @@ class ApplicationController extends Controller
             return redirect()->route('dean.application.index')->with('success', 'Application has been updated successfully');
             #return dd($count);
 
-        }elseif ($count == 16){
+        }elseif ($count == 17){
               
             $programs = Programs::all();
             $subjects = Subjects::all();
@@ -182,7 +185,7 @@ class ApplicationController extends Controller
             $application->phone = $request->input('phone');
             $application->company = $request->input('company');
             $application->address = $request->input('address');
-
+            $application->classification = $request->input('classification');
             $application->subject1 = $request->input('subject1');
             $application->subject2 = $request->input('subject2');
             $application->subject3 = $request->input('subject3');

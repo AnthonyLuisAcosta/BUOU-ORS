@@ -22,7 +22,7 @@
 			
             <div class="flex items-center justify-end px-3 py-4">
 			
-			<a href="{{url('admin/application/logs/index')}}" class="ml-1 inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">View Logs</a>
+			<a href="{{route('admin.logs.create')}}" class="ml-1 inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-200 focus:shadow-outline-gray hover:text-white disabled:opacity-25 transition ease-in-out duration-150">View Logs</a>
             </div>
 
 		<!--Container-->
@@ -90,6 +90,7 @@
 												
 												
 											<a href="{{ route('admin.application.show', $row->id) }}" class="text-white rounded-lg hover:bg-blue-900 mb-2 mr-2 bg-blue-400 py-1 px-3">View</a>
+											<a href="{{route('admin.logs.show', $row->id)}}" class="text-white rounded-lg hover:bg-blue-900 mb-2 mr-2 bg-blue-400 py-1 px-3">Logs</a>
 										
 												<!--DELETE BUTTON-->
 												<div id="{{$row->id}}" class="modal">

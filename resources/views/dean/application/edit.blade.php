@@ -37,6 +37,14 @@
 
 							<label class="font-bold mb-1 text-gray-700 block">Applicant Information</label>
 							<div class="grid grid-cols-6  gap-4 border-t-2 border-gray-200">
+							<div class="mt-4 col-span-2">
+									<x-jet-label for="classification" value="Classification" />
+									<select  name="classification" class="form-control block mt-1 w-full text-gray-500 bg-white border-solid border-gray-300 rounded-md">
+										<option hidden selected>{{$application->classification}}</option>
+										<option value="New Student">New Student</option>
+										<option value="Old Student">Old Student</option>
+									</select>
+								</div>
 								<label class="font-medium mb-1 text-gray-600 pt-4 block col-span-6">Basic Information</label>
 								
 								<x-jet-input id="status" class="hidden" type="status" name="status" value="Pending" required autofocus />
