@@ -66,7 +66,7 @@
 								@endforeach
 								
 								<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-									<a href="{{ route('admin.subjects.show', $subject->id) }}" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View</a>
+									<a href="{{ route('admin.subjects.show', $subject->id) }}" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View Enrolled</a>
 									<a href="{{ route('admin.subjects.edit', $subject->id) }}" class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">Edit</a>
 									
 									<!--DELETE BUTTON-->
