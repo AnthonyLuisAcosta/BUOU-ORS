@@ -30,8 +30,9 @@ class ProgramsController extends Controller
     {
         $programs = Programs::find($id);
         $id = Auth::user()->id;
+        $subjects = Subjects::all();
         $applications = Application::all();
-        return view('adviser.programs.show')->with('programs', $programs)->with('applications', $applications);
+        return view('adviser.programs.show')->with('subjects', $subjects)->with('programs', $programs)->with('applications', $applications);
     }
 
     public function edit( $id)

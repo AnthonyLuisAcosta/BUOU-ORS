@@ -34,12 +34,13 @@ class ProgramsController extends Controller
     }
 
     /* Display the specified resource*/
-    public function show($id)
+    public function show( $id)
     {
         $programs = Programs::find($id);
         $id = Auth::user()->id;
+        $subjects = Subjects::all();
         $applications = Application::all();
-        return view('dean.programs.show')->with('programs', $programs)->with('applications', $applications);
+        return view('dean.programs.show')->with('subjects', $subjects)->with('programs', $programs)->with('applications', $applications);
     }
 
     public function edit( $id)

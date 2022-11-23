@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use App\Models\Programs;
+use App\Models\Subjects;
 use App\Models\Application;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -38,8 +39,9 @@ class ProgramsController extends Controller
     public function show($id)
     {
         $programs = Programs::find($id);
+        $subjects = Subjects::all();
         $applications = Application::all();
-        return view('admin.programs.show')->with('programs', $programs)->with('applications', $applications);
+        return view('admin.programs.show')->with('subjects', $subjects)->with('programs', $programs)->with('applications', $applications);
     }
 
     /*Show the form for editing the specified resource.*/
