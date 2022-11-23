@@ -24,8 +24,11 @@
                         <tr>
                             <th data-priority="1">ID</th>
                             <th data-priority="2">Name</th>
-                            <th data-priority="3">Email</th>
-                            <th data-priority="4">Phone</th>
+                            <th data-priority="3">Subject 1</th>
+                            <th data-priority="4">Subject 2</th>
+                            <th data-priority="5">Subject 3</th>
+                            <th data-priority="6">Email</th>
+                            <th data-priority="7">Phone</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,6 +37,32 @@
                             <tr>
                             <td>{{ $application->id }}</td>
                             <td>{{ $application->firstName.' '. $application->lastName }}</td>
+                    
+                            @foreach($subjects as $subject)
+                                @if($subject->id == $application->subject1)
+                                <td >{{ $subject->title }}</td>
+                                @endif
+                            @endforeach
+
+                            @if($application->subject2 == NULL)
+                            <td>None</td>
+                            @else
+                                @foreach($subjects as $subject)
+                                    @if($subject->id == $application->subject2)
+                                        <td>{{  $subject->title  }}</td>
+                                    @endif
+                                @endforeach
+                            @endif
+
+                            @if($application->subject3 == NULL)
+                            <td>None</td>
+                            @else
+                                @foreach($subjects as $subject)
+                                    @if($subject->id == $application->subject3)
+                                        <td>{{  $subject->title  }}</td>
+                                    @endif
+                                @endforeach
+                            @endif
                             <td>{{ $application->email }}</td>	
                             <td>{{ $application->phone }}</td>
                             </tr>
