@@ -41,7 +41,8 @@ class ApplicationApprovalEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('To whom it may concern;')
+            ->greeting('To whom it may concern;')
+            ->line('We are pleased to inform you that your application has been Approved!')
             ->line('Your application is now being processed to the next step. We will keep you posted on the status of your application.')
             ->line('If you have not received a message from us within the next five working days, please contact us.')
             ->action('Home Page', url('/'));
