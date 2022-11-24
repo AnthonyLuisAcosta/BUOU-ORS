@@ -68,7 +68,7 @@ Route::group(['as' => 'adviser.', 'prefix' => 'adviser', 'middleware' => ['auth'
 
 //APPLICANT ROUTES
 //note: do NOT forget to reinsert the 'verified' in the middleware section to implement the verification email first for applicants
-Route::group(['as' => '', 'prefix' => '', 'middleware' => ['auth', 'applicant']], function () {
+Route::group(['as' => '', 'prefix' => '', 'middleware' => ['auth', 'applicant', 'verified']], function () {
     Route::get('dashboard', [App\Http\Controllers\Applicant\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('application', App\Http\Controllers\Applicant\ApplicationController::class);
 });

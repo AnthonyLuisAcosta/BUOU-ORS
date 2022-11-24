@@ -405,7 +405,7 @@
                     <div class="bg-gray-50 px-4 py-3">
                       <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                         <div class="mt-2">
-                          <input type="text" name="receipt" id="receipt" cols="30" rows="10" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-200" id="inline-full-name" type="text" />
+                          <input type="text" name="receipt" id="receipt" cols="30" rows="10" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-200" id="inline-full-name" required />
                         </div>
                       </div>
                       <input type="hidden" name="status" value="1">
@@ -468,7 +468,7 @@
                     <div class="bg-gray-50 px-4 py-3">
                       <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                         <div class="mt-2">
-                          <input type="text" name="receipt" id="receipt" cols="30" rows="10" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-200" id="inline-full-name" type="text" />
+                          <input type="text" name="receipt" id="receipt" cols="30" rows="10" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-200" id="inline-full-name" required />
                         </div>
                       </div>
                       <input type="hidden" name="status" value="2">

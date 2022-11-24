@@ -11,6 +11,7 @@ use App\Models\Programs;
 use App\Models\Subjects;
 use App\Models\Terms;
 use App\Models\User;
+use App\Notifications\EnrolledEmail;
 use Illuminate\Http\Request;
 
 class FeesController extends Controller
@@ -136,6 +137,7 @@ class FeesController extends Controller
             'balance' => $balance,
             'receipt' => $receipt,
         ]);
+        $application->notify(new EnrolledEmail());
         return redirect()->route('cashier.fees.index')->with('success', 'Payment successful!');
     }
 

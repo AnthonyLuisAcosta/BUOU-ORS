@@ -6,8 +6,10 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use App\Models\Fees;
+use Illuminate\Support\HtmlString;
 
-class ApplicationRejectedEmail extends Notification
+class EnrolledEmail extends Notification
 {
     use Queueable;
 
@@ -40,12 +42,15 @@ class ApplicationRejectedEmail extends Notification
      */
     public function toMail($notifiable)
     {
+        $fee = Fees::where('appRef_id', $notifiable->id)->first();
         return (new MailMessage)
-            ->greeting('To whom it may concern;')
-            ->line('Thank you for applying to Bicol University Open University. We have reviewed your application that you have submitted.')
-            ->line('We regret to inform you that we are unable to offer you admission to any of the degree programs that you indicated in your application. We do encourage you to apply again in the future')
-            ->line('Thank you again for your application and best wishes.')
-            ->action('Go to Home Page', url('/'));
+            ->greeting('Greetings!')
+            ->line('Congratulations ' . $notifiable->firstName . ' ' . $notifiable->lastName . '!. You are now enrolled. Welcome to Bicol University Open University.')
+            ->line('We have received your payment regarding your assessed fees for your chosen program.')
+            ->line('OR Reference Number:')
+            ->line(new HtmlString('<h1><strong>' . $fee->receipt . '</strong></h1>'))
+            ->line('Please go to the office of the registrar to print your new certificate of registration. ')
+            ->action('Home Page', url('/'));
     }
 
     /**
